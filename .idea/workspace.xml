@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config/development.next.Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/production.next.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/config/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.development.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/docker-compose.development.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.production.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/docker-compose.production.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/next/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/development.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/config/development.cms.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/next/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/production.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/config/production.cms.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2vbEtod21rSQN0mbj0LJYta4obP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Web/medexpress/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\config" />
+      <recent name="C:\Web\medexpress" />
+      <recent name="C:\Web\medexpress\nginx" />
+      <recent name="C:\Web\medexpress\next" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\config" />
+      <recent name="C:\Web\medexpress\next\src\shred" />
+      <recent name="C:\Web\medexpress\next\src\app" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="" />
+      <created>1744405591313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744405591313</updated>
+      <workItem from="1744405592449" duration="4155000" />
+      <workItem from="1744455322049" duration="9315000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/next" />
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+  </component>
+</project>
