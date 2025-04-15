@@ -1,0 +1,18 @@
+{
+  "group": { "default": { "targets": ["client", "cms"] } },
+  "target":
+    {
+      "client":
+        {
+          "context": "client",
+          "dockerfile": "client.Dockerfile",
+          "depends_on": ["database"],
+        },
+      "cms":
+        {
+          "context": "cms",
+          "dockerfile": "cms.Dockerfile",
+          "depends_on": ["database"],
+        },
+    },
+}

@@ -1,0 +1,79 @@
+services:
+  client:
+    container_name: "client"
+    build:
+      dockerfile: ../docker/client.Dockerfile
+      context: ../client
+    depends_on:
+      - database
+    env_file:
+      - ../.env
+      - ../client/.env
+    volumes:
+      - ../client:/opt/app
+      - ../static:/opt/app/public
+    ports:
+      - "3000:3000"
+
+  cms:
+    container_name: "cms"
+    restart: unless-stopped
+    build:
+      dockerfile: ../docker/cms.Dockerfile
+      context: ../cms
+    depends_on:
+      - database
+    env_file:
+      - ../.env
+      - ../cms/.env
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_NAME=${POSTGRES_DB}
+      - DATABASE_USERNAME=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_HOST=database
+      - DATABASE_PORT=${POSTGRES_PORT}
+      - DATABASE_SSL=${POSTGRES_SSL}
+      - STRAPI_ENVIRONMENT=development
+    volumes:
+      - ../cms:/opt/app
+    ports:
+      - "1337:1337"
+
+  database:
+    container_name: "database"
+    image: postgres:alpine
+    env_file:
+      - ../.env
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    ports:
+      - 5432:${POSTGRES_PORT}
+
+  pgadmin:
+    container_name: "pgadmin"
+    image: dpage/pgadmin4
+    depends_on:
+      - database
+    env_file:
+      - ../.env
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  nginx:
+    container_name: "nginx"
+    image: nginx:latest
+    depends_on:
+      - client
+      - cms
+      - pgadmin
+    env_file:
+      - ../.env
+    volumes:
+      - ../nginx:/etc/nginx/conf.d
+      - ../static:/var/www/static
+    ports:
+      - "80:80"
+
+volumes:
+  database_data:

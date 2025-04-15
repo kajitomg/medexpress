@@ -22,8 +22,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -39,28 +52,32 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Web/medexpress/config",
+    "last_opened_file_path": "C:/Web/medexpress",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "C:\\Web\\medexpress\\cms\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\config" />
       <recent name="C:\Web\medexpress" />
       <recent name="C:\Web\medexpress\nginx" />
+      <recent name="C:\Web\medexpress\docker" />
+      <recent name="C:\Web\medexpress\config" />
       <recent name="C:\Web\medexpress\next" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\config" />
-      <recent name="C:\Web\medexpress\next\src\shred" />
-      <recent name="C:\Web\medexpress\next\src\app" />
+      <recent name="C:\Web\medexpress\client" />
+      <recent name="C:\Web\medexpress\client\src\shared\lib" />
+      <recent name="C:\Web\medexpress\client\src\app" />
+      <recent name="C:\Web\medexpress" />
+      <recent name="C:\Web\medexpress\docker" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -79,7 +96,16 @@
       <option name="presentableId" value="Default" />
       <updated>1744405591313</updated>
       <workItem from="1744405592449" duration="4155000" />
-      <workItem from="1744455322049" duration="9315000" />
+      <workItem from="1744455322049" duration="10728000" />
+      <workItem from="1744490137648" duration="13345000" />
+      <workItem from="1744534919259" duration="11000" />
+      <workItem from="1744535064786" duration="2049000" />
+      <workItem from="1744537844038" duration="13118000" />
+      <workItem from="1744638228118" duration="800000" />
+      <workItem from="1744639182669" duration="6254000" />
+      <workItem from="1744646061187" duration="1817000" />
+      <workItem from="1744747672698" duration="5225000" />
+      <workItem from="1744753296885" duration="4447000" />
     </task>
     <servers />
   </component>
