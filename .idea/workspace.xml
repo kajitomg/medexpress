@@ -26,6 +26,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
+        <option value="JavaScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -47,37 +50,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Web/medexpress",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "C:\\Web\\medexpress\\cms\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/client/app/(public)&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress" />
-      <recent name="C:\Web\medexpress\nginx" />
-      <recent name="C:\Web\medexpress\docker" />
-      <recent name="C:\Web\medexpress\config" />
-      <recent name="C:\Web\medexpress\next" />
+      <recent name="C:\Web\medexpress\client\app\(public)" />
+      <recent name="C:\Web\medexpress\client\app\(public)\catalog\[category_id]" />
+      <recent name="C:\Web\medexpress\client\app" />
+      <recent name="C:\Web\medexpress\client\app\(catalog)" />
+      <recent name="C:\Web\medexpress\client\app\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\client" />
-      <recent name="C:\Web\medexpress\client\src\shared\lib" />
-      <recent name="C:\Web\medexpress\client\src\app" />
-      <recent name="C:\Web\medexpress" />
-      <recent name="C:\Web\medexpress\docker" />
+      <recent name="C:\Web\medexpress\client\app\(public)\(main-layout)" />
+      <recent name="C:\Web\medexpress\client\app\(public)\(aside-layout)" />
+      <recent name="C:\Web\medexpress\client\app\(public)" />
+      <recent name="C:\Web\medexpress\client\app\(public)\(home)" />
+      <recent name="C:\Web\medexpress\client\app\(catalog)\[category_id]" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -105,7 +109,66 @@
       <workItem from="1744639182669" duration="6254000" />
       <workItem from="1744646061187" duration="1817000" />
       <workItem from="1744747672698" duration="5225000" />
-      <workItem from="1744753296885" duration="4447000" />
+      <workItem from="1744753296885" duration="5600000" />
+      <workItem from="1744803330348" duration="7296000" />
+      <workItem from="1744982014244" duration="7350000" />
+      <workItem from="1745077553444" duration="3263000" />
+      <workItem from="1745167501190" duration="1255000" />
+      <workItem from="1745231655763" duration="11431000" />
+      <workItem from="1745405026184" duration="15465000" />
+      <workItem from="1745521483145" duration="12420000" />
+      <workItem from="1745575992770" duration="10979000" />
+      <workItem from="1745703058821" duration="4483000" />
+      <workItem from="1746023602407" duration="1802000" />
+      <workItem from="1746100548968" duration="13163000" />
+      <workItem from="1746211726582" duration="12651000" />
+      <workItem from="1746267345529" duration="3947000" />
+      <workItem from="1746357766386" duration="2895000" />
+      <workItem from="1746446221789" duration="12988000" />
+      <workItem from="1746532992879" duration="18860000" />
+      <workItem from="1746621302334" duration="15586000" />
+      <workItem from="1746747797438" duration="2495000" />
+      <workItem from="1746785817993" duration="9247000" />
+      <workItem from="1747843764892" duration="429000" />
+      <workItem from="1748212240915" duration="1000" />
+      <workItem from="1748782797502" duration="1319000" />
+      <workItem from="1749214030139" duration="593000" />
+      <workItem from="1749648734878" duration="4000" />
+      <workItem from="1750159840519" duration="10724000" />
+      <workItem from="1750259480469" duration="7137000" />
+      <workItem from="1750332156310" duration="718000" />
+      <workItem from="1750333494965" duration="1896000" />
+      <workItem from="1750335438094" duration="56000" />
+      <workItem from="1750335531155" duration="5966000" />
+      <workItem from="1750418386208" duration="18111000" />
+      <workItem from="1750499703005" duration="5040000" />
+      <workItem from="1750683119438" duration="6424000" />
+      <workItem from="1750718715893" duration="5231000" />
+      <workItem from="1750763247810" duration="12911000" />
+      <workItem from="1750844148973" duration="16427000" />
+      <workItem from="1750891690888" duration="4841000" />
+      <workItem from="1750939585900" duration="9581000" />
+      <workItem from="1750981673852" duration="3487000" />
+      <workItem from="1751023224211" duration="5092000" />
+      <workItem from="1751028472697" duration="8877000" />
+      <workItem from="1751117492244" duration="4576000" />
+      <workItem from="1751193956261" duration="13593000" />
+      <workItem from="1751234775203" duration="148000" />
+      <workItem from="1751234964143" duration="213000" />
+      <workItem from="1751235194525" duration="2884000" />
+      <workItem from="1751373894907" duration="12965000" />
+      <workItem from="1751450464236" duration="11054000" />
+      <workItem from="1751470006041" duration="10848000" />
+      <workItem from="1751497406780" duration="2533000" />
+      <workItem from="1751539655897" duration="18787000" />
+      <workItem from="1751663375493" duration="617000" />
+      <workItem from="1751664027848" duration="2449000" />
+      <workItem from="1751670462458" duration="20000" />
+      <workItem from="1751670510833" duration="1501000" />
+      <workItem from="1751672283724" duration="106000" />
+      <workItem from="1751672455535" duration="23000" />
+      <workItem from="1751672792013" duration="220000" />
+      <workItem from="1751713516971" duration="3685000" />
     </task>
     <servers />
   </component>

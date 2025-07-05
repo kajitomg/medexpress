@@ -35,8 +35,6 @@ services:
       - DATABASE_PORT=${POSTGRES_PORT}
       - DATABASE_SSL=${POSTGRES_SSL}
       - STRAPI_ENVIRONMENT=development
-    volumes:
-      - ../cms:/opt/app
     ports:
       - "1337:1337"
 

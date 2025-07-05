@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "compilations",
+  "info": {
+    "singularName": "compilation",
+    "pluralName": "compilations",
+    "displayName": "compilation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
