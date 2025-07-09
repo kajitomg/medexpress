@@ -14,6 +14,7 @@ interface ProductsListActions {
     category?: DocumentId | null,
     search?: string | null
   ) => Promise<void>
+  setProducts: (products: (ProductBase & DocumentServices)[]) => void
 }
 
 export type ProductsListStore = ProductsListState & ProductsListActions
@@ -39,5 +40,8 @@ export const useProductsListStore = create<ProductsListStore>((set) => ({
       if (error instanceof Error)
         set({ error: error?.message, isLoading: false })
     }
+  },
+  setProducts: (products: (ProductBase & DocumentServices)[]) => {
+    set({ products: products, isLoading: false, error: null })
   },
 }))

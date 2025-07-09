@@ -1,3 +1,4 @@
+import { fetchAllCategories } from "@/entities/category/services"
 import { cn } from "@/shared/lib/utils"
 import {
   NavigationMenu,
@@ -8,12 +9,16 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/shared/ui/navigation-menu"
-import { CatalogMenu } from "@/widgets/catalog-menu"
+import { MenuCatalog } from "@/widgets/menu-catalog"
 import { ShoppingCart } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
 
-const Header = ({ className, ...props }: React.ComponentProps<"header">) => {
+const Header = async ({
+  className,
+  ...props
+}: React.ComponentProps<"header">) => {
+  const categories = await fetchAllCategories()
   /*const [catalogTrigger, setCatalogTrigger] = useState<boolean>(false)
   const onRefChange = useCallbackRef((node) => {
     if (node !== null) {
@@ -52,7 +57,7 @@ const Header = ({ className, ...props }: React.ComponentProps<"header">) => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Каталог</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <CatalogMenu />
+                <MenuCatalog initCategoriesList={categories} />
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>

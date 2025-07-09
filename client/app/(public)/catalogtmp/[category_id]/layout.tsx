@@ -1,5 +1,5 @@
 import { AsideLayout } from "@/shared/ui"
-import { Asidetmp } from "@/widgets/asidetmp"
+import { Aside } from "@/widgets/aside"
 import Footer from "@/widgets/footer"
 import Header from "@/widgets/header"
 import * as React from "react"
@@ -12,15 +12,17 @@ const RootLayout = async ({
   params: Promise<{ category_id: string }>
 }>) => {
   return (
-    <AsideLayout
-      header={<Header />}
-      footer={<Footer />}
-      aside={<Asidetmp params={params} />}
-      asideWidth={320}
-      headerHeight={80}
-    >
-      {children}
-    </AsideLayout>
+    <>
+      <AsideLayout
+        header={<Header />}
+        footer={<Footer />}
+        aside={<Aside params={params} />}
+        asideWidth={320}
+        headerHeight={80}
+      >
+        {children}
+      </AsideLayout>
+    </>
   )
 }
 

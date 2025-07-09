@@ -1,32 +1,7 @@
+import { searchParamsStorage } from "@/shared/lib"
 import { Error } from "@/shared/model/error"
 import { create } from "zustand"
-import { createJSONStorage, persist, StateStorage } from "zustand/middleware"
-
-const getUrlSearch = () => {
-  return window.location.search.slice(1)
-}
-
-const persistentStorage: StateStorage = {
-  getItem: (key): string => {
-    const searchParams = new URLSearchParams(getUrlSearch())
-    const storedValue = searchParams.get(key)
-    return JSON.parse(storedValue as string)
-  },
-  setItem: (key, newValue): void => {
-    const storedValue = new URLSearchParams(JSON.parse(newValue).state)
-    if (!storedValue.size) window.history.replaceState(null, "", null)
-    else {
-      const searchParams = new URLSearchParams(getUrlSearch())
-      searchParams.set(key, JSON.stringify(newValue))
-      window.history.replaceState(null, "", `?${searchParams.toString()}`)
-    }
-  },
-  removeItem: (key): void => {
-    const searchParams = new URLSearchParams(getUrlSearch())
-    searchParams.delete(key)
-    window.location.search = searchParams.toString()
-  },
-}
+import { createJSONStorage, persist } from "zustand/middleware"
 
 interface CatalogOptionsState {
   searchQuery?: string | null
@@ -57,7 +32,7 @@ export const useCatalogOptionsStore = create<CatalogOptionsStore>()(
     {
       name: "options",
       storage: createJSONStorage<Pick<CatalogOptionsState, "searchQuery">>(
-        () => persistentStorage
+        () => searchParamsStorage
       ),
       partialize: (state) => ({
         searchQuery: state.searchQuery,

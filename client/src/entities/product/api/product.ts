@@ -30,7 +30,7 @@ export const fetchProducts = async (
         },
         populate: {
           categories: {
-            fields: ["id", "documentId", "title"],
+            fields: ["id", "documentId", "title", "code"],
           },
           media: true,
         },

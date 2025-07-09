@@ -15,6 +15,7 @@ interface CartActions {
   deleteItemFromCart: (id: DocumentId) => void
   incrementItemInCart: (id: DocumentId) => void
   decrementItemInCart: (id: DocumentId) => void
+  getCartItem: (id: DocumentId) => null | CartItem<ProductBase>
 }
 
 export type CartStore = CartState & CartActions
@@ -86,6 +87,15 @@ export const useCartStore = create<CartStore>()(
             set({ products })
           }
         }
+      },
+      getCartItem: (itemId: DocumentId) => {
+        const products = getState().products
+        const productIndex = products.findIndex(
+          (product) => product.item.id === itemId
+        )
+
+        if (productIndex < 0) return null
+        return products[productIndex]
       },
     }),
     { name: "cartStore" }
