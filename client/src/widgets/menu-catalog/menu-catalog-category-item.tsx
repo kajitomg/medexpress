@@ -1,9 +1,8 @@
 import { CategoryBase } from "@/entities/category/model"
-import { Routes } from "@/shared/config/routes"
+import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button } from "@/shared/ui"
 import Link from "next/link"
-import { ComponentProps } from "react"
 
 interface MenuCatalogCategoryItemProps {
   category: CategoryBase
@@ -17,24 +16,26 @@ const MenuCatalogCategoryItem = ({
   selectedCategory,
   handleMouseEnter,
   handleMouseLeave,
-}: ComponentProps<"div"> & MenuCatalogCategoryItemProps) => {
+}: MenuCatalogCategoryItemProps) => {
   return (
-    <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={cn(
-        "flex flex-col my-1 p-2 py-1.5 rounded-lg bg-gray-100",
-        selectedCategory && "bg-gray-200"
-      )}
-    >
-      <Button asChild variant="link" className="whitespace-normal h-auto">
-        <Link href={Routes.CATALOG(category.id)}>
+    <li>
+      <Button
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        asChild
+        variant="link"
+        className={cn(
+          "whitespace-normal h-auto rounded-lg p-2 py-1.5 bg-gray-100",
+          selectedCategory && "bg-gray-200"
+        )}
+      >
+        <Link href={routes.CATALOG(category.id).path}>
           {category.code}
           {".\n"}
           {category.title}
         </Link>
       </Button>
-    </div>
+    </li>
   )
 }
 

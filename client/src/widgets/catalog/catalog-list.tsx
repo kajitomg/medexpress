@@ -2,47 +2,51 @@
 
 import { ProductBase } from "@/entities/product/model"
 import { useCartStore } from "@/features/cart/store"
-import {
-  useCatalogOptionsStore,
-  useProductsListStore,
-} from "@/features/catalog/store"
+import { useCatalogOptionsStore } from "@/features/catalog/store"
+import { getPaginationRange } from "@/shared/lib/get-pagination-range"
 import { List } from "@/shared/ui/list"
 import { CatalogItem } from "@/widgets/catalog/catalog-item"
+import { CatalogPagination } from "@/widgets/catalog/catalog-pagination"
 import * as React from "react"
-import { ComponentProps, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 interface CatalogListProps {
-  initProducts: ProductBase[]
-  category_id: string
+  products: ProductBase[]
+  maxPages: number
 }
 
-const CatalogList = ({
-  category_id,
-  initProducts,
-}: ComponentProps<"div"> & CatalogListProps) => {
+const CatalogList = ({ products, maxPages }: CatalogListProps) => {
   const [isClient, setIsClient] = useState(false)
-  const { products } = useProductsListStore((state) => state)
-  const { searchQuery } = useCatalogOptionsStore((state) => state)
 
-  const fetchAllProducts = useProductsListStore(
-    (state) => state.fetchAllProducts
-  )
-  const setProducts = useProductsListStore((state) => state.setProducts)
+  const page = useCatalogOptionsStore((state) => state.page)
+  const setPage = useCatalogOptionsStore((state) => state.setPage)
+  const cartProducts = useCartStore((state) => state.products)
+  const addItemToCart = useCartStore((state) => state.addItemToCart)
+  const deleteItemFromCart = useCartStore((state) => state.deleteItemFromCart)
 
-  const { getCartItem, addItemToCart, deleteItemFromCart } = useCartStore(
-    (state) => state
+  const paginationRange = useMemo(
+    () => getPaginationRange(page, maxPages || page),
+    [maxPages, page]
   )
+
   const callbacks = {
     onActionButton: (item: ProductBase, isInCart: boolean) => () => {
       if (isInCart) deleteItemFromCart(item.id)
       else addItemToCart(item)
+    },
+    onSetPage: (page: number) => {
+      setPage(page)
+      window.scroll(0, 0)
     },
   }
 
   const renders = {
     catalogItem: useCallback(
       (item: (typeof products)[0]) => {
-        const isInCart = Boolean(getCartItem(item.id)?.count)
+        const isInCart = Boolean(
+          cartProducts.find((cartProduct) => cartProduct.item.id === item.id)
+            ?.count
+        )
         return (
           <CatalogItem
             key={item.id}
@@ -53,27 +57,27 @@ const CatalogList = ({
           />
         )
       },
-      [getCartItem, isClient, callbacks]
+      [cartProducts, isClient, callbacks]
     ),
   }
 
   useEffect(() => {
-    setProducts(initProducts)
     setIsClient(true)
-  }, [initProducts])
-
-  useEffect(() => {
-    if (isClient && searchQuery) {
-      fetchAllProducts(+category_id, searchQuery)
-    }
-  }, [searchQuery])
-
+  }, [])
   return (
-    <List
-      items={products.length ? products : initProducts}
-      renderItem={renders.catalogItem}
-      className={`grid grid-cols-[repeat(auto-fill,_minmax(300px,1fr))] gap-2`}
-    />
+    <>
+      <List
+        items={products}
+        renderItem={renders.catalogItem}
+        className={`grid grid-cols-[repeat(auto-fill,_minmax(300px,1fr))] gap-2`}
+      />
+      <CatalogPagination
+        page={page}
+        setPage={callbacks.onSetPage}
+        paginationRange={paginationRange}
+        maxPages={maxPages}
+      />
+    </>
   )
 }
 

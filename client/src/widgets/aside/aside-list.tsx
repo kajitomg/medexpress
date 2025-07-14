@@ -4,18 +4,15 @@ import { CategoryBase, CategoryOptions } from "@/entities/category/model"
 import { useCatalogOptionsStore } from "@/features/catalog/store"
 import { DocumentId, DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
-import { AsideItem } from "@/widgets/asidetmp/aside-item"
-import { ComponentProps, useCallback } from "react"
+import { AsideItem } from "@/widgets/aside/aside-item"
+import { useCallback } from "react"
 
 interface CategoriesListProps {
   categories: (CategoryBase & Partial<CategoryOptions & DocumentServices>)[]
   selectedCategory: DocumentId
 }
 
-const AsideList = ({
-  categories,
-  selectedCategory,
-}: ComponentProps<"div"> & CategoriesListProps) => {
+const AsideList = ({ categories, selectedCategory }: CategoriesListProps) => {
   const { changeSearchQuery } = useCatalogOptionsStore((state) => state)
 
   const callbacks = {
@@ -26,15 +23,22 @@ const AsideList = ({
 
   const renders = {
     categoryItem: useCallback(
-      (item: (typeof categories)[0]) => (
-        <AsideItem
-          key={item.id}
-          category={item}
-          selectedCategory={selectedCategory}
-          available={item.id === selectedCategory}
-          resetOptions={callbacks.resetOptions}
-        />
-      ),
+      (item: (typeof categories)[0]) => {
+        const isAvailable = item.id === selectedCategory
+        const isChildrensAvailable = item.childrens?.some(
+          (item) => item.id === selectedCategory
+        )
+        return (
+          <AsideItem
+            key={item.id}
+            category={item}
+            selectedCategory={selectedCategory}
+            available={isAvailable}
+            expanded={Boolean(isAvailable || isChildrensAvailable)}
+            resetOptions={callbacks.resetOptions}
+          />
+        )
+      },
       [selectedCategory]
     ),
   }

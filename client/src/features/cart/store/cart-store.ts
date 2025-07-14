@@ -4,6 +4,7 @@ import { DocumentId } from "@/shared/model/document"
 import { Error } from "@/shared/model/error"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
+import { immer } from "zustand/middleware/immer"
 
 interface CartState {
   products: CartItem<ProductBase>[]
@@ -15,7 +16,6 @@ interface CartActions {
   deleteItemFromCart: (id: DocumentId) => void
   incrementItemInCart: (id: DocumentId) => void
   decrementItemInCart: (id: DocumentId) => void
-  getCartItem: (id: DocumentId) => null | CartItem<ProductBase>
 }
 
 export type CartStore = CartState & CartActions
@@ -26,78 +26,74 @@ const initState: CartState = {
 }
 
 export const useCartStore = create<CartStore>()(
-  persist(
-    (set, getState) => ({
-      ...initState,
-      addItemToCart: (item: ProductBase) => {
-        set({ error: null })
-        const products = getState().products
-        const productIndex = products.findIndex(
-          (product) => product.item.id === item.id
-        )
-        if (productIndex >= 0) {
-          products[productIndex].count++
-        } else {
-          const product: CartItem<ProductBase> = {
-            item: item,
-            count: 1,
-          }
-          products.push(product)
-        }
-        set({ products })
-      },
-      deleteItemFromCart: (id: DocumentId) => {
-        set({ error: null })
-        const products = getState().products
-        const productIndex = products.findIndex(
-          (product) => product.item.id === id
-        )
-        if (productIndex === -1) {
-          set({ error: "Product not found." })
-        } else {
-          products.splice(productIndex, 1)
-          set({ products })
-        }
-      },
-      incrementItemInCart: (id: DocumentId) => {
-        const products = getState().products
-        const productIndex = products.findIndex(
-          (product) => product.item.id === id
-        )
-        if (productIndex === -1) {
-          set({ error: "Product not found." })
-        } else {
-          products[productIndex].count++
-          set({ products })
-        }
-      },
-      decrementItemInCart: (id: DocumentId) => {
-        set({ error: null })
-        const products = getState().products
-        const productIndex = products.findIndex(
-          (product) => product.item.id === id
-        )
-        if (productIndex === -1) {
-          set({ error: "Product not found." })
-        } else {
-          products[productIndex].count--
-          if (products[productIndex].count <= 0) {
-            getState().deleteItemFromCart(id)
-          } else {
-            set({ products })
-          }
-        }
-      },
-      getCartItem: (itemId: DocumentId) => {
-        const products = getState().products
-        const productIndex = products.findIndex(
-          (product) => product.item.id === itemId
-        )
+  immer(
+    persist(
+      (set) => ({
+        ...initState,
+        addItemToCart: (item: ProductBase) => {
+          set((state) => {
+            const productIndex = state.products.findIndex(
+              (product) => product.item.id === item.id
+            )
 
-        if (productIndex < 0) return null
-        return products[productIndex]
-      },
-    }),
-    { name: "cartStore" }
+            if (productIndex >= 0) {
+              state.products[productIndex].count++
+            } else {
+              const product: CartItem<ProductBase> = {
+                item: item,
+                count: 1,
+              }
+              state.products.push(product)
+            }
+            state.error = null
+          })
+        },
+        deleteItemFromCart: (id: DocumentId) => {
+          set((state) => {
+            const productIndex = state.products.findIndex(
+              (product) => product.item.id === id
+            )
+
+            if (productIndex === -1) {
+              state.error = "Product not found."
+            } else {
+              state.products.splice(productIndex, 1)
+              state.error = null
+            }
+          })
+        },
+        incrementItemInCart: (id: DocumentId) => {
+          set((state) => {
+            const productIndex = state.products.findIndex(
+              (product) => product.item.id === id
+            )
+            if (productIndex === -1) {
+              state.error = "Product not found."
+            } else {
+              state.products[productIndex].count++
+              state.error = null
+            }
+          })
+        },
+        decrementItemInCart: (id: DocumentId) => {
+          set((state) => {
+            const productIndex = state.products.findIndex(
+              (product) => product.item.id === id
+            )
+            if (productIndex === -1) {
+              state.error = "Product not found."
+            } else {
+              if (state.products[productIndex].count <= 0) {
+                state.products.splice(productIndex, 1)
+              } else {
+                state.products[productIndex].count--
+              }
+              state.error = null
+            }
+          })
+        },
+      }),
+      { name: "cartStore" }
+    )
   )
 )

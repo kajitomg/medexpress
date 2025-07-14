@@ -11,6 +11,7 @@ import qs from "qs"
 
 export const fetchProducts = async (
   fields: (keyof ProductBase & DocumentServices)[] = [],
+  page: number = 1,
   categories: DocumentId[] = [],
   search?: string | null
 ) => {
@@ -34,6 +35,11 @@ export const fetchProducts = async (
           },
           media: true,
         },
+        pagination: {
+          page,
+          pageSize: 60,
+          withCount: true,
+        },
       },
       {
         encodeValuesOnly: true,
@@ -46,7 +52,7 @@ export const fetchProducts = async (
       params: new URLSearchParams(query),
     })
 
-    return response.data.data
+    return response.data
   } catch (e) {
     if (e instanceof AxiosError) console.log(e.response)
     else console.log(e)
@@ -79,7 +85,7 @@ export const fetchProduct = async (
       params: new URLSearchParams(query),
     })
 
-    return response.data.data
+    return response.data
   } catch (e) {
     if (e instanceof AxiosError) console.log(e.response)
     else console.log(e)

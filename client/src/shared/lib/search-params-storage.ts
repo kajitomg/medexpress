@@ -10,15 +10,15 @@ const searchParamsStorage: StateStorage = {
   getItem: (key): string => {
     const searchParams = new URLSearchParams(getUrlSearch())
     const storedValue = searchParams.get(key)
-    return JSON.parse(storedValue as string)
+    return storedValue || ""
   },
   setItem: (key, newValue): void => {
     const storedValue = new URLSearchParams(JSON.parse(newValue).state)
     if (!storedValue.size) window.history.replaceState(null, "", null)
     else {
       const searchParams = new URLSearchParams(getUrlSearch())
-      searchParams.set(key, JSON.stringify(newValue))
-      window.history.replaceState(null, "", `?${searchParams.toString()}`)
+      searchParams.set(key, newValue)
+      window.history.replaceState(null, "", `?${searchParams}`)
     }
   },
   removeItem: (key): void => {

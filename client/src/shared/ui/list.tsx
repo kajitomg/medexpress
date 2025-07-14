@@ -1,25 +1,22 @@
 import { cn } from "@/shared/lib"
-import { Slot } from "@radix-ui/react-slot"
 import * as React from "react"
-import { ReactNode } from "react"
+import { JSX, ReactNode } from "react"
 
 interface ListProps<T> {
-  asChild?: true
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>
   items?: T[]
   renderItem: (item: T, i: number) => ReactNode
 }
 
 function List<T>({
-  asChild,
+  as: Component = "div",
   items,
   renderItem,
   className,
   ...props
 }: React.ComponentProps<"div"> & ListProps<T>) {
-  const Component = asChild ? Slot : "div"
-
   return (
-    <Component className={cn("flex flex-col", className)} {...props}>
+    <Component data-slot="list" className={cn(className)} {...props}>
       {items?.map((item, i) => renderItem(item, i))}
     </Component>
   )

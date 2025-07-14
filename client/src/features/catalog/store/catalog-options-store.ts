@@ -2,42 +2,57 @@ import { searchParamsStorage } from "@/shared/lib"
 import { Error } from "@/shared/model/error"
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
+import { immer } from "zustand/middleware/immer"
 
 interface CatalogOptionsState {
   searchQuery?: string | null
+  page: number
   error: Error | null
 }
 
 interface CatalogOptionsActions {
   changeSearchQuery: (searchQuery?: string | null) => void
+  setPage: (page: number) => void
 }
 
 export type CatalogOptionsStore = CatalogOptionsState & CatalogOptionsActions
 
 const initState: CatalogOptionsState = {
-  searchQuery: null,
+  searchQuery: undefined,
+  page: 1,
   error: null,
 }
 
 export const useCatalogOptionsStore = create<CatalogOptionsStore>()(
-  persist(
-    (set) => ({
-      ...initState,
-      changeSearchQuery: (searchQuery?: string | null) => {
-        if (!searchQuery) searchQuery = undefined
+  immer(
+    persist(
+      (set) => ({
+        ...initState,
+        changeSearchQuery: (searchQuery?: string | null) => {
+          set((state) => {
+            if (!searchQuery) searchQuery = undefined
 
-        set({ error: null, searchQuery: searchQuery })
-      },
-    }),
-    {
-      name: "options",
-      storage: createJSONStorage<Pick<CatalogOptionsState, "searchQuery">>(
-        () => searchParamsStorage
-      ),
-      partialize: (state) => ({
-        searchQuery: state.searchQuery,
+            state.page = 1
+            state.searchQuery = searchQuery
+          })
+        },
+        setPage: (page: number) => {
+          set((state) => {
+            state.page = page
+          })
+        },
       }),
-      version: undefined,
-    }
+      {
+        name: "options",
+        storage: createJSONStorage<Pick<CatalogOptionsState, "searchQuery">>(
+          () => searchParamsStorage
+        ),
+        partialize: (state) => ({
+          searchQuery: state.searchQuery,
+          page: state.page,
+        }),
+        version: undefined,
+      }
+    )
   )
 )

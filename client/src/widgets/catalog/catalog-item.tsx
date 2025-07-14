@@ -1,12 +1,13 @@
 import { CategoryBase } from "@/entities/category/model"
 import { ProductBase } from "@/entities/product/model"
+import { routes } from "@/shared/config/routes"
 import { Button } from "@/shared/ui"
 import { Card, CardContent, CardFooter, CardHeader } from "@/shared/ui/card"
 import { List } from "@/shared/ui/list"
 import { Loader2Icon, Plus, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import * as React from "react"
-import { ComponentProps } from "react"
 
 interface CatalogItemProps {
   product: ProductBase
@@ -20,16 +21,21 @@ const CatalogItem = ({
   isInCart = false,
   onActionButton,
   isClient,
-}: ComponentProps<"div"> & CatalogItemProps) => {
+}: CatalogItemProps) => {
+  const categories = [...(product.categories || [])].sort(
+    (a, b) => +a.code - +b.code
+  )
+
   const renders = {
     categoryItem: (category: CategoryBase) => (
       <Button
+        asChild
         key={category.id}
         variant="secondary"
         size="sm"
         className="max-w-full justify-start truncate text-xs cursor-pointer"
       >
-        {category.code}
+        <Link href={routes.CATALOG(category.id).path}>{category.code}</Link>
       </Button>
     ),
   }
@@ -49,7 +55,7 @@ const CatalogItem = ({
         <div className="flex justify-end"></div>
         <span className="font-bold">{product.title}</span>
         <List
-          items={product.categories?.sort((a, b) => +a.code - +b.code)}
+          items={categories}
           renderItem={renders.categoryItem}
           className="block space-x-1 space-y-1"
         />

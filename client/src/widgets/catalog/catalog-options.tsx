@@ -1,49 +1,37 @@
-"use client"
-
-import { useCatalogOptionsStore } from "@/features/catalog/store"
 import { Button, Input } from "@/shared/ui"
 import { Search } from "lucide-react"
-import { ChangeEvent, ComponentProps, useEffect, useState } from "react"
+import { ChangeEvent } from "react"
 
-interface CatalogOptionsProps {}
+interface CatalogOptionsProps {
+  input: string
+  changeSearch: (e: ChangeEvent<HTMLInputElement>) => void
+  applyOptions: () => void
+  resetOptions: () => void
+  searchQuery?: string | null
+}
 
-const CatalogOptions = ({}: ComponentProps<"div"> & CatalogOptionsProps) => {
-  const { searchQuery, changeSearchQuery } = useCatalogOptionsStore(
-    (state) => state
-  )
-  const [input, setInput] = useState<string>(searchQuery || "")
-
-  useEffect(() => {
-    setInput(searchQuery || "")
-  }, [searchQuery])
-
-  const callbacks = {
-    changeSearch: (e: ChangeEvent<HTMLInputElement>) => {
-      setInput(e.currentTarget.value)
-    },
-    applyOptions: () => {
-      changeSearchQuery(input || null)
-    },
-    resetOptions: () => {
-      changeSearchQuery(null)
-    },
-  }
-
+const CatalogOptions = ({
+  input,
+  searchQuery,
+  changeSearch,
+  applyOptions,
+  resetOptions,
+}: CatalogOptionsProps) => {
   return (
-    <div className="my-8 max-w-400 w-full flex items-center space-x-2">
+    <div className="flex items-center max-w-400 w-full my-8 gap-x-2">
       <Input
         type="text"
         variant="brand"
         placeholder="Поиск по каталогу"
         className="w-100"
         value={input}
-        onChange={callbacks.changeSearch}
+        onChange={changeSearch}
       />
       <Button
         type="button"
         variant="brand"
         className="rounded-full cursor-pointer"
-        onClick={callbacks.applyOptions}
+        onClick={applyOptions}
       >
         <Search />
         Найти
@@ -53,7 +41,7 @@ const CatalogOptions = ({}: ComponentProps<"div"> & CatalogOptionsProps) => {
         variant="brand"
         className="rounded-full cursor-pointer"
         disabled={!searchQuery}
-        onClick={callbacks.resetOptions}
+        onClick={resetOptions}
       >
         Сбросить
       </Button>

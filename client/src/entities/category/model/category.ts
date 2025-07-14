@@ -1,3 +1,4 @@
+import { Meta } from "@/shared/model/api"
 import { DocumentId } from "@/shared/model/document"
 import { Media } from "@/shared/model/media"
 
@@ -16,14 +17,7 @@ export type CategoryOptions = {
 
 export type CategoryListResponse<T extends CategoryBase = CategoryBase> = {
   data: T[]
-  meta: {
-    pagination: {
-      page: number
-      pageSize: number
-      total: number
-      pageCount: number
-    }
-  }
+  meta: Meta
 }
 
 export type CategoryItemResponse<T extends CategoryBase = CategoryBase> = {

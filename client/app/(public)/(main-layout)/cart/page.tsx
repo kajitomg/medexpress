@@ -5,6 +5,7 @@ import { CartItem } from "@/features/cart/model"
 import { useCartStore } from "@/features/cart/store/cart-store"
 import { Button } from "@/shared/ui/button"
 import { Input } from "@/shared/ui/input"
+import { ContactForm } from "@/shared/ui/test-form"
 import { Textarea } from "@/shared/ui/textarea"
 import { Separator } from "@radix-ui/react-separator"
 import { Minus, Plus, X } from "lucide-react"
@@ -40,6 +41,7 @@ const Cart = () => {
             orientation="horizontal"
             className="w-[1px] bg-(--color-brand)/40"
           />
+          <ContactForm cartItems={products} />
           <div id="form" className="w-100 flex flex-col h-full">
             <div className="h-15">
               <h4 className="font-bold text-lg">Заказ:</h4>

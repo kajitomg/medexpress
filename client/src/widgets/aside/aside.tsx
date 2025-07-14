@@ -1,12 +1,11 @@
 import { fetchAllCategories } from "@/entities/category/services"
-import { AsideList } from "@/widgets/asidetmp/aside-list"
-import { ComponentProps } from "react"
+import { AsideList } from "@/widgets/aside/aside-list"
 
-interface AsidetmpProps {
+interface AsideProps {
   params: Promise<{ category_id: string }>
 }
 
-const Asidetmp = async ({ params }: ComponentProps<"div"> & AsidetmpProps) => {
+const Aside = async ({ params }: AsideProps) => {
   const { category_id } = await params
   const categories = await fetchAllCategories()
 
@@ -20,4 +19,4 @@ const Asidetmp = async ({ params }: ComponentProps<"div"> & AsidetmpProps) => {
   )
 }
 
-export { Asidetmp }
+export { Aside }

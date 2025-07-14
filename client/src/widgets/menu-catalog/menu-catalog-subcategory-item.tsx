@@ -1,8 +1,7 @@
 import { CategoryBase } from "@/entities/category/model"
-import { Routes } from "@/shared/config/routes"
+import { routes } from "@/shared/config/routes"
 import { Button } from "@/shared/ui"
 import Link from "next/link"
-import { ComponentProps } from "react"
 
 interface MenuCatalogSubcategoryItemProps {
   category: CategoryBase
@@ -10,21 +9,21 @@ interface MenuCatalogSubcategoryItemProps {
 
 const MenuCatalogSubcategoryItem = ({
   category,
-}: ComponentProps<"div"> & MenuCatalogSubcategoryItemProps) => {
+}: MenuCatalogSubcategoryItemProps) => {
   return (
-    <div>
+    <li>
       <Button
         asChild
         variant="link"
-        className="whitespace-normal justify-start h-auto bg-gray-100 w-full mb-2"
+        className="whitespace-normal h-auto w-full justify-start mb-2 bg-gray-100"
       >
-        <Link href={Routes.CATALOG(category.id)}>
+        <Link href={routes.CATALOG(category.id).path}>
           {category.code}
           {".\n"}
           {category.title}
         </Link>
       </Button>
-    </div>
+    </li>
   )
 }
 

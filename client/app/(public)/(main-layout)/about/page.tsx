@@ -1,10 +1,12 @@
 "use client"
 
+import { routes } from "@/shared/config/routes"
 import {
   Button,
   ContentSection,
   ContentSectionContent,
   ContentSectionTitle,
+  PageHero,
 } from "@/shared/ui"
 import {
   BadgeRussianRuble,
@@ -20,17 +22,7 @@ const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-auto flex flex-col items-center">
-        <div className="relative flex flex-col justify-center items-center h-50">
-          <h1 className="text-5xl text-center hover:scale-102 transition-transform duration-200 cursor-default">
-            <strong>О нас</strong>
-          </h1>
-          <div className="text-sm font-extralight mt-4">
-            <span className="hover:underline cursor-pointer">Главная</span>
-            <span>{"\n/\n"}</span>
-            <span className="hover:underline cursor-pointer">О нас</span>
-            <span>{"\n"}</span>
-          </div>
-        </div>
+        <PageHero page={routes.ABOUT} />
         <div>
           <ContentSection>
             <ContentSectionContent className="flex flex-col items-center max-w-400">
@@ -179,31 +171,31 @@ const About = () => {
                 alt="Документ 1"
                 src="/doc1.jpg"
                 width="200"
-                height="200"
+                height="300"
               ></Image>
               <Image
                 alt="Документ 2"
                 src="/doc2.jpg"
                 width="200"
-                height="200"
+                height="300"
               ></Image>
               <Image
                 alt="Документ 3"
                 src="/doc3.jpg"
                 width="200"
-                height="200"
+                height="300"
               ></Image>
               <Image
                 alt="Документ 4"
                 src="/doc4.jpg"
                 width="200"
-                height="200"
+                height="300"
               ></Image>
               <Image
                 alt="Документ 5"
                 src="/doc5.jpg"
                 width="200"
-                height="200"
+                height="300"
               ></Image>
             </ContentSectionContent>
           </ContentSection>

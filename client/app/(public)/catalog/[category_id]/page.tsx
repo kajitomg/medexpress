@@ -1,34 +1,37 @@
 import { fetchAllProducts } from "@/entities/product/services"
-import { CatalogList } from "@/widgets/catalog/catalog-list"
-import { CatalogOptions } from "@/widgets/catalog/catalog-options"
+import { routes } from "@/shared/config/routes"
+import { PageHero } from "@/shared/ui"
+import { Catalog } from "@/widgets/catalog/catalog"
+import { NextPage } from "next"
 
-const Page = async ({
-  params,
-  searchParams,
-}: {
+interface CatalogPageProps {
   params: Promise<{ category_id: string }>
-  searchParams: Promise<{ sort: string }>
-}) => {
+  searchParams: Promise<{ options?: string }>
+}
+
+const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
   const { category_id } = await params
   const search = await searchParams
-  const products =
-    (await fetchAllProducts(
-      [+category_id],
-      search?.options
-        ? JSON.parse(JSON.parse(search?.options)).state.searchQuery
-        : null
-    )) || []
+  const searchQuery: string | null = search?.options
+    ? JSON.parse(search?.options).state.searchQuery
+    : null
+  const page: string =
+    (search?.options && JSON.parse(search?.options).state.page) || 1
+  const data = await fetchAllProducts(+page, [+category_id], searchQuery)
+  const products = data?.data || []
+  const maxPages = data?.meta.pagination.pageCount || null
 
   return (
     <div className="p-2">
-      <div className="relative flex justify-center items-center h-50">
-        <h1 className="text-5xl text-center hover:scale-102 transition-transform duration-200 cursor-default">
-          <strong>Каталог</strong>
-        </h1>
-      </div>
-      <CatalogOptions />
-      <CatalogList category_id={category_id} initProducts={products} />
+      <PageHero page={routes.CATALOG(category_id)} />
+      <Catalog
+        category_id={category_id}
+        initProducts={products}
+        initSearchQuery={searchQuery}
+        initMaxPages={maxPages}
+      />
     </div>
   )
 }
+
 export default Page

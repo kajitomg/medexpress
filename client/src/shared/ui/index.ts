@@ -26,3 +26,4 @@ export {
 } from "./navigation-menu"
 export { MainLayout } from "./main-layout"
 export { AsideLayout } from "./aside-layout"
+export { PageHero } from "./page-hero"

@@ -1,7 +1,7 @@
 import "@/app/styles/globals.css"
 import { MainLayout } from "@/shared/ui"
-import Footer from "@/widgets/footer"
-import Header from "@/widgets/header"
+import { Footer } from "@/widgets/footer"
+import { Header } from "@/widgets/header"
 import * as React from "react"
 
 const RootLayout = ({

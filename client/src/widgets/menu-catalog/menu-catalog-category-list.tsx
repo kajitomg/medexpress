@@ -1,4 +1,5 @@
 import { CategoryBase } from "@/entities/category/model"
+import { cn } from "@/shared/lib"
 import { List } from "@/shared/ui/list"
 import { MenuCatalogCategoryItem } from "@/widgets/menu-catalog/menu-catalog-category-item"
 import { ComponentProps, useCallback } from "react"
@@ -15,7 +16,8 @@ const MenuCatalogCategoryList = ({
   selectedIndex,
   handleMouseEnter,
   handleMouseLeave,
-}: ComponentProps<"div"> & MenuCatalogCategoryListProps) => {
+  className,
+}: ComponentProps<"ul"> & MenuCatalogCategoryListProps) => {
   const renders = {
     menuCatalogCategoryItem: useCallback(
       (item: (typeof categories)[0], index: number) => (
@@ -33,9 +35,10 @@ const MenuCatalogCategoryList = ({
 
   return (
     <List
+      as="ul"
       items={categories}
       renderItem={renders.menuCatalogCategoryItem}
-      className="w-80"
+      className={cn(className)}
     />
   )
 }
