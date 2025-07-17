@@ -1,52 +1,51 @@
-"use client"
-
-import { buildBreadcrumbs } from "@/shared/lib/build-breadcrumbs"
-import { RouteEntry } from "@/shared/model"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/shared/ui/breadcrumb"
-import Link from "next/link"
+import { cn } from "@/shared/lib"
+import { StaticImport } from "next/dist/shared/lib/get-img-props"
 import * as React from "react"
-import { ComponentProps, useMemo } from "react"
+import { ComponentProps } from "react"
 
 interface PageHeroProps {
-  page: RouteEntry
+  height: number | "full"
+  image?: string | StaticImport
 }
 
-const PageHero = ({ page }: ComponentProps<"div"> & PageHeroProps) => {
-  const breadcrumbs = useMemo(() => buildBreadcrumbs(page), [page])
+const PageHero = ({
+  height,
+  className,
+  ...props
+}: ComponentProps<"header"> & PageHeroProps) => {
+  const full = height === "full"
+
   return (
     <header
-      aria-labelledby="page-title"
-      className="relative flex flex-col justify-center items-center h-50"
-    >
-      <h1 className="cursor-default text-5xl hover:scale-102 transition-transform duration-200">
-        <strong>{page.title}</strong>
-      </h1>
-      <nav aria-label="breadcrumb" className="mt-4">
-        <Breadcrumb>
-          {breadcrumbs && (
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href={breadcrumbs[0].path}>{breadcrumbs[0].title}</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{page.title}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          )}
-        </Breadcrumb>
-      </nav>
-    </header>
+      id="container"
+      className={cn(
+        `relative`,
+        full ? "h-[calc(100vh-80px)]" : `h-${height}`,
+        className
+      )}
+      {...props}
+    />
   )
 }
 
-export { PageHero }
+const PageHeroBackground = ({ className, ...props }: ComponentProps<"div">) => {
+  return (
+    <div
+      id="container-background"
+      className={cn("absolute inset-0 w-full h-full", className)}
+      {...props}
+    />
+  )
+}
+
+const PageHeroContent = ({ className, ...props }: ComponentProps<"div">) => {
+  return (
+    <div
+      id="container-content"
+      className={cn("absolute w-full h-full", className)}
+      {...props}
+    />
+  )
+}
+
+export { PageHero, PageHeroBackground, PageHeroContent }

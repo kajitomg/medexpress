@@ -83,10 +83,9 @@ export const useCartStore = create<CartStore>()(
             if (productIndex === -1) {
               state.error = "Product not found."
             } else {
+              state.products[productIndex].count--
               if (state.products[productIndex].count <= 0) {
                 state.products.splice(productIndex, 1)
-              } else {
-                state.products[productIndex].count--
               }
               state.error = null
             }

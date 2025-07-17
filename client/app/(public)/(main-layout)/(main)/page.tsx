@@ -10,9 +10,11 @@ import * as React from "react"
 import { useCallback, useRef, useState } from "react"
 
 export type HomeFormDataType = {
+  name?: string
   email?: string
   phonenumber?: string
   message?: string
+  consent?: boolean
 }
 
 const Home = () => {
@@ -27,7 +29,7 @@ const Home = () => {
       })
     }, [formRef]),
     onFormChange: useCallback(
-      (field: keyof HomeFormDataType) => (value: string) => {
+      (field: keyof HomeFormDataType) => (value: string | boolean) => {
         setFormData({
           ...formData,
           [field]: value,

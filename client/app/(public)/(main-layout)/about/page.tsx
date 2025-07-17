@@ -6,8 +6,8 @@ import {
   ContentSection,
   ContentSectionContent,
   ContentSectionTitle,
-  PageHero,
 } from "@/shared/ui"
+import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
 import {
   BadgeRussianRuble,
   BookCheck,
@@ -21,8 +21,8 @@ import * as React from "react"
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-auto flex flex-col items-center">
-        <PageHero page={routes.ABOUT} />
+      <main className="flex-auto flex flex-col">
+        <PageHeroRoutes page={routes.ABOUT} />
         <div>
           <ContentSection>
             <ContentSectionContent className="flex flex-col items-center max-w-400">
@@ -53,6 +53,7 @@ const About = () => {
                     медицинские решения доступными для каждого учреждения.
                   </span>
                   <Button
+                    size="xl"
                     variant="brand"
                     className="cursor-pointer rounded-4xl mt-4"
                   >

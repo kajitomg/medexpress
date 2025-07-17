@@ -29,7 +29,7 @@ const ContentSectionContent = ({
   )
 }
 
-const ContentSectionTitle = ({
+const ContentSectionHeader = ({
   children,
   className,
   asChild,
@@ -37,13 +37,13 @@ const ContentSectionTitle = ({
 }: React.ComponentProps<"div"> & {
   asChild?: boolean
 }) => {
-  const Comp = asChild ? Slot : "h4"
+  const Comp = asChild ? Slot : "div"
 
   return (
-    <Comp className={cn("mt-20 text-5xl", className)} {...props}>
-      <strong>{children}</strong>
+    <Comp className={cn("max-w-300 mt-20", className)} {...props}>
+      {children}
     </Comp>
   )
 }
 
-export { ContentSection, ContentSectionContent, ContentSectionTitle }
+export { ContentSection, ContentSectionContent, ContentSectionHeader }

@@ -9,7 +9,7 @@ export { Input } from "./input"
 export { Separator } from "./separator"
 export { Textarea } from "./textarea"
 export {
-  ContentSectionTitle,
+  ContentSectionHeader,
   ContentSection,
   ContentSectionContent,
 } from "./content-section"
@@ -26,4 +26,4 @@ export {
 } from "./navigation-menu"
 export { MainLayout } from "./main-layout"
 export { AsideLayout } from "./aside-layout"
-export { PageHero } from "./page-hero"
+export { PageHeroRoutes } from "./page-hero-routes"

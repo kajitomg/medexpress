@@ -1,6 +1,6 @@
 import { fetchAllProducts } from "@/entities/product/services"
 import { routes } from "@/shared/config/routes"
-import { PageHero } from "@/shared/ui"
+import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
 import { Catalog } from "@/widgets/catalog/catalog"
 import { NextPage } from "next"
 
@@ -23,7 +23,7 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
 
   return (
     <div className="p-2">
-      <PageHero page={routes.CATALOG(category_id)} />
+      <PageHeroRoutes page={routes.CATALOG(category_id)} />
       <Catalog
         category_id={category_id}
         initProducts={products}

@@ -1,9 +1,11 @@
+import { routes } from "@/shared/config/routes"
 import { Button } from "@/shared/ui/button"
 import {
   ContentSection,
   ContentSectionContent,
 } from "@/shared/ui/content-section"
 import { Input } from "@/shared/ui/input"
+import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
 import { Textarea } from "@/shared/ui/textarea"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
@@ -13,17 +15,7 @@ const Contacts = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-auto">
-        <div className="relative flex flex-col justify-center items-center h-50">
-          <h1 className="text-5xl text-center hover:scale-102 transition-transform duration-200 cursor-default">
-            <strong>Контакты</strong>
-          </h1>
-          <div className="text-sm font-extralight mt-4">
-            <span className="hover:underline cursor-pointer">Главная</span>
-            <span>{"\n/\n"}</span>
-            <span className="hover:underline cursor-pointer">Контакты</span>
-            <span>{"\n"}</span>
-          </div>
-        </div>
+        <PageHeroRoutes page={routes.CONTACTS} />
         <ContentSection>
           <ContentSectionContent className="flex items-center gap-4 max-w-400 p-4">
             <div className="flex-1/2 grid grid-cols-2 gap-4 p-4">

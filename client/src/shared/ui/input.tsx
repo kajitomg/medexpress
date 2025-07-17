@@ -16,9 +16,9 @@ const inputVariants = cva(
           "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
         ),
         brand:
-          "focus-visible:ring-(--color-brand)/50 text-gray-600 rounded-4xl placeholder:text-gray-400 dark:bg-white dark:focus-visible:ring-gray-500  focus-visible:ring-1",
+          "focus-visible:ring-(--color-brand)/50 text-gray-600 placeholder:text-gray-400 dark:bg-white dark:focus-visible:ring-gray-500 focus-visible:ring-1",
         brandBackgrounded:
-          "focus-visible:ring-(--color-brand)/50 text-gray-600 rounded-4xl placeholder:text-gray-400 bg-white focus-visible:ring-gray-500 focus-visible:ring-1",
+          "focus-visible:ring-(--color-brand)/50 text-gray-600 placeholder:text-gray-400 bg-white focus-visible:ring-gray-500 focus-visible:ring-1",
       },
       mysize: {
         default:

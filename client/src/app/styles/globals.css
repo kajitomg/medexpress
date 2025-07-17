@@ -132,4 +132,8 @@
   .scrollbar-thin {
     scrollbar-width: thin; /* Firefox */
   }
+
+  .hover-scale {
+    @apply hover:scale-102 transition-transform duration-200;
+  }
 }
