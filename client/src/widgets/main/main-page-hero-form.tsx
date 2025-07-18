@@ -3,31 +3,27 @@ import { Button, Input } from "@/shared/ui"
 import { Control, Field, Root, Submit } from "@radix-ui/react-form"
 import * as React from "react"
 import { ComponentProps } from "react"
+import { UseFormRegisterReturn } from "react-hook-form"
 
 interface MainPageHeroFormProps {
-  input: string
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onSubmit: () => void
+  register: UseFormRegisterReturn<"email">
 }
 
 const MainPageHeroForm = ({
-  onInputChange,
+  register,
   onSubmit,
-  input,
   className,
-}: ComponentProps<"div"> & MainPageHeroFormProps) => {
+}: ComponentProps<"form"> & MainPageHeroFormProps) => {
   return (
-    <Root className={cn("flex gap-x-2", className)}>
+    <Root className={cn("flex gap-x-2", className)} onSubmit={onSubmit}>
       <Field name="email" className="min-w-50">
         <Control asChild>
           <Input
+            {...register}
             type="email"
             placeholder="Введите e-mail*"
             variant="brand"
             mysize="lg"
-            required
-            value={input || ""}
-            onChange={onInputChange}
             className={cn("rounded-4xl")}
           />
         </Control>
@@ -37,7 +33,6 @@ const MainPageHeroForm = ({
           className="cursor-pointer rounded-4xl"
           variant="brand"
           size="xl"
-          onClick={onSubmit}
         >
           Оставить заявку
         </Button>

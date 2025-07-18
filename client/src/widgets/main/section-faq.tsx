@@ -8,6 +8,29 @@ import { SectionFaqContent } from "@/widgets/main/section-faq-content"
 import * as React from "react"
 import { ComponentProps } from "react"
 
+const DATA = [
+  {
+    id: 1,
+    value: "item-1",
+    question: "Как я могу заказать медицинское оборудование?",
+    answer: "Организуем доставку на ваш склад или объект.",
+  },
+  {
+    id: 2,
+    value: "item-2",
+    question: "Как долго длится доставка оборудования?",
+    answer:
+      "Срок доставки зависит от типа оборудования, но мы стараемся организовать быструю доставку.",
+  },
+  {
+    id: 3,
+    value: "item-3",
+    question: "Могу ли я получить консультацию перед заказом?",
+    answer:
+      "Конечно! Мы рекомендуем провести консультацию для выбора наилучшего оборудования для ваших нужд.",
+  },
+]
+
 const SectionFaq = ({ className }: ComponentProps<"section">) => {
   return (
     <ContentSection className={className}>
@@ -19,7 +42,7 @@ const SectionFaq = ({ className }: ComponentProps<"section">) => {
         </Title>
       </ContentSectionHeader>
       <ContentSectionContent className="w-full">
-        <SectionFaqContent />
+        <SectionFaqContent items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )

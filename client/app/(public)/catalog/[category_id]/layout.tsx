@@ -1,4 +1,11 @@
-import { AsideLayout } from "@/shared/ui"
+import {
+  PageLayout,
+  PageLayoutAside,
+  PageLayoutContent,
+  PageLayoutFooter,
+  PageLayoutHeader,
+  PageLayoutMain,
+} from "@/shared/ui/page-layout"
 import { Aside } from "@/widgets/aside/aside"
 import { Footer } from "@/widgets/footer"
 import { Header } from "@/widgets/header"
@@ -12,15 +19,20 @@ const RootLayout = async ({
   params: Promise<{ category_id: string }>
 }>) => {
   return (
-    <AsideLayout
-      header={<Header />}
-      footer={<Footer />}
-      aside={<Aside params={params} />}
-      asideWidth={320}
-      headerHeight={80}
-    >
-      {children}
-    </AsideLayout>
+    <PageLayout>
+      <PageLayoutHeader>
+        <Header />
+      </PageLayoutHeader>
+      <PageLayoutAside headerHeight={80}>
+        <Aside params={params} />
+      </PageLayoutAside>
+      <PageLayoutContent headerHeight={80} asideWidth={320}>
+        <PageLayoutMain>{children}</PageLayoutMain>
+        <PageLayoutFooter>
+          <Footer />
+        </PageLayoutFooter>
+      </PageLayoutContent>
+    </PageLayout>
   )
 }
 

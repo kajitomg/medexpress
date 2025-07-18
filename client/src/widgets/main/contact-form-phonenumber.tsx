@@ -9,18 +9,24 @@ import {
   Submit,
 } from "@radix-ui/react-form"
 import { ComponentProps } from "react"
-import { HomeFormDataType } from "../../../app/(public)/(main-layout)/(main)/page"
+import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form"
+import { FormSchema } from "../../../app/(public)/(main-layout)/(main)/page"
 
 interface ContactFormPhonenumberProps {
-  formData: HomeFormDataType
-  onFormChange: (
-    field: keyof HomeFormDataType
-  ) => (value: string | boolean) => void
+  register: (
+    name: keyof Omit<FormSchema, "email">,
+    options?: RegisterOptions<FormSchema, keyof Omit<FormSchema, "email">>
+  ) => UseFormRegisterReturn<keyof Omit<FormSchema, "email">>
+  isDirty: boolean
+  isSubmitting: boolean
+  isValid: boolean
 }
 
 const ContactFormPhonenumber = ({
-  onFormChange,
-  formData,
+  register,
+  isSubmitting,
+  isDirty,
+  isValid,
   className,
 }: ComponentProps<"div"> & ContactFormPhonenumberProps) => {
   return (
@@ -44,11 +50,9 @@ const ContactFormPhonenumber = ({
         </div>
         <Control asChild>
           <Input
+            {...register("firstname")}
             type="text"
             placeholder="Введите имя*"
-            required
-            value={formData.name || ""}
-            onChange={(e) => onFormChange("name")(e.target.value)}
             className={cn(
               "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
             )}
@@ -80,11 +84,9 @@ const ContactFormPhonenumber = ({
         </div>
         <Control asChild>
           <Input
-            type="tel"
+            {...register("phonenumber")}
+            type="text"
             placeholder="Введите номер телефона*"
-            required
-            value={formData.phonenumber || ""}
-            onChange={(e) => onFormChange("phonenumber")(e.target.value)}
             className={cn(
               "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
             )}
@@ -104,25 +106,20 @@ const ContactFormPhonenumber = ({
         </div>
         <Control asChild>
           <Textarea
+            {...register("message")}
             placeholder="Введите комментарий"
-            value={formData.message || ""}
-            onChange={(e) => onFormChange("message")(e.target.value)}
             className={cn(
               "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold text-sm placeholder:text-sm bg-muted max-h-50"
             )}
           />
         </Control>
       </Field>
-      <Field name="consent" className="mt-6">
-        <div
-          className="flex items-center gap-x-2 cursor-pointer"
-          onClick={() => onFormChange("consent")(!formData.consent)}
-        >
+      <Field name="terms" className="mt-6">
+        <div className="flex items-center gap-x-2 cursor-pointer">
           <Control asChild>
             <Input
+              {...register("terms")}
               type="checkbox"
-              checked={formData.consent || false}
-              onChange={() => onFormChange("consent")(!formData.consent)}
               className="size-4 inline-block cursor-pointer"
             />
           </Control>
@@ -136,7 +133,7 @@ const ContactFormPhonenumber = ({
       <Submit asChild className="mt-8">
         <Button
           className="cursor-pointer rounded-full w-full"
-          disabled={!formData["consent"]}
+          disabled={!isDirty || isSubmitting || !isValid}
           variant="brand"
           size="xl"
         >

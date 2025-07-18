@@ -1,39 +1,26 @@
-import { MessagesSquare, Phone, SearchCheck, Truck } from "lucide-react"
+import { LucideProps } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const DATA = [
-  {
-    id: 1,
-    icon: Phone,
-    title: "Первичный контакт",
-    description: "Свяжитесь с нами через форму обратной связи или по телефону.",
-  },
-  {
-    id: 2,
-    icon: MessagesSquare,
-    title: "Консультация",
-    description: "Наши эксперты проконсультируют вас по всем вопросам.",
-  },
-  {
-    id: 3,
-    icon: SearchCheck,
-    title: "Выбор оборудования",
-    description: "Поможем вам выбрать необходимое медицинское оборудование.",
-  },
-  {
-    id: 4,
-    icon: Truck,
-    title: "Поставка",
-    description: "Организуем доставку на ваш склад или объект.",
-  },
-]
+interface SectionServiceProcessContentProps {
+  items: {
+    id: number
+    icon: React.ForwardRefExoticComponent<
+      Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+    >
+    title: string
+    description: string
+  }[]
+}
 
-const SectionServiceProcessContent = ({ className }: ComponentProps<"div">) => {
+const SectionServiceProcessContent = ({
+  items,
+  className,
+}: ComponentProps<"div"> & SectionServiceProcessContentProps) => {
   return (
     <div className={className}>
       <div className="grid grid-cols-4">
-        {DATA.map((item) => (
+        {items.map((item) => (
           <div className="grid grid-cols-1 justify-items-center" key={item.id}>
             <div className="relative rounded-full w-16 h-16 bg-white shadow-sm shadow-black">
               <item.icon className="absolute top-1/2 left-1/2 -translate-1/2 w-6 h-6" />

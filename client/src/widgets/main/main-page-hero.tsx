@@ -5,30 +5,44 @@ import {
 } from "@/shared/ui/page-hero"
 import { Title } from "@/shared/ui/title"
 import { MainPageHeroForm } from "@/widgets/main/main-page-hero-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import Image from "next/image"
 import * as React from "react"
-import { ComponentProps, useState } from "react"
+import { ComponentProps, FormEventHandler } from "react"
+import { FieldPathValue, SetValueConfig, useForm } from "react-hook-form"
+import { FormSchemaEmail } from "../../../app/(public)/(main-layout)/(main)/page"
+import { formSchemaEmail } from "../../../app/(public)/(main-layout)/(main)/schema"
 
 interface MainPageHeroProps {
   onScrollToForm: () => void
-  onEmailChange: (value: string) => void
+  setValue: (
+    name: "email",
+    value: FieldPathValue<Pick<FormSchemaEmail, "email">, "email">,
+    options?: SetValueConfig
+  ) => void
+  setFocus: () => void
 }
 
 const MainPageHero = ({
+  setFocus,
   onScrollToForm,
-  onEmailChange,
+  setValue,
 }: ComponentProps<"section"> & MainPageHeroProps) => {
-  const [input, setInput] = useState<string>("")
+  const { register, reset, getValues } = useForm<
+    Pick<FormSchemaEmail, "email">
+  >({
+    resolver: zodResolver(formSchemaEmail.pick({ email: true })),
+  })
   const callbacks = {
-    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInput(e.target.value)
-    },
-    onScrollToForm: () => {
-      onEmailChange(input)
+    onSubmit: ((e) => {
+      e.preventDefault()
+      setValue("email", getValues("email"))
       onScrollToForm()
-      setInput("")
-    },
+      reset()
+      setFocus()
+    }) as FormEventHandler<HTMLFormElement>,
   }
+
   return (
     <PageHero height="full">
       <PageHeroBackground>
@@ -57,9 +71,8 @@ const MainPageHero = ({
             </span>
             <div className="mt-4">
               <MainPageHeroForm
-                input={input}
-                onInputChange={callbacks.onInputChange}
-                onSubmit={callbacks.onScrollToForm}
+                register={register("email")}
+                onSubmit={callbacks.onSubmit}
               />
             </div>
           </div>

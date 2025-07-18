@@ -56,7 +56,7 @@ const MenuCatalog = ({ initCategoriesList }: MenuCatalogProps) => {
       </div>
       <div className="flex flex-col flex-auto">
         <MenuCatalogSubcategoryList
-          subcategories={initCategoriesList?.[selectedIndex].childrens || []}
+          subcategories={initCategoriesList?.[selectedIndex]?.childrens || []}
           className="flex-auto overflow-y-auto columns-3 gap-2 p-4"
         />
       </div>

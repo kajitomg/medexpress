@@ -18,11 +18,8 @@ const PageHero = ({
   return (
     <header
       id="container"
-      className={cn(
-        `relative`,
-        full ? "h-[calc(100vh-80px)]" : `h-${height}`,
-        className
-      )}
+      className={cn(`relative`, className)}
+      style={{ height: full ? "calc(100vh - 80px)" : `${height * 4}px` }}
       {...props}
     />
   )

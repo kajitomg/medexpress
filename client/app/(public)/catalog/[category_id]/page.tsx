@@ -1,6 +1,6 @@
 import { fetchAllProducts } from "@/entities/product/services"
 import { routes } from "@/shared/config/routes"
-import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
+import { PageHeroRoutes } from "@/shared/ui"
 import { Catalog } from "@/widgets/catalog/catalog"
 import { NextPage } from "next"
 

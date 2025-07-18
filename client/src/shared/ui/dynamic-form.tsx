@@ -19,14 +19,12 @@ interface ContactFormEmailProps {
   ) => UseFormRegisterReturn<keyof Omit<FormSchema, "phonenumber">>
   isDirty: boolean
   isSubmitting: boolean
-  isValid: boolean
 }
 
 const ContactFormEmail = ({
   register,
   isSubmitting,
   isDirty,
-  isValid,
   className,
 }: ComponentProps<"div"> & ContactFormEmailProps) => {
   return (
@@ -133,7 +131,7 @@ const ContactFormEmail = ({
       <Submit asChild className="mt-8">
         <Button
           className="cursor-pointer rounded-full w-full"
-          disabled={!isDirty || isSubmitting || !isValid}
+          disabled={!isDirty || isSubmitting}
           variant="brand"
           size="xl"
         >

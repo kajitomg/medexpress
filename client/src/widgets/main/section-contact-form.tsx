@@ -5,20 +5,30 @@ import { SectionContactFormDetails } from "@/widgets/main/section-contact-form-d
 import Image from "next/image"
 import * as React from "react"
 import { ComponentProps } from "react"
-import { HomeFormDataType } from "../../../app/(public)/(main-layout)/(main)/page"
+import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form"
+import { FormSchema } from "../../../app/(public)/(main-layout)/(main)/page"
 
 interface SectionContactFormProps {
-  formData: HomeFormDataType
-  onFormChange: (
-    field: keyof HomeFormDataType
-  ) => (value: string | boolean) => void
+  register: (
+    name: keyof FormSchema,
+    options?: RegisterOptions<FormSchema, keyof FormSchema>
+  ) => UseFormRegisterReturn<keyof FormSchema>
+  isDirty: boolean
+  isSubmitting: boolean
+  isValid: boolean
+  mode: "e-mail" | "phonenumber"
+  setMode: (mode: "e-mail" | "phonenumber") => void
 }
 
 const SectionContactForm = ({
+  isDirty,
+  isSubmitting,
+  isValid,
+  register,
+  mode,
+  setMode,
   className,
   ref,
-  formData,
-  onFormChange,
 }: ComponentProps<"section"> & SectionContactFormProps) => {
   return (
     <ContentSection
@@ -32,8 +42,12 @@ const SectionContactForm = ({
         <SectionContactFormDetails />
         <SectionContactFormContactForms
           className="w-280"
-          formData={formData}
-          onFormChange={onFormChange}
+          register={register}
+          isDirty={isDirty}
+          isSubmitting={isSubmitting}
+          isValid={isValid}
+          mode={mode}
+          setMode={setMode}
         />
       </ContentSectionContent>
       <Image

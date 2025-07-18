@@ -6,19 +6,29 @@ import { ContactFormEmail } from "@/widgets/main/contact-form-email"
 import { ContactFormPhonenumber } from "@/widgets/main/contact-form-phonenumber"
 import * as React from "react"
 import { ComponentProps } from "react"
-import { HomeFormDataType } from "../../../app/(public)/(main-layout)/(main)/page"
+import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form"
+import { FormSchema } from "../../../app/(public)/(main-layout)/(main)/page"
 
 interface SectionContactFormContactFormsProps {
-  formData: HomeFormDataType
-  onFormChange: (
-    field: keyof HomeFormDataType
-  ) => (value: string | boolean) => void
+  register: (
+    name: keyof FormSchema,
+    options?: RegisterOptions<FormSchema, keyof FormSchema>
+  ) => UseFormRegisterReturn<keyof FormSchema>
+  isDirty: boolean
+  isSubmitting: boolean
+  isValid: boolean
+  mode: "e-mail" | "phonenumber"
+  setMode: (mode: "e-mail" | "phonenumber") => void
 }
 
 const SectionContactFormContactForms = ({
+  isDirty,
+  isSubmitting,
+  isValid,
+  mode,
+  setMode,
+  register,
   className,
-  formData,
-  onFormChange,
 }: ComponentProps<"div"> & SectionContactFormContactFormsProps) => {
   return (
     <div className={className}>
@@ -34,25 +44,37 @@ const SectionContactFormContactForms = ({
           </Subtitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="email">
+          <Tabs defaultValue="e-mail" value={mode}>
             <TabsList className="w-full">
-              <TabsTrigger value="email" className="cursor-pointer">
+              <TabsTrigger
+                value="e-mail"
+                className="cursor-pointer"
+                onClick={() => setMode("e-mail")}
+              >
                 Почта
               </TabsTrigger>
-              <TabsTrigger value="phonenumber" className="cursor-pointer">
+              <TabsTrigger
+                value="phonenumber"
+                className="cursor-pointer"
+                onClick={() => setMode("phonenumber")}
+              >
                 Телефон
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="email">
+            <TabsContent value="e-mail">
               <ContactFormEmail
-                formData={formData}
-                onFormChange={onFormChange}
+                register={register}
+                isDirty={isDirty}
+                isSubmitting={isSubmitting}
+                isValid={isValid}
               />
             </TabsContent>
             <TabsContent value="phonenumber">
               <ContactFormPhonenumber
-                formData={formData}
-                onFormChange={onFormChange}
+                register={register}
+                isDirty={isDirty}
+                isSubmitting={isSubmitting}
+                isValid={isValid}
               />
             </TabsContent>
           </Tabs>

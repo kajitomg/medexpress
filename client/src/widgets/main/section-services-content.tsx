@@ -3,31 +3,17 @@ import Image from "next/image"
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const DATA = [
-  {
-    id: 1,
-    title: "Каталог",
-  },
-  {
-    id: 2,
-    title: "Подборки",
-  },
-  {
-    id: 3,
-    title: "Конструктор кабинета",
-  },
-  {
-    id: 4,
-    title: "Заказать консультацию",
-  },
-]
-
 interface SectionServicesContentProps {
   onScrollToForm: () => void
+  items: {
+    id: number
+    title: string
+  }[]
 }
 
 const SectionServicesContent = ({
   className,
+  items,
   onScrollToForm,
 }: ComponentProps<"div"> & SectionServicesContentProps) => {
   return (
@@ -43,7 +29,7 @@ const SectionServicesContent = ({
           />
         </div>
         <ul className="p-10 text-nowrap text-left flex flex-col items-start">
-          {DATA.map((item) => (
+          {items.map((item) => (
             <Button
               key={item.id}
               asChild

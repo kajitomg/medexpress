@@ -7,35 +7,23 @@ import {
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const DATA = [
-  {
-    id: 1,
-    value: "item-1",
-    question: "Как я могу заказать медицинское оборудование?",
-    answer: "Организуем доставку на ваш склад или объект.",
-  },
-  {
-    id: 2,
-    value: "item-2",
-    question: "Как долго длится доставка оборудования?",
-    answer:
-      "Срок доставки зависит от типа оборудования, но мы стараемся\n" +
-      "            организовать быструю доставку.",
-  },
-  {
-    id: 3,
-    value: "item-3",
-    question: "Могу ли я получить консультацию перед заказом?",
-    answer:
-      "Конечно! Мы рекомендуем провести консультацию для выбора наилучшего оборудования для ваших нужд.",
-  },
-]
+interface SectionFaqContentProps {
+  items: {
+    id: number
+    value: string
+    question: string
+    answer: string
+  }[]
+}
 
-const SectionFaqContent = ({ className }: ComponentProps<"div">) => {
+const SectionFaqContent = ({
+  items,
+  className,
+}: ComponentProps<"div"> & SectionFaqContentProps) => {
   return (
     <div className={className}>
       <Accordion type="multiple">
-        {DATA.map((item) => (
+        {items.map((item) => (
           <AccordionItem
             key={item.id}
             value={item.value}

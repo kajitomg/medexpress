@@ -5,8 +5,40 @@ import {
 } from "@/shared/ui"
 import { Title } from "@/shared/ui/title"
 import { SectionServicesContent } from "@/widgets/main/section-stand-out-content"
+import { BookCheck, Headset, Lightbulb, ShieldCheck } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
+
+const DATA = [
+  {
+    id: 1,
+    icon: Headset,
+    title: "Поддержка клиентов",
+    description:
+      "Наша команда всегда готова помочь вам с любыми вопросами и запросами на информацию.",
+  },
+  {
+    id: 2,
+    icon: BookCheck,
+    title: "Гарантии",
+    description:
+      "Своевременные поставки по всей территории России, 100% соответствие ТЗ.",
+  },
+  {
+    id: 3,
+    icon: Lightbulb,
+    title: "Инновации",
+    description:
+      "Регулярно обновляем наш ассортимент, чтобы предложить вам самые современные решения в области медицины.",
+  },
+  {
+    id: 4,
+    icon: ShieldCheck,
+    title: "Качество продукции",
+    description:
+      "Мы предлагаем только высококачественное оборудование, которое прошло все необходимые проверки и сертификации.",
+  },
+]
 
 interface SectionStandOutProps {}
 
@@ -23,7 +55,7 @@ const SectionStandOut = ({
         </Title>
       </ContentSectionHeader>
       <ContentSectionContent>
-        <SectionServicesContent />
+        <SectionServicesContent items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )

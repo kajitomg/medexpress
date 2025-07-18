@@ -28,4 +28,26 @@ const MainLayout = ({
   )
 }
 
+const PageLayoutContent = ({
+  headerHeight,
+}: Readonly<{
+  headerHeight: number
+}>) => {
+  return (
+    <main
+      id="main-section"
+      className="flex-auto"
+      style={{ paddingTop: `${headerHeight}px` }}
+    />
+  )
+}
+
+const PageLayoutHeader = () => {
+  return <section id="header-section" className="z-50 fixed w-full" />
+}
+
+const PageLayoutFooter = () => {
+  return <section id="footer-section" />
+}
+
 export { MainLayout }

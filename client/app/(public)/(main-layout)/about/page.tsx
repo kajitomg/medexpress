@@ -5,7 +5,7 @@ import {
   Button,
   ContentSection,
   ContentSectionContent,
-  ContentSectionTitle,
+  ContentSectionHeader,
 } from "@/shared/ui"
 import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
 import {
@@ -110,9 +110,9 @@ const About = () => {
             </ContentSectionContent>
           </ContentSection>
           <ContentSection>
-            <ContentSectionTitle className="hover:scale-102 transition-transform duration-200 cursor-default">
+            <ContentSectionHeader className="hover:scale-102 transition-transform duration-200 cursor-default">
               Почему выбирают нас?
-            </ContentSectionTitle>
+            </ContentSectionHeader>
             <ContentSectionContent className="grid grid-cols-2 gap-4">
               <div className="grid items-center gap-4 content-start justify-start">
                 <Headset width="24" height="24" />
@@ -164,9 +164,9 @@ const About = () => {
             </ContentSectionContent>
           </ContentSection>
           <ContentSection>
-            <ContentSectionTitle className="hover:scale-102 transition-transform duration-200 cursor-default">
+            <ContentSectionHeader className="hover:scale-102 transition-transform duration-200 cursor-default">
               Лицензии
-            </ContentSectionTitle>
+            </ContentSectionHeader>
             <ContentSectionContent className="grid grid-cols-5 gap-8">
               <Image
                 alt="Документ 1"
