@@ -1,7 +1,5 @@
 import { fetchAllProducts } from "@/entities/product/services"
-import { routes } from "@/shared/config/routes"
-import { PageHeroRoutes } from "@/shared/ui"
-import { Catalog } from "@/widgets/catalog/catalog"
+import { CatalogPage } from "@/pages/catalog/ui/catalog-page"
 import { NextPage } from "next"
 
 interface CatalogPageProps {
@@ -22,15 +20,12 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
   const maxPages = data?.meta.pagination.pageCount || null
 
   return (
-    <div className="p-2">
-      <PageHeroRoutes page={routes.CATALOG(category_id)} />
-      <Catalog
-        category_id={category_id}
-        initProducts={products}
-        initSearchQuery={searchQuery}
-        initMaxPages={maxPages}
-      />
-    </div>
+    <CatalogPage
+      category_id={category_id}
+      initSearchQuery={searchQuery}
+      initMaxPages={maxPages}
+      initProducts={products}
+    />
   )
 }
 

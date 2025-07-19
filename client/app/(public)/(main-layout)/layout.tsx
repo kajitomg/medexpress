@@ -6,8 +6,8 @@ import {
   PageLayoutHeader,
   PageLayoutMain,
 } from "@/shared/ui/page-layout"
-import { Footer } from "@/widgets/footer"
-import { Header } from "@/widgets/header"
+import { Footer } from "@/widgets/footer/ui"
+import { Header } from "@/widgets/header/ui"
 import * as React from "react"
 
 const RootLayout = ({
@@ -27,11 +27,6 @@ const RootLayout = ({
         </PageLayoutFooter>
       </PageLayoutContent>
     </PageLayout>
-    /* <>
-       <MainLayout header={<Header />} footer={<Footer />} headerHeight={80}>
-         {children}
-       </MainLayout>
-     </>*/
   )
 }
 

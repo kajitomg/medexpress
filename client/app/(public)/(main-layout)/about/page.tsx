@@ -7,7 +7,7 @@ import {
   ContentSectionContent,
   ContentSectionHeader,
 } from "@/shared/ui"
-import { PageHeroRoutes } from "@/shared/ui/page-hero-routes"
+import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui/page-hero-routes"
 import {
   BadgeRussianRuble,
   BookCheck,

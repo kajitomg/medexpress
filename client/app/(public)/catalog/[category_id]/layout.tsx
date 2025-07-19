@@ -6,9 +6,9 @@ import {
   PageLayoutHeader,
   PageLayoutMain,
 } from "@/shared/ui/page-layout"
-import { Aside } from "@/widgets/aside/aside"
-import { Footer } from "@/widgets/footer"
-import { Header } from "@/widgets/header"
+import { Aside } from "@/widgets/aside/ui/aside"
+import { Footer } from "@/widgets/footer/ui"
+import { Header } from "@/widgets/header/ui"
 import * as React from "react"
 
 const RootLayout = async ({

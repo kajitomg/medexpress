@@ -1,1 +1,0 @@
-export { Asidetmp } from "./aside"
