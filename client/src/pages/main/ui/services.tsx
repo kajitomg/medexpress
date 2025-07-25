@@ -1,4 +1,4 @@
-import { SectionServicesContent } from "@/pages/main/ui/section-services-content"
+import { ContentServices } from "@/pages/main/ui/content-services"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -33,7 +33,7 @@ const Services = ({
   return (
     <ContentSection className={className}>
       <ContentSectionContent>
-        <SectionServicesContent onScrollToForm={onScrollToForm} items={DATA} />
+        <ContentServices onScrollToForm={onScrollToForm} items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )

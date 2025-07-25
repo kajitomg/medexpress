@@ -17,7 +17,7 @@ interface CatalogOptionsActions {
 
 export type CatalogOptionsStore = CatalogOptionsState & CatalogOptionsActions
 
-const initState: CatalogOptionsState = {
+const defaultInitState: CatalogOptionsState = {
   searchQuery: undefined,
   page: 1,
   error: null,
@@ -27,7 +27,7 @@ export const useCatalogOptionsStore = create<CatalogOptionsStore>()(
   immer(
     persist(
       (set) => ({
-        ...initState,
+        ...defaultInitState,
         changeSearchQuery: (searchQuery?: string | null) => {
           set((state) => {
             if (!searchQuery) searchQuery = undefined
@@ -56,3 +56,40 @@ export const useCatalogOptionsStore = create<CatalogOptionsStore>()(
     )
   )
 )
+
+export const createCatalogOptionsStore = (
+  initState: CatalogOptionsState = defaultInitState
+) =>
+  create<CatalogOptionsStore>()(
+    immer(
+      persist(
+        (set) => ({
+          ...initState,
+          changeSearchQuery: (searchQuery?: string | null) => {
+            set((state) => {
+              if (!searchQuery) searchQuery = undefined
+
+              state.page = 1
+              state.searchQuery = searchQuery
+            })
+          },
+          setPage: (page: number) => {
+            set((state) => {
+              state.page = page
+            })
+          },
+        }),
+        {
+          name: "options",
+          storage: createJSONStorage<Pick<CatalogOptionsState, "searchQuery">>(
+            () => searchParamsStorage
+          ),
+          partialize: (state) => ({
+            searchQuery: state.searchQuery,
+            page: state.page,
+          }),
+          version: undefined,
+        }
+      )
+    )
+  )

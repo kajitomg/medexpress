@@ -13,7 +13,7 @@ interface SectionServiceProcessContentProps {
   }[]
 }
 
-const SectionServiceProcessContent = ({
+const ContentServiceProcess = ({
   items,
   className,
 }: ComponentProps<"div"> & SectionServiceProcessContentProps) => {
@@ -38,4 +38,4 @@ const SectionServiceProcessContent = ({
   )
 }
 
-export { SectionServiceProcessContent }
+export { ContentServiceProcess }

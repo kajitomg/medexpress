@@ -37,13 +37,13 @@ export const ContactFormModeProvider = ({
 export const useContactFormModeStore = <T,>(
   selector: (store: ContactFormModeStore) => T
 ): T => {
-  const contactFormModeContext = useContext(ContactFormModeStoreContext)
+  const context = useContext(ContactFormModeStoreContext)
 
-  if (!contactFormModeContext) {
+  if (!context) {
     throw new Error(
       `useContactFormModeStore must be used within ContactFormModeProvider`
     )
   }
 
-  return useStore(contactFormModeContext, selector)
+  return useStore(context, selector)
 }

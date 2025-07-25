@@ -1,4 +1,5 @@
 import { Button } from "@/shared/ui"
+import { useContactForm } from "@/widgets/contact-form/provider"
 import Image from "next/image"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -11,11 +12,22 @@ interface SectionServicesContentProps {
   }[]
 }
 
-const SectionServicesContent = ({
+const ContentServices = ({
   className,
   items,
   onScrollToForm,
 }: ComponentProps<"div"> & SectionServicesContentProps) => {
+  const methods = useContactForm()
+
+  const callbacks = {
+    onScrollToForm: () => {
+      onScrollToForm()
+
+      setTimeout(() => {
+        methods?.setFocus("firstname", { shouldSelect: true })
+      }, 800)
+    },
+  }
   return (
     <div className={className}>
       <div className="bg-accent rounded-[50px] flex overflow-hidden">
@@ -44,7 +56,7 @@ const SectionServicesContent = ({
             size="xl"
             variant="brand"
             className="cursor-pointer rounded-full mt-2"
-            onClick={onScrollToForm}
+            onClick={callbacks.onScrollToForm}
           >
             <li>Заказать консультацию</li>
           </Button>
@@ -54,4 +66,4 @@ const SectionServicesContent = ({
   )
 }
 
-export { SectionServicesContent }
+export { ContentServices }

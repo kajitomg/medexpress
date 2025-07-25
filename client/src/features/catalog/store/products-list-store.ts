@@ -22,7 +22,7 @@ interface ProductsListActions {
 
 export type ProductsListStore = ProductsListState & ProductsListActions
 
-const initState: ProductsListState = {
+const defaultInitState: ProductsListState = {
   products: [],
   isLoading: false,
   meta: null,
@@ -30,7 +30,7 @@ const initState: ProductsListState = {
 }
 
 export const useProductsListStore = create<ProductsListStore>((set) => ({
-  ...initState,
+  ...defaultInitState,
   fetchAllProducts: async (
     page: number = 1,
     category?: DocumentId | null,
@@ -56,3 +56,34 @@ export const useProductsListStore = create<ProductsListStore>((set) => ({
     set({ products: products, isLoading: false, error: null })
   },
 }))
+
+export const createProductsListStore = (
+  initState: ProductsListState = defaultInitState
+) =>
+  create<ProductsListStore>((set) => ({
+    ...initState,
+    fetchAllProducts: async (
+      page: number = 1,
+      category?: DocumentId | null,
+      search?: string | null
+    ) => {
+      set({ isLoading: true, error: null })
+      try {
+        const fetchedData = await fetchAllProducts(
+          page,
+          category ? [category] : [],
+          search
+        )
+        const products = fetchedData?.data || []
+        const meta = fetchedData?.meta || null
+
+        set(() => ({ products, meta, isLoading: false }))
+      } catch (error) {
+        if (error instanceof Error)
+          set({ error: error?.message, isLoading: false })
+      }
+    },
+    setProducts: (products: (ProductBase & DocumentServices)[]) => {
+      set({ products: products, isLoading: false, error: null })
+    },
+  }))

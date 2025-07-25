@@ -1,1 +1,1 @@
-export { SectionContactForm } from "./section-contact-form"
+export { ContactsPage } from "./contacts-page"

@@ -1,7 +1,7 @@
 import { ProductBase } from "@/entities/product/model"
 import { routes } from "@/shared/config/routes"
-import { PageHeroRoutes } from "@/shared/ui"
 import { Catalog } from "@/widgets/catalog/ui"
+import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 
 interface CatalogPageProps {
   category_id: string

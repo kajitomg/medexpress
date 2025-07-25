@@ -4,7 +4,7 @@ import {
   ContentSectionHeader,
 } from "@/shared/ui"
 import { Title } from "@/shared/ui/title"
-import { SectionServiceProcessContent } from "@/widgets/section-service-process/ui/section-service-process-content"
+import { ContentServiceProcess } from "@/widgets/section-service-process/ui/content-service-process"
 import { MessagesSquare, Phone, SearchCheck, Truck } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -36,7 +36,7 @@ const DATA = [
   },
 ]
 
-const ServiceProcess = ({ className }: ComponentProps<"section">) => {
+const SectionServiceProcess = ({ className }: ComponentProps<"section">) => {
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
@@ -47,10 +47,10 @@ const ServiceProcess = ({ className }: ComponentProps<"section">) => {
         </Title>
       </ContentSectionHeader>
       <ContentSectionContent>
-        <SectionServiceProcessContent items={DATA} />
+        <ContentServiceProcess items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )
 }
 
-export { ServiceProcess }
+export { SectionServiceProcess }

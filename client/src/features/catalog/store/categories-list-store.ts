@@ -21,14 +21,14 @@ interface CategoriesListActions {
 
 export type CategoriesListStore = CategoriesListState & CategoriesListActions
 
-const initState: CategoriesListState = {
+const defaultInitState: CategoriesListState = {
   categories: null,
   isLoading: false,
   error: null,
 }
 
 export const useCategoriesListStore = create<CategoriesListStore>((set) => ({
-  ...initState,
+  ...defaultInitState,
   setCategories: (
     categories: (CategoryBase & CategoryOptions & DocumentServices)[]
   ) => {
@@ -46,3 +46,26 @@ export const useCategoriesListStore = create<CategoriesListStore>((set) => ({
     }
   },
 }))
+
+export const createCategoriesListStore = (
+  initState: CategoriesListState = defaultInitState
+) =>
+  create<CategoriesListStore>((set) => ({
+    ...initState,
+    setCategories: (
+      categories: (CategoryBase & CategoryOptions & DocumentServices)[]
+    ) => {
+      set({ isLoading: false, error: null, categories })
+    },
+    fetchCategories: async () => {
+      set({ isLoading: true, error: null })
+      try {
+        const fetchedCategories = await fetchAllCategories()
+        set({ categories: fetchedCategories })
+      } catch (error) {
+        if (error instanceof Error) set({ error: error?.message })
+      } finally {
+        set({ isLoading: false })
+      }
+    },
+  }))

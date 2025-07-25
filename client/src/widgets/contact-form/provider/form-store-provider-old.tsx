@@ -33,13 +33,13 @@ export const ContactFormProvider = ({ children }: ContactFormProviderProps) => {
 export const useContactFormStore = <T,>(
   selector: (store: FormStore<ContactFormSchema>) => T
 ): T => {
-  const contactFormContext = useContext(ContactFormStoreContext)
+  const context = useContext(ContactFormStoreContext)
 
-  if (!contactFormContext) {
+  if (!context) {
     throw new Error(
       `useContactFormStore must be used within ContactFormProvider`
     )
   }
 
-  return useStore(contactFormContext, selector)
+  return useStore(context, selector)
 }

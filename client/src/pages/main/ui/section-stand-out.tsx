@@ -4,7 +4,7 @@ import {
   ContentSectionHeader,
 } from "@/shared/ui"
 import { Title } from "@/shared/ui/title"
-import { SectionServicesContent } from "@/widgets/section-stand-out/ui/section-stand-out-content"
+import { ContentStandOut } from "@/widgets/section-stand-out/ui/content-stand-out"
 import { BookCheck, Headset, Lightbulb, ShieldCheck } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -42,7 +42,9 @@ const DATA = [
 
 interface StandOutProps {}
 
-const StandOut = ({ className }: ComponentProps<"section"> & StandOutProps) => {
+const SectionStandOut = ({
+  className,
+}: ComponentProps<"section"> & StandOutProps) => {
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
@@ -53,10 +55,10 @@ const StandOut = ({ className }: ComponentProps<"section"> & StandOutProps) => {
         </Title>
       </ContentSectionHeader>
       <ContentSectionContent>
-        <SectionServicesContent items={DATA} />
+        <ContentStandOut items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )
 }
 
-export { StandOut }
+export { SectionStandOut }

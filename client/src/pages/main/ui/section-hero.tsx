@@ -13,8 +13,8 @@ import {
   ContactFormSchemaEmail,
 } from "@/widgets/contact-form/model"
 import {
+  useContactForm,
   useContactFormModeStore,
-  useContactFormStore,
 } from "@/widgets/contact-form/provider"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from "next/image"
@@ -26,10 +26,11 @@ interface HeroProps {
   onScrollToForm: () => void
 }
 
-const Hero = ({ onScrollToForm }: ComponentProps<"section"> & HeroProps) => {
+const SectionHero = ({
+  onScrollToForm,
+}: ComponentProps<"section"> & HeroProps) => {
   const setMode = useContactFormModeStore((state) => state.setMode)
-  const methods = useContactFormStore((state) => state.methods)
-  //const { setValue, setFocus } = useMainFormContext()
+  const methods = useContactForm()
   const { register, reset, getValues } = useForm<
     Pick<ContactFormSchemaEmail, "email">
   >({
@@ -63,12 +64,10 @@ const Hero = ({ onScrollToForm }: ComponentProps<"section"> & HeroProps) => {
       </PageHeroBackground>
       <PageHeroContent>
         <div className="relative max-w-260 top-2/5 left-1/2 -translate-1/2 flex flex-col items-center">
-          <Title className="text-6xl cursor-default hover-scale text-center">
+          <Title className="text-6xl font-black cursor-default hover-scale text-center">
             <strong>
-              <span className="text-(--color-brand) font-black">
-                Medexpress
-              </span>{" "}
-              - ваш надежный партнер в мире медицинского оборудования
+              <span className="text-(--color-brand)">Medexpress</span> - ваш
+              надежный партнер в мире медицинского оборудования
             </strong>
           </Title>
           <div className="max-w-140 mt-12 text-center">
@@ -88,4 +87,4 @@ const Hero = ({ onScrollToForm }: ComponentProps<"section"> & HeroProps) => {
   )
 }
 
-export { Hero }
+export { SectionHero }

@@ -14,48 +14,89 @@ import {
 import {
   ContactFormMode,
   ContactFormSchema,
-  contactFormSchemaEmail,
-  contactFormSchemaPhonenumber,
+  FormStatus,
 } from "@/widgets/contact-form/model"
-import { zodResolver } from "@hookform/resolvers/zod"
 import * as React from "react"
-import { ComponentProps, useEffect } from "react"
-import { useForm } from "react-hook-form"
-import { useContactFormModeStore, useContactFormStore } from "../provider"
+import { BaseSyntheticEvent, ComponentProps, useEffect, useState } from "react"
+import { useTurnstile } from "react-turnstile"
+import { useContactForm, useContactFormModeStore } from "../provider"
 import { FormEmail } from "./form-email"
 import { FormPhonenumber } from "./form-phonenumber"
 
-interface ContactFormProps {}
+interface ContactFormProps {
+  title?: string
+  subtitle?: string
+  handleSubmit?: (
+    data: ContactFormSchema,
+    event?: BaseSyntheticEvent
+  ) => Promise<{ success: boolean; message: string }>
+}
 
 const ContactForm = ({
+  title = "Запросить консультацию",
+  subtitle = "Подскажем, какие модели подходят именно под ваши нужды",
+  handleSubmit,
   className,
 }: ComponentProps<"div"> & ContactFormProps) => {
+  const turnstile = useTurnstile()
+  const [isCaptcha, setIsCaptcha] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState<boolean>(false)
+  const [message, setMessage] = useState<string | null>(null)
+  const [status, setStatus] = React.useState<FormStatus>("idle")
   const mode = useContactFormModeStore((state) => state.mode)
   const setMode = useContactFormModeStore((state) => state.setMode)
-  const setMethods = useContactFormStore((state) => state.setMethods)
-  const schema =
-    mode === ContactFormMode.EMAIL
-      ? contactFormSchemaEmail
-      : contactFormSchemaPhonenumber
+  const methods = useContactForm()
 
-  const methods = useForm<ContactFormSchema>({
-    resolver: zodResolver(schema),
-  })
+  const callbacks = {
+    onSubmit: methods.handleSubmit(async (data, event) => {
+      if (!data.terms) {
+        return console.error("Не принято пользовательское соглашение")
+      }
+      setStatus("sending")
+      event?.preventDefault()
+      if (handleSubmit)
+        await handleSubmit(data, event).then((value) => {
+          if (value?.success) {
+            methods.reset({
+              message: "",
+              phonenumber: "",
+              firstname: "",
+              terms: false,
+              email: "",
+            })
+            setStatus("send")
+            setMessage(value.message)
+          } else {
+            setStatus("error")
+            setMessage(value.message)
+          }
+        })
+    }),
+  }
 
   useEffect(() => {
-    setMethods(methods)
-  }, [methods])
+    setIsValid(
+      isCaptcha &&
+        methods.formState.isValid &&
+        methods.formState.isDirty &&
+        !methods.formState.isSubmitting
+    )
+  }, [
+    methods.formState.isValid,
+    methods.formState.isDirty,
+    methods.formState.isSubmitting,
+    isCaptcha,
+  ])
+
   return (
     <Card className={className}>
       <CardHeader>
         <Title asChild className="text-xl">
           <h6>
-            <strong>Запросить консультацию</strong>
+            <strong>{title}</strong>
           </h6>
         </Title>
-        <Subtitle className="text-sm">
-          Подскажем, какие модели подходят именно под ваши нужды
-        </Subtitle>
+        <Subtitle className="text-sm">{subtitle}</Subtitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue={ContactFormMode.EMAIL} value={mode}>
@@ -63,14 +104,20 @@ const ContactForm = ({
             <TabsTrigger
               value={ContactFormMode.EMAIL}
               className="cursor-pointer"
-              onClick={() => setMode(ContactFormMode.EMAIL)}
+              onClick={() => {
+                setIsCaptcha(false)
+                setMode(ContactFormMode.EMAIL)
+              }}
             >
               Почта
             </TabsTrigger>
             <TabsTrigger
               value={ContactFormMode.PHONENUMBER}
               className="cursor-pointer"
-              onClick={() => setMode(ContactFormMode.PHONENUMBER)}
+              onClick={() => {
+                setIsCaptcha(false)
+                setMode(ContactFormMode.PHONENUMBER)
+              }}
             >
               Телефон
             </TabsTrigger>
@@ -78,17 +125,25 @@ const ContactForm = ({
           <TabsContent value={ContactFormMode.EMAIL}>
             <FormEmail
               register={methods.register}
-              isDirty={methods.formState.isDirty}
-              isSubmitting={methods.formState.isSubmitting}
-              isValid={methods.formState.isValid}
+              errors={methods.formState.errors}
+              isValid={isValid}
+              isLoading={status === "sending"}
+              isErrorRequest={status === "error"}
+              setIsCaptcha={setIsCaptcha}
+              onSubmit={callbacks.onSubmit}
+              message={message}
             />
           </TabsContent>
           <TabsContent value={ContactFormMode.PHONENUMBER}>
             <FormPhonenumber
               register={methods.register}
-              isDirty={methods.formState.isDirty}
-              isSubmitting={methods.formState.isSubmitting}
-              isValid={methods.formState.isValid}
+              errors={methods.formState.errors}
+              isValid={isValid}
+              isLoading={status === "sending"}
+              isErrorRequest={status === "error"}
+              setIsCaptcha={setIsCaptcha}
+              onSubmit={callbacks.onSubmit}
+              message={message}
             />
           </TabsContent>
         </Tabs>

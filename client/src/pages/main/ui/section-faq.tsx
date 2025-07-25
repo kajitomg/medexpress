@@ -1,10 +1,11 @@
+import { cn } from "@/shared/lib"
 import {
   ContentSection,
   ContentSectionContent,
   ContentSectionHeader,
 } from "@/shared/ui"
 import { Title } from "@/shared/ui/title"
-import { SectionFaqContent } from "@/widgets/section-faq/ui/section-faq-content"
+import { ContentFaq } from "@/widgets/section-faq/ui/content-faq"
 import * as React from "react"
 import { ComponentProps } from "react"
 
@@ -31,9 +32,9 @@ const DATA = [
   },
 ]
 
-const Faq = ({ className }: ComponentProps<"section">) => {
+const SectionFaq = ({ className }: ComponentProps<"section">) => {
   return (
-    <ContentSection className={className}>
+    <ContentSection className={cn(className)}>
       <ContentSectionHeader>
         <Title asChild className="hover-scale cursor-default">
           <h4>
@@ -42,10 +43,10 @@ const Faq = ({ className }: ComponentProps<"section">) => {
         </Title>
       </ContentSectionHeader>
       <ContentSectionContent className="w-full">
-        <SectionFaqContent items={DATA} />
+        <ContentFaq items={DATA} />
       </ContentSectionContent>
     </ContentSection>
   )
 }
 
-export { Faq }
+export { SectionFaq }

@@ -15,7 +15,7 @@ const SectionContactForm = ({
   return (
     <ContentSection
       className={cn(
-        "relative overflow-hidden bg-(--color-brand)/95 py-20",
+        "relative overflow-hidden bg-(--color-brand)/95",
         className
       )}
       ref={ref}

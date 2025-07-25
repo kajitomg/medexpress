@@ -1,2 +1,2 @@
-export { useCartStore } from "./cart-store"
+export { useCartStore, createCartStore } from "./cart-store"
 export type { CartStore } from "./cart-store"

@@ -9,7 +9,7 @@ const ContentSection = ({
 }: React.ComponentProps<"section">) => {
   return (
     <section
-      className={cn("my-24 flex flex-col items-center", className)}
+      className={cn("py-24 flex flex-col items-center", className)}
       {...props}
     >
       {children}
@@ -40,7 +40,7 @@ const ContentSectionHeader = ({
   const Comp = asChild ? Slot : "div"
 
   return (
-    <Comp className={cn("max-w-300 mt-20", className)} {...props}>
+    <Comp className={cn("max-w-300", className)} {...props}>
       {children}
     </Comp>
   )

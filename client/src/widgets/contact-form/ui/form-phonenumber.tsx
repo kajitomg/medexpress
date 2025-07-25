@@ -9,7 +9,12 @@ import {
   Submit,
 } from "@radix-ui/react-form"
 import { ComponentProps } from "react"
-import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form"
+import {
+  FieldErrors,
+  RegisterOptions,
+  UseFormRegisterReturn,
+} from "react-hook-form"
+import Turnstile from "react-turnstile"
 import { ContactFormSchema, ContactFormSchemaPhonenumber } from "../model"
 
 interface FormPhonenumberProps {
@@ -20,20 +25,27 @@ interface FormPhonenumberProps {
       keyof ContactFormSchemaPhonenumber
     >
   ) => UseFormRegisterReturn<keyof ContactFormSchemaPhonenumber>
-  isDirty: boolean
-  isSubmitting: boolean
+  errors: FieldErrors<ContactFormSchemaPhonenumber>
   isValid: boolean
+  isLoading: boolean
+  isErrorRequest: boolean
+  setIsCaptcha: (isCaptcha: boolean) => void
+  message: string | null
 }
 
 const FormPhonenumber = ({
   register,
-  isSubmitting,
-  isDirty,
+  errors,
   isValid,
+  isLoading,
+  isErrorRequest,
+  setIsCaptcha,
+  message,
   className,
-}: ComponentProps<"div"> & FormPhonenumberProps) => {
+  ...props
+}: ComponentProps<"form"> & FormPhonenumberProps) => {
   return (
-    <Root className={className}>
+    <Root className={className} {...props}>
       <Field name="name">
         <div
           className="mx-2 mb-2"
@@ -44,12 +56,11 @@ const FormPhonenumber = ({
           }}
         >
           <Label className="font-bold text-sm">Имя</Label>
-          <Message
-            className="text-xs font-bold text-red-500"
-            match="valueMissing"
-          >
-            Пожалуйста, введите имя
-          </Message>
+          {errors.firstname && (
+            <Message className="text-xs font-bold text-red-500">
+              {errors.firstname.message}
+            </Message>
+          )}
         </div>
         <Control asChild>
           <Input
@@ -72,18 +83,11 @@ const FormPhonenumber = ({
           }}
         >
           <Label className="font-bold text-sm">Телефон</Label>
-          <Message
-            className="text-xs font-bold text-red-500"
-            match="valueMissing"
-          >
-            Пожалуйста, введите номер телефона
-          </Message>
-          <Message
-            className="text-xs font-bold text-red-500"
-            match="typeMismatch"
-          >
-            Пожалуйста, введите действительный номер телефона
-          </Message>
+          {errors.phonenumber && (
+            <Message className="text-xs font-bold text-red-500">
+              {errors.phonenumber.message}
+            </Message>
+          )}
         </div>
         <Control asChild>
           <Input
@@ -106,6 +110,11 @@ const FormPhonenumber = ({
           }}
         >
           <Label className="font-bold text-sm">Комментарий к заказу</Label>
+          {errors.message && (
+            <Message className="text-xs font-bold text-red-500">
+              {errors.message.message}
+            </Message>
+          )}
         </div>
         <Control asChild>
           <Textarea
@@ -126,23 +135,46 @@ const FormPhonenumber = ({
               className="size-4 inline-block cursor-pointer"
             />
           </Control>
-          <Label asChild>
-            <span className="text-sm font-semibold">
-              Согласие на обработку персональных данных
-            </span>
+          <Label className="text-sm font-semibold">
+            Согласие на обработку персональных данных
           </Label>
         </div>
+        <div className="min-h-6">
+          {errors.terms && (
+            <Message className="text-xs font-bold text-red-500">
+              {errors.terms.message}
+            </Message>
+          )}
+        </div>
       </Field>
+      <Turnstile
+        sitekey="1x00000000000000000000AA"
+        onSuccess={() => {
+          setIsCaptcha(true)
+        }}
+      />
       <Submit asChild className="mt-8">
         <Button
           className="cursor-pointer rounded-full w-full"
-          disabled={!isDirty || isSubmitting || !isValid}
+          disabled={isLoading || !isValid}
           variant="brand"
           size="xl"
         >
           Оставить заявку
         </Button>
       </Submit>
+      <div className="min-h-6">
+        {message && (
+          <span
+            className={cn(
+              "text-sm font-bold text-green-600",
+              isErrorRequest && "text-red-500"
+            )}
+          >
+            {message}
+          </span>
+        )}
+      </div>
     </Root>
   )
 }

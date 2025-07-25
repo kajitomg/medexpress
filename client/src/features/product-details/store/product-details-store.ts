@@ -14,22 +14,39 @@ interface ProductDetailsActions {
 
 export type ProductDetailsStore = ProductDetailsState & ProductDetailsActions
 
-const initState: ProductDetailsState = {
+const defaultInitState: ProductDetailsState = {
   product: null,
   isLoading: false,
   error: null,
 }
 
 export const useProductDetailsStore = create<ProductDetailsStore>((set) => ({
-  ...initState,
+  ...defaultInitState,
   fetchOneProduct: async (documentId: string) => {
     set({ isLoading: true, error: null })
     try {
       const fetchedProduct = await fetchOneProduct(documentId)
-      set({ product: fetchedProduct || null, isLoading: false })
+      set({ product: fetchedProduct?.data || null, isLoading: false })
     } catch (error) {
       if (error instanceof Error)
         set({ error: error?.message, isLoading: false })
     }
   },
 }))
+
+export const createProductDetailsStore = (
+  initState: ProductDetailsState = defaultInitState
+) =>
+  create<ProductDetailsStore>((set) => ({
+    ...initState,
+    fetchOneProduct: async (documentId: string) => {
+      set({ isLoading: true, error: null })
+      try {
+        const fetchedProduct = await fetchOneProduct(documentId)
+        set({ product: fetchedProduct?.data || null, isLoading: false })
+      } catch (error) {
+        if (error instanceof Error)
+          set({ error: error?.message, isLoading: false })
+      }
+    },
+  }))

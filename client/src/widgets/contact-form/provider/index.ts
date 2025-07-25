@@ -1,4 +1,4 @@
-export { ContactFormProvider, useContactFormStore } from "./form-store-provider"
+export { ContactFormProvider, useContactForm } from "./contact-form-provider"
 export {
   ContactFormModeProvider,
   useContactFormModeStore,

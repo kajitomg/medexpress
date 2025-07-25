@@ -6,3 +6,5 @@ export type {
 } from "./form"
 
 export { ContactFormMode } from "./mode"
+
+export type { FormStatus } from "./status"

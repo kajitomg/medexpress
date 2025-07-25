@@ -7,7 +7,7 @@ import {
 import * as React from "react"
 import { ComponentProps } from "react"
 
-interface SectionFaqContentProps {
+interface ContentFaqProps {
   items: {
     id: number
     value: string
@@ -16,10 +16,10 @@ interface SectionFaqContentProps {
   }[]
 }
 
-const SectionFaqContent = ({
+const ContentFaq = ({
   items,
   className,
-}: ComponentProps<"div"> & SectionFaqContentProps) => {
+}: ComponentProps<"div"> & ContentFaqProps) => {
   return (
     <div className={className}>
       <Accordion type="multiple">
@@ -43,4 +43,4 @@ const SectionFaqContent = ({
   )
 }
 
-export { SectionFaqContent }
+export { ContentFaq }
