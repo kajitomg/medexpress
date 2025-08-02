@@ -1,5 +1,5 @@
 export {
-  useProductDetailsStore,
   createProductDetailsStore,
+  type ProductDetailsStore,
+  type ProductDetailsState,
 } from "./product-details-store"
-export type { ProductDetailsStore } from "./product-details-store"

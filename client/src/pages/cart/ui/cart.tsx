@@ -1,6 +1,6 @@
 "use client"
 
-import { useCartStore } from "@/features/cart/store"
+import { useCartStore } from "@/features/cart/provider"
 import { CartContactForm } from "@/pages/cart/ui/cart-contact-form"
 import { CartList } from "@/pages/cart/ui/cart-list"
 import { ContactFormModeProvider } from "@/widgets/contact-form/provider"

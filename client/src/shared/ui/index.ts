@@ -60,6 +60,7 @@ export {
   PaginationNext,
   PaginationPrevious,
 } from "./pagination"
+export { PaginationControl } from "./pagination-control"
 export { Separator } from "./separator"
 export { Subtitle } from "./subtitle"
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs"

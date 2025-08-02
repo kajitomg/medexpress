@@ -1,3 +1,4 @@
+import { CatalogOptionsProvider } from "@/features/catalog/provider"
 import {
   PageLayout,
   PageLayoutAside,
@@ -23,10 +24,13 @@ const RootLayout = async ({
       <PageLayoutHeader>
         <Header />
       </PageLayoutHeader>
-      <PageLayoutAside headerHeight={80}>
-        <Aside params={params} />
+
+      <PageLayoutAside headerHeight={128}>
+        <CatalogOptionsProvider>
+          <Aside params={params} />
+        </CatalogOptionsProvider>
       </PageLayoutAside>
-      <PageLayoutContent headerHeight={80} asideWidth={320}>
+      <PageLayoutContent headerHeight={128} asideWidth={320}>
         <PageLayoutMain>{children}</PageLayoutMain>
         <PageLayoutFooter>
           <Footer />

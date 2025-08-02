@@ -1,6 +1,7 @@
 "use client"
 
 import { CategoryBase, CategoryOptions } from "@/entities/category/model"
+import { urlBuilder } from "@/shared/lib/url-builder"
 import { DocumentServices } from "@/shared/model"
 import { MenuCatalogCategoryList } from "@/widgets/menu-catalog/ui/menu-catalog-category-list"
 import { MenuCatalogSubcategoryList } from "@/widgets/menu-catalog/ui/menu-catalog-subcategory-list"
@@ -38,20 +39,24 @@ const MenuCatalog = ({ initCategoriesList }: MenuCatalogProps) => {
       aria-label="Категории каталога"
       className="flex w-300 max-h-[calc(100vh-100px)] gap-8"
     >
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-8 min-w-80 max-w-80">
         <Image
-          src="/oborud.png"
+          src={
+            initCategoriesList?.[selectedIndex].media?.url
+              ? urlBuilder(initCategoriesList?.[selectedIndex].media?.url)
+              : urlBuilder("/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp")
+          }
           alt="alt"
-          width="100"
-          height="100"
-          className="h-auto w-60 object-cover rounded-2xl"
+          width="200"
+          height="200"
+          className="max-h-50 min-h-50 w-full object-cover rounded-2xl"
         />
         <MenuCatalogCategoryList
           categories={initCategoriesList || []}
           selectedIndex={selectedIndex}
           handleMouseEnter={callbacks.handleMouseEnter}
           handleMouseLeave={callbacks.handleMouseLeave}
-          className="flex flex-col flex-auto w-80 overflow-y-auto gap-2"
+          className="flex flex-col flex-auto w-full overflow-y-auto gap-2"
         />
       </div>
       <div className="flex flex-col flex-auto">

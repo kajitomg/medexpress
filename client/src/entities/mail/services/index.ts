@@ -1,1 +1,2 @@
-export { sendMail } from "./send-contact-form-mail"
+export { sendContactFormMail } from "./send-contact-form-mail"
+export { sendCartFormMail } from "./send-cart-form-mail"

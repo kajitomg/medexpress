@@ -8,7 +8,8 @@ import { immer } from "zustand/middleware/immer"
 
 interface CartState {
   products: CartItem<ProductBase>[]
-  error: Error | null
+  error?: Error
+  _hasHydrated: boolean
 }
 
 interface CartActions {
@@ -23,93 +24,19 @@ export type CartStore = CartState & CartActions
 
 const defaultInitState: CartState = {
   products: [],
-  error: null,
+  error: undefined,
+  _hasHydrated: false,
 }
 
-export const useCartStore = create<CartStore>()(
-  immer(
-    persist(
-      (set) => ({
-        ...defaultInitState,
-        addItemToCart: (item: ProductBase) => {
-          set((state) => {
-            const productIndex = state.products.findIndex(
-              (product) => product.item.id === item.id
-            )
-
-            if (productIndex >= 0) {
-              state.products[productIndex].count++
-            } else {
-              const product: CartItem<ProductBase> = {
-                item: item,
-                count: 1,
-              }
-              state.products.push(product)
-            }
-            state.error = null
-          })
-        },
-        deleteItemFromCart: (id: DocumentId) => {
-          set((state) => {
-            const productIndex = state.products.findIndex(
-              (product) => product.item.id === id
-            )
-
-            if (productIndex === -1) {
-              state.error = "Product not found."
-            } else {
-              state.products.splice(productIndex, 1)
-              state.error = null
-            }
-          })
-        },
-        incrementItemInCart: (id: DocumentId) => {
-          set((state) => {
-            const productIndex = state.products.findIndex(
-              (product) => product.item.id === id
-            )
-            if (productIndex === -1) {
-              state.error = "Product not found."
-            } else {
-              state.products[productIndex].count++
-              state.error = null
-            }
-          })
-        },
-        decrementItemInCart: (id: DocumentId) => {
-          set((state) => {
-            const productIndex = state.products.findIndex(
-              (product) => product.item.id === id
-            )
-            if (productIndex === -1) {
-              state.error = "Product not found."
-            } else {
-              state.products[productIndex].count--
-              if (state.products[productIndex].count <= 0) {
-                state.products.splice(productIndex, 1)
-              }
-              state.error = null
-            }
-          })
-        },
-        clearCart: () => {
-          set((state) => {
-            state.products = []
-            state.error = null
-          })
-        },
-      }),
-      { name: "cartStore" }
-    )
-  )
-)
-
-export const createCartStore = (initState: CartState = defaultInitState) =>
+export const createCartStore = (
+  initState: Partial<CartState> = defaultInitState,
+  skipHydration: boolean = false
+) =>
   create<CartStore>()(
     immer(
       persist(
         (set) => ({
-          ...initState,
+          ...{ ...defaultInitState, ...initState },
           addItemToCart: (item: ProductBase) => {
             set((state) => {
               const productIndex = state.products.findIndex(
@@ -125,7 +52,7 @@ export const createCartStore = (initState: CartState = defaultInitState) =>
                 }
                 state.products.push(product)
               }
-              state.error = null
+              state.error = undefined
             })
           },
           deleteItemFromCart: (id: DocumentId) => {
@@ -138,7 +65,7 @@ export const createCartStore = (initState: CartState = defaultInitState) =>
                 state.error = "Product not found."
               } else {
                 state.products.splice(productIndex, 1)
-                state.error = null
+                state.error = undefined
               }
             })
           },
@@ -151,7 +78,7 @@ export const createCartStore = (initState: CartState = defaultInitState) =>
                 state.error = "Product not found."
               } else {
                 state.products[productIndex].count++
-                state.error = null
+                state.error = undefined
               }
             })
           },
@@ -167,18 +94,26 @@ export const createCartStore = (initState: CartState = defaultInitState) =>
                 if (state.products[productIndex].count <= 0) {
                   state.products.splice(productIndex, 1)
                 }
-                state.error = null
+                state.error = undefined
               }
             })
           },
           clearCart: () => {
             set((state) => {
               state.products = []
-              state.error = null
+              state.error = undefined
             })
           },
         }),
-        { name: "cartStore" }
+        {
+          name: "cartStore",
+          onRehydrateStorage: () => (state) => {
+            if (state) {
+              state._hasHydrated = true
+            }
+          },
+          skipHydration,
+        }
       )
     )
   )

@@ -1,3 +1,4 @@
+import { ProductBase } from "@/entities/product/model"
 import { Meta } from "@/shared/model/api"
 import { DocumentId } from "@/shared/model/document"
 import { Media } from "@/shared/model/media"
@@ -6,13 +7,11 @@ export type CategoryBase = {
   id: DocumentId
   code: string
   title: string
-  description: string | null
-  media?: Media | null
-  parent?: CategoryBase | null
-}
-
-export type CategoryOptions = {
-  childrens: CategoryBase[]
+  description?: string
+  media?: Media
+  parent?: CategoryBase
+  childrens?: CategoryBase[]
+  products?: ProductBase[]
 }
 
 export type CategoryListResponse<T extends CategoryBase = CategoryBase> = {

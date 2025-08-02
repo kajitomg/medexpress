@@ -2,7 +2,11 @@
 
 import { createContext, type ReactNode, useContext, useRef } from "react"
 import { useStore } from "zustand"
-import { CategoriesListStore, createCategoriesListStore } from "../store"
+import {
+  CategoriesListState,
+  CategoriesListStore,
+  createCategoriesListStore,
+} from "../store"
 
 export type CategoriesListStoreApi = ReturnType<
   typeof createCategoriesListStore
@@ -14,14 +18,16 @@ export const CategoriesListStoreContext = createContext<
 
 export interface CategoriesListProviderProps {
   children: ReactNode
+  initialState?: Partial<CategoriesListState>
 }
 
-export const CatalogOptionsProvider = ({
+export const CategoriesListProvider = ({
   children,
+  initialState,
 }: CategoriesListProviderProps) => {
   const storeRef = useRef<CategoriesListStoreApi | null>(null)
   if (storeRef.current === null) {
-    storeRef.current = createCategoriesListStore()
+    storeRef.current = createCategoriesListStore(initialState)
   }
 
   return (

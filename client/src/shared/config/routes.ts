@@ -8,18 +8,13 @@ class Routes {
     title,
     parent: this.MAIN,
   })
-  /*PRODUCT = (
-    categoryId: string | number,
-    productId: string | number,
-    title = "Товар"
-  ): RouteEntry => {
-    const category = this.CATALOG(categoryId)
+  PRODUCT = (productId: string | number = "", title = "Товар") => {
     return {
-      path: `/catalog/${categoryId}/product/${productId}`,
+      path: `/product/${productId}`,
       title,
-      parent: category,
+      parent: this.CATALOG,
     }
-  }*/
+  }
   ABOUT = {
     path: "/about",
     title: "О нас",
@@ -65,6 +60,16 @@ class Routes {
     title: "Карта сайта",
     parent: this.MAIN,
   }
+  PRIVATEPOLICY = {
+    path: "/private-policy",
+    title: "Политика конфиденциальности",
+    parent: this.MAIN,
+  }
+  COLLESCTIONS = (collectionId: string | number = "", title = "Подборки") => ({
+    path: `/collections/${collectionId}`,
+    title,
+    parent: this.MAIN,
+  })
 }
 
 export const routes = new Routes()

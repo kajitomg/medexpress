@@ -1,52 +1,35 @@
 import { ProductBase } from "@/entities/product/model/product"
-import { fetchOneProduct } from "@/entities/product/services/fetch-one-product"
+import { DocumentServices } from "@/shared/model"
 import { create } from "zustand"
 
-interface ProductDetailsState {
-  product: ProductBase | null
+export interface ProductDetailsState {
+  product?: ProductBase & DocumentServices
   isLoading: boolean
-  error: string | null
+  error?: string
 }
 
 interface ProductDetailsActions {
-  fetchOneProduct: (documentId: string) => Promise<void>
+  setProduct: (product: ProductBase & DocumentServices) => void
+  setLoading: (loading: boolean) => void
+  setError: (error?: string) => void
 }
 
 export type ProductDetailsStore = ProductDetailsState & ProductDetailsActions
 
 const defaultInitState: ProductDetailsState = {
-  product: null,
+  product: undefined,
   isLoading: false,
-  error: null,
+  error: undefined,
 }
 
-export const useProductDetailsStore = create<ProductDetailsStore>((set) => ({
-  ...defaultInitState,
-  fetchOneProduct: async (documentId: string) => {
-    set({ isLoading: true, error: null })
-    try {
-      const fetchedProduct = await fetchOneProduct(documentId)
-      set({ product: fetchedProduct?.data || null, isLoading: false })
-    } catch (error) {
-      if (error instanceof Error)
-        set({ error: error?.message, isLoading: false })
-    }
-  },
-}))
-
 export const createProductDetailsStore = (
-  initState: ProductDetailsState = defaultInitState
+  initState: Partial<ProductDetailsState> = defaultInitState
 ) =>
   create<ProductDetailsStore>((set) => ({
-    ...initState,
-    fetchOneProduct: async (documentId: string) => {
-      set({ isLoading: true, error: null })
-      try {
-        const fetchedProduct = await fetchOneProduct(documentId)
-        set({ product: fetchedProduct?.data || null, isLoading: false })
-      } catch (error) {
-        if (error instanceof Error)
-          set({ error: error?.message, isLoading: false })
-      }
-    },
+    ...{ ...defaultInitState, ...initState },
+    setProduct: (product) => set({ product }),
+
+    setLoading: (isLoading) => set({ isLoading }),
+
+    setError: (error) => set({ error }),
   }))

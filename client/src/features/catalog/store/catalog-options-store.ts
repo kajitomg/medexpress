@@ -4,71 +4,39 @@ import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
-interface CatalogOptionsState {
-  searchQuery?: string | null
+export interface CatalogOptionsState {
+  searchQuery?: string
   page: number
-  error: Error | null
+  maxPages: number
+  error?: Error
+  _hasHydrated?: boolean
 }
 
 interface CatalogOptionsActions {
-  changeSearchQuery: (searchQuery?: string | null) => void
+  changeSearchQuery: (searchQuery?: string) => void
   setPage: (page: number) => void
 }
 
 export type CatalogOptionsStore = CatalogOptionsState & CatalogOptionsActions
 
-const defaultInitState: CatalogOptionsState = {
+export const defaultInitState: CatalogOptionsState = {
   searchQuery: undefined,
   page: 1,
-  error: null,
+  maxPages: 1,
+  error: undefined,
 }
 
-export const useCatalogOptionsStore = create<CatalogOptionsStore>()(
-  immer(
-    persist(
-      (set) => ({
-        ...defaultInitState,
-        changeSearchQuery: (searchQuery?: string | null) => {
-          set((state) => {
-            if (!searchQuery) searchQuery = undefined
-
-            state.page = 1
-            state.searchQuery = searchQuery
-          })
-        },
-        setPage: (page: number) => {
-          set((state) => {
-            state.page = page
-          })
-        },
-      }),
-      {
-        name: "options",
-        storage: createJSONStorage<Pick<CatalogOptionsState, "searchQuery">>(
-          () => searchParamsStorage
-        ),
-        partialize: (state) => ({
-          searchQuery: state.searchQuery,
-          page: state.page,
-        }),
-        version: undefined,
-      }
-    )
-  )
-)
-
 export const createCatalogOptionsStore = (
-  initState: CatalogOptionsState = defaultInitState
+  initState: Partial<CatalogOptionsState> = defaultInitState,
+  skipHydration: boolean = false
 ) =>
   create<CatalogOptionsStore>()(
     immer(
       persist(
         (set) => ({
-          ...initState,
-          changeSearchQuery: (searchQuery?: string | null) => {
+          ...{ ...defaultInitState, ...initState },
+          changeSearchQuery: (searchQuery?: string) => {
             set((state) => {
-              if (!searchQuery) searchQuery = undefined
-
               state.page = 1
               state.searchQuery = searchQuery
             })
@@ -89,6 +57,7 @@ export const createCatalogOptionsStore = (
             page: state.page,
           }),
           version: undefined,
+          skipHydration,
         }
       )
     )

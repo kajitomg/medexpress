@@ -363,7 +363,6 @@ const spcode = (code: string) => {
 }
 
 export const getAllPosts = async () => {
-  
   const categories = [
     1, 280, 337, 354, 376, 409, 426, 446, 455, 28, 51, 79, 116, 130, 156, 183,
     198, 206, 264, 1040,
@@ -374,7 +373,7 @@ export const getAllPosts = async () => {
   const secondItemIndex = sortedCategories.findIndex((category) => {
     return category === categories[1]
   })
-  /*const secondItemGap = [
+  const secondItemGap = [
     sortedCategories[secondItemIndex],
     sortedCategories?.[secondItemIndex + 1]
       ? sortedCategories?.[secondItemIndex + 1] - 1

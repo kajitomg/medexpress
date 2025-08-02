@@ -1,4 +1,5 @@
 import "@/app/styles/globals.css"
+import { CartProvider } from "@/features/cart/provider"
 import { Metadata } from "next"
 import * as React from "react"
 
@@ -12,7 +13,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   )
 }

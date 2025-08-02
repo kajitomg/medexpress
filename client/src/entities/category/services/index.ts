@@ -1,2 +1,2 @@
-export { fetchAllCategories } from "./fetch-all-categories"
-export { fetchOneCategory } from "./fetch-one-category"
+export { fetchCatalogCategoriesList } from "./fetch-catalog-categories-list"
+export { fetchNavigationCategoriesList } from "./fetch-navigation-categories-list"

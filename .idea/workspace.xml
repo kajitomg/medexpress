@@ -5,38 +5,141 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/shared/ui/page-hero-routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/shared/ui/subtitle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/contact-form-email.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/contact-form-phonenumber.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/main-page-hero-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-contact-form-contact-forms.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-contact-form-details.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-faq-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-service-process-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-services-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/main/section-stand-out-content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/collections/[collection_id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/collections/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/private-policy/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/product/[product_id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/category/api/category-repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-catalog-categories-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-navigation-categories-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/api/collection-repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/model/collection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/model/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/services/fetch-catalog-collections-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/services/fetch-navigation-collections-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/collection/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/product/api/product-repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-categories-products-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-collections-products-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-detail-product-item.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/cart/provider/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/cart/ui/add-to-cart-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/cart/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/collections-list-provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/store/collections-list-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/catalog-pagination.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/catalog-categories/ui/categories-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/catalog-categories/ui/category-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/catalog-categories/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/catalog-categories/ui/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/category-products/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/category-products/ui/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/category-products/ui/product-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/category-products/ui/products-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collection-products/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collection-products/ui/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collection-products/ui/product-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collection-products/ui/products-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collections/ui/collection-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collections/ui/collections-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collections/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/collections/ui/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/private-policy/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/private-policy/ui/private-policy-page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/product/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/product/ui/product-page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/shared/lib/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/shared/lib/hooks/use-update-effect.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/shared/ui/pagination-control.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/header-collections.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/(public)/catalog/[category_id]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/catalog/[category_id]/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/(public)/catalog/[category_id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/catalog/[category_id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/api/contact/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/api/category.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/model/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/model/category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/model/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-all-categories.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-one-category.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/mail/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/mail/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/mail/api/mail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/mail/api/mail-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/mail/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/mail/services/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/api/product.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/model/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/model/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-all-products.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-one-product.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/services/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/features/cart/store/cart-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/cart/store/cart-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/content-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/content-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/cart/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/cart/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/catalog-options-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/catalog-options-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/categories-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/categories-list-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/products-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/products-list-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/catalog-options-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/store/catalog-options-store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/categories-list-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/store/categories-list-store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/products-list-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/store/products-list-store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/product-details/provider/product-details-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/product-details/provider/product-details-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/product-details/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/product-details/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/product-details/store/product-details-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/product-details/store/product-details-store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/cart/ui/cart-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/cart/ui/cart-contact-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/cart/ui/cart-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/cart/ui/cart-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/cart/ui/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/cart/ui/cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/catalog/ui/catalog-page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/main/ui/services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/main/ui/services.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/api/nodemailer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/api/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/api/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/config/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/hooks/use-params.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/page-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/page-hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/textarea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/main-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/title.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/main-page-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/main-page-hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/section-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/section-contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/section-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/section-faq.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/section-service-process.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/section-service-process.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/section-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/section-services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/main/section-stand-out.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/main/section-stand-out.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/aside/ui/aside-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/aside/ui/aside-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/aside/ui/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/aside/ui/aside.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/catalog-item.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/catalog-list.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/catalog-options.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/catalog-search-control.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/catalog-pagination.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/catalog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer-catalog-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer-catalog-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer-info-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer-info-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/header-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/header-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/menu-catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/menu-catalog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/category/content-types/category/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/category/content-types/category/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/class/content-types/class/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/class/controllers/class.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/class/routes/class.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/class/services/class.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/compilation/content-types/compilation/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/compilation/controllers/compilation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/compilation/routes/compilation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/compilation/services/compilation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/group/content-types/group/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/group/controllers/group.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/group/routes/group.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/group/services/group.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/type/content-types/type/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/type/controllers/type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/type/routes/type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/type/services/type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +151,8 @@
       <list>
         <option value="Dockerfile" />
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -70,39 +173,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/client/src/widgets/main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Web/medexpress/client/src/features/catalog/provider",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\client\src\widgets\main" />
-      <recent name="C:\Web\medexpress\client\src\shared\ui" />
-      <recent name="C:\Web\medexpress\client\app\(public)\(main-layout)" />
-      <recent name="C:\Web\medexpress\client\src\widgets\menu-catalog" />
-      <recent name="C:\Web\medexpress\client\app\(public)" />
+      <recent name="C:\Web\medexpress\client\src\features\catalog\provider" />
+      <recent name="C:\Web\medexpress\client\src\pages\collections\ui" />
+      <recent name="C:\Web\medexpress\client\src\pages\collection-products" />
+      <recent name="C:\Web\medexpress\client\src\pages\category-products" />
+      <recent name="C:\Web\medexpress\client\src\features\catalog\ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\client\src\shared\ui" />
+      <recent name="C:\Web\medexpress\client\src\pages\collections" />
+      <recent name="C:\Web\medexpress\client\src\entities\collection" />
       <recent name="C:\Web\medexpress\client\app\(public)\(main-layout)" />
-      <recent name="C:\Web\medexpress\client\app\(public)\(aside-layout)" />
+      <recent name="C:\Web\medexpress\client\app\(public)\(main-layout)\product" />
       <recent name="C:\Web\medexpress\client\app\(public)" />
-      <recent name="C:\Web\medexpress\client\app\(public)\(home)" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -205,7 +308,30 @@
       <workItem from="1752408889407" duration="23650000" />
       <workItem from="1752502965174" duration="8028000" />
       <workItem from="1752582378578" duration="25662000" />
-      <workItem from="1752706299833" duration="5386000" />
+      <workItem from="1752706299833" duration="8515000" />
+      <workItem from="1752749523200" duration="12098000" />
+      <workItem from="1752787843537" duration="7254000" />
+      <workItem from="1752840609314" duration="15935000" />
+      <workItem from="1752929176205" duration="753000" />
+      <workItem from="1752930203874" duration="13757000" />
+      <workItem from="1753053753635" duration="5960000" />
+      <workItem from="1753108866071" duration="724000" />
+      <workItem from="1753127001179" duration="3313000" />
+      <workItem from="1753134404609" duration="6984000" />
+      <workItem from="1753361252362" duration="14809000" />
+      <workItem from="1753478861585" duration="4145000" />
+      <workItem from="1753483601300" duration="544000" />
+      <workItem from="1753519259494" duration="15568000" />
+      <workItem from="1753658150659" duration="3727000" />
+      <workItem from="1753703510334" duration="10369000" />
+      <workItem from="1753736224802" duration="6088000" />
+      <workItem from="1753785009299" duration="7710000" />
+      <workItem from="1753817503584" duration="8045000" />
+      <workItem from="1753866275873" duration="6520000" />
+      <workItem from="1753873105123" duration="8807000" />
+      <workItem from="1753962841505" duration="5734000" />
+      <workItem from="1754051252055" duration="16920000" />
+      <workItem from="1754128172676" duration="9714000" />
     </task>
     <servers />
   </component>

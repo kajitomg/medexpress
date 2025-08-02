@@ -1,5 +1,5 @@
 import { ProductBase } from "@/entities/product/model"
-import { useCartStore } from "@/features/cart/store"
+import { useCartStore } from "@/features/cart/provider"
 import { CartItem } from "@/pages/cart/ui/cart-item"
 import { List } from "@/shared/ui"
 

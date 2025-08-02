@@ -1,4 +1,4 @@
-import { fetchAllCategories } from "@/entities/category/services"
+import { fetchNavigationCategoriesList } from "@/entities/category/services/fetch-navigation-categories-list"
 import { AsideList } from "@/widgets/aside/ui/aside-list"
 
 interface AsideProps {
@@ -7,12 +7,12 @@ interface AsideProps {
 
 const Aside = async ({ params }: AsideProps) => {
   const { category_id } = await params
-  const categories = await fetchAllCategories()
+  const categories = await fetchNavigationCategoriesList()
 
   return (
     <div className="w-80 h-full overflow-y-auto pl-2 py-5">
       <AsideList
-        categories={categories || []}
+        categories={categories.data || []}
         selectedCategory={+category_id}
       />
     </div>

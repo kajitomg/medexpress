@@ -1,2 +1,3 @@
-export { fetchAllProducts } from "./fetch-all-products"
-export { fetchOneProduct } from "./fetch-one-product"
+export { fetchCategoriesProductsList } from "./fetch-categories-products-list"
+export { fetchCollectionsProductsList } from "./fetch-collections-products-list"
+export { fetchDetailProductItem } from "./fetch-detail-product-item"

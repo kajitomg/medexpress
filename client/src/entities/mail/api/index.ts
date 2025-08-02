@@ -1,1 +1,1 @@
-export { sendMail } from "./mail"
+export { sendMail } from "./mail-repository"

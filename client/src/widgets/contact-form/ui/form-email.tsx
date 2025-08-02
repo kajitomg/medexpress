@@ -1,3 +1,4 @@
+import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button, Input, Textarea } from "@/shared/ui"
 import {
@@ -9,6 +10,7 @@ import {
   Submit,
 } from "@radix-ui/react-form"
 import { Loader } from "lucide-react"
+import Link from "next/link"
 import { ComponentProps } from "react"
 import {
   FieldErrors,
@@ -134,7 +136,13 @@ const FormEmail = ({
             />
           </Control>
           <Label className="text-sm font-semibold">
-            Согласие на обработку персональных данных
+            Согласие с{" "}
+            <Link
+              href={routes.PRIVATEPOLICY.path}
+              className="text-blue-400 hover:underline"
+            >
+              политикой конфиденциальности
+            </Link>
           </Label>
         </div>
         <div className="min-h-6">

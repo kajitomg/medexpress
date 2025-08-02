@@ -1,1 +1,1 @@
-export { fetchCategory, fetchCategories } from "./category"
+export { fetchCategoriesList } from "./category-repository"

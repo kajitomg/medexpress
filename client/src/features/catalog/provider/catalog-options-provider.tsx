@@ -2,7 +2,11 @@
 
 import { createContext, type ReactNode, useContext, useRef } from "react"
 import { useStore } from "zustand"
-import { CatalogOptionsStore, createCatalogOptionsStore } from "../store"
+import {
+  CatalogOptionsState,
+  CatalogOptionsStore,
+  createCatalogOptionsStore,
+} from "../store"
 
 export type CatalogOptionsStoreApi = ReturnType<
   typeof createCatalogOptionsStore
@@ -14,14 +18,18 @@ export const CatalogOptionsStoreContext = createContext<
 
 export interface CatalogOptionsProviderProps {
   children: ReactNode
+  initialState?: Partial<CatalogOptionsState>
+  skipHydration?: boolean
 }
 
 export const CatalogOptionsProvider = ({
   children,
+  initialState,
+  skipHydration,
 }: CatalogOptionsProviderProps) => {
   const storeRef = useRef<CatalogOptionsStoreApi | null>(null)
   if (storeRef.current === null) {
-    storeRef.current = createCatalogOptionsStore()
+    storeRef.current = createCatalogOptionsStore(initialState, skipHydration)
   }
 
   return (

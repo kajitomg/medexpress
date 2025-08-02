@@ -1,7 +1,7 @@
 "use client"
 
 import { CategoryBase, CategoryOptions } from "@/entities/category/model"
-import { useCatalogOptionsStore } from "@/features/catalog/store"
+import { useCatalogOptionsStore } from "@/features/catalog/provider"
 import { DocumentId, DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
 import { AsideItem } from "@/widgets/aside/ui/aside-item"

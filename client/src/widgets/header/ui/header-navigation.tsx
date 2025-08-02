@@ -1,4 +1,4 @@
-import { fetchAllCategories } from "@/entities/category/services"
+import { fetchNavigationCategoriesList } from "@/entities/category/services/fetch-navigation-categories-list"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import {
@@ -21,16 +21,18 @@ interface HeaderNavigationProps {}
 const HeaderNavigation = async ({
   ...props
 }: NavigationMenuProps & HeaderNavigationProps) => {
-  const categories = await fetchAllCategories()
+  const categories = await fetchNavigationCategoriesList()
   return (
     <NavigationMenu {...props}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
-            {routes.CATALOG().title}
-          </NavigationMenuTrigger>
+          <Link href={routes.CATALOG().path}>
+            <NavigationMenuTrigger className="cursor-pointer">
+              {routes.CATALOG().title}
+            </NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
-            <MenuCatalog initCategoriesList={categories || []} />
+            <MenuCatalog initCategoriesList={categories.data} />
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -41,6 +43,13 @@ const HeaderNavigation = async ({
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href={routes.CONTACTS.path}>{routes.CONTACTS.title}</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href={routes.COLLESCTIONS().path}>
+              {routes.COLLESCTIONS().title}
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

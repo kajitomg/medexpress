@@ -1,71 +1,36 @@
-import {
-  CategoryBase,
-  CategoryOptions,
-} from "@/entities/category/model/category"
-import { fetchAllCategories } from "@/entities/category/services"
+import { CategoryBase } from "@/entities/category/model/category"
 import { DocumentServices } from "@/shared/model/document"
 import { create } from "zustand"
 
-interface CategoriesListState {
-  categories: (CategoryBase & CategoryOptions & DocumentServices)[] | null
+export interface CategoriesListState {
+  categories?: (CategoryBase & DocumentServices)[]
   isLoading: boolean
-  error: string | null
+  error?: string
 }
 
 interface CategoriesListActions {
-  setCategories: (
-    categories: (CategoryBase & CategoryOptions & DocumentServices)[]
-  ) => void
-  fetchCategories: () => Promise<void>
+  setCategories: (categories: (CategoryBase & DocumentServices)[]) => void
+  setLoading: (loading: boolean) => void
+  setError: (error?: string) => void
 }
 
 export type CategoriesListStore = CategoriesListState & CategoriesListActions
 
 const defaultInitState: CategoriesListState = {
-  categories: null,
+  categories: undefined,
   isLoading: false,
-  error: null,
+  error: undefined,
 }
 
-export const useCategoriesListStore = create<CategoriesListStore>((set) => ({
-  ...defaultInitState,
-  setCategories: (
-    categories: (CategoryBase & CategoryOptions & DocumentServices)[]
-  ) => {
-    set({ isLoading: false, error: null, categories })
-  },
-  fetchCategories: async () => {
-    set({ isLoading: true, error: null })
-    try {
-      const fetchedCategories = await fetchAllCategories()
-      set({ categories: fetchedCategories })
-    } catch (error) {
-      if (error instanceof Error) set({ error: error?.message })
-    } finally {
-      set({ isLoading: false })
-    }
-  },
-}))
-
 export const createCategoriesListStore = (
-  initState: CategoriesListState = defaultInitState
+  initState: Partial<CategoriesListState> = defaultInitState
 ) =>
   create<CategoriesListStore>((set) => ({
-    ...initState,
-    setCategories: (
-      categories: (CategoryBase & CategoryOptions & DocumentServices)[]
-    ) => {
-      set({ isLoading: false, error: null, categories })
-    },
-    fetchCategories: async () => {
-      set({ isLoading: true, error: null })
-      try {
-        const fetchedCategories = await fetchAllCategories()
-        set({ categories: fetchedCategories })
-      } catch (error) {
-        if (error instanceof Error) set({ error: error?.message })
-      } finally {
-        set({ isLoading: false })
-      }
-    },
+    ...{ ...defaultInitState, ...initState },
+
+    setCategories: (categories) => set({ categories }),
+
+    setLoading: (isLoading) => set({ isLoading }),
+
+    setError: (error) => set({ error }),
   }))

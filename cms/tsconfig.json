@@ -33,11 +33,11 @@
     ".cache/",
     ".tmp/",
 
-    // Do not include admin files in the server compilation
+    // Do not include admin files in the server collections
     "src/admin/",
     // Do not include test files
     "**/*.test.*",
-    // Do not include plugins in the server compilation
+    // Do not include plugins in the server collections
     "src/plugins/**"
   ]
 }

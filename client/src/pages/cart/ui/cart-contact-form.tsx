@@ -1,7 +1,7 @@
 import { sendCartFormMail } from "@/entities/mail/services/send-cart-form-mail"
 import { ProductBase } from "@/entities/product/model"
 import { CartItem } from "@/features/cart/model"
-import { useCartStore } from "@/features/cart/store"
+import { useCartStore } from "@/features/cart/provider"
 import {
   ContactFormMode,
   ContactFormSchema,

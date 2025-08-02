@@ -381,6 +381,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    childrens: Schema.Attribute.Relation<'oneToMany', 'api::category.category'>;
     code: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -395,7 +396,8 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     media: Schema.Attribute.Media<'images' | 'files'>;
-    parent: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    parent: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -404,42 +406,13 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiClassClass extends Struct.CollectionTypeSchema {
-  collectionName: 'classes';
+export interface ApiCollectionCollection extends Struct.CollectionTypeSchema {
+  collectionName: 'collections';
   info: {
     description: '';
-    displayName: 'class';
-    pluralName: 'classes';
-    singularName: 'class';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::class.class'> &
-      Schema.Attribute.Private;
-    media: Schema.Attribute.Media<'images' | 'files'>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCompilationCompilation extends Struct.CollectionTypeSchema {
-  collectionName: 'compilations';
-  info: {
-    displayName: 'compilation';
-    pluralName: 'compilations';
-    singularName: 'compilation';
+    displayName: 'collection';
+    pluralName: 'collections';
+    singularName: 'collection';
   };
   options: {
     draftAndPublish: true;
@@ -448,49 +421,17 @@ export interface ApiCompilationCompilation extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    descriptions: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::compilation.compilation'
+      'api::collection.collection'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    media: Schema.Attribute.Media<'images' | 'files', true>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiGroupGroup extends Struct.CollectionTypeSchema {
-  collectionName: 'groups';
-  info: {
-    description: '';
-    displayName: 'group';
-    pluralName: 'groups';
-    singularName: 'group';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    class_id: Schema.Attribute.Relation<'oneToOne', 'api::class.class'>;
-    code: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::group.group'> &
-      Schema.Attribute.Private;
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -510,12 +451,16 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
   attributes: {
     categories: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::category.category'
     >;
     code: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    collections: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::collection.collection'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -529,41 +474,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     media: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTypeType extends Struct.CollectionTypeSchema {
-  collectionName: 'types';
-  info: {
-    description: '';
-    displayName: 'type';
-    pluralName: 'types';
-    singularName: 'type';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    group_ids: Schema.Attribute.Relation<'oneToMany', 'api::group.group'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::type.type'> &
-      Schema.Attribute.Private;
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1080,11 +990,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
-      'api::class.class': ApiClassClass;
-      'api::compilation.compilation': ApiCompilationCompilation;
-      'api::group.group': ApiGroupGroup;
+      'api::collection.collection': ApiCollectionCollection;
       'api::product.product': ApiProductProduct;
-      'api::type.type': ApiTypeType;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -16,10 +16,6 @@ const DATA = [
     id: 3,
     title: "Конструктор кабинета",
   },
-  {
-    id: 4,
-    title: "Заказать консультацию",
-  },
 ]
 
 interface ServicesProps {

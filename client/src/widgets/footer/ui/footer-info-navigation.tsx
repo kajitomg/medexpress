@@ -35,7 +35,7 @@ const FooterInfoNavigation = ({
             href={routes.ABOUT.path}
             className={cn(
               navigationMenuTriggerStyle(),
-              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto "
+              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto focus:bg-transparent"
             )}
           >
             {routes.ABOUT.title}
@@ -46,7 +46,7 @@ const FooterInfoNavigation = ({
             href={routes.CONTACTS.path}
             className={cn(
               navigationMenuTriggerStyle(),
-              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto "
+              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto focus:bg-transparent"
             )}
           >
             {routes.CONTACTS.title}
@@ -57,7 +57,7 @@ const FooterInfoNavigation = ({
             href={routes.SITEMAP.path}
             className={cn(
               navigationMenuTriggerStyle(),
-              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto "
+              "text-accent-foreground bg-transparent hover:bg-transparent hover:text-gray-200 font-bold p-0 h-auto focus:bg-transparent"
             )}
           >
             {routes.SITEMAP.title}
