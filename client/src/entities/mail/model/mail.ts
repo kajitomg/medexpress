@@ -11,13 +11,13 @@ interface BodyCart {
 }
 
 interface BodyEmail {
-  type: "email"
+  mode: "email"
   email: string
   phonenumber: never
 }
 
 interface BodyPhonenumber {
-  type: "phonenumber"
+  mode: "phonenumber"
   phonenumber: string
   email: never
 }

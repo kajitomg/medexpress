@@ -5,22 +5,20 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Subtitle,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-  Title,
+  Typography,
 } from "@/shared/ui"
-import {
-  ContactFormMode,
-  ContactFormSchema,
-  FormStatus,
-} from "@/widgets/contact-form/model"
+import { Alert, AlertTitle } from "@/shared/ui/alert"
+import { ContactFormSchema, FormStatus } from "@/widgets/contact-form/model"
+import { FormEmail } from "@/widgets/contact-form/ui/form-email"
+import { FormPhonenumber } from "@/widgets/contact-form/ui/form-phonenumber"
+import { CheckCheck, X } from "lucide-react"
 import { BaseSyntheticEvent, ComponentProps, useState } from "react"
-import { useContactForm, useContactFormModeStore } from "../provider"
-import { FormEmail } from "./form-email"
-import { FormPhonenumber } from "./form-phonenumber"
+import { toast } from "sonner"
+import { useContactForm } from "../provider"
 
 interface ContactFormProps {
   title?: string
@@ -38,16 +36,18 @@ const ContactForm = ({
   className,
   ...props
 }: ComponentProps<"div"> & ContactFormProps) => {
-  const [message, setMessage] = useState<string | null>(null)
   const [status, setStatus] = useState<FormStatus>("idle")
-  const mode = useContactFormModeStore((state) => state.mode)
-  const setMode = useContactFormModeStore((state) => state.setMode)
   const methods = useContactForm()
-
+  const mode = methods.watch("mode")
   const onSubmit = methods.handleSubmit(async (data, event) => {
     if (!data.terms) {
+      toast.custom(() => (
+        <Alert variant="destructive">
+          <X />
+          <AlertTitle>Не принято пользовательское соглашение.</AlertTitle>
+        </Alert>
+      ))
       setStatus("error")
-      setMessage("Не принято пользовательское соглашение.")
       return {
         success: false,
         message: "Не принято пользовательское соглашение.",
@@ -66,16 +66,31 @@ const ContactForm = ({
             terms: false,
             email: "",
           })
+          toast.custom(() => (
+            <Alert className="text-green-600 sm:w-100 dark:text-green-400">
+              <CheckCheck />
+              <AlertTitle>Запрос успешно отправлен</AlertTitle>
+            </Alert>
+          ))
           setStatus("send")
-          setMessage(response.message)
         } else {
+          toast.custom(() => (
+            <Alert variant="destructive">
+              <X />
+              <AlertTitle>{response.message}</AlertTitle>
+            </Alert>
+          ))
           setStatus("error")
-          setMessage(response.message)
         }
         return response
       } catch (e) {
+        toast.custom(() => (
+          <Alert variant="destructive">
+            <X />
+            <AlertTitle>Произошла непредвиденная ошибка.</AlertTitle>
+          </Alert>
+        ))
         setStatus("error")
-        setMessage("Произошла непредвиденная ошибка.")
         return {
           success: false,
           message: "Произошла непредвиденная ошибка.",
@@ -86,45 +101,38 @@ const ContactForm = ({
   return (
     <Card className={cn(className)} {...props}>
       <CardHeader>
-        <Title asChild className="text-xl">
-          <h6>
-            <strong>{title}</strong>
-          </h6>
-        </Title>
-        <Subtitle className="text-sm">{subtitle}</Subtitle>
+        <Typography asChild variant="h4">
+          <h4>{title}</h4>
+        </Typography>
+        <Typography variant="muted">{subtitle}</Typography>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue={ContactFormMode.EMAIL} value={mode}>
+        <Tabs defaultValue={"email"} value={mode} className="gap-6">
           <TabsList className="w-full min-w-0">
             <TabsTrigger
-              value={ContactFormMode.EMAIL}
+              value={"email"}
               className="cursor-pointer min-w-0"
-              onClick={() => setMode(ContactFormMode.EMAIL)}
+              onClick={() => methods.setValue("mode", "email")}
             >
               Почта
             </TabsTrigger>
             <TabsTrigger
-              value={ContactFormMode.PHONENUMBER}
+              value={"phonenumber"}
               className="cursor-pointer min-w-0"
-              onClick={() => setMode(ContactFormMode.PHONENUMBER)}
+              onClick={() => {
+                methods.setValue("mode", "phonenumber")
+              }}
             >
               Телефон
             </TabsTrigger>
           </TabsList>
-          <TabsContent value={ContactFormMode.EMAIL} className=" min-w-0">
-            <FormEmail
-              isLoading={status === "sending"}
-              isErrorRequest={status === "error"}
-              onSubmit={onSubmit}
-              message={message}
-            />
+          <TabsContent value={"email"} className=" min-w-0">
+            <FormEmail isLoading={status === "sending"} onSubmit={onSubmit} />
           </TabsContent>
-          <TabsContent value={ContactFormMode.PHONENUMBER}>
+          <TabsContent value={"phonenumber"}>
             <FormPhonenumber
               isLoading={status === "sending"}
-              isErrorRequest={status === "error"}
               onSubmit={onSubmit}
-              message={message}
             />
           </TabsContent>
         </Tabs>

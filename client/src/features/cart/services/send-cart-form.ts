@@ -1,18 +1,16 @@
 "use server"
 
 import { sendMail } from "@/entities/mail/api"
-import {
-  Body,
-  BodyCart,
-  BodyEmail,
-  BodyPhonenumber,
-} from "@/entities/mail/model"
+import { ProductBase } from "@/entities/product/model"
+import { CartItem } from "@/features/cart/model"
+import { ContactFormSchema } from "@/widgets/contact-form/model"
 import Mail from "nodemailer/lib/mailer"
 
-const sendCartFormMail = async (
-  body: Body & BodyCart & (BodyEmail | BodyPhonenumber)
+const sendCartForm = async (
+  // ContactFormSchema невозможная область применения
+  body: ContactFormSchema & { cartItems: CartItem<ProductBase>[] }
 ) => {
-  const { firstname, message, cartItems, type, phonenumber, email } = body
+  const { firstname, message, cartItems, mode } = body
 
   const mailOptions: Mail.Options = {
     from: `"Сайт" <${process.env.SMTP_USER}>`,
@@ -20,8 +18,8 @@ const sendCartFormMail = async (
     subject: "Новый запрос с сайта",
     html: `
       <p><strong>Имя:</strong> ${firstname}</p>
-      ${type === "email" ? `<p><strong>Email:</strong> ${email}</p>` : ""}
-      ${type === "phonenumber" ? `<p><strong>Номер телефона:</strong> ${phonenumber}</p>` : ""}
+      ${mode === "email" ? `<p><strong>Email:</strong> ${body.email}</p>` : ""}
+      ${mode === "phonenumber" ? `<p><strong>Номер телефона:</strong> ${body.phonenumber}</p>` : ""}
       ${message ? `<p><strong>Сообщение:</strong> ${message}</p>` : ""}
       <p><strong>Выбранные товары:</strong></p>
       ${
@@ -42,4 +40,4 @@ const sendCartFormMail = async (
   }
 }
 
-export { sendCartFormMail }
+export { sendCartForm }

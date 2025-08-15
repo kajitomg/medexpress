@@ -1,6 +1,8 @@
 import { ContactFormDetails } from "@/pages/contacts/ui/contact-form-details"
 import { cn } from "@/shared/lib"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
+import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { sendContactForm } from "@/widgets/contact-form/services"
 import { ContactForm } from "@/widgets/contact-form/ui/contact-form"
 import Image from "next/image"
 import * as React from "react"
@@ -10,8 +12,10 @@ interface SectionContactFormProps {}
 
 const SectionContactForm = ({
   className,
-  ref,
 }: ComponentProps<"section"> & SectionContactFormProps) => {
+  const handleSubmit = async (data: ContactFormSchema) => {
+    return await sendContactForm(data)
+  }
   return (
     <ContentSection
       className={cn(
@@ -20,7 +24,7 @@ const SectionContactForm = ({
       )}
     >
       <ContentSectionContent className="h-auto flex justify-center items-center gap-8 flex-col-reverse xl:flex-row">
-        <ContactForm className="max-w-124 w-full" />
+        <ContactForm className="max-w-124 w-full" handleSubmit={handleSubmit} />
         <ContactFormDetails />
       </ContentSectionContent>
       <Image

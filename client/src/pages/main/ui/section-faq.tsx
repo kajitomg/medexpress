@@ -3,6 +3,7 @@ import {
   ContentSection,
   ContentSectionContent,
   ContentSectionHeader,
+  Typography,
 } from "@/shared/ui"
 import { ContentFaq } from "@/widgets/section-faq/ui/content-faq"
 import * as React from "react"
@@ -35,9 +36,11 @@ const SectionFaq = ({ className }: ComponentProps<"section">) => {
   return (
     <ContentSection className={cn(className)}>
       <ContentSectionHeader>
-        <h4 className="hover-scale text-center font-bold text-2xl sm:text-4xl md:text-5xl">
-          <strong>Вопросы и ответы</strong>
-        </h4>
+        <Typography asChild variant="h2">
+          <h2 className="hover-scale text-center">
+            <strong>Вопросы и ответы</strong>
+          </h2>
+        </Typography>
       </ContentSectionHeader>
       <ContentSectionContent className="w-full">
         <ContentFaq items={DATA} />

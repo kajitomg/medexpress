@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Typography,
 } from "@/shared/ui"
 import { useContactForm } from "@/widgets/contact-form/provider"
 import Image from "next/image"
@@ -47,8 +48,10 @@ const ContentServices = ({
       </CardContent>
       <div className="min-w-60 md:min-w-90 py-4 md:py-8">
         <CardHeader className="">
-          <CardTitle className="font-bold text-xl sm:text-2xl lg:text-3xl">
-            Чем мы можем помочь?
+          <CardTitle>
+            <Typography asChild variant="h3">
+              <h3>Чем мы можем помочь?</h3>
+            </Typography>
           </CardTitle>
           <ul className="text-nowrap text-left flex flex-col items-start pt-2 md:pt-6">
             {items.map((item) => (

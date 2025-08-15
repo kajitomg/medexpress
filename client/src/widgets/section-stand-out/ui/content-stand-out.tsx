@@ -1,3 +1,4 @@
+import { Typography } from "@/shared/ui"
 import { LucideProps } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -23,15 +24,15 @@ const ContentStandOut = ({
         {items.map((item) => (
           <div
             key={item.id}
-            className="grid items-center gap-4 ms:gap-2 md:gap-4 content-start justify-start"
+            className="grid items-center gap-2 lg:gap-4 content-start justify-start"
           >
             <item.icon className="size-5 md:size-6" />
-            <h5 className="font-bold text-base md:text-xl col-start-2">
-              {item.title}
-            </h5>
-            <span className="text-gray-700 text-sm md:text-base font-light col-start-2">
+            <Typography asChild variant="h4" className="col-start-2">
+              <h4>{item.title}</h4>
+            </Typography>
+            <Typography variant="muted" className="col-start-2">
               {item.description}
-            </span>
+            </Typography>
           </div>
         ))}
       </div>

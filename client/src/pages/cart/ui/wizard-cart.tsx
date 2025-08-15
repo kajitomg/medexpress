@@ -11,7 +11,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/ui"
-import { ContactFormModeProvider } from "@/widgets/contact-form/provider"
 import * as React from "react"
 import { ComponentProps, useState } from "react"
 
@@ -66,9 +65,7 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
           </div>
         </TabsContent>
         <TabsContent value={"form"} className="flex-1 min-h-0">
-          <ContactFormModeProvider>
-            <CartContactForm cartItems={products} />
-          </ContactFormModeProvider>
+          <CartContactForm cartItems={products} />
         </TabsContent>
       </Tabs>
     </div>

@@ -1,5 +1,6 @@
 import "@/app/styles/globals.css"
 import { CartProvider } from "@/features/cart/provider"
+import { Toaster } from "@/shared/ui/sonner"
 import { Metadata } from "next"
 
 import { Inter, Sora } from "next/font/google"
@@ -20,6 +21,7 @@ const RootLayout = ({
     <html lang="en">
       <body className={`${inter.variable} ${sora.variable} font-sans`}>
         <CartProvider>{children}</CartProvider>
+        <Toaster />
       </body>
     </html>
   )

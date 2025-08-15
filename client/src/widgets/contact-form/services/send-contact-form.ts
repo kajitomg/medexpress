@@ -1,13 +1,11 @@
 "use server"
 
 import { sendMail } from "@/entities/mail/api"
-import { Body, BodyEmail, BodyPhonenumber } from "@/entities/mail/model"
+import { ContactFormSchema } from "@/widgets/contact-form/model"
 import Mail from "nodemailer/lib/mailer"
 
-const sendContactFormMail = async (
-  body: Body & (BodyEmail | BodyPhonenumber)
-) => {
-  const { firstname, message, type, phonenumber, email } = body
+const sendContactForm = async (body: ContactFormSchema) => {
+  const { firstname, message, mode } = body
 
   const mailOptions: Mail.Options = {
     from: `"Сайт" <${process.env.SMTP_USER}>`,
@@ -15,8 +13,8 @@ const sendContactFormMail = async (
     subject: "Новый запрос с сайта",
     html: `
       <p><strong>Имя:</strong> ${firstname}</p>
-      ${type === "email" ? `<p><strong>Email:</strong> ${email}</p>` : ""}
-      ${type === "phonenumber" ? `<p><strong>Номер телефона:</strong> ${phonenumber}</p>` : ""}
+      ${mode === "email" ? `<p><strong>Email:</strong> ${body.email}</p>` : ""}
+      ${mode === "phonenumber" ? `<p><strong>Номер телефона:</strong> ${body.phonenumber}</p>` : ""}
       ${message ? `<p><strong>Сообщение:</strong> ${message}</p>` : ""}
     `,
   }
@@ -29,4 +27,4 @@ const sendContactFormMail = async (
   }
 }
 
-export { sendContactFormMail }
+export { sendContactForm }

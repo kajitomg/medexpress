@@ -1,23 +1,32 @@
 "use client"
 
 import {
+  contactFormSchema,
   ContactFormSchema,
-  contactFormSchemaEmail,
-  contactFormSchemaPhonenumber,
 } from "@/widgets/contact-form/model"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ReactNode } from "react"
-import { FormProvider, useForm, useFormContext } from "react-hook-form"
+import {
+  FormProvider,
+  useForm,
+  useFormContext,
+  UseFormProps,
+} from "react-hook-form"
 
 export const ContactFormProvider = ({
-  schema,
   children,
+  options,
 }: {
-  schema: typeof contactFormSchemaEmail | typeof contactFormSchemaPhonenumber
   children: ReactNode
+  options?: Omit<UseFormProps<ContactFormSchema>, "resolver">
 }) => {
   const methods = useForm<ContactFormSchema>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      mode: "email",
+    },
+    mode: "onChange",
+    ...options,
   })
 
   return <FormProvider {...methods}>{children}</FormProvider>

@@ -3,6 +3,7 @@
 import { cn } from "@/shared/lib"
 import { buildBreadcrumbs } from "@/shared/lib/build-breadcrumbs"
 import { RouteEntry } from "@/shared/model"
+import { Typography } from "@/shared/ui"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -51,9 +52,11 @@ const PageHeroRoutes = ({
         )}
       </PageHeroBackground>
       <PageHeroContent className="flex flex-col justify-center items-center">
-        <h1 className="max-w-7xl cursor-default text-3xl sm:text-4xl lg:text-5xl hover:scale-102 text-white transition-transform duration-200 text-center">
-          <strong>{page.title}</strong>
-        </h1>
+        <Typography asChild variant="h1">
+          <h1 className="text-white text-center">
+            <strong>{page.title}</strong>
+          </h1>
+        </Typography>
         <nav aria-label="breadcrumb" className="mt-4">
           <Breadcrumb>
             {breadcrumbs && (

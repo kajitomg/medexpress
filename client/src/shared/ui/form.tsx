@@ -1,20 +1,19 @@
 "use client"
 
-import * as React from "react"
+import { cn } from "@/shared/lib/utils"
+import { Label } from "@/shared/ui/label"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
+import * as React from "react"
 import {
   Controller,
-  FormProvider,
-  useFormContext,
-  useFormState,
   type ControllerProps,
   type FieldPath,
   type FieldValues,
+  FormProvider,
+  useFormContext,
+  useFormState,
 } from "react-hook-form"
-
-import { cn } from "@/shared/lib/utils"
-import { Label } from "@/shared/ui/label"
 
 const Form = FormProvider
 
@@ -97,7 +96,7 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive", className)}
+      className={cn("font-bold data-[error=true]:text-destructive", className)}
       htmlFor={formItemId}
       {...props}
     />

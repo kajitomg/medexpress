@@ -2,6 +2,7 @@ import validator from "validator"
 import { z } from "zod"
 
 const contactFormSchemaEmail = z.object({
+  mode: z.literal("email"),
   firstname: z
     .string("Обязательное поле")
     .min(2, "Минимальная длина поля 2 символа"),
@@ -19,6 +20,7 @@ const contactFormSchemaEmail = z.object({
 })
 
 const contactFormSchemaPhonenumber = z.object({
+  mode: z.literal("phonenumber"),
   firstname: z
     .string("Обязательное поле")
     .min(2, "Минимальная длина поля 2 символа"),
@@ -37,12 +39,21 @@ const contactFormSchemaPhonenumber = z.object({
     ),
 })
 
+const contactFormSchema = z.discriminatedUnion("mode", [
+  contactFormSchemaEmail,
+  contactFormSchemaPhonenumber,
+])
+
+type ContactFormSchema = z.infer<typeof contactFormSchema>
+
 type ContactFormSchemaEmail = z.infer<typeof contactFormSchemaEmail>
 type ContactFormSchemaPhonenumber = z.infer<typeof contactFormSchemaPhonenumber>
 
-type ContactFormSchema = ContactFormSchemaEmail | ContactFormSchemaPhonenumber
-
-export { contactFormSchemaEmail, contactFormSchemaPhonenumber }
+export {
+  contactFormSchemaEmail,
+  contactFormSchemaPhonenumber,
+  contactFormSchema,
+}
 export type {
   ContactFormSchema,
   ContactFormSchemaEmail,

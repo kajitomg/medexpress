@@ -3,6 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Typography,
 } from "@/shared/ui"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -29,11 +30,13 @@ const ContentFaq = ({
             value={item.value}
             className="rounded-4xl px-2 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3"
           >
-            <AccordionTrigger className="text-base md:text-lg font-bold hover:no-underline cursor-pointer">
-              {item.question}
+            <AccordionTrigger className="cursor-pointer">
+              <Typography asChild variant="h4">
+                <h4>{item.question}</h4>
+              </Typography>
             </AccordionTrigger>
-            <AccordionContent className="text-sm md:text-base text-gray-400 md:mt-2">
-              {item.answer}
+            <AccordionContent>
+              <Typography variant="muted">{item.answer}</Typography>
             </AccordionContent>
           </AccordionItem>
         ))}

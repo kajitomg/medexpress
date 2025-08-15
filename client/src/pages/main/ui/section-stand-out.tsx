@@ -2,6 +2,7 @@ import {
   ContentSection,
   ContentSectionContent,
   ContentSectionHeader,
+  Typography,
 } from "@/shared/ui"
 import { ContentStandOut } from "@/widgets/section-stand-out/ui/content-stand-out"
 import { BookCheck, Headset, Lightbulb, ShieldCheck } from "lucide-react"
@@ -47,9 +48,11 @@ const SectionStandOut = ({
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
-        <h4 className="hover-scale font-bold text-center text-2xl sm:text-4xl md:text-5xl">
-          <strong>Почему стоит выбрать нас ?</strong>
-        </h4>
+        <Typography asChild variant="h2">
+          <h2 className="hover-scale text-center">
+            <strong>Почему выбирают нас ?</strong>
+          </h2>
+        </Typography>
       </ContentSectionHeader>
       <ContentSectionContent>
         <ContentStandOut items={DATA} />

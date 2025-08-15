@@ -1,8 +1,8 @@
-import { sendContactFormMail } from "@/entities/mail/services/send-contact-form-mail"
 import { ContactFormDetails } from "@/pages/about/ui/contact-form-details"
 import { cn } from "@/shared/lib"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { sendContactForm } from "@/widgets/contact-form/services"
 import { ContactForm } from "@/widgets/contact-form/ui/contact-form"
 import Image from "next/image"
 import * as React from "react"
@@ -16,15 +16,8 @@ const SectionContactForm = ({
   className,
   formRef,
 }: ComponentProps<"section"> & SectionContactFormProps) => {
-  const callbacks = {
-    handleSubmit: async (data: ContactFormSchema) => {
-      const type: "email" | "phonenumber" =
-        (data?.email && "email") || (data?.phonenumber && "phonenumber")
-      return await sendContactFormMail({
-        type,
-        ...data,
-      })
-    },
+  const handleSubmit = async (data: ContactFormSchema) => {
+    return await sendContactForm(data)
   }
 
   return (
@@ -38,7 +31,7 @@ const SectionContactForm = ({
         <ContactFormDetails />
         <ContactForm
           className="max-w-124 w-full"
-          handleSubmit={callbacks.handleSubmit}
+          handleSubmit={handleSubmit}
           ref={formRef}
         />
       </ContentSectionContent>

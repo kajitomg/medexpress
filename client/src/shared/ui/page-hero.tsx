@@ -16,7 +16,7 @@ const PageHero = ({
   return (
     <header
       id="container"
-      className={cn(`relative`, className)}
+      className={cn(`relative flex flex-col`, className)}
       style={{
         minHeight: full ? "calc(100vh - 128px)" : `${height * 4}px`,
       }}
@@ -29,7 +29,7 @@ const PageHeroBackground = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       id="container-background"
-      className={cn("absolute inset-0 w-full h-full", className)}
+      className={cn("absolute inset-0 w-full h-full -z-1", className)}
       {...props}
     />
   )
@@ -39,7 +39,7 @@ const PageHeroContent = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       id="container-content"
-      className={cn("absolute w-full h-full px-2 lg:px-4", className)}
+      className={cn("relative flex-0 grow-1 p-2 lg:p-4", className)}
       {...props}
     />
   )

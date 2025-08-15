@@ -1,16 +1,9 @@
-import { sendCartFormMail } from "@/entities/mail/services/send-cart-form-mail"
 import { ProductBase } from "@/entities/product/model"
 import { CartItem } from "@/features/cart/model"
 import { useCartStore } from "@/features/cart/provider"
-import {
-  ContactFormMode,
-  ContactFormModeSchema,
-  ContactFormSchema,
-} from "@/widgets/contact-form/model"
-import {
-  ContactFormProvider,
-  useContactFormModeStore,
-} from "@/widgets/contact-form/provider"
+import { sendCartForm } from "@/features/cart/services/send-cart-form"
+import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import { ContactForm } from "@/widgets/contact-form/ui"
 
 interface CartContactFormProps {
@@ -18,19 +11,14 @@ interface CartContactFormProps {
 }
 
 const CartContactForm = ({ cartItems }: CartContactFormProps) => {
-  const mode = useContactFormModeStore((state) => state.mode)
   const clearCart = useCartStore((state) => state.clearCart)
-  const schema = ContactFormModeSchema[mode]
 
   const callbacks = {
     handleSubmit: async (data: ContactFormSchema) => {
-      const type = mode === ContactFormMode.EMAIL ? "email" : "phonenumber"
-
       try {
-        const response = await sendCartFormMail({
-          type,
-          cartItems: cartItems,
+        const response = await sendCartForm({
           ...data,
+          cartItems: cartItems,
         })
         if (response.success) {
           clearCart()
@@ -44,7 +32,7 @@ const CartContactForm = ({ cartItems }: CartContactFormProps) => {
   }
 
   return (
-    <ContactFormProvider schema={schema}>
+    <ContactFormProvider>
       <ContactForm
         handleSubmit={callbacks.handleSubmit}
         title="Заказ:"

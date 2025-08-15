@@ -5,7 +5,6 @@ import { CartContactForm } from "@/pages/cart/ui/cart-contact-form"
 import { CartList } from "@/pages/cart/ui/cart-list"
 import { cn } from "@/shared/lib"
 import { EmptyState } from "@/shared/ui"
-import { ContactFormModeProvider } from "@/widgets/contact-form/provider"
 import { Separator } from "@radix-ui/react-separator"
 import * as React from "react"
 import { ComponentProps } from "react"
@@ -38,9 +37,7 @@ const Cart = ({ className, ...props }: ComponentProps<"div">) => {
         className="w-[1px] bg-(--color-brand)/40"
       />
       <div className="flex-none basis-100 p-1 xl:p-4">
-        <ContactFormModeProvider>
-          <CartContactForm cartItems={products} />
-        </ContactFormModeProvider>
+        <CartContactForm cartItems={products} />
       </div>
     </div>
   )
