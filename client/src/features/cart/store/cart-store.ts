@@ -1,6 +1,7 @@
 import { ProductBase } from "@/entities/product/model/product"
+import { fetchDetailProductItemByDocumentId } from "@/entities/product/services/fetch-detail-product-item-by-document-id"
 import { CartItem } from "@/features/cart/model/cart"
-import { DocumentId } from "@/shared/model/document"
+import { DocumentId, DocumentServices } from "@/shared/model/document"
 import { Error } from "@/shared/model/error"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
@@ -13,7 +14,7 @@ interface CartState {
 }
 
 interface CartActions {
-  addItemToCart: (product: ProductBase) => void
+  addItemToCart: (product: ProductBase) => Promise<void>
   deleteItemFromCart: (id: DocumentId) => void
   incrementItemInCart: (id: DocumentId) => void
   decrementItemInCart: (id: DocumentId) => void
@@ -37,7 +38,13 @@ export const createCartStore = (
       persist(
         (set) => ({
           ...{ ...defaultInitState, ...initState },
-          addItemToCart: (item: ProductBase) => {
+          addItemToCart: async (item: ProductBase & DocumentServices) => {
+            if (item.documentId) {
+              const response = await fetchDetailProductItemByDocumentId(
+                item.documentId
+              )
+              item = response.data
+            }
             set((state) => {
               const productIndex = state.products.findIndex(
                 (product) => product.item.id === item.id

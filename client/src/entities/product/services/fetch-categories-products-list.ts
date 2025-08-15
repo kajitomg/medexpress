@@ -1,11 +1,10 @@
 "use server"
 
 import { fetchProductsList } from "@/entities/product/api/product-repository"
-import { DocumentId } from "@/shared/model"
 import qs from "qs"
 
 const fetchCategoriesProductsList = async (
-  categoryId: DocumentId,
+  slug: string,
   page: number,
   search?: string
 ) => {
@@ -17,7 +16,9 @@ const fetchCategoriesProductsList = async (
     },
     filters: {
       categories: {
-        $in: categoryId,
+        slug: {
+          $in: slug,
+        },
       },
       $or: [] as Record<string, unknown>[],
     },
@@ -30,9 +31,9 @@ const fetchCategoriesProductsList = async (
   }
   if (search) {
     queryObj.filters.$or.push(
-      { title: { $contains: search } },
-      { description: { $contains: search } },
-      { code: { $contains: search } }
+      { title: { $containsi: search } },
+      { description: { $containsi: search } },
+      { code: { $containsi: search } }
     )
   }
 

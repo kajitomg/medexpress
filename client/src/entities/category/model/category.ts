@@ -5,6 +5,7 @@ import { Media } from "@/shared/model/media"
 
 export type CategoryBase = {
   id: DocumentId
+  slug: string
   code: string
   title: string
   description?: string

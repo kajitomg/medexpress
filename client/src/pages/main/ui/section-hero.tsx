@@ -6,7 +6,6 @@ import {
   PageHeroBackground,
   PageHeroContent,
 } from "@/shared/ui/page-hero"
-import { Title } from "@/shared/ui/title"
 import {
   ContactFormMode,
   contactFormSchemaEmail,
@@ -60,18 +59,18 @@ const SectionHero = ({
           height="1080"
           className="h-full w-full object-cover"
         />
-        <div className="absolute w-full h-1/4 bottom-0 from-transparent to-white bg-gradient-to-b" />
+        <div className="absolute w-full h-1/4 bottom-0 from-transparent to-background bg-gradient-to-b" />
       </PageHeroBackground>
       <PageHeroContent>
-        <div className="relative max-w-260 top-2/5 left-1/2 -translate-1/2 flex flex-col items-center">
-          <Title className="text-6xl font-black cursor-default hover-scale text-center">
+        <div className="relative max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl top-2/5 left-1/2 -translate-1/2 flex flex-col items-center p-4 md:p-8">
+          <h1 className="text-4xl font-black hover-scale text-center md:text-5xl lg:text-6xl">
             <strong>
               <span className="text-(--color-brand)">Medexpress</span> - ваш
               надежный партнер в мире медицинского оборудования
             </strong>
-          </Title>
+          </h1>
           <div className="max-w-140 mt-12 text-center">
-            <span className="text-2xl cursor-default">
+            <span className="text-xl cursor-default md:text-2xl">
               <strong>Записаться на консультацию</strong>
             </span>
             <div className="mt-4">

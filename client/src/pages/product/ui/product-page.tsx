@@ -1,10 +1,13 @@
 "use client"
 
 import { CategoryBase } from "@/entities/category/model"
+import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
 import { useProductDetailsStore } from "@/features/product-details/provider/product-details-provider"
+import { ProductsCategoryList } from "@/pages/product/ui/products-category-list"
 import { routes } from "@/shared/config/routes"
 import { urlBuilder } from "@/shared/lib/url-builder"
-import { Button, List, Title } from "@/shared/ui"
+import { Button, Card, CardContent, List } from "@/shared/ui"
+import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import Image from "next/image"
 import Link from "next/link"
 import * as React from "react"
@@ -21,61 +24,90 @@ const ProductPage = () => {
       className="max-w-full justify-start truncate text-xs cursor-pointer"
     >
       <Link
-        href={routes.CATALOG(category.id).path}
+        href={routes.CATALOG(category.slug).path}
         onClick={(e) => e.stopPropagation()}
       >
         {category.title}
       </Link>
     </Button>
   )
-
   return (
-    <div className="flex flex-row">
-      <div className="flex-none basis-200 h-[calc(100vh-80px)] p-5">
-        <Image
-          src={
-            product?.media?.url
-              ? urlBuilder(product.media?.url)
-              : urlBuilder("/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp")
-          }
-          alt="alt"
-          width="1024"
-          height="683"
-          className="w-full h-full rounded-3xl object-cover"
-        />
-      </div>
-      <div className="basis-auto p-5">
-        <Title className={"font-bold text-4xl"}>{product?.title}</Title>
-        <List
-          items={product?.categories}
-          renderItem={renderCategoryItem}
-          className="block space-x-1 space-y-1"
-        />
+    <div className="container mx-auto max-w-7xl px-4 py-8">
+      <div className="flex flex-wrap items-start gap-8">
+        <div
+          className="
+            shrink-0
+            lg:w-[clamp(350px,45%,720px)]
+            w-[100%]
+            max-w-[min(100%,720px)]
+            transition-[width] duration-300 ease-out
+          "
+        >
+          <Card className="overflow-hidden bg-transparent border-none rounded-2xl p-0">
+            <CardContent className="p-0">
+              <AspectRatio ratio={16 / 9} className="bg-muted">
+                <Image
+                  src={
+                    product?.media?.url
+                      ? urlBuilder(product.media?.url)
+                      : urlBuilder(
+                          "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
+                        )
+                  }
+                  alt={product?.title || "Продукт"}
+                  fill
+                  sizes="(min-width: 1280px) 35vw, 80vw"
+                  className="object-cover"
+                  priority
+                />
+              </AspectRatio>
+            </CardContent>
+          </Card>
+        </div>
 
-        <div className="mt-10">
-          <div>
-            <span className="font-bold text-sm">Артикул: </span>
-            <span className="text-sm text-gray-500">{product?.code}</span>
-          </div>
-          <div className="mt-2">
-            <span className="text-sm text-gray-500">
+        <div className="flex-1 min-w-[min(340px,100%)]">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight">
+                {product?.title}
+              </h1>
+            </div>
+
+            <List
+              items={product?.categories}
+              renderItem={renderCategoryItem}
+              className="block space-x-1 space-y-1"
+            />
+
+            <p className="text-muted-foreground leading-7">
               {product?.description}
-            </span>
+            </p>
+
+            <div className="text-sm text-slate-500">
+              Артикул: <span className="font-mono">{product?.code}</span>
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <AddToCartButton product={product} size="lg" />
+            </div>
           </div>
         </div>
-        {/*<div className="mt-10">
-        <div>
-          <span className="font-bold text-lg">Похожие товары</span>
-        </div>
-        <div></div>
       </div>
-      <div className="mt-10">
-        <div>
-          <span className="font-bold text-lg">Отзывы</span>
+
+      <section className="mt-10">
+        <div className="mb-3 flex items-baseline justify-between gap-2">
+          <h2 className="text-xl font-semibold">Похожие товары</h2>
         </div>
-        <div></div>
-      </div>*/}
-      </div>
+
+        <div>
+          <div className="w-full">
+            <ProductsCategoryList
+              categorySlug={product?.categories?.[0].slug}
+              productSlug={product?.slug}
+            />
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

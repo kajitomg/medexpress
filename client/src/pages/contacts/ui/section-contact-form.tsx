@@ -15,13 +15,12 @@ const SectionContactForm = ({
   return (
     <ContentSection
       className={cn(
-        "relative overflow-hidden bg-(--color-brand)/95",
+        "relative overflow-hidden bg-(--color-brand)/95 h-auto xl:h-210",
         className
       )}
-      ref={ref}
     >
-      <ContentSectionContent className="h-full flex justify-center items-center gap-8">
-        <ContactForm className="w-280" />
+      <ContentSectionContent className="h-auto flex justify-center items-center gap-8 flex-col-reverse xl:flex-row">
+        <ContactForm className="max-w-124 w-full" />
         <ContactFormDetails />
       </ContentSectionContent>
       <Image
@@ -29,7 +28,7 @@ const SectionContactForm = ({
         alt="alt"
         width="8000"
         height="5784"
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+        className="absolute top-0 left-0 w-full h-auto object-cover -z-10"
       />
     </ContentSection>
   )

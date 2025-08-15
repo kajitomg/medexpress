@@ -1,6 +1,6 @@
 import { routes } from "@/shared/config/routes"
 import { DocumentId } from "@/shared/model"
-import { List, Title } from "@/shared/ui"
+import { ContentSection, ContentSectionContent, List, Title } from "@/shared/ui"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 
@@ -225,10 +225,14 @@ const PrivacyPolicyPage = () => {
     list: () => <div></div>,
   }
   return (
-    <div>
+    <>
       <PageHeroRoutes page={routes.PRIVATEPOLICY} />
-      <List items={DATA} renderItem={renders.mainLevel} className="my-10" />
-    </div>
+      <ContentSection>
+        <ContentSectionContent>
+          <List items={DATA} renderItem={renders.mainLevel} className="my-10" />
+        </ContentSectionContent>
+      </ContentSection>
+    </>
   )
 }
 

@@ -5,7 +5,7 @@ import qs from "qs"
 
 const fetchNavigationCategoriesList = async () => {
   const queryObj = {
-    fields: ["code", "title"],
+    fields: ["code", "title", "slug"],
     pagination: {
       start: 0,
       limit: 500,
@@ -17,7 +17,7 @@ const fetchNavigationCategoriesList = async () => {
     },
     populate: {
       childrens: {
-        fields: ["code", "title" + ""],
+        fields: ["code", "title", "slug"],
       },
       media: true,
     },

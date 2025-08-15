@@ -1,1 +1,4 @@
-export { fetchCollectionsList } from "./collection-repository"
+export {
+  fetchCollectionsList,
+  fetchCollectionItemBySlug,
+} from "./collection-repository"

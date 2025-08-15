@@ -5,6 +5,7 @@ import { Media } from "@/shared/model/media"
 
 export type CollectionBase = {
   id: DocumentId
+  slug: string
   title: string
   description: string | null
   media?: Media | null

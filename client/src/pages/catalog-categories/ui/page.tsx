@@ -9,7 +9,9 @@ import { CatalogSearchControl } from "@/features/catalog/ui"
 import { CategoriesList } from "@/pages/catalog-categories/ui/categories-list"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
+import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
+import * as React from "react"
 import { useCallback } from "react"
 
 const Page = () => {
@@ -39,10 +41,17 @@ const Page = () => {
   return (
     <>
       <PageHeroRoutes page={routes.CATALOG()} />
-      <div className="m-auto px-4 flex max-w-400 items-center space-x-2 w-full">
-        <CatalogSearchControl />
-      </div>
-      <CategoriesList categories={categories} />
+      <ContentSection>
+        <ContentSectionContent className="max-w-440 w-full">
+          <CatalogSearchControl />
+
+          {categories?.length ? (
+            <CategoriesList categories={categories} className="mt-6" />
+          ) : (
+            <EmptyState title="Категории не найдены" />
+          )}
+        </ContentSectionContent>
+      </ContentSection>
     </>
   )
 }

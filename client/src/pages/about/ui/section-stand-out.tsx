@@ -3,7 +3,6 @@ import {
   ContentSectionContent,
   ContentSectionHeader,
 } from "@/shared/ui"
-import { Title } from "@/shared/ui/title"
 import { ContentStandOut } from "@/widgets/section-stand-out/ui/content-stand-out"
 import {
   BadgeRussianRuble,
@@ -60,11 +59,9 @@ const SectionStandOut = ({
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
-        <Title asChild className="hover-scale cursor-default">
-          <h4>
-            <strong>Почему выбирают нас?</strong>
-          </h4>
-        </Title>
+        <h4 className="hover-scale font-bold text-center text-2xl sm:text-4xl md:text-5xl">
+          <strong>Почему выбирают нас?</strong>
+        </h4>
       </ContentSectionHeader>
       <ContentSectionContent>
         <ContentStandOut items={DATA} />

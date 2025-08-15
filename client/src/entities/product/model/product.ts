@@ -1,17 +1,18 @@
 import { CategoryBase } from "@/entities/category/model"
-import { CompilationBase } from "@/entities/collection/model/collection"
+import { CollectionBase } from "@/entities/collection/model/collection"
 import { DocumentId } from "@/shared/model"
 import { Meta } from "@/shared/model/api"
 import { Media } from "@/shared/model/media"
 
 export type ProductBase = {
   id: DocumentId
+  slug: string
   code: string
   title: string
   description: string | null
   media?: Media | null
   categories?: CategoryBase[]
-  compilations?: CompilationBase[]
+  compilations?: CollectionBase[]
 }
 
 export type ProductListResponse<T extends ProductBase = ProductBase> = {

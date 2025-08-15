@@ -6,11 +6,7 @@ import { SectionContactForm } from "@/pages/about/ui/section-contact-form"
 import { SectionLicenses } from "@/pages/about/ui/section-licenses"
 import { SectionStandOut } from "@/pages/about/ui/section-stand-out"
 import { routes } from "@/shared/config/routes"
-import {
-  ContactFormMode,
-  contactFormSchemaEmail,
-  contactFormSchemaPhonenumber,
-} from "@/widgets/contact-form/model"
+import { ContactFormModeSchema } from "@/widgets/contact-form/model"
 import {
   ContactFormProvider,
   useContactFormModeStore,
@@ -20,13 +16,10 @@ import * as React from "react"
 import { useCallback, useRef } from "react"
 
 const AboutPage = () => {
-  const formRef = useRef<HTMLFormElement>(null)
+  const formRef = useRef<HTMLDivElement>(null)
 
   const mode = useContactFormModeStore((state) => state.mode)
-  const schema =
-    mode === ContactFormMode.EMAIL
-      ? contactFormSchemaEmail
-      : contactFormSchemaPhonenumber
+  const schema = ContactFormModeSchema[mode]
 
   const callbacks = {
     onScrollToForm: useCallback(() => {
@@ -43,7 +36,7 @@ const AboutPage = () => {
       <SectionAboutHero onScrollToForm={callbacks.onScrollToForm} />
       <SectionAboutDescription />
       <SectionStandOut />
-      <SectionContactForm ref={formRef} />
+      <SectionContactForm formRef={formRef} />
       <SectionLicenses />
     </ContactFormProvider>
   )

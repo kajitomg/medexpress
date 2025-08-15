@@ -20,7 +20,7 @@
     },
     "media": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -32,6 +32,11 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "inversedBy": "collections"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

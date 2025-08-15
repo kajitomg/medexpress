@@ -1,35 +1,41 @@
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Logo } from "@/shared/ui/logo"
-import { HeaderActionBar } from "@/widgets/header/ui/header-action-bar"
-import { HeaderCollections } from "@/widgets/header/ui/header-collections"
-import { HeaderNavigation } from "@/widgets/header/ui/header-navigation"
+import { ActionBar } from "@/widgets/header/ui/action-bar"
+import { CollectionsBar } from "@/widgets/header/ui/collections-bar"
+import { Navigation } from "@/widgets/header/ui/navigation"
+import { MenuBurger } from "@/widgets/menu-burger/ui/menu-burger"
+import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import * as React from "react"
 import { ComponentProps } from "react"
+import Error from "../../../../app/error"
 
-interface HeaderProps {}
-
-const Header = ({
-  className,
-  ...props
-}: ComponentProps<"header"> & HeaderProps) => {
+const Header = async ({ className, ...props }: ComponentProps<"header">) => {
   return (
     <header
-      className={cn(className, "w-full h-32 backdrop-blur-3xl")}
+      className={cn(
+        className,
+        "w-full h-32 backdrop-blur-3xl bg-background/30 border-b border-gray-800/10"
+      )}
       {...props}
     >
-      <div className="grid grid-cols-6 content-center justify-items-center items-center py-4 h-20">
+      <div className="h-20 grid grid-cols-6 content-center justify-items-center items-center p-4">
         <div className="col-start-1">
+          <MenuBurger />
+        </div>
+        <div className="col-start-2 col-span-4 md:col-start-1 md:col-span-1 justify-self-start">
           <Logo
             title="Medexpress"
             path={routes.MAIN.path}
-            className="bg-white p-2"
+            className="p-2 text-xl lg:text-3xl"
           />
         </div>
-        <HeaderNavigation className="col-start-2 col-span-4 justify-self-start" />
-        <HeaderActionBar className="col-start-6 col-span-2" />
+        <Navigation className="col-start-2 col-span-4 hidden md:block" />
+        <ActionBar className="col-start-6 col-span-2" />
       </div>
-      <HeaderCollections />
+      <ErrorBoundary errorComponent={Error}>
+        <CollectionsBar className="h-12" />
+      </ErrorBoundary>
     </header>
   )
 }

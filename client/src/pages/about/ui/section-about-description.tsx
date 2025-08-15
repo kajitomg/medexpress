@@ -5,12 +5,14 @@ const SectionAboutDescription = () => {
   return (
     <>
       <ContentSection>
-        <ContentSectionContent className="flex items-center p-4">
-          <div className="w-300 text-center">
-            <h6 className="font-bold text-5xl">О нас</h6>
+        <ContentSectionContent className="flex flex-col lg:flex-row gap-4 items-center p-4">
+          <div className="text-center flex-none basis-1/2">
+            <h6 className="font-bold text-center text-2xl sm:text-4xl md:text-5xl">
+              О компании
+            </h6>
           </div>
-          <div className="flex flex-col items-center justify-center max-w-250">
-            <span className="text-gray-700 font-light">
+          <div className="flex flex-col items-center justify-center flex-none basis-1/2 mt-6 lg:mt-0">
+            <span className="text-gray-700 text-sm md:text-base font-light w-full">
               Наша компания осуществляет продажу медицинской техники и расходных
               материалов на территории Южного Федерального Округа и других
               регионов Российской Федерации. Компания ООО «Medexpress» успешно
@@ -20,7 +22,7 @@ const SectionAboutDescription = () => {
               медицинского оборудования в более чем 100 городов Российской
               Федерации.
             </span>
-            <span className="mt-8 text-gray-700 font-light">
+            <span className="mt-8 text-gray-700 text-sm md:text-base font-light w-full">
               В «Medexpress» мы верим, что доступ к современному медицинскому
               оборудованию – это залог эффективной диагностики, качественного
               лечения и, в конечном итоге, здоровья нации. Наша компания
@@ -31,10 +33,10 @@ const SectionAboutDescription = () => {
           </div>
         </ContentSectionContent>
       </ContentSection>
-      <ContentSection>
-        <ContentSectionContent className="flex items-center p-4">
-          <div className="flex flex-col items-centermax-w-250">
-            <span className="text-gray-700 font-light">
+      <ContentSection className="bg-(--color-brand)">
+        <ContentSectionContent className="flex flex-col-reverse lg:flex-row  gap-4 items-center p-4">
+          <div className="flex flex-col items-center flex-none basis-1/2 mt-6 lg:mt-0">
+            <span className="text-gray-200 text-sm md:text-base font-light">
               Мы стремимся быть больше, чем просто поставщиком. Наша миссия –
               создать надежную логистическую экосистему, которая соединяет
               передовых производителей медицинского оборудования с медицинскими
@@ -43,8 +45,10 @@ const SectionAboutDescription = () => {
               пациенты получали своевременную и квалифицированную помощь.
             </span>
           </div>
-          <div className="w-300 text-center">
-            <h6 className="font-bold text-5xl">Наша миссия</h6>
+          <div className="text-center flex-none basis-1/2">
+            <h6 className="font-bold text-center text-2xl sm:text-4xl md:text-5xl text-accent">
+              Наша миссия
+            </h6>
           </div>
         </ContentSectionContent>
       </ContentSection>

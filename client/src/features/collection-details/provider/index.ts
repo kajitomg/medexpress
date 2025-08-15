@@ -1,0 +1,1 @@
+export {CollectionDetailsProvider, useCollectionDetailsStore} from './collection-details-provider'

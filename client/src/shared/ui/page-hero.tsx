@@ -1,11 +1,9 @@
 import { cn } from "@/shared/lib"
-import { StaticImport } from "next/dist/shared/lib/get-img-props"
 import * as React from "react"
 import { ComponentProps } from "react"
 
 interface PageHeroProps {
   height: number | "full"
-  image?: string | StaticImport
 }
 
 const PageHero = ({
@@ -19,7 +17,9 @@ const PageHero = ({
     <header
       id="container"
       className={cn(`relative`, className)}
-      style={{ height: full ? "calc(100vh - 80px)" : `${height * 4}px` }}
+      style={{
+        minHeight: full ? "calc(100vh - 128px)" : `${height * 4}px`,
+      }}
       {...props}
     />
   )
@@ -39,7 +39,7 @@ const PageHeroContent = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       id="container-content"
-      className={cn("absolute w-full h-full", className)}
+      className={cn("absolute w-full h-full px-2 lg:px-4", className)}
       {...props}
     />
   )

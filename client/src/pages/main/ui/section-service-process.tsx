@@ -3,7 +3,6 @@ import {
   ContentSectionContent,
   ContentSectionHeader,
 } from "@/shared/ui"
-import { Title } from "@/shared/ui/title"
 import { ContentServiceProcess } from "@/widgets/section-service-process/ui/content-service-process"
 import { MessagesSquare, Phone, SearchCheck, Truck } from "lucide-react"
 import * as React from "react"
@@ -40,11 +39,9 @@ const SectionServiceProcess = ({ className }: ComponentProps<"section">) => {
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
-        <Title asChild className="hover-scale cursor-default">
-          <h4>
-            <strong>Процесс предоставления услуг</strong>
-          </h4>
-        </Title>
+        <h4 className="hover-scale text-center font-bold text-2xl sm:text-4xl md:text-5xl">
+          <strong>Процесс предоставления услуг</strong>
+        </h4>
       </ContentSectionHeader>
       <ContentSectionContent>
         <ContentServiceProcess items={DATA} />

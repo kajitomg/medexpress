@@ -1,20 +1,35 @@
 import { ContentServices } from "@/pages/main/ui/content-services"
+import { routes } from "@/shared/config/routes"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const DATA = [
+export type ServicesItemData = {
+  id: number
+  title: string
+  path: string
+}
+
+const DATA: ServicesItemData[] = [
   {
     id: 1,
-    title: "Каталог",
+    title: routes.CATALOG().title,
+    path: routes.CATALOG().path,
   },
   {
     id: 2,
-    title: "Подборки",
+    title: routes.COLLESCTIONS().title,
+    path: routes.COLLESCTIONS().path,
   },
   {
     id: 3,
-    title: "Конструктор кабинета",
+    title: routes.CONTACTS.title,
+    path: routes.CONTACTS.path,
+  },
+  {
+    id: 4,
+    title: routes.ABOUT.title,
+    path: routes.ABOUT.path,
   },
 ]
 
@@ -28,7 +43,7 @@ const Services = ({
 }: ComponentProps<"section"> & ServicesProps) => {
   return (
     <ContentSection className={className}>
-      <ContentSectionContent>
+      <ContentSectionContent className="w-full">
         <ContentServices onScrollToForm={onScrollToForm} items={DATA} />
       </ContentSectionContent>
     </ContentSection>

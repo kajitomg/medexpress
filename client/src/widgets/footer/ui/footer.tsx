@@ -1,8 +1,8 @@
 import { cn } from "@/shared/lib"
-import { FooterAbout } from "@/widgets/footer/ui/footer-about"
-import { FooterCatalogNavigation } from "@/widgets/footer/ui/footer-catalog-navigation"
-import { FooterContacts } from "@/widgets/footer/ui/footer-contacts"
-import { FooterInfoNavigation } from "@/widgets/footer/ui/footer-info-navigation"
+import { About } from "@/widgets/footer/ui/about"
+import { CatalogNavigation } from "@/widgets/footer/ui/catalog-navigation"
+import { Contacts } from "@/widgets/footer/ui/contacts"
+import { InfoNavigation } from "@/widgets/footer/ui/info-navigation"
 import * as React from "react"
 
 interface FooterProps {}
@@ -13,14 +13,17 @@ const Footer = ({
 }: React.ComponentProps<"footer"> & FooterProps) => {
   return (
     <footer
-      className={cn(className, "p-8 backdrop-blur-3xl bg-[#93A79E]")}
+      className={cn(
+        className,
+        "py-8 px-4 md:px-8 backdrop-blur-3xl bg-[#93A79E]"
+      )}
       {...props}
     >
-      <div className="grid grid-cols-4 items-start gap-2 w-full">
-        <FooterAbout />
-        <FooterCatalogNavigation />
-        <FooterInfoNavigation />
-        <FooterContacts />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start gap-2 w-full">
+        <About />
+        <CatalogNavigation />
+        <InfoNavigation />
+        <Contacts />
       </div>
     </footer>
   )

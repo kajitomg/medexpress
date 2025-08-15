@@ -1,15 +1,21 @@
-import { Button } from "@/shared/ui"
+import { ServicesItemData } from "@/pages/main/ui/services"
+import {
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui"
 import { useContactForm } from "@/widgets/contact-form/provider"
 import Image from "next/image"
+import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionServicesContentProps {
   onScrollToForm: () => void
-  items: {
-    id: number
-    title: string
-  }[]
+  items: ServicesItemData[]
 }
 
 const ContentServices = ({
@@ -29,40 +35,45 @@ const ContentServices = ({
     },
   }
   return (
-    <div className={className}>
-      <div className="bg-accent rounded-[50px] flex overflow-hidden">
-        <div className="h-full">
-          <Image
-            src="/oborud4.jpeg"
-            alt="alt"
-            width="8000"
-            height="5784"
-            className="h-full h-full object-cover"
-          />
-        </div>
-        <ul className="p-10 text-nowrap text-left flex flex-col items-start">
-          {items.map((item) => (
-            <Button
-              key={item.id}
-              asChild
-              variant="link"
-              className="cursor-pointer hover:no-underline hover:text-(--color-brand) text-lg font-bold"
-            >
-              <li>{item.title}</li>
-            </Button>
-          ))}
-
+    <Card className="py-0 sm:flex-row sm:gap-0 overflow-hidden rounded-4xl p-0 w-full">
+      <CardContent className="grow-1 px-0">
+        <Image
+          src="/oborud4.jpeg"
+          alt="alt"
+          width="8000"
+          height="5784"
+          className="size-full object-cover"
+        />
+      </CardContent>
+      <div className="min-w-60 md:min-w-90 py-4 md:py-8">
+        <CardHeader className="">
+          <CardTitle className="font-bold text-xl sm:text-2xl lg:text-3xl">
+            Чем мы можем помочь?
+          </CardTitle>
+          <ul className="text-nowrap text-left flex flex-col items-start pt-2 md:pt-6">
+            {items.map((item) => (
+              <Button
+                key={item.id}
+                asChild
+                variant="link"
+                className="cursor-pointer hover:no-underline hover:text-(--color-brand) text-base md:text-lg font-bold"
+              >
+                <Link href={item.path}>{item.title}</Link>
+              </Button>
+            ))}
+          </ul>
+        </CardHeader>
+        <CardFooter>
           <Button
-            size="xl"
             variant="brand"
-            className="cursor-pointer rounded-full mt-2"
+            className="cursor-pointer rounded-full mt-2 w-full text-base md:text-lg h-auto md:h-14"
             onClick={callbacks.onScrollToForm}
           >
-            <li>Заказать консультацию</li>
+            Заказать консультацию
           </Button>
-        </ul>
+        </CardFooter>
       </div>
-    </div>
+    </Card>
   )
 }
 

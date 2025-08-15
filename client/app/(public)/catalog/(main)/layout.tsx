@@ -8,9 +8,11 @@ import {
 } from "@/shared/ui/page-layout"
 import { Footer } from "@/widgets/footer/ui"
 import { Header } from "@/widgets/header/ui"
+import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import * as React from "react"
+import Error from "../../../error"
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -20,8 +22,10 @@ const RootLayout = ({
       <PageLayoutHeader>
         <Header />
       </PageLayoutHeader>
-      <PageLayoutContent headerHeight={128}>
-        <PageLayoutMain>{children}</PageLayoutMain>
+      <PageLayoutContent initOffsetTop={128}>
+        <PageLayoutMain>
+          <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
+        </PageLayoutMain>
         <PageLayoutFooter>
           <Footer />
         </PageLayoutFooter>

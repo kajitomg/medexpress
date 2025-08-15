@@ -1,8 +1,9 @@
 "use server"
-/*
+
 import { api } from "@/shared/api/api"
 import axios from "axios"
 import qs from "qs"
+import slugify from "slugify"
 
 type Data = {
   code: string
@@ -102,7 +103,7 @@ export const fillDBNomenlature = async () => {
 }
 
 export const filldb = async (posts: Data[]) => {
-  if (posts[0].category) return console.error("Error consistent posts data.")
+  //if (posts[0].category) return console.error("Error consistent posts data.")
 
   const parents: string[][] = []
   const mem = new Map()
@@ -117,15 +118,18 @@ export const filldb = async (posts: Data[]) => {
         post.category !== parents?.[parents.length - 1 || 0]?.[1]
       ) {
         if (parents.length === 0 || parents?.[0]?.[1] != post.section) {
+          const slug = slugify(post.section_name, { lower: true, strict: true })
           const body: {
             data: {
               title: string
               code: string
+              slug: string
             }
           } = {
             data: {
               title: post.section_name,
               code: post.section,
+              slug,
             },
           }
 
@@ -146,7 +150,7 @@ export const filldb = async (posts: Data[]) => {
                 {
                   fields: ["id", "documentId", "code"],
                   filters: {
-                    title: post.section_name,
+                    slug,
                   },
                 },
                 {
@@ -181,17 +185,20 @@ export const filldb = async (posts: Data[]) => {
 
         const level = spcode(post.category || post.section)
 
+        const slug = slugify(post.category_name, { lower: true, strict: true })
         const body: {
           data: {
             title: string
             code: string
             description?: string
             parent?: string
+            slug: string
           }
         } = {
           data: {
             title: post.category_name,
             code: post.category,
+            slug,
           },
         }
 
@@ -222,7 +229,9 @@ export const filldb = async (posts: Data[]) => {
               {
                 fields: ["id", "documentId", "code"],
                 filters: {
-                  title: post.category_name || post.section_name,
+                  slug:
+                    slug ||
+                    slugify(post.section_name, { lower: true, strict: true }),
                 },
               },
               {
@@ -275,12 +284,14 @@ export const filldb = async (posts: Data[]) => {
           return value
         })
       } else {
+        const slug = slugify(post.name, { lower: true, strict: true })
         const body = {
           data: {
             title: post.name,
             code: post.code,
             description: post.description,
             categories: { connect: [...parents].map((parent) => parent[0]) },
+            slug,
           },
         }
         const response = await api({
@@ -299,7 +310,7 @@ export const filldb = async (posts: Data[]) => {
               {
                 fields: ["id", "documentId", "code"],
                 filters: {
-                  title: post.name,
+                  slug,
                 },
               },
               {
@@ -388,7 +399,7 @@ export const getAllPosts = async () => {
     length: "32770",
     categories: [
       1, 280, 337, 354, 376, 409, 426, 446, 455, 28, 51, 79, 116, 130, 156, 183,
-      198, 206, 264,
+      198, 206,
     ],
   }
   const response = await axios.post(
@@ -435,4 +446,3 @@ export const getAllClasses = async () => {}
 export const getAllGroups = async () => {}
 export const getAllTypes = async () => {}
 export const getAllModels = async () => {}
-*/

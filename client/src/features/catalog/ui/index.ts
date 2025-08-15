@@ -1,2 +1,5 @@
-export { CatalogSearchControl } from "./catalog-search-control"
-export {} from "./catalog-pagination"
+export { CatalogSearchControl } from "./search-control"
+export { CatalogPaginationControl } from "./pagination-control"
+export { CatalogProductItem } from "./product-item"
+export { CatalogCategoryItem } from "./category-item"
+export { CatalogCollectionItem } from "./collection-item"

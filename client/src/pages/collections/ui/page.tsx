@@ -6,7 +6,9 @@ import { useCollectionsListStore } from "@/features/catalog/provider/collections
 import { CollectionsList } from "@/pages/collections/ui/collections-list"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
+import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
+import * as React from "react"
 import { useCallback } from "react"
 
 const Page = () => {
@@ -38,7 +40,16 @@ const Page = () => {
   return (
     <>
       <PageHeroRoutes page={routes.COLLESCTIONS()} />
-      <CollectionsList collections={collections} />
+
+      <ContentSection>
+        <ContentSectionContent className="w-full">
+          {collections?.length ? (
+            <CollectionsList collections={collections} />
+          ) : (
+            <EmptyState title="Коллекции не найдены" />
+          )}
+        </ContentSectionContent>
+      </ContentSection>
     </>
   )
 }

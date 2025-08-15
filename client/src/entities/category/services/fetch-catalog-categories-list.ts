@@ -3,33 +3,83 @@
 import { fetchCategoriesList } from "@/entities/category/api"
 import qs from "qs"
 
-const fetchCatalogCategoriesList = async (search?: string) => {
+const fetchCatalogCategoriesListChildrens = async (search?: string) => {
   const queryObj = {
-    pagination: {
-      start: 0,
-      limit: 500,
+    fields: ["id"],
+    filters: {
+      parent: {
+        $notNull: true,
+      },
+      $or: [
+        { title: { $containsi: search } },
+        { description: { $containsi: search } },
+        { code: { $containsi: search } },
+      ],
     },
+    populate: {
+      parent: {
+        fields: ["id"],
+      },
+    },
+  }
+
+  const query = qs.stringify(queryObj, {
+    encodeValuesOnly: true,
+  })
+
+  return await fetchCategoriesList(query)
+}
+
+const fetchCatalogCategoriesListParents = async (search?: string) => {
+  const queryObj = {
+    fields: ["id"],
     filters: {
       parent: {
         $null: true,
       },
-      $or: [] as Record<string, unknown>[],
+      $or: [
+        { title: { $containsi: search } },
+        { description: { $containsi: search } },
+        { code: { $containsi: search } },
+      ],
+    },
+  }
+
+  const query = qs.stringify(queryObj, {
+    encodeValuesOnly: true,
+  })
+
+  return await fetchCategoriesList(query)
+}
+
+const fetchCatalogCategoriesList = async (search?: string) => {
+  const queryObj: Record<string, any> = {
+    filters: {
+      id: {},
+      parent: {
+        $null: true,
+      },
     },
     populate: {
       childrens: true,
       media: true,
     },
   }
+
   if (search) {
-    queryObj.filters.$or.push(
-      // $containsi не работает с нынешней кодировкой БД
-      { title: { $contains: search } },
-      { description: { $contains: search } },
-      { code: { $contains: search } },
-      { childrens: { title: { $contains: search } } },
-      { childrens: { description: { $contains: search } } },
-      { childrens: { code: { $contains: search } } }
-    )
+    const childrens = await fetchCatalogCategoriesListChildrens(search)
+    const parents = await fetchCatalogCategoriesListParents(search)
+    const childrensIds = childrens.data
+      .map((child) => child.parent?.id)
+      .filter((id) => Boolean(id))
+    const parentsIds = parents.data.map((child) => child?.id)
+    const ids = [...childrensIds, ...parentsIds]
+
+    if (ids.length) {
+      queryObj.filters.id.$in = ids
+    } else {
+      queryObj.filters.id.$null = true
+    }
   }
 
   const query = qs.stringify(queryObj, {

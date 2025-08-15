@@ -1,5 +1,6 @@
 import { cn } from "@/shared/lib"
 import { Button, Input, Textarea } from "@/shared/ui"
+import { useContactForm } from "@/widgets/contact-form/provider"
 import {
   Control,
   Field,
@@ -8,42 +9,34 @@ import {
   Root,
   Submit,
 } from "@radix-ui/react-form"
-import { ComponentProps } from "react"
-import {
-  FieldErrors,
-  RegisterOptions,
-  UseFormRegisterReturn,
-} from "react-hook-form"
+import { ComponentProps, useMemo, useState } from "react"
 import Turnstile from "react-turnstile"
-import { ContactFormSchema, ContactFormSchemaPhonenumber } from "../model"
+import { ContactFormSchemaPhonenumber } from "../model"
 
 interface FormPhonenumberProps {
-  register: (
-    name: keyof ContactFormSchemaPhonenumber,
-    options?: RegisterOptions<
-      ContactFormSchema,
-      keyof ContactFormSchemaPhonenumber
-    >
-  ) => UseFormRegisterReturn<keyof ContactFormSchemaPhonenumber>
-  errors: FieldErrors<ContactFormSchemaPhonenumber>
-  isValid: boolean
   isLoading: boolean
   isErrorRequest: boolean
-  setIsCaptcha: (isCaptcha: boolean) => void
   message: string | null
 }
 
 const FormPhonenumber = ({
-  register,
-  errors,
-  isValid,
   isLoading,
   isErrorRequest,
-  setIsCaptcha,
   message,
   className,
   ...props
 }: ComponentProps<"form"> & FormPhonenumberProps) => {
+  const [isCaptcha, setIsCaptcha] = useState<boolean>(false)
+  const {
+    register,
+    formState: { errors, isSubmitting, isValid: formStateIsValid, isDirty },
+  } = useContactForm<ContactFormSchemaPhonenumber>()
+
+  const isValid = useMemo(
+    () => isCaptcha && formStateIsValid && isDirty && !isSubmitting,
+    [isCaptcha, formStateIsValid, isDirty, isSubmitting]
+  )
+
   return (
     <Root className={className} {...props}>
       <Field name="name">
@@ -68,7 +61,7 @@ const FormPhonenumber = ({
             type="text"
             placeholder="Введите имя*"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted"
             )}
           />
         </Control>
@@ -92,10 +85,10 @@ const FormPhonenumber = ({
         <Control asChild>
           <Input
             {...register("phonenumber")}
-            type="text"
+            type="tel"
             placeholder="Введите номер телефона*"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted"
             )}
           />
         </Control>
@@ -121,7 +114,7 @@ const FormPhonenumber = ({
             {...register("message")}
             placeholder="Введите комментарий"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold text-sm placeholder:text-sm bg-muted max-h-50"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted max-h-50"
             )}
           />
         </Control>

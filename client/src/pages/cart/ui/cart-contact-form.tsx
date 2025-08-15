@@ -4,9 +4,8 @@ import { CartItem } from "@/features/cart/model"
 import { useCartStore } from "@/features/cart/provider"
 import {
   ContactFormMode,
+  ContactFormModeSchema,
   ContactFormSchema,
-  contactFormSchemaEmail,
-  contactFormSchemaPhonenumber,
 } from "@/widgets/contact-form/model"
 import {
   ContactFormProvider,
@@ -21,23 +20,26 @@ interface CartContactFormProps {
 const CartContactForm = ({ cartItems }: CartContactFormProps) => {
   const mode = useContactFormModeStore((state) => state.mode)
   const clearCart = useCartStore((state) => state.clearCart)
-  const schema =
-    mode === ContactFormMode.EMAIL
-      ? contactFormSchemaEmail
-      : contactFormSchemaPhonenumber
+  const schema = ContactFormModeSchema[mode]
 
   const callbacks = {
     handleSubmit: async (data: ContactFormSchema) => {
-      const type: "email" | "phonenumber" =
-        (data?.email && "email") || (data?.phonenumber && "phonenumber")
-      return await sendCartFormMail({
-        type,
-        cartItems: cartItems,
-        ...data,
-      }).then((result) => {
-        clearCart()
-        return result
-      })
+      const type = mode === ContactFormMode.EMAIL ? "email" : "phonenumber"
+
+      try {
+        const response = await sendCartFormMail({
+          type,
+          cartItems: cartItems,
+          ...data,
+        })
+        if (response.success) {
+          clearCart()
+        }
+        return response
+      } catch (e) {
+        console.error("Ошибка отправки формы:", e)
+        return { success: false, message: "Ошибка отправки." }
+      }
     },
   }
 
@@ -46,7 +48,7 @@ const CartContactForm = ({ cartItems }: CartContactFormProps) => {
       <ContactForm
         handleSubmit={callbacks.handleSubmit}
         title="Заказ:"
-        subtitle="Оставьте заявку, чтобы связаться с нами"
+        subtitle="Оставьте заявку, чтобы мы связались с вами"
         className="bg-transparent border-none shadow-none"
       />
     </ContactFormProvider>

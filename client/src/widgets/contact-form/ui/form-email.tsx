@@ -1,6 +1,7 @@
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button, Input, Textarea } from "@/shared/ui"
+import { useContactForm } from "@/widgets/contact-form/provider"
 import {
   Control,
   Field,
@@ -11,39 +12,34 @@ import {
 } from "@radix-ui/react-form"
 import { Loader } from "lucide-react"
 import Link from "next/link"
-import { ComponentProps } from "react"
-import {
-  FieldErrors,
-  RegisterOptions,
-  UseFormRegisterReturn,
-} from "react-hook-form"
+import { ComponentProps, useMemo, useState } from "react"
 import Turnstile from "react-turnstile"
-import { ContactFormSchema, ContactFormSchemaEmail } from "../model"
+import { ContactFormSchemaEmail } from "../model"
 
 interface FormEmailProps {
-  register: (
-    name: keyof ContactFormSchemaEmail,
-    options?: RegisterOptions<ContactFormSchema, keyof ContactFormSchemaEmail>
-  ) => UseFormRegisterReturn<keyof ContactFormSchemaEmail>
-  errors: FieldErrors<ContactFormSchemaEmail>
-  isValid: boolean
-  isLoading: boolean
   isErrorRequest: boolean
-  setIsCaptcha: (isCaptcha: boolean) => void
+  isLoading: boolean
   message: string | null
 }
 
 const FormEmail = ({
-  register,
-  errors,
-  isValid,
-  isLoading,
   isErrorRequest,
-  setIsCaptcha,
+  isLoading,
   message,
   className,
   ...props
 }: ComponentProps<"form"> & FormEmailProps) => {
+  const [isCaptcha, setIsCaptcha] = useState<boolean>(false)
+  const {
+    register,
+    formState: { errors, isSubmitting, isValid: formStateIsValid, isDirty },
+  } = useContactForm<ContactFormSchemaEmail>()
+
+  const isValid = useMemo(
+    () => isCaptcha && formStateIsValid && isDirty && !isSubmitting,
+    [isCaptcha, formStateIsValid, isDirty, isSubmitting]
+  )
+
   return (
     <Root className={cn(className)} {...props}>
       <Field name="name">
@@ -68,7 +64,7 @@ const FormEmail = ({
             type="text"
             placeholder="Введите имя*"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted"
             )}
           />
         </Control>
@@ -95,7 +91,7 @@ const FormEmail = ({
             type="email"
             placeholder="Введите e-mail*"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold bg-muted"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted"
             )}
           />
         </Control>
@@ -121,7 +117,7 @@ const FormEmail = ({
             {...register("message")}
             placeholder="Введите комментарий"
             className={cn(
-              "focus-visible:ring-1 focus-visible:ring-blue-400 font-semibold text-sm placeholder:text-sm bg-muted max-h-50"
+              "focus-visible:ring-1 focus-visible:ring-blue-400 text-sm placeholder:text-sm bg-muted max-h-50"
             )}
           />
         </Control>

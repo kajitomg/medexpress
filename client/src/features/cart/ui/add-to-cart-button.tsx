@@ -2,15 +2,23 @@
 
 import { ProductBase } from "@/entities/product/model"
 import { useCartStore } from "@/features/cart/provider"
-import { Button } from "@/shared/ui/button"
+import { cn } from "@/shared/lib"
+import { Button, buttonVariants } from "@/shared/ui/button"
+import { VariantProps } from "class-variance-authority"
 import { Loader2Icon, Plus, X } from "lucide-react"
-import { useMemo } from "react"
+import { ComponentProps, useMemo } from "react"
 
 interface AddToCartButtonProps {
   product: ProductBase
 }
 
-const AddToCartButton = ({ product }: AddToCartButtonProps) => {
+const AddToCartButton = ({
+  product,
+  className,
+  ...props
+}: ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> &
+  AddToCartButtonProps) => {
   const hasHydrated = useCartStore((state) => state._hasHydrated)
   const products = useCartStore((state) => state.products)
   const addItemToCart = useCartStore((state) => state.addItemToCart)
@@ -32,9 +40,11 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
   return (
     <Button
       size="sm"
+      variant="brand"
       onClick={handleToggleCart}
-      className="cursor-pointer"
+      className={cn("cursor-pointer", className)}
       disabled={!hasHydrated}
+      {...props}
     >
       {!hasHydrated ? (
         <>

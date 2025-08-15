@@ -1,7 +1,12 @@
 import "@/app/styles/globals.css"
 import { CartProvider } from "@/features/cart/provider"
 import { Metadata } from "next"
+
+import { Inter, Sora } from "next/font/google"
 import * as React from "react"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora" })
 
 export const metadata: Metadata = {
   title: "Medexpress",
@@ -13,7 +18,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.variable} ${sora.variable} font-sans`}>
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

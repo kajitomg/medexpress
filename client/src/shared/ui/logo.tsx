@@ -19,7 +19,10 @@ const Logo = ({
     <Button
       asChild
       variant="link"
-      className={cn("text-xl font-black hover:no-underline p-0", className)}
+      className={cn(
+        "bg-transparent text-xl font-black hover:no-underline p-0",
+        className
+      )}
       {...props}
     >
       <Link href={path}>{title}</Link>

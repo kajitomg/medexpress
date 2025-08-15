@@ -5,7 +5,7 @@ import qs from "qs"
 
 const fetchCatalogCollectionsList = async (search?: string) => {
   const queryObj = {
-    fields: ["title"],
+    fields: ["title", "slug"],
     pagination: {
       start: 0,
       limit: 500,
@@ -21,9 +21,8 @@ const fetchCatalogCollectionsList = async (search?: string) => {
 
   if (search) {
     queryObj.filters.$or.push(
-      // $containsi не работает с нынешней кодировкой БД
-      { title: { $contains: search } },
-      { description: { $contains: search } }
+      { title: { $containsi: search } },
+      { description: { $containsi: search } }
     )
   }
 

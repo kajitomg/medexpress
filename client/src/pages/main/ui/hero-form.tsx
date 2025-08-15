@@ -24,13 +24,15 @@ const HeroForm = ({
             placeholder="Введите e-mail*"
             variant="brand"
             mysize="lg"
-            className={cn("rounded-4xl")}
+            className={cn(
+              "rounded-4xl font-normal md:font-bold placeholder:text-base md:placeholder:text-lg md:text-lg text-base md:text-lg h-10 p-4 md:h-14 md:p-6 md:px-8"
+            )}
           />
         </Control>
       </Field>
       <Submit asChild>
         <Button
-          className="cursor-pointer rounded-4xl"
+          className="cursor-pointer rounded-4xl font-normal md:font-bold text-base md:text-lg h-10 p-4 md:h-14 md:p-6 md:px-8"
           variant="brand"
           size="xl"
         >

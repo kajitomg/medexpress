@@ -5,20 +5,26 @@ import {
   useCatalogOptionsStore,
   useProductsListStore,
 } from "@/features/catalog/provider"
-import { CatalogSearchControl } from "@/features/catalog/ui"
-import { CatalogPagination } from "@/features/catalog/ui/catalog-pagination"
+import {
+  CatalogPaginationControl,
+  CatalogSearchControl,
+} from "@/features/catalog/ui"
+import { useCategoryDetailsStore } from "@/features/category-details/provider"
 import { ProductsList } from "@/pages/category-products/ui/products-list"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
-import { DocumentId } from "@/shared/model"
+import { urlBuilder } from "@/shared/lib/url-builder"
+import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
+import * as React from "react"
 import { useCallback } from "react"
 
 interface PageProps {
-  categoryId: DocumentId
+  slug: string
 }
 
-const Page = ({ categoryId }: PageProps) => {
+const Page = ({ slug }: PageProps) => {
+  const category = useCategoryDetailsStore((state) => state.category)
   const products = useProductsListStore((state) => state.products)
   const setProducts = useProductsListStore((state) => state.setProducts)
   const setLoading = useProductsListStore((state) => state.setLoading)
@@ -31,7 +37,7 @@ const Page = ({ categoryId }: PageProps) => {
     try {
       setLoading(true)
       const response = await fetchCategoriesProductsList(
-        categoryId,
+        slug,
         page || 1,
         searchQuery
       )
@@ -41,20 +47,32 @@ const Page = ({ categoryId }: PageProps) => {
     } finally {
       setLoading(false)
     }
-  }, [setProducts, setLoading, setError, categoryId, page, searchQuery])
+  }, [setProducts, setLoading, setError, slug, page, searchQuery])
 
   useUpdateEffect(() => {
     fetchProducts()
   }, [fetchProducts])
-
+  console.log()
   return (
     <>
-      <PageHeroRoutes page={routes.CATALOG()} />
-      <div className="m-auto px-4 flex max-w-400 items-center space-x-2 w-full">
-        <CatalogSearchControl />
-      </div>
-      <ProductsList products={products} />
-      <CatalogPagination />
+      <PageHeroRoutes
+        page={routes.CATALOG(category?.slug, category?.title)}
+        image={category?.media?.url && urlBuilder(category.media.url)}
+      />
+      <ContentSection>
+        <ContentSectionContent className="max-w-380 w-full">
+          <CatalogSearchControl />
+
+          {products?.length ? (
+            <>
+              <ProductsList products={products} className="mt-6" />
+              <CatalogPaginationControl className="mt-4" />
+            </>
+          ) : (
+            <EmptyState title="Товары не найдены" />
+          )}
+        </ContentSectionContent>
+      </ContentSection>
     </>
   )
 }

@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/shared/ui/pagination"
-import React from "react"
+import React, { ComponentProps } from "react"
 
 interface PaginationControlProps {
   page: number
@@ -21,7 +21,8 @@ const PaginationControl = ({
   maxPages,
   page,
   paginationRange,
-}: PaginationControlProps) => {
+  ...props
+}: ComponentProps<"nav"> & PaginationControlProps) => {
   const handlePrevious = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     if (page > 1) {
@@ -47,7 +48,7 @@ const PaginationControl = ({
   }
 
   return (
-    <Pagination>
+    <Pagination {...props}>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious

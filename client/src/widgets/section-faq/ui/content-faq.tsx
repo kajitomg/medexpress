@@ -27,13 +27,12 @@ const ContentFaq = ({
           <AccordionItem
             key={item.id}
             value={item.value}
-            variant="brand"
-            className="rounded-4xl"
+            className="rounded-4xl px-2 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3"
           >
-            <AccordionTrigger className="text-lg font-bold hover:no-underline">
+            <AccordionTrigger className="text-base md:text-lg font-bold hover:no-underline cursor-pointer">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="text-base text-gray-400 mt-2">
+            <AccordionContent className="text-sm md:text-base text-gray-400 md:mt-2">
               {item.answer}
             </AccordionContent>
           </AccordionItem>

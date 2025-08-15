@@ -5,7 +5,7 @@ import qs from "qs"
 
 const fetchNavigationCollectionsList = async () => {
   const queryObj = {
-    fields: ["title"],
+    fields: ["title", "slug"],
     pagination: {
       start: 0,
       limit: 500,

@@ -5,6 +5,6 @@ export type {
   ContactFormSchemaPhonenumber,
 } from "./form"
 
-export { ContactFormMode } from "./mode"
+export { ContactFormMode, ContactFormModeSchema } from "./mode"
 
 export type { FormStatus } from "./status"
