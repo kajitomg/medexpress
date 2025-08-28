@@ -11,6 +11,7 @@ import {
   CardFooter,
   CardHeader,
   List,
+  Typography,
 } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import Image from "next/image"
@@ -44,20 +45,24 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
         </AspectRatio>
       </CardHeader>
       <CardContent className="flex-auto flex flex-col gap-4">
-        <span className="font-bold">{product.title}</span>
+        <Typography asChild variant="h4" target="card">
+          <h4>{product.title}</h4>
+        </Typography>
         <List
           items={product.categories}
           renderItem={renderCategoryItem}
           className="block space-x-1 space-y-1"
         />
-        <div className="line-clamp-4 font-light text-sm text-gray-500">
+        <Typography className="line-clamp-4" target="card">
           {product.description}
-        </div>
+        </Typography>
       </CardContent>
-      <CardFooter className="justify-between items-end">
-        <span className="text-xs text-gray-500">{product.code}</span>
+      <CardFooter className="justify-between items-center">
+        <Typography variant="small" target="card">
+          {product.code}
+        </Typography>
         <div className="flex items-center gap-2">
-          <Button size="sm" variant="brand" className="cursor-pointer">
+          <Button size="sm" variant="outline" className="cursor-pointer">
             <Link href={routes.PRODUCT(product?.slug).path}>Подробнее</Link>
           </Button>
           <AddToCartButton product={product} />

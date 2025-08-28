@@ -9,7 +9,7 @@ import { Loader2Icon, Plus, X } from "lucide-react"
 import { ComponentProps, useMemo } from "react"
 
 interface AddToCartButtonProps {
-  product: ProductBase
+  product?: ProductBase
 }
 
 const AddToCartButton = ({
@@ -25,11 +25,13 @@ const AddToCartButton = ({
   const deleteItemFromCart = useCartStore((state) => state.deleteItemFromCart)
 
   const isInCart = useMemo(
-    () => products.some((item) => item.item.id === product.id),
+    () => products.some((item) => item.item.id === product?.id),
     [products, product]
   )
 
   const handleToggleCart = () => {
+    if (!hasHydrated || !product) return
+
     if (isInCart) {
       deleteItemFromCart(product.id)
     } else {
@@ -43,7 +45,7 @@ const AddToCartButton = ({
       variant="brand"
       onClick={handleToggleCart}
       className={cn("cursor-pointer", className)}
-      disabled={!hasHydrated}
+      disabled={!hasHydrated || !product}
       {...props}
     >
       {!hasHydrated ? (

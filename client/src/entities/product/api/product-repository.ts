@@ -7,10 +7,13 @@ import {
 } from "@/entities/product/model"
 import { api } from "@/shared/api"
 import { DocumentServices } from "@/shared/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchProductsList = async (query?: string) => {
+const fetchProductsList = async (queryObj?: StrapiQuery<ProductBase>) => {
   try {
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
+
     const response = await api<
       ProductListResponse<ProductBase & DocumentServices>
     >(`/api/products`, {
@@ -24,8 +27,13 @@ const fetchProductsList = async (query?: string) => {
   }
 }
 
-const fetchProductItem = async (documentId: string, query?: string) => {
+const fetchProductItem = async (
+  documentId: string,
+  queryObj?: StrapiQuery<ProductBase>
+) => {
   try {
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
+
     const response = await api<
       ProductItemResponse<ProductBase & DocumentServices>
     >(`/api/products/${documentId}`, {
@@ -39,18 +47,20 @@ const fetchProductItem = async (documentId: string, query?: string) => {
   }
 }
 
-const fetchProductItemBySlug = async (slug: string, query?: string) => {
+const fetchProductItemBySlug = async (
+  slug: string,
+  queryObj?: StrapiQuery<ProductBase>
+) => {
   try {
-    const inputQueryObj = query ? qs.parse(query) : {}
-    const queryObj = {
-      ...inputQueryObj,
+    queryObj = {
+      ...queryObj,
       filters: {
         slug,
-        ...inputQueryObj.filters,
+        ...queryObj?.filters,
       },
     }
 
-    query = qs.stringify(queryObj, { encodeValuesOnly: true })
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
     const response = await api<
       ProductListResponse<ProductBase & DocumentServices>

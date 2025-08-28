@@ -2,7 +2,7 @@ import { CollectionBase } from "@/entities/collection/model"
 import { routes } from "@/shared/config/routes"
 import { urlBuilder } from "@/shared/lib/url-builder"
 import { DocumentServices } from "@/shared/model"
-import { Card, CardContent, CardHeader, Subtitle, Title } from "@/shared/ui"
+import { Card, CardContent, CardHeader, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import Image from "next/image"
 import Link from "next/link"
@@ -14,7 +14,7 @@ interface CatalogCollectionItemProps {
 
 const CatalogCollectionItem = ({ collection }: CatalogCollectionItemProps) => {
   return (
-    <Card className="relative p-0 overflow-hidden border-none shadow-black/20 hover:shadow-xl duration-200">
+    <Card className="relative p-0 overflow-hidden border-none shadow-black/25 hover:shadow-xl duration-200">
       <Link href={routes.COLLESCTIONS(collection.slug).path}>
         <CardContent className="p-0">
           <AspectRatio
@@ -37,13 +37,13 @@ const CatalogCollectionItem = ({ collection }: CatalogCollectionItemProps) => {
           </AspectRatio>
         </CardContent>
         <div className="absolute top-0 left-0 size-full">
-          <CardHeader className="h-full flex flex-col items-center justify-center">
-            <Title className="text-3xl font-black text-white">
-              {collection.title}
-            </Title>
-            <Subtitle className="text-base font-black text-white">
+          <CardHeader className="h-full flex flex-col items-center justify-center dark">
+            <Typography asChild variant="h2">
+              <h2>{collection.title}</h2>
+            </Typography>
+            <Typography className="text-foreground">
               {collection.products?.length} товара
-            </Subtitle>
+            </Typography>
           </CardHeader>
         </div>
       </Link>

@@ -39,6 +39,7 @@ const CollectionsBar = async ({
         >
           <Link href={routes.COLLESCTIONS().path}>
             <ChevronRight />
+            <span className="sr-only">Открыть страницу подборок</span>
           </Link>
         </Button>
       </div>

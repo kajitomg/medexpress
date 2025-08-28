@@ -1,4 +1,4 @@
-import "@/app/styles/globals.css"
+import "@/application/styles/globals.css"
 import { CartProvider } from "@/features/cart/provider"
 import { Toaster } from "@/shared/ui/sonner"
 import { Metadata } from "next"

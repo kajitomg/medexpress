@@ -18,7 +18,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
         <Button
           asChild
           variant="link"
-          className="hover:no-underline p-1 text-start text-lg font-bold text-accent hover:text-gray-200 h-7 md:h-8"
+          className="hover:no-underline p-1 text-start text-lg font-bold text-foreground hover:text-gray-200 h-7 md:h-8"
         >
           <Link href={routes.CATALOG().path}>{routes.CATALOG().title}</Link>
         </Button>
@@ -27,7 +27,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
         <Button
           asChild
           variant="link"
-          className="hover:no-underline p-1 font-bold text-accent hover:text-gray-200 h-auto"
+          className="hover:no-underline p-1 font-bold text-foreground hover:text-gray-200 h-auto"
         >
           <Link href={routes.COLLESCTIONS().path}>
             {routes.COLLESCTIONS().title}
@@ -35,11 +35,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
         </Button>
       </CardContent>
       <CardFooter className="px-2 md:px-4 lg:px-6">
-        <Button
-          size="sm"
-          variant="secondary"
-          className="cursor-pointer mt-2 px-2 md:px-4 lg:px-6"
-        >
+        <Button size="sm" className="cursor-pointer mt-2 px-2 md:px-4 lg:px-6">
           Сделать заказ
         </Button>
       </CardFooter>

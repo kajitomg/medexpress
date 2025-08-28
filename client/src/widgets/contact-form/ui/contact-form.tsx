@@ -83,7 +83,7 @@ const ContactForm = ({
           setStatus("error")
         }
         return response
-      } catch (e) {
+      } catch {
         toast.custom(() => (
           <Alert variant="destructive">
             <X />
@@ -127,12 +127,15 @@ const ContactForm = ({
             </TabsTrigger>
           </TabsList>
           <TabsContent value={"email"} className=" min-w-0">
-            <FormEmail isLoading={status === "sending"} onSubmit={onSubmit} />
+            <FormEmail
+              isLoading={status === "sending"}
+              handleSubmit={onSubmit}
+            />
           </TabsContent>
           <TabsContent value={"phonenumber"}>
             <FormPhonenumber
               isLoading={status === "sending"}
-              onSubmit={onSubmit}
+              handleSubmit={onSubmit}
             />
           </TabsContent>
         </Tabs>

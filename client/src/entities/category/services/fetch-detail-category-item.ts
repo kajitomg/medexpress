@@ -1,7 +1,8 @@
 "use server"
 
 import { fetchCategoryItemBySlug } from "@/entities/category/api"
-import qs from "qs"
+import { CategoryBase } from "@/entities/category/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchDetailCategoryItem = async (slug: string) => {
   const queryObj = {
@@ -9,13 +10,9 @@ const fetchDetailCategoryItem = async (slug: string) => {
     populate: {
       media: true,
     },
-  }
+  } satisfies StrapiQuery<CategoryBase>
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchCategoryItemBySlug(slug, query)
+  return await fetchCategoryItemBySlug(slug, queryObj)
 }
 
 export { fetchDetailCategoryItem }

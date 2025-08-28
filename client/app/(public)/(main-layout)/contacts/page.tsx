@@ -1,4 +1,4 @@
-import { ContactsPage } from "@/pages/contacts/ui"
+import { ContactsPage } from "@/views/contacts/ui"
 import * as React from "react"
 
 const Contacts = () => {

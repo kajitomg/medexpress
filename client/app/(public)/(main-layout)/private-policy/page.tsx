@@ -1,4 +1,4 @@
-import { PrivacyPolicyPage } from "@/pages/private-policy/ui"
+import { PrivacyPolicyPage } from "@/views/private-policy/ui"
 
 const Page = async () => {
   return <PrivacyPolicyPage />

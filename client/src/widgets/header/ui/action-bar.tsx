@@ -15,6 +15,7 @@ const ActionBar = async ({ ...props }: NavigationMenuProps) => {
       >
         <Link href={routes.CART.path}>
           <ShoppingCart className="size-5" />
+          <span className="sr-only">Открыть страницу корзины</span>
         </Link>
       </Button>
     </div>

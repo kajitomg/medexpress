@@ -1,7 +1,8 @@
 "use server"
 
 import { fetchProductItem } from "@/entities/product/api"
-import qs from "qs"
+import { ProductBase } from "@/entities/product/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchDetailProductItemByDocumentId = async (documentId: string) => {
   const queryObj = {
@@ -11,13 +12,9 @@ const fetchDetailProductItemByDocumentId = async (documentId: string) => {
       },
       media: true,
     },
-  }
+  } satisfies StrapiQuery<ProductBase>
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchProductItem(documentId, query)
+  return await fetchProductItem(documentId, queryObj)
 }
 
 export { fetchDetailProductItemByDocumentId }

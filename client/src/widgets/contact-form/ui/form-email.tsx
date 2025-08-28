@@ -1,3 +1,4 @@
+"use client"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button, Typography } from "@/shared/ui"
@@ -14,24 +15,27 @@ import Turnstile from "react-turnstile"
 
 interface FormEmailProps {
   isLoading: boolean
+  handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>
 }
 
 const FormEmail = ({
+  handleSubmit,
   isLoading,
   className,
   ...props
 }: ComponentProps<"form"> & FormEmailProps) => {
   const [isCaptcha, setIsCaptcha] = useState<boolean>(false) // УЯЗВИМОСТЬ! При переходе к реальной капче использовать валидацию при отправке запроса
-  const {
-    formState: { isValid: isValidForm, isDirty, ...formState },
-    ...form
-  } = useContactForm<ContactFormSchemaEmail>()
+  const form = useContactForm<ContactFormSchemaEmail>()
 
-  const isValid = isCaptcha && isValidForm && isDirty
+  const isValid = isCaptcha && form.formState.isValid
 
   return (
-    <Form {...form} formState={{ ...formState, isValid: isValidForm, isDirty }}>
-      <form className={cn("w-full space-y-6", className)} {...props}>
+    <Form {...form}>
+      <form
+        className={cn("w-full space-y-6", className)}
+        onSubmit={handleSubmit}
+        {...props}
+      >
         <FormField
           control={form.control}
           name="firstname"

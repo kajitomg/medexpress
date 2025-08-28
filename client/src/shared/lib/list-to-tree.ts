@@ -1,33 +1,3 @@
-/*
-export const listToTree = <T extends { childrens?: T[] }>(
-  input_list: T[],
-  parent_field_name: keyof T,
-  equal_field_name: keyof T
-) => {
-  input_list = [...input_list]
-  const result_tree: T[] = []
-
-  for (const input_item of input_list) {
-    const parent_field = input_item[parent_field_name] as T
-
-    if (!parent_field) {
-      result_tree.push({ ...input_item, childrens: [] })
-      continue
-    }
-    for (const result_item of result_tree) {
-      if (
-        result_item?.[equal_field_name] === parent_field?.[equal_field_name]
-      ) {
-        result_item.childrens?.push({
-          ...input_item,
-        })
-      }
-    }
-  }
-
-  return result_tree
-}
-*/
 export const listToTree = <T, E extends { childrens?: T[] }>(
   input_list: T[],
   parent_field_name: keyof T,

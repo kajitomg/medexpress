@@ -36,16 +36,16 @@ const PageLayoutContent = ({
   }>) => {
   const offset = usePageLayoutStore((state) => state.offset)
 
-  const marginLeft = offset.left !== undefined ? offset.left : initOffsetLeft
-  const marginTop = offset.top !== undefined ? offset.top : initOffsetTop
+  const offsetLeft = offset.left !== undefined ? offset.left : initOffsetLeft
+  const offsetTop = offset.top !== undefined ? offset.top : initOffsetTop
 
   return (
     <section
       id="content-section"
       className={cn("flex flex-col flex-auto", className)}
       style={{
-        marginTop: `${marginTop}px`,
-        marginLeft: `${marginLeft}px`,
+        marginTop: `${offsetTop}px`,
+        marginLeft: `${offsetLeft}px`,
       }}
       {...props}
     />
@@ -78,7 +78,7 @@ const PageLayoutAside = ({
     <section
       id="aside-section"
       className={cn("z-40 fixed h-[100vh]", className)}
-      style={{ marginTop: `${offsetTop}px` }}
+      style={{ paddingTop: `${offsetTop}px` }}
       ref={aside}
       {...props}
     />

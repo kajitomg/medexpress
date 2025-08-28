@@ -1,4 +1,4 @@
-import "@/app/styles/globals.css"
+import "@/application/styles/globals.css"
 import {
   PageLayout,
   PageLayoutContent,

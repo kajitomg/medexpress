@@ -6,6 +6,7 @@ import {
   NavigationMenuTrigger,
 } from "@/shared/ui"
 import { NavigationMenuItemData } from "@/widgets/header/ui/navigation"
+import { MiddlewareState } from "@floating-ui/react"
 import { shift, useFloating } from "@floating-ui/react-dom"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import Link from "next/link"
@@ -19,7 +20,7 @@ interface NavigationMenuDropdownItemProps {
 
 const centerHorizontally = () => ({
   name: "centerHorizontally",
-  fn({ rects }) {
+  fn({ rects }: MiddlewareState) {
     const floatingWidth = rects.floating.width
     const newX = (window.innerWidth - floatingWidth) / 2
 

@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Typography,
 } from "@/shared/ui"
 import { Logo } from "@/shared/ui/logo"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
@@ -18,39 +19,41 @@ const About = () => {
         <Logo
           title="Medexpress"
           path={routes.MAIN.path}
-          className="text-accent hover:text-gray-200 h-7 md:h-8"
+          className="text-foreground hover:text-gray-200 h-7 md:h-8"
         />
       </CardHeader>
       <CardContent className=" px-2 md:px-4 lg:px-6">
-        <CardTitle className="text-start text-accent text-sm">
-          Ваш надежный партнер в мире медицинского оборудования с 2008 года
+        <CardTitle>
+          <Typography variant="small">
+            Ваш надежный партнер в мире медицинского оборудования с 2008 года
+          </Typography>
         </CardTitle>
       </CardContent>
       <CardFooter className="flex gap-2 px-2 md:px-4 lg:px-6">
         <Button
           variant="link"
-          className="text-accent hover:text-gray-200 cursor-pointer h-auto"
+          className="text-foreground hover:text-gray-200 cursor-pointer h-auto"
           size="icon"
         >
           <Instagram className="size-5" />
         </Button>
         <Button
           variant="link"
-          className="text-accent hover:text-gray-200 cursor-pointer h-auto"
+          className="text-foreground hover:text-gray-200 cursor-pointer h-auto"
           size="icon"
         >
           <Twitter className="size-5" />
         </Button>
         <Button
           variant="link"
-          className="text-accent hover:text-gray-200 cursor-pointer h-auto"
+          className="text-foreground hover:text-gray-200 cursor-pointer h-auto"
           size="icon"
         >
           <Facebook className="size-5" />
         </Button>
         <Button
           variant="link"
-          className="text-accent hover:text-gray-200 cursor-pointer h-auto"
+          className="text-foreground hover:text-gray-200 cursor-pointer h-auto"
           size="icon"
         >
           <Linkedin className="size-5" />

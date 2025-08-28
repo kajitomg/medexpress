@@ -1,4 +1,7 @@
-import { ProductBase } from "@/entities/product/model/product"
+import {
+  ProductBase,
+  ProductListResponse,
+} from "@/entities/product/model/product"
 import { Meta } from "@/shared/model/api"
 import { DocumentServices } from "@/shared/model/document"
 import { create } from "zustand"
@@ -12,6 +15,9 @@ export interface ProductsListState {
 
 interface ProductsListActions {
   setProducts: (products: (ProductBase & DocumentServices)[]) => void
+  loadProducts: (
+    fn: () => Promise<ProductListResponse<ProductBase & DocumentServices>>
+  ) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
 }
@@ -31,6 +37,18 @@ export const createProductsListStore = (
   create<ProductsListStore>((set) => ({
     ...{ ...defaultInitState, ...initState },
     setProducts: (products) => set({ products }),
+
+    loadProducts: async (fn) => {
+      try {
+        set({ isLoading: true })
+        const response = await fn()
+        set({ products: response.data })
+      } catch {
+        return set({ error: "Что-то пошло не так" })
+      } finally {
+        set({ isLoading: false })
+      }
+    },
 
     setLoading: (isLoading) => set({ isLoading }),
 

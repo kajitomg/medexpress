@@ -1,7 +1,8 @@
 "use server"
 
 import { fetchProductsList } from "@/entities/product/api/product-repository"
-import qs from "qs"
+import { ProductBase } from "@/entities/product/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchCollectionsProductsList = async (
   slug: string,
@@ -28,7 +29,7 @@ const fetchCollectionsProductsList = async (
       },
       media: true,
     },
-  }
+  } satisfies StrapiQuery<ProductBase>
   if (search) {
     queryObj.filters.$or.push(
       { title: { $containsi: search } },
@@ -37,11 +38,7 @@ const fetchCollectionsProductsList = async (
     )
   }
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchProductsList(query)
+  return await fetchProductsList(queryObj)
 }
 
 export { fetchCollectionsProductsList }

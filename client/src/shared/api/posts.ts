@@ -1,5 +1,5 @@
 "use server"
-
+/*
 import { api } from "@/shared/api/api"
 import axios from "axios"
 import qs from "qs"
@@ -446,3 +446,4 @@ export const getAllClasses = async () => {}
 export const getAllGroups = async () => {}
 export const getAllTypes = async () => {}
 export const getAllModels = async () => {}
+*/

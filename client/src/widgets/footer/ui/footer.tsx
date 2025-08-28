@@ -5,17 +5,12 @@ import { Contacts } from "@/widgets/footer/ui/contacts"
 import { InfoNavigation } from "@/widgets/footer/ui/info-navigation"
 import * as React from "react"
 
-interface FooterProps {}
-
-const Footer = ({
-  className,
-  ...props
-}: React.ComponentProps<"footer"> & FooterProps) => {
+const Footer = ({ className, ...props }: React.ComponentProps<"footer">) => {
   return (
     <footer
       className={cn(
         className,
-        "py-8 px-4 md:px-8 backdrop-blur-3xl bg-[#93A79E]"
+        "py-8 px-4 md:px-8 backdrop-blur-3xl bg-[#93A79E] dark"
       )}
       {...props}
     >

@@ -29,11 +29,31 @@ const buttonVariants = cva(
         xl: "text-lg rounded-md font-bold h-14 px-8 has-[>svg]:px-6",
         icon: "size-9",
       },
+      target: {
+        brand: true,
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
+    compoundVariants: [
+      {
+        target: "brand",
+        variant: "default",
+        className:
+          "bg-(--brand-primary) text-(--brand-primary-foreground) hover:bg-(--brand-primary)/90",
+      },
+      {
+        target: "brand",
+        variant: "outline",
+        className:
+          "bg-background hover:bg-accent hover:text-(--brand-primary)/90 dark:bg-(--brand-primary)/30 dark:border-input dark:hover:bg-(--brand-primary)/50",
+      },
+      { target: "brand", variant: "secondary", className: "" },
+      { target: "brand", variant: "ghost", className: "" },
+      { target: "brand", variant: "link", className: "" },
+    ],
   }
 )
 

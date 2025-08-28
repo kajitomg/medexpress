@@ -1,4 +1,4 @@
-import { MainPage } from "@/pages/main/ui/main-page"
+import { MainPage } from "@/views/main/ui"
 import * as React from "react"
 
 const Home = async () => {

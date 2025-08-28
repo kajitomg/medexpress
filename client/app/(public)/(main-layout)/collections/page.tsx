@@ -1,7 +1,7 @@
 import { fetchCatalogCollectionsList } from "@/entities/collection/services"
 import { CatalogOptionsProvider } from "@/features/catalog/provider"
 import { CollectionsListProvider } from "@/features/catalog/provider/collections-list-provider"
-import { CollectionsPage } from "@/pages/collections/ui"
+import { CollectionsPage } from "@/views/collections/ui"
 import { NextPage } from "next"
 
 interface CollectionsPageProps {

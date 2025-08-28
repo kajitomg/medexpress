@@ -1,4 +1,4 @@
-import { AboutPage } from "@/pages/about/ui"
+import { AboutPage } from "@/views/about/ui"
 import * as React from "react"
 
 const About = () => {

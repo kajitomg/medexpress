@@ -3,7 +3,7 @@ import {
   CatalogOptionsProvider,
   CategoriesListProvider,
 } from "@/features/catalog/provider"
-import { CatalogCategoriesPage } from "@/pages/catalog-categories/ui"
+import { CatalogCategoriesPage } from "@/views/catalog-categories/ui"
 import { NextPage } from "next"
 
 interface CatalogPageProps {
@@ -16,7 +16,7 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
     options && JSON.parse(options).state.searchQuery
 
   const response = await fetchCatalogCategoriesList(searchQuery)
-  const categories = response.data
+  const categories = response?.data
 
   return (
     <CatalogOptionsProvider initialState={{ searchQuery }} skipHydration>

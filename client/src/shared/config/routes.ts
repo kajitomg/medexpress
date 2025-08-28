@@ -20,39 +20,14 @@ class Routes {
     title: "О нас",
     parent: this.MAIN,
   }
-  ARTICLES = {
-    path: "/articles",
-    title: "",
-    parent: this.MAIN,
-  }
   CART = {
     path: "/cart",
     title: "Корзина",
     parent: this.MAIN,
   }
-  CLIENTS = {
-    path: "/clients",
-    title: "Клиенты",
-    parent: this.MAIN,
-  }
-  CONSTRUCTOR = {
-    path: "/constructor",
-    title: "Конструктор",
-    parent: this.MAIN,
-  }
   CONTACTS = {
     path: "/contacts",
     title: "Контакты",
-    parent: this.MAIN,
-  }
-  DETAILS = {
-    path: "/details",
-    title: "",
-    parent: this.MAIN,
-  }
-  FEEDBACK = {
-    path: "/feedback",
-    title: "Отзывы",
     parent: this.MAIN,
   }
   SITEMAP = {

@@ -5,7 +5,7 @@ import {
   ProductsListProvider,
 } from "@/features/catalog/provider"
 import { CategoryDetailsProvider } from "@/features/category-details/provider"
-import { CategoryProductsPage } from "@/pages/category-products/ui"
+import { CategoryProductsPage } from "@/views/category-products/ui"
 import { NextPage } from "next"
 
 interface CatalogPageProps {

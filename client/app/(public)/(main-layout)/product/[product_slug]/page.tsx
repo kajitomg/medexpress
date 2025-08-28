@@ -1,6 +1,6 @@
 import { fetchDetailProductItemBySlug } from "@/entities/product/services/fetch-detail-product-item-by-slug"
 import { ProductDetailsProvider } from "@/features/product-details/provider/product-details-provider"
-import { ProductPage } from "@/pages/product/ui"
+import { ProductPage } from "@/views/product/ui"
 import { NextPage } from "next"
 
 interface ProductPageProps {

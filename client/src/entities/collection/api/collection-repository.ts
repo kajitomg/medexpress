@@ -7,10 +7,13 @@ import {
 } from "@/entities/collection/model/collection"
 import { api } from "@/shared/api"
 import { DocumentServices } from "@/shared/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchCollectionsList = async (query?: string) => {
+const fetchCollectionsList = async (queryObj?: StrapiQuery<CollectionBase>) => {
   try {
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
+
     const response = await api<
       CollectionListResponse<CollectionBase & DocumentServices>
     >(`/api/collections`, {
@@ -24,18 +27,20 @@ const fetchCollectionsList = async (query?: string) => {
   }
 }
 
-const fetchCollectionItemBySlug = async (slug: string, query?: string) => {
+const fetchCollectionItemBySlug = async (
+  slug: string,
+  queryObj?: StrapiQuery<CollectionBase>
+) => {
   try {
-    const inputQueryObj = query ? qs.parse(query) : {}
-    const queryObj = {
-      ...inputQueryObj,
+    queryObj = {
+      ...queryObj,
       filters: {
         slug,
-        ...inputQueryObj.filters,
+        ...queryObj?.filters,
       },
     }
 
-    query = qs.stringify(queryObj, { encodeValuesOnly: true })
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
     const response = await api<
       CollectionListResponse<CollectionBase & DocumentServices>

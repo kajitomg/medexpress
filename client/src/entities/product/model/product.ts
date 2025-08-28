@@ -12,7 +12,7 @@ export type ProductBase = {
   description: string | null
   media?: Media | null
   categories?: CategoryBase[]
-  compilations?: CollectionBase[]
+  collections?: CollectionBase[]
 }
 
 export type ProductListResponse<T extends ProductBase = ProductBase> = {

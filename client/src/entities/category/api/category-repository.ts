@@ -6,11 +6,15 @@ import {
   CategoryListResponse,
 } from "@/entities/category/model"
 import { api } from "@/shared/api"
+import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchCategoriesList = async (query?: string) => {
+const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
   try {
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
+
     const response = await api<
       CategoryListResponse<CategoryBase & DocumentServices>
     >(`/api/categories`, {
@@ -19,23 +23,25 @@ const fetchCategoriesList = async (query?: string) => {
     })
     return response.data
   } catch (e) {
-    console.error(e)
-    throw e
+    const error = await ErrorUtils.getErrors(e)
+    throw error[0]
   }
 }
 
-const fetchCategoryItemBySlug = async (slug: string, query?: string) => {
+const fetchCategoryItemBySlug = async (
+  slug: string,
+  queryObj?: StrapiQuery<CategoryBase>
+) => {
   try {
-    const inputQueryObj = query ? qs.parse(query) : {}
-    const queryObj = {
-      ...inputQueryObj,
+    queryObj = {
+      ...queryObj,
       filters: {
         slug,
-        ...inputQueryObj.filters,
+        ...queryObj?.filters,
       },
     }
 
-    query = qs.stringify(queryObj, { encodeValuesOnly: true })
+    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
     const response = await api<
       CategoryListResponse<CategoryBase & DocumentServices>

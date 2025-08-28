@@ -5,7 +5,7 @@ import {
   ProductsListProvider,
 } from "@/features/catalog/provider"
 import { CollectionDetailsProvider } from "@/features/collection-details/provider"
-import { CollectionProductsPage } from "@/pages/collection-products/ui"
+import { CollectionProductsPage } from "@/views/collection-products/ui"
 
 interface CompilationPageProps {
   params: Promise<{ collection_slug: string }>

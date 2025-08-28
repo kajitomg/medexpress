@@ -1,7 +1,8 @@
 "use server"
 
 import { fetchCategoriesList } from "@/entities/category/api"
-import qs from "qs"
+import { CategoryBase } from "@/entities/category/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchCatalogCategoriesListChildrens = async (search?: string) => {
   const queryObj = {
@@ -21,13 +22,9 @@ const fetchCatalogCategoriesListChildrens = async (search?: string) => {
         fields: ["id"],
       },
     },
-  }
+  } satisfies StrapiQuery<CategoryBase>
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchCategoriesList(query)
+  return await fetchCategoriesList(queryObj)
 }
 
 const fetchCatalogCategoriesListParents = async (search?: string) => {
@@ -43,19 +40,15 @@ const fetchCatalogCategoriesListParents = async (search?: string) => {
         { code: { $containsi: search } },
       ],
     },
-  }
+  } satisfies StrapiQuery<CategoryBase>
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchCategoriesList(query)
+  return await fetchCategoriesList(queryObj)
 }
 
 const fetchCatalogCategoriesList = async (search?: string) => {
-  const queryObj: Record<string, any> = {
+  const queryObj = {
     filters: {
-      id: {},
+      id: { $in: new Array(0), $null: false as boolean },
       parent: {
         $null: true,
       },
@@ -64,8 +57,7 @@ const fetchCatalogCategoriesList = async (search?: string) => {
       childrens: true,
       media: true,
     },
-  }
-
+  } satisfies StrapiQuery<CategoryBase>
   if (search) {
     const childrens = await fetchCatalogCategoriesListChildrens(search)
     const parents = await fetchCatalogCategoriesListParents(search)
@@ -82,11 +74,7 @@ const fetchCatalogCategoriesList = async (search?: string) => {
     }
   }
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchCategoriesList(query)
+  return await fetchCategoriesList(queryObj)
 }
 
 export { fetchCatalogCategoriesList }

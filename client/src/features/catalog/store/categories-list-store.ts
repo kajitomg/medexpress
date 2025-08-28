@@ -1,4 +1,7 @@
-import { CategoryBase } from "@/entities/category/model/category"
+import {
+  CategoryBase,
+  CategoryListResponse,
+} from "@/entities/category/model/category"
 import { DocumentServices } from "@/shared/model/document"
 import { create } from "zustand"
 
@@ -10,6 +13,9 @@ export interface CategoriesListState {
 
 interface CategoriesListActions {
   setCategories: (categories: (CategoryBase & DocumentServices)[]) => void
+  loadCategories: (
+    fn: () => Promise<CategoryListResponse<CategoryBase & DocumentServices>>
+  ) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
 }
@@ -29,6 +35,18 @@ export const createCategoriesListStore = (
     ...{ ...defaultInitState, ...initState },
 
     setCategories: (categories) => set({ categories }),
+
+    loadCategories: async (fn) => {
+      try {
+        set({ isLoading: true })
+        const response = await fn()
+        set({ categories: response.data })
+      } catch {
+        return set({ error: "Что-то пошло не так" })
+      } finally {
+        set({ isLoading: false })
+      }
+    },
 
     setLoading: (isLoading) => set({ isLoading }),
 

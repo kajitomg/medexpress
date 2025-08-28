@@ -39,7 +39,7 @@ const CatalogSearchControl = () => {
       <Button
         type="button"
         variant="brand"
-        className=" cursor-pointer"
+        className="cursor-pointer"
         onClick={handleApplyOptions}
       >
         <Search />
@@ -47,7 +47,7 @@ const CatalogSearchControl = () => {
       </Button>
       <Button
         type="button"
-        variant="brand"
+        variant="outline"
         className=" cursor-pointer"
         disabled={!searchQuery}
         onClick={handleResetOptions}

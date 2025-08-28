@@ -15,7 +15,7 @@ const InfoNavigation = ({ className, ...props }: NavigationMenuProps) => {
       {...props}
     >
       <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
-        <CardTitle className="p-1 text-start text-lg font-bold text-accent h-7 md:h-8">
+        <CardTitle className="p-1 text-start text-lg font-bold text-foreground h-7 md:h-8">
           Информация
         </CardTitle>
       </CardHeader>
@@ -23,21 +23,21 @@ const InfoNavigation = ({ className, ...props }: NavigationMenuProps) => {
         <Button
           asChild
           variant="link"
-          className="hover:no-underline p-1 font-bold text-accent hover:text-gray-200 h-auto"
+          className="hover:no-underline p-1 font-bold text-foreground hover:text-gray-200 h-auto"
         >
           <Link href={routes.ABOUT.path}>{routes.ABOUT.title}</Link>
         </Button>
         <Button
           asChild
           variant="link"
-          className="hover:no-underline p-1 font-bold text-accent hover:text-gray-200 h-auto"
+          className="hover:no-underline p-1 font-bold text-foreground hover:text-gray-200 h-auto"
         >
           <Link href={routes.CONTACTS.path}>{routes.CONTACTS.title}</Link>
         </Button>
         <Button
           asChild
           variant="link"
-          className="hover:no-underline p-1 font-bold text-accent hover:text-gray-200 h-auto"
+          className="hover:no-underline p-1 font-bold text-foreground hover:text-gray-200 h-auto"
         >
           <Link href={routes.SITEMAP.path}>{routes.SITEMAP.title}</Link>
         </Button>

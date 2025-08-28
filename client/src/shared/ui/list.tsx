@@ -1,20 +1,31 @@
 import { cn } from "@/shared/lib"
 import * as React from "react"
-import { JSX, ReactNode } from "react"
+import { ReactNode } from "react"
+
+type BoxProps<C extends React.ElementType> = {
+  as?: C
+}
+
+type PolymorphicComponentProps<
+  C extends React.ElementType,
+  Props = object,
+> = BoxProps<C> &
+  Props &
+  Omit<React.ComponentPropsWithoutRef<C>, keyof BoxProps<C>>
 
 interface ListProps<T> {
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>
   items?: T[]
   renderItem: (item: T, i: number) => ReactNode
 }
 
-function List<T>({
-  as: Component = "div",
+function List<T, C extends React.ElementType = "div">({
+  as,
   items,
   renderItem,
   className,
   ...props
-}: React.ComponentProps<"div"> & ListProps<T>) {
+}: ListProps<T> & PolymorphicComponentProps<C>) {
+  const Component = as || "div"
   return (
     <Component data-slot="list" className={cn(className)} {...props}>
       {items?.map((item, i) => renderItem(item, i))}

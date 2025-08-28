@@ -1,4 +1,4 @@
-import { CartPage } from "@/pages/cart/ui"
+import { CartPage } from "@/views/cart/ui"
 import * as React from "react"
 
 const Cart = () => {

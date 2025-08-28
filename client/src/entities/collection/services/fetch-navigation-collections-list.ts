@@ -1,7 +1,8 @@
 "use server"
 
 import { fetchCollectionsList } from "@/entities/collection/api"
-import qs from "qs"
+import { CollectionBase } from "@/entities/collection/model"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchNavigationCollectionsList = async () => {
   const queryObj = {
@@ -13,13 +14,9 @@ const fetchNavigationCollectionsList = async () => {
     populate: {
       media: true,
     },
-  }
+  } satisfies StrapiQuery<CollectionBase>
 
-  const query = qs.stringify(queryObj, {
-    encodeValuesOnly: true,
-  })
-
-  return await fetchCollectionsList(query)
+  return await fetchCollectionsList(queryObj)
 }
 
 export { fetchNavigationCollectionsList }
