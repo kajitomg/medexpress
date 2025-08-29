@@ -12,7 +12,7 @@ import { NavigationMobile } from "@/widgets/menu-burger/ui/navigation-mobile"
 import { Menu } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
-import Logo from "../../../../public/logo.svg"
+import Logo from "../../../../../static/logo.svg"
 
 const MenuBurger = () => {
   return (

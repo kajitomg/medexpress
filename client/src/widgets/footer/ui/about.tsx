@@ -11,7 +11,7 @@ import {
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
-import Logo from "../../../../public/logo.svg"
+import Logo from "../../../../../static/logo.svg"
 
 const About = () => {
   return (
