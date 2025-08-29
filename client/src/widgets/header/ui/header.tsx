@@ -8,8 +8,8 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
-import Logo from "../../../../../static/logo.svg"
 import Error from "../../../../app/error"
+import Logo from "../../../../public/logo.svg"
 
 const Header = async ({ className, ...props }: ComponentProps<"header">) => {
   return (
