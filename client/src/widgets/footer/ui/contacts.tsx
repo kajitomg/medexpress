@@ -23,11 +23,12 @@ const Contacts = () => {
             357820 Ставропольский край, г. Георгевск, ул. Минераловодская 8А
           </Typography>
         </div>
-        <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
+        <div className="grid items-center gap-y-1 gap-x-2 lg:gap-x-4 content-start justify-start">
           <Phone className="size-5 md:size-6" />
           <Typography variant="small" className="col-start-2">
             (87951) 5-07-02
-            <br />
+          </Typography>
+          <Typography variant="small" className="col-start-2">
             (87951) 5-11-16
           </Typography>
         </div>

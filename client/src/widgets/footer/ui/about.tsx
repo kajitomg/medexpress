@@ -6,20 +6,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Logo,
   Typography,
 } from "@/shared/ui"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
-import Link from "next/link"
 import * as React from "react"
-import Logo from "../../../../public/logo.svg"
 
 const About = () => {
   return (
     <Card className="bg-transparent border-none shadow-none gap-y-1 sm:gap-y-2 py-2 sm:py-4 md:py-6">
       <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
-        <Link href={routes.MAIN.path}>
-          <Logo className="h-7 md:h-8 w-auto fill-foreground" />
-        </Link>
+        <Logo
+          path={routes.MAIN.path}
+          className="fill-foreground p-2 h-10 lg:h-10"
+        />
       </CardHeader>
       <CardContent className=" px-2 md:px-4 lg:px-6">
         <CardTitle>

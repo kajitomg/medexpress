@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "localhost",
+        hostname: process.env.HOST || "localhost",
         port: "1337",
         pathname: "/uploads/**",
         search: "",
@@ -19,6 +19,31 @@ const nextConfig: NextConfig = {
         as: "*.js",
       },
     },
+  },
+  webpack(config) {
+    //@ts-expect-error is necessary
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
+    )
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
+        use: ["@svgr/webpack"],
+      }
+    )
+
+    fileLoaderRule.exclude = /\.svg$/i
+
+    return config
   },
 }
 

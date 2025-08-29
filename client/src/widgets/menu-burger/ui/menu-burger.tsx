@@ -1,5 +1,5 @@
 import { routes } from "@/shared/config/routes"
-import { Button, Separator } from "@/shared/ui"
+import { Button, Logo, Separator } from "@/shared/ui"
 import {
   Sheet,
   SheetClose,
@@ -10,13 +10,11 @@ import {
 } from "@/shared/ui/sheet"
 import { NavigationMobile } from "@/widgets/menu-burger/ui/navigation-mobile"
 import { Menu } from "lucide-react"
-import Link from "next/link"
 import * as React from "react"
-import Logo from "../../../../public/logo.svg"
 
 const MenuBurger = () => {
   return (
-    <Sheet>
+    <Sheet aria-describedby="Меню">
       <SheetTrigger asChild>
         <Button
           variant="outline"
@@ -32,9 +30,10 @@ const MenuBurger = () => {
         <SheetHeader>
           <SheetTitle>
             <SheetClose asChild>
-              <Link href={routes.MAIN.path}>
-                <Logo className="p-2 h-14 lg:h-16 w-auto fill-foreground" />
-              </Link>
+              <Logo
+                path={routes.MAIN.path}
+                className="p-2 h-10 fill-foreground"
+              />
             </SheetClose>
           </SheetTitle>
         </SheetHeader>

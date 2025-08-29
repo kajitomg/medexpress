@@ -5,45 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/anasteziologia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/cabinet.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/check.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/choice.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/consultation.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/delivery 2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/delivery 3.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/delivery truck.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/delivery.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/doc1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/doc2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/doc3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/doc4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/doc5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/idea.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/kollektiv.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/logo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/map.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/med.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/oborud.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/oborud.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/oborud2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/oborud3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/oborud4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/quality.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/squared-background 2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/squared-background 3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/squared-background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/support.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/tablet.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/logo.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/logo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/menu-burger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/menu-burger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +52,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Web/medexpress/client/public",
+    "last_opened_file_path": "C:/Web/medexpress/client/src/shared/assets",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -98,15 +66,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\client\src\shared\assets" />
       <recent name="C:\Web\medexpress\client\public" />
       <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\docker" />
       <recent name="C:\Web\medexpress\cms" />
-      <recent name="C:\Web\medexpress\client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\static" />
+      <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress" />
       <recent name="C:\Web\medexpress\docker" />
       <recent name="C:\Web\medexpress\client\src\shared\types" />
@@ -271,6 +239,7 @@
       <workItem from="1756390417223" duration="4641000" />
       <workItem from="1756420990157" duration="1766000" />
       <workItem from="1756474768882" duration="5932000" />
+      <workItem from="1756501502114" duration="6583000" />
     </task>
     <servers />
   </component>

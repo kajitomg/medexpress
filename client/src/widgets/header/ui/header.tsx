@@ -1,15 +1,14 @@
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
+import { Logo } from "@/shared/ui"
 import { ActionBar } from "@/widgets/header/ui/action-bar"
 import { CollectionsBar } from "@/widgets/header/ui/collections-bar"
 import { Navigation } from "@/widgets/header/ui/navigation"
 import { MenuBurger } from "@/widgets/menu-burger/ui/menu-burger"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
-import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
 import Error from "../../../../app/error"
-import Logo from "../../../../public/logo.svg"
 
 const Header = async ({ className, ...props }: ComponentProps<"header">) => {
   return (
@@ -25,9 +24,10 @@ const Header = async ({ className, ...props }: ComponentProps<"header">) => {
           <MenuBurger />
         </div>
         <div className="col-start-2 col-span-4 md:col-start-1 md:col-span-1 justify-self-start">
-          <Link href={routes.MAIN.path}>
-            <Logo className="p-2 h-14 lg:h-16 w-auto fill-foreground" />
-          </Link>
+          <Logo
+            path={routes.MAIN.path}
+            className="fill-foreground p-2 h-9 lg:h-10"
+          />
         </div>
         <Navigation className="col-start-2 col-span-4 hidden md:block" />
         <ActionBar className="col-start-6 col-span-2" />

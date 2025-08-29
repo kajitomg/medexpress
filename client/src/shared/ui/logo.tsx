@@ -3,14 +3,13 @@ import { Button } from "@/shared/ui/index"
 import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
+import LogoIcon from "../../../public/logo.svg"
 
 interface LogoProps {
-  title: string
   path: string
 }
 
 const Logo = ({
-  title,
   path,
   className,
   ...props
@@ -19,13 +18,16 @@ const Logo = ({
     <Button
       asChild
       variant="link"
+      size="icon"
       className={cn(
-        "bg-transparent text-xl font-black hover:no-underline p-0",
+        "bg-transparent text-xl font-black hover:no-underline p-0 w-auto",
         className
       )}
       {...props}
     >
-      <Link href={path}>{title}</Link>
+      <Link href={path}>
+        <LogoIcon className="size-full" />
+      </Link>
     </Button>
   )
 }
