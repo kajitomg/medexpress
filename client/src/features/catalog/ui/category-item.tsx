@@ -31,7 +31,7 @@ const CatalogCategoryItem = ({ category }: CatalogCategoryItemProps) => {
                       "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
                     )
               }
-              alt="alt"
+              alt={category.title}
               width="250"
               height="250"
               className="w-full h-full object-cover rounded-2xl"

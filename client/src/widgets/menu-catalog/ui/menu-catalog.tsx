@@ -29,7 +29,7 @@ const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
                 ? urlBuilder(categories?.[selectedCategory].media?.url)
                 : urlBuilder("/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp")
             }
-            alt="alt"
+            alt="Изображение категории"
             width="200"
             height="200"
             className="w-full h-full object-cover rounded-2xl"

@@ -399,7 +399,7 @@ export const getAllPosts = async () => {
     length: "32770",
     categories: [
       1, 280, 337, 354, 376, 409, 426, 446, 455, 28, 51, 79, 116, 130, 156, 183,
-      198, 206,
+      198, 206, 264,
     ],
   }
   const response = await axios.post(

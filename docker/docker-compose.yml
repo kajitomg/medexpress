@@ -85,8 +85,21 @@ services:
     volumes:
       - ../nginx:/etc/nginx/conf.d
       - ../static:/var/www/static
+      - certbot_certs:/etc/letsencrypt
+      - certbot_webroot:/var/www/certbot
     ports:
       - "80:80"
+      - "443:443"
+
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email your-email@example.com -d example.com -d www.example.com --agree-tos --no-eff-email --force-renewal
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_webroot:/var/www/certbot
 
 volumes:
+  certbot_certs:
+  certbot_webroot:
   database_data:
