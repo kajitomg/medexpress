@@ -17,6 +17,13 @@ services:
       - ../client/.env
     volumes:
       - ../static:/opt/application/public
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://client:3000" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 1m30s
+      start_interval: 5s
     command: sh -c "npm run build && npm run start"
     ports:
       - "3000:3000"
@@ -93,6 +100,9 @@ services:
   certbot:
     container_name: "certbot"
     image: certbot/certbot
+    depends_on:
+      client:
+        condition: service_healthy
     volumes:
       - ../certbot/conf:/etc/letsencrypt
       - ../certbot/www:/var/www/certbot
