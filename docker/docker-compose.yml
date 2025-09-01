@@ -18,7 +18,7 @@ services:
     volumes:
       - ../static:/opt/application/public
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://client:3000" ]
+      test: [ "CMD", "curl", "-f", "http://client:3000/" ]
       interval: 1m30s
       timeout: 10s
       retries: 3
