@@ -1,7 +1,8 @@
 "use client"
 
 import { useCategoriesListStore } from "@/features/catalog/provider"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { useSettingsStore } from "@/features/settings/provider"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { ScrollArea } from "@/shared/ui/scroll-area"
 import { CategoriesList } from "@/widgets/menu-catalog/ui/categories-list"
@@ -10,6 +11,9 @@ import Image from "next/image"
 import { ComponentProps, useState } from "react"
 
 const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
+  const defaultMedia = useSettingsStore(
+    (store) => store.data?.category_default_media
+  )
   const categories = useCategoriesListStore((state) => state.categories)
 
   const [selectedCategory, setSelectedCategory] = useState<number>(0)
@@ -24,11 +28,9 @@ const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
       <div className="flex flex-col flex-none basis-1/4 gap-8">
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={
-              categories?.[selectedCategory].media?.url
-                ? urlBuilder(categories?.[selectedCategory].media?.url)
-                : urlBuilder("/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp")
-            }
+            src={imageUrlBuilder(
+              categories?.[selectedCategory].media?.url || defaultMedia?.url
+            )}
             alt="Изображение категории"
             width="200"
             height="200"

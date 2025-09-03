@@ -1,6 +1,6 @@
 import { CollectionBase } from "@/entities/collection/model"
 import { routes } from "@/shared/config/routes"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
 import { Card, CardContent, CardHeader, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
@@ -22,13 +22,7 @@ const CatalogCollectionItem = ({ collection }: CatalogCollectionItemProps) => {
             className="before:bg-black/20 before:absolute before:size-full"
           >
             <Image
-              src={
-                collection.media?.url
-                  ? urlBuilder(collection.media?.url)
-                  : urlBuilder(
-                      "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
-                    )
-              }
+              src={imageUrlBuilder(collection.media?.url)}
               alt={collection.title}
               width="300"
               height="300"

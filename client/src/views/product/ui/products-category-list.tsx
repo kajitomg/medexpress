@@ -1,8 +1,9 @@
 import { ProductBase } from "@/entities/product/model"
 import { fetchSimilarCategoriesProductsList } from "@/entities/product/services"
+import { useSettingsStore } from "@/features/settings/provider"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
 import {
   Button,
@@ -33,6 +34,9 @@ const ProductsCategoryList = ({
   className,
   ...props
 }: ComponentProps<"div"> & ProductsCategoryListProps) => {
+  const defaultMedia = useSettingsStore(
+    (state) => state.data?.product_default_media
+  )
   const [products, setProducts] = useState<
     (ProductBase & DocumentServices)[] | undefined
   >(undefined)
@@ -51,7 +55,10 @@ const ProductsCategoryList = ({
   }, [categorySlug, productSlug])
 
   const renderItem = (item: ProductBase & DocumentServices, index: number) => (
-    <CatalogProductItem key={item?.id || index} product={item} />
+    <CatalogProductItem
+      key={item?.id || index}
+      product={item ? { ...item, media: item.media || defaultMedia } : item}
+    />
   )
   return (
     <ScrollArea className="w-full">
@@ -97,13 +104,7 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
           <AspectRatio ratio={16 / 9} className="bg-muted">
             {product ? (
               <Image
-                src={
-                  product.media?.url
-                    ? urlBuilder(product.media?.url)
-                    : urlBuilder(
-                        "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
-                      )
-                }
+                src={imageUrlBuilder(product?.media?.url)}
                 alt={product.title}
                 fill
                 sizes="100%"

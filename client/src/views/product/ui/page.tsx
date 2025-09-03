@@ -3,8 +3,9 @@
 import { CategoryBase } from "@/entities/category/model"
 import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
 import { useProductDetailsStore } from "@/features/product-details/provider/product-details-provider"
+import { useSettingsStore } from "@/features/settings/provider"
 import { routes } from "@/shared/config/routes"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { Button, Card, CardContent, List, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { ProductsCategoryList } from "@/views/product/ui/products-category-list"
@@ -13,6 +14,9 @@ import Link from "next/link"
 import * as React from "react"
 
 const Page = () => {
+  const defaultMedia = useSettingsStore(
+    (state) => state.data?.product_default_media
+  )
   const product = useProductDetailsStore((state) => state.product)
 
   const renderCategoryItem = (category: CategoryBase) => (
@@ -47,13 +51,9 @@ const Page = () => {
             <CardContent className="p-0">
               <AspectRatio ratio={16 / 9} className="bg-muted">
                 <Image
-                  src={
-                    product?.media?.url
-                      ? urlBuilder(product.media?.url)
-                      : urlBuilder(
-                          "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
-                        )
-                  }
+                  src={imageUrlBuilder(
+                    product?.media?.url || defaultMedia?.url
+                  )}
                   alt={product?.title || "Продукт"}
                   fill
                   sizes="(min-width: 1280px) 35vw, 80vw"

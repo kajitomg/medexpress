@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "default_settings",
+  "info": {
+    "singularName": "default-setting",
+    "pluralName": "default-settings",
+    "displayName": "default_settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category_default_media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "product_default_media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "collection_default_media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

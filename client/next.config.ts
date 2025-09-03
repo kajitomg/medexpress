@@ -5,10 +5,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: process.env.HOST || "localhost",
-        port: "1337",
+        hostname: process.env.API_HOST || "localhost",
+        port: process.env.API_PORT || "1337",
         pathname: "/uploads/**",
-        search: "",
       },
     ],
   },

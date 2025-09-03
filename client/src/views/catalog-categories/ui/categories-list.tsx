@@ -2,6 +2,7 @@
 
 import { CategoryBase } from "@/entities/category/model"
 import { CatalogCategoryItem } from "@/features/catalog/ui"
+import { useSettingsStore } from "@/features/settings/provider"
 import { cn } from "@/shared/lib"
 import { DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
@@ -17,11 +18,20 @@ const CategoriesList = ({
   className,
   ...props
 }: ComponentProps<"div"> & CategoriesListProps) => {
+  const defaultMedia = useSettingsStore(
+    (store) => store.data?.category_default_media
+  )
+
   const renderCatalogItem = useCallback(
     (item: CategoryBase & DocumentServices) => {
-      return <CatalogCategoryItem key={item.id} category={item} />
+      return (
+        <CatalogCategoryItem
+          key={item.id}
+          category={{ ...item, media: item.media || defaultMedia }}
+        />
+      )
     },
-    []
+    [defaultMedia]
   )
   return (
     <List

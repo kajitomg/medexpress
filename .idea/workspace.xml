@@ -5,10 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/public/default_image.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/api/settings-repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/model/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/model/settings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/services/fetch-settings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/entities/settings/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/settings/provider/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/settings/provider/settings-provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/settings/store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/features/settings/store/settings-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/shared/lib/image-url-builder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/category-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/category-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/collection-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/collection-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/product-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/product-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/url-builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/url-builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-categories/ui/categories-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-categories/ui/categories-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/category-products/ui/products-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/category-products/ui/products-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/collection-products/ui/products-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/collection-products/ui/products-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/collections/ui/collections-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/collections/ui/collections-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product/ui/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/products-category-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product/ui/products-category-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/menu-catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/menu-catalog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cms/config/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/config/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/category/content-types/category/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/category/content-types/category/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/collection/content-types/collection/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/collection/content-types/collection/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +50,8 @@
       <list>
         <option value="Dockerfile" />
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -49,7 +79,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/client/src/shared/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/client/src/shared/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -63,11 +93,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Web\medexpress\client\src\shared\assets" />
+      <recent name="C:\Web\medexpress\client\src\shared\lib" />
       <recent name="C:\Web\medexpress\client\public" />
-      <recent name="C:\Web\medexpress\client\app" />
-      <recent name="C:\Web\medexpress\docker" />
-      <recent name="C:\Web\medexpress\cms" />
+      <recent name="C:\Web\medexpress\client\src\features\settings\provider" />
+      <recent name="C:\Web\medexpress\client\src\features\settings\store" />
+      <recent name="C:\Web\medexpress\client\src\entities\settings" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Web\medexpress\static" />
@@ -241,7 +271,9 @@
       <workItem from="1756590270482" duration="9269000" />
       <workItem from="1756639129892" duration="3587000" />
       <workItem from="1756769601998" duration="3176000" />
-      <workItem from="1756822885796" duration="10165000" />
+      <workItem from="1756822885796" duration="11308000" />
+      <workItem from="1756898158595" duration="11086000" />
+      <workItem from="1756934971700" duration="4200000" />
     </task>
     <servers />
   </component>

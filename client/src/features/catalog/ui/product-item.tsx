@@ -2,7 +2,7 @@ import { CategoryBase } from "@/entities/category/model"
 import { ProductBase } from "@/entities/product/model"
 import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
 import { routes } from "@/shared/config/routes"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
 import {
   Button,
@@ -32,11 +32,7 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
       <CardHeader className="px-0">
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={
-              product.media?.url
-                ? urlBuilder(product.media?.url)
-                : urlBuilder("/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp")
-            }
+            src={imageUrlBuilder(product.media?.url)}
             alt={product.title}
             width="300"
             height="300"

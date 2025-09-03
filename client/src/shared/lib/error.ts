@@ -1,7 +1,10 @@
 import axios, { AxiosError, AxiosResponse, HttpStatusCode } from "axios"
 
 const SERVICE_NAMES: Record<string, string> = {
-  "/categories": "получения категорий",
+  "/api/categories": "получения категорий",
+  "/api/products": "получения продуктов",
+  "/api/collections": "получения коллекций",
+  "/api/default-setting": "получения настроек",
 }
 
 export const HTTP_ERROR_DESCRIPTIONS: Partial<
@@ -32,7 +35,6 @@ export const ERROR_DESCRIPTIONS: Record<
 export class ErrorUtils {
   static async getErrors(error: unknown): Promise<string[]> {
     let errorMessages: string[]
-
     if (axios.isAxiosError(error)) {
       const serviceName = this._getServiceName(
         error.config?.baseURL,

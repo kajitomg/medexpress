@@ -1,6 +1,6 @@
 import { CategoryBase } from "@/entities/category/model"
 import { routes } from "@/shared/config/routes"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
 import { Button, Card, CardContent, List } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
@@ -24,13 +24,7 @@ const CatalogCategoryItem = ({ category }: CatalogCategoryItemProps) => {
         <div className="max-w-80 w-full md:max-w-60 lg:max-w-80">
           <AspectRatio ratio={16 / 9}>
             <Image
-              src={
-                category.media?.url
-                  ? urlBuilder(category.media?.url)
-                  : urlBuilder(
-                      "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
-                    )
-              }
+              src={imageUrlBuilder(category.media?.url)}
               alt={category.title}
               width="250"
               height="250"
