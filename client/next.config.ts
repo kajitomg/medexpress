@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: process.env.API_HOST || "localhost",
+        hostname: process.env.IP || "localhost",
         port: process.env.API_PORT || "1337",
-        pathname: "/uploads/**",
+        pathname: "/panel/uploads/**",
       },
     ],
   },

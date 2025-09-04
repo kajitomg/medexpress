@@ -10,7 +10,7 @@ const defaultOptions: Options = {
 }
 
 const imageUrlBuilder = (url?: string, options: Options = defaultOptions) => {
-  return urlBuilder(url || options.defaultUrl)
+  return url ? urlBuilder(url) : options.defaultUrl
 }
 
 export { imageUrlBuilder }

@@ -9,9 +9,6 @@ services:
         condition: service_started
       cms:
         condition: service_healthy
-    environment:
-      - ../.env
-      - ../client/.env
     env_file:
       - ../.env
       - ../client/.env
@@ -59,6 +56,7 @@ services:
       retries: 3
       start_period: 1m30s
       start_interval: 5s
+    command: sh -c "npm run build && npm run start"
     ports:
       - "1337:1337"
 
