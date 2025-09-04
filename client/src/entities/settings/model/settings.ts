@@ -6,6 +6,7 @@ export type SettingsBase = {
   category_default_media: Media
   product_default_media: Media
   collection_default_media: Media
+  robots_txt: Media
 }
 
 export type SettingsItemResponse<T extends SettingsBase = SettingsBase> = {

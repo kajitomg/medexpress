@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_working_schedules",
+  "info": {
+    "displayName": "working_schedule",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "working_days": {
+      "type": "string",
+      "required": true
+    },
+    "working_times": {
+      "type": "string",
+      "required": true
+    },
+    "weekend_days": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

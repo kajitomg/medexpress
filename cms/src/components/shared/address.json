@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_addresses",
+  "info": {
+    "displayName": "address",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "string"
+    }
+  }
+}

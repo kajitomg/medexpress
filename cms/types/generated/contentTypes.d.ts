@@ -453,6 +453,7 @@ export interface ApiDefaultSettingDefaultSetting
     draftAndPublish: true;
   };
   attributes: {
+    addresses: Schema.Attribute.Component<'shared.address', true>;
     category_default_media: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required;
     collection_default_media: Schema.Attribute.Media<'images'> &
@@ -460,18 +461,26 @@ export interface ApiDefaultSettingDefaultSetting
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    emails: Schema.Attribute.Component<'shared.email', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::default-setting.default-setting'
     > &
       Schema.Attribute.Private;
+    phonenumbers: Schema.Attribute.Component<'shared.phonenumber', true>;
     product_default_media: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    robots_txt: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    socials: Schema.Attribute.Component<'shared.social', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    working_schedule: Schema.Attribute.Component<
+      'shared.working-schedule',
+      false
+    >;
   };
 }
 

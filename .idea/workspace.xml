@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/static/default_image.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/(public)/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/api/robots.txt/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/image-url-builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/image-url-builder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/config/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/config/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/cms.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/cms.Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/settings/model/settings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/settings/model/settings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/content-types/default-setting/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/default-setting/content-types/default-setting/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,39 +47,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Web/medexpress/static",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/static&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\static" />
       <recent name="C:\Web\medexpress\client\src\shared\lib" />
       <recent name="C:\Web\medexpress\client\public" />
       <recent name="C:\Web\medexpress\client\src\features\settings\provider" />
       <recent name="C:\Web\medexpress\client\src\features\settings\store" />
-      <recent name="C:\Web\medexpress\client\src\entities\settings" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\client\app\api" />
       <recent name="C:\Web\medexpress\static" />
       <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress" />
       <recent name="C:\Web\medexpress\docker" />
-      <recent name="C:\Web\medexpress\client\src\shared\types" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -247,7 +248,9 @@
       <workItem from="1756769601998" duration="3176000" />
       <workItem from="1756822885796" duration="11308000" />
       <workItem from="1756898158595" duration="11086000" />
-      <workItem from="1756934971700" duration="10729000" />
+      <workItem from="1756934971700" duration="11188000" />
+      <workItem from="1756980275870" duration="8686000" />
+      <workItem from="1756999405887" duration="1122000" />
     </task>
     <servers />
   </component>
