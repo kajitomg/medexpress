@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/(public)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/api/robots.txt/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/settings/model/settings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/settings/model/settings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/content-types/default-setting/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/default-setting/content-types/default-setting/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/types/generated/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/api/robots.txt/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/robots.txt/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +244,8 @@
       <workItem from="1756898158595" duration="11086000" />
       <workItem from="1756934971700" duration="11188000" />
       <workItem from="1756980275870" duration="8686000" />
-      <workItem from="1756999405887" duration="1122000" />
+      <workItem from="1756999405887" duration="2461000" />
+      <workItem from="1757029453154" duration="822000" />
     </task>
     <servers />
   </component>
