@@ -2,7 +2,7 @@
 
 import { CollectionBase } from "@/entities/collection/model"
 import { CatalogCollectionItem } from "@/features/catalog/ui"
-import { useSettingsStore } from "@/features/settings/provider"
+import { useGlobalStore } from "@/features/global/provider"
 import { cn } from "@/shared/lib"
 import { DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
@@ -18,8 +18,8 @@ const CollectionsList = ({
   className,
   ...props
 }: ComponentProps<"div"> & CategoriesListProps) => {
-  const defaultMedia = useSettingsStore(
-    (store) => store.data?.collection_default_media
+  const defaultMedia = useGlobalStore(
+    (store) => store.data?.defaultCollectionImage
   )
   const renderCollectionItem = useCallback(
     (item: CollectionBase & DocumentServices) => {

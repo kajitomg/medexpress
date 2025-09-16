@@ -1,3 +1,4 @@
+import { RowTextItem } from "@/shared/model/strapi/blocks/row-text-item"
 import {
   Accordion,
   AccordionContent,
@@ -9,12 +10,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface ContentFaqProps {
-  items: {
-    id: number
-    value: string
-    question: string
-    answer: string
-  }[]
+  items?: RowTextItem[]
 }
 
 const ContentFaq = ({
@@ -24,19 +20,19 @@ const ContentFaq = ({
   return (
     <div className={className}>
       <Accordion type="multiple">
-        {items.map((item) => (
+        {items?.map((item) => (
           <AccordionItem
             key={item.id}
-            value={item.value}
+            value={item.title || ""}
             className="rounded-4xl px-2 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3"
           >
             <AccordionTrigger className="cursor-pointer">
               <Typography asChild variant="h4">
-                <h4>{item.question}</h4>
+                <h4>{item.title}</h4>
               </Typography>
             </AccordionTrigger>
             <AccordionContent>
-              <Typography variant="muted">{item.answer}</Typography>
+              <Typography variant="muted">{item.content}</Typography>
             </AccordionContent>
           </AccordionItem>
         ))}

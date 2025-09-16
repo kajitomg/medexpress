@@ -1,10 +1,20 @@
 import { cn } from "@/shared/lib"
+import { ContactFormElement } from "@/shared/model/strapi/elements/contact-form"
 import { Typography } from "@/shared/ui"
 import { Mail, Phone } from "lucide-react"
+import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
+import Markdown from "react-markdown"
 
-const ContactFormDetails = ({ className }: ComponentProps<"div">) => {
+interface ContactFormDetailsProps {
+  data?: ContactFormElement
+}
+
+const ContactFormDetails = ({
+  className,
+  data,
+}: ComponentProps<"div"> & ContactFormDetailsProps) => {
   return (
     <div className={cn("flex flex-col items-center dark", className)}>
       <Typography
@@ -12,8 +22,16 @@ const ContactFormDetails = ({ className }: ComponentProps<"div">) => {
         className="font-black cursor-default hover-scale text-center xl:text-left"
       >
         <strong>
-          <span className="text-gray-300/70">Обсудим</span> оптимальное решение
-          для вашей клиники
+          <Markdown
+            components={{
+              strong: ({ node, ...props }) => (
+                <span className="text-gray-300/70" {...props} />
+              ),
+              p: ({ children }) => <>{children}</>,
+            }}
+          >
+            {data?.display}
+          </Markdown>
         </strong>
       </Typography>
       <div className="mt-8 max-w-md xl:max-w-full w-full">
@@ -23,20 +41,34 @@ const ContactFormDetails = ({ className }: ComponentProps<"div">) => {
             <Typography asChild variant="h4">
               <h4 className="col-start-2">Телефон/факс</h4>
             </Typography>
-            <Typography variant="muted" className="text-foreground col-start-2">
-              (87951) 5-07-02
-              <br />
-              (87951) 5-11-16
-            </Typography>
+            <div className="col-start-2">
+              {data?.phonenumber.body?.map((item) => (
+                <Typography
+                  key={item.id}
+                  variant="muted"
+                  className="text-foreground"
+                >
+                  <Link href={`tel:${item.value}`}>{item.value}</Link>
+                </Typography>
+              ))}
+            </div>
           </div>
           <div className="grid items-center gap-2 content-start justify-start">
             <Mail className="size-7 md:size-8 text-foreground" />
             <Typography asChild variant="h4">
               <h4 className="col-start-2">Почта</h4>
             </Typography>
-            <Typography variant="muted" className="text-foreground col-start-2">
-              torg-medekspress@mail.ru
-            </Typography>
+            <div className="col-start-2">
+              {data?.email.body?.map((item) => (
+                <Typography
+                  key={item.id}
+                  variant="muted"
+                  className="text-foreground col-start-2"
+                >
+                  <Link href={`mailto:${item.value}`}>{item.value}</Link>
+                </Typography>
+              ))}
+            </div>
           </div>
         </div>
       </div>

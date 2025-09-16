@@ -1,8 +1,9 @@
 "use client"
 
 import { useCategoriesListStore } from "@/features/catalog/provider"
-import { useSettingsStore } from "@/features/settings/provider"
+import { useGlobalStore } from "@/features/global/provider"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { ScrollArea } from "@/shared/ui/scroll-area"
 import { CategoriesList } from "@/widgets/menu-catalog/ui/categories-list"
@@ -11,8 +12,11 @@ import Image from "next/image"
 import { ComponentProps, useState } from "react"
 
 const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
-  const defaultMedia = useSettingsStore(
-    (store) => store.data?.category_default_media
+  const offset = usePageLayoutStore((state) => state.offset)
+  const offsetTop = offset.top !== undefined ? offset.top - 35 : 160
+
+  const defaultMedia = useGlobalStore(
+    (store) => store.data?.defaultCategoryImage
   )
   const categories = useCategoriesListStore((state) => state.categories)
 
@@ -22,7 +26,10 @@ const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
     <nav
       role="navigation"
       aria-label="Категории каталога"
-      className="flex max-w-4xl lg:max-w-6xl xl:max-w-7xl  w-full max-h-[calc(100vh-100px)] h-full gap-8"
+      className="flex max-w-4xl lg:max-w-6xl xl:max-w-7xl w-full h-full gap-8"
+      style={{
+        maxHeight: `calc(100vh - ${offsetTop}px)`,
+      }}
       {...props}
     >
       <div className="flex flex-col flex-none basis-1/4 gap-8">

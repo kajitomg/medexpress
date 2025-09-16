@@ -1,5 +1,10 @@
 "use client"
 
+import { usePageStore } from "@/features/page/provider"
+import {
+  selectSectionItemByName,
+  selectSectionListItemByType,
+} from "@/features/page/store"
 import { SectionContactForm } from "@/views/main/ui/section-contact-form"
 import { SectionFaq } from "@/views/main/ui/section-faq"
 import { SectionHero } from "@/views/main/ui/section-hero"
@@ -12,6 +17,20 @@ import { useCallback, useRef } from "react"
 
 const Page = () => {
   const formRef = useRef<HTMLDivElement>(null)
+  const faq = usePageStore(selectSectionListItemByType("faq"))
+  const standOut = usePageStore(selectSectionListItemByType("standOut"))
+  const serviceProcesses = usePageStore(
+    selectSectionListItemByType("serviceProcesses")
+  )
+  const contactForm = usePageStore(
+    selectSectionItemByName("sections.contact-form")
+  )
+  const mainPageHero = usePageStore(
+    selectSectionItemByName("elements.main-page-hero")
+  )
+  const mainPageServices = usePageStore(
+    selectSectionItemByName("elements.main-page-services")
+  )
 
   const onScrollToForm = useCallback(() => {
     formRef.current?.scrollIntoView({
@@ -22,12 +41,12 @@ const Page = () => {
 
   return (
     <ContactFormProvider>
-      <SectionHero onScrollToForm={onScrollToForm} />
-      <SectionStandOut />
-      <Services onScrollToForm={onScrollToForm} />
-      <SectionServiceProcess />
-      <SectionContactForm formRef={formRef} />
-      <SectionFaq />
+      <SectionHero onScrollToForm={onScrollToForm} data={mainPageHero} />
+      <SectionStandOut data={standOut} />
+      <Services onScrollToForm={onScrollToForm} data={mainPageServices} />
+      <SectionServiceProcess data={serviceProcesses} />
+      <SectionContactForm formRef={formRef} data={contactForm} />
+      <SectionFaq data={faq} />
     </ContactFormProvider>
   )
 }

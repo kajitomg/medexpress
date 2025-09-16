@@ -1,3 +1,8 @@
+import { formatTime } from "@/shared/lib/format-time"
+import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
+import { getWorkingTime } from "@/shared/lib/get-working-time"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { FooterContacts } from "@/shared/model/strapi/elements/footer-contacts"
 import {
   Card,
   CardContent,
@@ -5,43 +10,86 @@ import {
   CardTitle,
   Typography,
 } from "@/shared/ui"
-import { Clock, Mail, MapPin, Phone } from "lucide-react"
+import DynamicIcon from "@/shared/ui/dynamic-icon"
 import * as React from "react"
 
-const Contacts = () => {
+interface ContactsProps {
+  data?: FooterContacts
+}
+
+const Contacts = ({ data }: ContactsProps) => {
   return (
     <Card className="bg-transparent border-none shadow-none justify-start gap-y-1 sm:gap-y-2 py-2 sm:py-4 md:py-6">
       <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
         <CardTitle className="p-1 text-start text-lg font-bold text-foreground h-7 md:h-8">
-          Контакты
+          {data?.title}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col px-2 md:px-4 lg:px-6 gap-2">
         <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
-          <MapPin className="size-5 md:size-6" />
-          <Typography variant="small" className="col-start-2">
-            357820 Ставропольский край, г. Георгевск, ул. Минераловодская 8А
-          </Typography>
+          <DynamicIcon
+            url={imageUrlBuilder(data?.address.icon?.url)}
+            className="size-5 md:size-6"
+          />
+          <div className="col-start-2">
+            {data?.address.body?.map((item) => (
+              <Typography key={item.id} variant="small">
+                {item.value}
+              </Typography>
+            ))}
+          </div>
         </div>
         <div className="grid items-center gap-y-1 gap-x-2 lg:gap-x-4 content-start justify-start">
-          <Phone className="size-5 md:size-6" />
-          <Typography variant="small" className="col-start-2">
-            (87951) 5-07-02
-          </Typography>
-          <Typography variant="small" className="col-start-2">
-            (87951) 5-11-16
-          </Typography>
+          <DynamicIcon
+            url={imageUrlBuilder(data?.phonenumber.icon?.url)}
+            className="size-5 md:size-6"
+          />
+          <div className="col-start-2">
+            {data?.phonenumber.body?.map((item) => (
+              <Typography key={item.id} variant="small">
+                {item.value}
+              </Typography>
+            ))}
+          </div>
         </div>
         <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
-          <Mail className="size-5 md:size-6" />
-          <Typography variant="small" className="col-start-2">
-            torg-medekspress@mail.ru
-          </Typography>
+          <DynamicIcon
+            url={imageUrlBuilder(data?.email.icon?.url)}
+            className="size-5 md:size-6"
+          />
+          <div className="col-start-2">
+            {data?.email.body?.map((item) => (
+              <Typography key={item.id} variant="small">
+                {item.value}
+              </Typography>
+            ))}
+          </div>
         </div>
         <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
-          <Clock className="size-5 md:size-6" />
+          <DynamicIcon
+            url={imageUrlBuilder(data?.workingSchedule.icon?.url)}
+            className="size-5 md:size-6"
+          />
           <Typography variant="small" className="col-start-2">
-            Пн-Пт: 8:30-17:30
+            {getDaysStringFromArray(data?.workingSchedule.body?.days, {
+              alphabet: {
+                Понедельник: "Пн",
+                Вторник: "Вт",
+                Среда: "Ср",
+                Четверг: "Чт",
+                Пятница: "Пт",
+                Суббота: "Сб",
+                Воскресенье: "Вс",
+              },
+            })}
+            {": "}
+            {(() => {
+              const time = getWorkingTime(data?.workingSchedule.body?.days)
+
+              if (time?.uniform)
+                return `${formatTime(time.start)}:${formatTime(time.end)}`
+              return ""
+            })()}
           </Typography>
         </div>
       </CardContent>

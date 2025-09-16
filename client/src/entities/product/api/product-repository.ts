@@ -7,7 +7,7 @@ import {
 } from "@/entities/product/model"
 import { api } from "@/shared/api"
 import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
 const fetchProductsList = async (queryObj?: StrapiQuery<ProductBase>) => {

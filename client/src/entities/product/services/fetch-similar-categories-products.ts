@@ -2,7 +2,7 @@
 
 import { fetchProductsList } from "@/entities/product/api/product-repository"
 import { ProductBase } from "@/entities/product/model"
-import { StrapiQuery } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
 const fetchSimilarCategoriesProductsList = async (
   slug: string,

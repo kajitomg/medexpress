@@ -7,11 +7,15 @@ import { UseFormRegisterReturn } from "react-hook-form"
 
 interface HeroFormProps {
   register: UseFormRegisterReturn<"email">
+  inputPlaceholder?: string
+  buttonText?: string
 }
 
 const HeroForm = ({
   register,
   onSubmit,
+  inputPlaceholder = "Введите e-mail*",
+  buttonText = "Оставить заявку",
   className,
 }: ComponentProps<"form"> & HeroFormProps) => {
   return (
@@ -22,7 +26,7 @@ const HeroForm = ({
             {...register}
             type="email"
             variant="brand"
-            placeholder="Введите e-mail*"
+            placeholder={inputPlaceholder}
             className={cn(
               "rounded-4xl font-normal md:font-bold placeholder:text-base md:placeholder:text-lg md:text-lg text-base md:text-lg h-10 p-4 md:h-14 md:p-6 md:px-8"
             )}
@@ -34,7 +38,7 @@ const HeroForm = ({
           variant="brand"
           className="cursor-pointer rounded-4xl font-normal md:font-bold text-base md:text-lg h-10 p-4 md:h-14 md:p-6 md:px-8"
         >
-          Оставить заявку
+          {buttonText}
         </Button>
       </Submit>
     </Root>

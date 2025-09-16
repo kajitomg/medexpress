@@ -42,7 +42,10 @@ const PageLayoutContent = ({
   return (
     <section
       id="content-section"
-      className={cn("flex flex-col flex-auto", className)}
+      className={cn(
+        "flex flex-col flex-auto transition-all duration-200",
+        className
+      )}
       style={{
         marginTop: `${offsetTop}px`,
         marginLeft: `${offsetLeft}px`,
@@ -77,7 +80,10 @@ const PageLayoutAside = ({
   return (
     <section
       id="aside-section"
-      className={cn("z-40 fixed h-[100vh]", className)}
+      className={cn(
+        "z-40 fixed h-[100vh] transition-all duration-200",
+        className
+      )}
       style={{ paddingTop: `${offsetTop}px` }}
       ref={aside}
       {...props}

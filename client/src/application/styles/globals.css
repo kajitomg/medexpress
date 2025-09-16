@@ -128,4 +128,17 @@
   .hover-scale {
     @apply hover:scale-101 transition-transform duration-200;
   }
+
+  .counter-reset {
+    counter-reset: item;
+  }
+
+  .counter-increment > li {
+    counter-increment: item;
+  }
+
+  .counter-increment > li::before {
+    content: counters(item, ".") ". ";
+    @apply font-bold text-black mr-2;
+  }
 }

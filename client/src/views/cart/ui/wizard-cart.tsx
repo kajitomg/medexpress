@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/features/cart/provider"
 import { cn } from "@/shared/lib"
+import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import {
   Card,
   CardContent,
@@ -19,6 +20,8 @@ import * as React from "react"
 import { ComponentProps, useState } from "react"
 
 const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
+  const offset = usePageLayoutStore((state) => state.offset)
+  const offsetTop = offset.top !== undefined ? offset.top + 32 : 228
   const [tab, setTab] = useState<"cart" | "form">("cart")
 
   const products = useCartStore((state) => state.products)
@@ -27,9 +30,12 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <Card
       className={cn(
-        "max-w-7xl min-h-190 w-full overflow-hidden gap-4 flex flex-col",
+        "max-w-7xl w-full overflow-hidden gap-4 flex flex-col transition-all duration-200",
         className
       )}
+      style={{
+        minHeight: `calc(100vh - ${offsetTop}px)`,
+      }}
       {...props}
     >
       <CardHeader>

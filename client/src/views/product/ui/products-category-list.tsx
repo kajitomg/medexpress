@@ -35,7 +35,7 @@ const ProductsCategoryList = ({
   ...props
 }: ComponentProps<"div"> & ProductsCategoryListProps) => {
   const defaultMedia = useSettingsStore(
-    (state) => state.data?.product_default_media
+    (state) => state.data?.productDefaultMedia
   )
   const [products, setProducts] = useState<
     (ProductBase & DocumentServices)[] | undefined

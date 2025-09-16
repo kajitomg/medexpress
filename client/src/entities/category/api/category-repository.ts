@@ -8,7 +8,7 @@ import {
 import { api } from "@/shared/api"
 import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
 const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {

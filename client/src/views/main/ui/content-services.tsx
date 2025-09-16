@@ -1,4 +1,6 @@
 import { cn } from "@/shared/lib"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { MainPageServices as ServicesElement } from "@/shared/model/strapi/elements/main-page-services"
 import {
   Button,
   Card,
@@ -18,11 +20,13 @@ import { ComponentProps } from "react"
 interface SectionServicesContentProps {
   onScrollToForm: () => void
   items: ServicesItemData[]
+  data?: ServicesElement
 }
 
 const ContentServices = ({
   className,
   items,
+  data,
   onScrollToForm,
 }: ComponentProps<"div"> & SectionServicesContentProps) => {
   const methods = useContactForm()
@@ -45,7 +49,7 @@ const ContentServices = ({
     >
       <CardContent className="grow-1 px-0">
         <Image
-          src="/oborud4.jpeg"
+          src={imageUrlBuilder(data?.backgroundImage?.url)}
           alt="alt"
           width="8000"
           height="5784"
@@ -56,7 +60,7 @@ const ContentServices = ({
         <CardHeader className="">
           <CardTitle>
             <Typography asChild variant="h3">
-              <h3>Чем мы можем помочь?</h3>
+              <h3>{data?.title}</h3>
             </Typography>
           </CardTitle>
           <ul className="text-nowrap text-left flex flex-col items-start pt-2 md:pt-6">
@@ -78,7 +82,7 @@ const ContentServices = ({
             className="cursor-pointer rounded-full mt-2 w-full text-base md:text-lg h-auto md:h-14"
             onClick={callbacks.onScrollToForm}
           >
-            Заказать консультацию
+            {data?.contactButton}
           </Button>
         </CardFooter>
       </div>

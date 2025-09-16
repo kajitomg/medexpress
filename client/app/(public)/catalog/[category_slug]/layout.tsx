@@ -35,7 +35,7 @@ const RootLayout = async ({
           <CatalogCategoriesNavigationSidebar category_slug={category_slug} />
         </ErrorBoundary>
       </PageLayoutAside>
-      <PageLayoutContent initOffsetTop={128} initOffsetLeft={320}>
+      <PageLayoutContent initOffsetTop={196} initOffsetLeft={320}>
         <PageLayoutMain>
           <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         </PageLayoutMain>

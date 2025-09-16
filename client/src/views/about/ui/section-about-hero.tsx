@@ -1,3 +1,5 @@
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { AboutHero } from "@/shared/model/strapi/elements/about-hero"
 import {
   Button,
   ContentSection,
@@ -8,12 +10,14 @@ import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { useContactForm } from "@/widgets/contact-form/provider"
 import Image from "next/image"
 import * as React from "react"
+import Markdown from "react-markdown"
 
 interface SectionAboutHeroProps {
   onScrollToForm: () => void
+  data?: AboutHero
 }
 
-const SectionAboutHero = ({ onScrollToForm }: SectionAboutHeroProps) => {
+const SectionAboutHero = ({ data, onScrollToForm }: SectionAboutHeroProps) => {
   const methods = useContactForm()
 
   const callbacks = {
@@ -32,8 +36,8 @@ const SectionAboutHero = ({ onScrollToForm }: SectionAboutHeroProps) => {
           <div className="flex-1/2 w-full">
             <AspectRatio ratio={16 / 9}>
               <Image
-                alt="Коллектив"
-                src="/kollektiv.jpg"
+                alt={data?.poster?.name || 'Изображение секции "О нас"'}
+                src={imageUrlBuilder(data?.poster?.url)}
                 width="1000"
                 height="1000"
                 className="w-full h-full object-cover"
@@ -41,27 +45,30 @@ const SectionAboutHero = ({ onScrollToForm }: SectionAboutHeroProps) => {
             </AspectRatio>
           </div>
           <div className="flex-1/2">
-            <Typography variant="lead">О компании</Typography>
-            <Typography asChild variant="display_small">
-              <div>
-                Medexpress: Ваш надежный партнер в обеспечении доступности
-                передовых медицинских технологий.
-              </div>
-            </Typography>
-            <Typography className="mt-4">
-              Мы обеспечиваем быструю и бесперебойную доставку передовых
-              технологий, чтобы врачи могли своевременно оказывать помощь и
-              спасать жизни. Наша миссия – сделать современные медицинские
-              решения доступными для каждого учреждения.
-            </Typography>
-
+            <Markdown
+              components={{
+                h6: ({ children }) => (
+                  <Typography variant="lead">{children}</Typography>
+                ),
+                h2: ({ children }) => (
+                  <Typography asChild variant="display_small">
+                    <div>{children}</div>
+                  </Typography>
+                ),
+                p: ({ children }) => (
+                  <Typography className="mt-4">{children}</Typography>
+                ),
+              }}
+            >
+              {data?.content}
+            </Markdown>
             <Button
               className="cursor-pointer rounded-4xl font-normal md:font-bold text-base md:text-lg h-10 p-4 md:h-14 md:p-6 md:px-8 mt-4 w-full sm:w-auto"
               variant="brand"
               size="xl"
               onClick={callbacks.onScrollToForm}
             >
-              Связаться с нами
+              {data?.formButton}
             </Button>
           </div>
         </div>

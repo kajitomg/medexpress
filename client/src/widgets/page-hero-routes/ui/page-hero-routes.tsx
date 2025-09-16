@@ -25,16 +25,18 @@ import { ComponentProps, useMemo } from "react"
 
 interface PageHeroProps {
   page: RouteEntry
+  title?: string
   image?: string | StaticImport
 }
 
 const PageHeroRoutes = ({
   page,
+  title,
   image,
 }: ComponentProps<"div"> & PageHeroProps) => {
   const breadcrumbs = useMemo(() => buildBreadcrumbs(page), [page])
   return (
-    <PageHero height={50} aria-labelledby="page-title">
+    <PageHero height={50} initOffsetTop={195} aria-labelledby="page-title">
       <PageHeroBackground
         className={cn(
           "before:bg-(--color-brand) before:absolute before:size-full",
@@ -54,7 +56,7 @@ const PageHeroRoutes = ({
       <PageHeroContent className="flex flex-col justify-center items-center">
         <Typography asChild variant="h1">
           <h1 className="text-white text-center">
-            <strong>{page.title}</strong>
+            <strong>{title || page.title}</strong>
           </h1>
         </Typography>
         <nav aria-label="breadcrumb" className="mt-4">

@@ -1,3 +1,7 @@
+"use client"
+
+import { useFooterStore } from "@/features/footer/provider"
+import { selectSectionItemByName } from "@/features/footer/store"
 import { cn } from "@/shared/lib"
 import { About } from "@/widgets/footer/ui/about"
 import { CatalogNavigation } from "@/widgets/footer/ui/catalog-navigation"
@@ -6,6 +10,13 @@ import { InfoNavigation } from "@/widgets/footer/ui/info-navigation"
 import * as React from "react"
 
 const Footer = ({ className, ...props }: React.ComponentProps<"footer">) => {
+  const footerContacts = useFooterStore(
+    selectSectionItemByName("elements.footer-contacts")
+  )
+  const footerAbout = useFooterStore(
+    selectSectionItemByName("elements.footer-about")
+  )
+
   return (
     <footer
       className={cn(
@@ -15,10 +26,10 @@ const Footer = ({ className, ...props }: React.ComponentProps<"footer">) => {
       {...props}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start gap-2 w-full">
-        <About />
+        <About data={footerAbout} />
         <CatalogNavigation />
         <InfoNavigation />
-        <Contacts />
+        <Contacts data={footerContacts} />
       </div>
     </footer>
   )

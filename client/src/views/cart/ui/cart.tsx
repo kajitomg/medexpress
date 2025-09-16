@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/features/cart/provider"
 import { cn } from "@/shared/lib"
+import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import {
   Card,
   CardContent,
@@ -16,14 +17,20 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 const Cart = ({ className, ...props }: ComponentProps<"div">) => {
+  const offset = usePageLayoutStore((state) => state.offset)
+  const offsetTop = offset.top !== undefined ? offset.top + 32 : 228
   const products = useCartStore((state) => state.products)
   const _hasHydrated = useCartStore((state) => state._hasHydrated)
+
   return (
     <Card
       className={cn(
-        "max-w-7x h-200 w-full overflow-hidden gap-4 flex flex-col",
+        "max-w-7x w-full overflow-hidden gap-4 flex flex-col transition-all duration-200",
         className
       )}
+      style={{
+        height: `calc(100vh - ${offsetTop}px)`,
+      }}
       {...props}
     >
       <CardHeader>

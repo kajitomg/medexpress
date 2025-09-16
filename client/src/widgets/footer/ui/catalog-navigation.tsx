@@ -1,6 +1,7 @@
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button, Card, CardContent, CardFooter, CardHeader } from "@/shared/ui"
+import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
 import { NavigationMenuProps } from "@radix-ui/react-navigation-menu"
 import Link from "next/link"
 import * as React from "react"
@@ -35,9 +36,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
         </Button>
       </CardContent>
       <CardFooter className="px-2 md:px-4 lg:px-6">
-        <Button size="sm" className="cursor-pointer mt-2 px-2 md:px-4 lg:px-6">
-          Сделать заказ
-        </Button>
+        <ModalContactForm />
       </CardFooter>
     </Card>
   )

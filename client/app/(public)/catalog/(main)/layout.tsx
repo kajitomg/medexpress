@@ -22,7 +22,7 @@ const RootLayout = async ({
       <PageLayoutHeader>
         <Header />
       </PageLayoutHeader>
-      <PageLayoutContent initOffsetTop={128}>
+      <PageLayoutContent initOffsetTop={196}>
         <PageLayoutMain>
           <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         </PageLayoutMain>

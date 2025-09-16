@@ -1,4 +1,5 @@
 import { cn } from "@/shared/lib"
+import { ContactFormElement } from "@/shared/model/strapi/elements/contact-form"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContactFormDetails } from "@/views/about/ui/contact-form-details"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
@@ -11,11 +12,13 @@ import { ComponentProps, RefObject } from "react"
 
 interface SectionContactFormProps {
   formRef: RefObject<HTMLDivElement | null>
+  data?: ContactFormElement
 }
 
 const SectionContactForm = ({
   className,
   formRef,
+  data,
 }: ComponentProps<"section"> & SectionContactFormProps) => {
   const handleSubmit = async (data: ContactFormSchema) => {
     return sendContactForm(data)
@@ -29,9 +32,11 @@ const SectionContactForm = ({
       )}
     >
       <ContentSectionContent className="h-auto flex justify-center items-center gap-8 flex-col xl:flex-row">
-        <ContactFormDetails />
+        <ContactFormDetails data={data} />
         <ContactForm
           className="max-w-124 w-full"
+          title={data?.contactForm?.title}
+          subtitle={data?.contactForm?.caption}
           handleSubmit={handleSubmit}
           ref={formRef}
         />
@@ -39,8 +44,8 @@ const SectionContactForm = ({
       <Image
         src="/oborud4.jpeg"
         alt="alt"
-        width="8000"
-        height="5784"
+        width="1000"
+        height="800"
         className="absolute top-0 left-0 w-full h-auto object-cover -z-10"
       />
     </ContentSection>

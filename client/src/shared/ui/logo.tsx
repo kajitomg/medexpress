@@ -1,4 +1,6 @@
 import { cn } from "@/shared/lib"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import DynamicIcon from "@/shared/ui/dynamic-icon"
 import { Button } from "@/shared/ui/index"
 import Link from "next/link"
 import * as React from "react"
@@ -7,10 +9,12 @@ import LogoIcon from "../../../public/logo.svg"
 
 interface LogoProps {
   path: string
+  url?: string
 }
 
 const Logo = ({
   path,
+  url,
   className,
   ...props
 }: ComponentProps<"button"> & LogoProps) => {
@@ -26,7 +30,14 @@ const Logo = ({
       {...props}
     >
       <Link href={path}>
-        <LogoIcon className="size-full" />
+        {url ? (
+          <DynamicIcon
+            url={imageUrlBuilder(url)}
+            className="size-full text-foreground"
+          />
+        ) : (
+          <LogoIcon className="size-full" />
+        )}
       </Link>
     </Button>
   )

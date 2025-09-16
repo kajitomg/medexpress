@@ -3,6 +3,7 @@ import { cn } from "@/shared/lib"
 import { Logo } from "@/shared/ui"
 import { ActionBar } from "@/widgets/header/ui/action-bar"
 import { CollectionsBar } from "@/widgets/header/ui/collections-bar"
+import { ContactsBar } from "@/widgets/header/ui/contacts-bar"
 import { Navigation } from "@/widgets/header/ui/navigation"
 import { MenuBurger } from "@/widgets/menu-burger/ui/menu-burger"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
@@ -15,10 +16,11 @@ const Header = async ({ className, ...props }: ComponentProps<"header">) => {
     <header
       className={cn(
         className,
-        "w-full h-32 backdrop-blur-3xl bg-background/30 border-b border-gray-800/10"
+        "w-full backdrop-blur-3xl bg-background/30 border-b border-gray-800/10"
       )}
       {...props}
     >
+      <ContactsBar />
       <div className="h-20 grid grid-cols-6 content-center justify-items-center items-center p-4">
         <div className="col-start-1">
           <MenuBurger />

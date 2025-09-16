@@ -1,3 +1,8 @@
+import { formatTime } from "@/shared/lib/format-time"
+import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
+import { getWorkingTime } from "@/shared/lib/get-working-time"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { ContactsDetails } from "@/shared/model/strapi/elements/contacts-details"
 import {
   Button,
   ContentSection,
@@ -5,84 +10,99 @@ import {
   Typography,
 } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import DynamicIcon from "@/shared/ui/dynamic-icon"
+import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const SectionContactsDetails = ({ className }: ComponentProps<"section">) => {
+interface SectionContactsDetailsProps {
+  data?: ContactsDetails
+}
+
+const SectionContactsDetails = ({
+  data,
+  className,
+}: ComponentProps<"section"> & SectionContactsDetailsProps) => {
   return (
     <ContentSection className={className}>
       <ContentSectionContent className="flex items-center flex-col lg:flex-row gap-4 w-full p-4">
         <div className="flex-1/2 grid grid-cols-2 gap-4 p-4">
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">Адрес:</h4>
+              <h4 className="col-start-2">{data?.address.title}</h4>
+            </Typography>
+
+            <div>
+              {data?.address.body?.map((item) => (
+                <Typography key={item.id} variant="muted">
+                  {item.value}
+                </Typography>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Typography asChild variant="h4">
+              <h4 className="col-start-2">{data?.workingSchedule.title}</h4>
             </Typography>
             <Typography variant="muted">
-              357820 Ставропольский край, г. Георгевск, ул. Минераловодская 8А
+              {(() => {
+                const time = getWorkingTime(data?.workingSchedule.body?.days)
+
+                if (time?.uniform)
+                  return `C ${formatTime(time.start)} до ${formatTime(time.end)}`
+                return ""
+              })()}
+              <br />
+              {getDaysStringFromArray(data?.workingSchedule.body?.days, {
+                type: "Выходной",
+                divider: ", ",
+              })}{" "}
+              - Выходной
             </Typography>
           </div>
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">Режим работы:</h4>
+              <h4 className="col-start-2">{data?.phonenumber.title}</h4>
             </Typography>
-            <Typography variant="muted">
-              С 8:30 до 17:30
-              <br />
-              Суббота, Воскресенье - Выходной
-            </Typography>
+            <div>
+              {data?.phonenumber.body?.map((item) => (
+                <Typography key={item.id} variant="muted">
+                  {item.value}
+                </Typography>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">Тел/факс::</h4>
+              <h4 className="col-start-2">{data?.email.title}</h4>
             </Typography>
-            <Typography variant="muted">
-              (87951) 5-07-02
-              <br />
-              (87951) 5-11-16
-            </Typography>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Typography asChild variant="h4">
-              <h4 className="col-start-2">E-mail:</h4>
-            </Typography>
-            <Typography variant="muted">
-              med-ekspress@yandex.ru
-              <br />
-              torg-medekspress@mail.ru
-            </Typography>
+            <div>
+              {data?.email.body?.map((item) => (
+                <Typography key={item.id} variant="muted">
+                  {item.value}
+                </Typography>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col">
-            <h6 className="text-base md:text-lg font-bold">Соц.сети:</h6>
+            <h6 className="text-base md:text-lg font-bold">
+              {data?.social.title}
+            </h6>
             <div className="mt-2">
-              <Button
-                variant="link"
-                size="icon"
-                className="cursor-pointer text-muted-foreground hover:text-(--color-brand)"
-              >
-                <Instagram className="size-5" />
-              </Button>
-              <Button
-                variant="link"
-                size="icon"
-                className="cursor-pointer text-muted-foreground hover:text-(--color-brand)"
-              >
-                <Twitter className="size-5" />
-              </Button>
-              <Button
-                variant="link"
-                size="icon"
-                className="cursor-pointer text-muted-foreground hover:text-(--color-brand)"
-              >
-                <Facebook className="size-5" />
-              </Button>
-              <Button
-                variant="link"
-                size="icon"
-                className="cursor-pointer text-muted-foreground hover:text-(--color-brand)"
-              >
-                <Linkedin className="size-5" />
-              </Button>
+              {data?.social.body.map((item) => (
+                <Link key={item.id} href={item.url}>
+                  <Button
+                    variant="link"
+                    size="icon"
+                    className="cursor-pointer text-muted-foreground hover:text-(--color-brand)"
+                  >
+                    <DynamicIcon
+                      url={imageUrlBuilder(item.icon?.url)}
+                      className="size-5"
+                    />
+                  </Button>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { fetchProductItem } from "@/entities/product/api"
 import { ProductBase } from "@/entities/product/model"
-import { StrapiQuery } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
 const fetchDetailProductItemByDocumentId = async (documentId: string) => {
   const queryObj = {

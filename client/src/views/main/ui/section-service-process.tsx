@@ -1,3 +1,4 @@
+import { ListSection } from "@/shared/model/strapi/sections/list-section"
 import {
   ContentSection,
   ContentSectionContent,
@@ -5,38 +6,17 @@ import {
   Typography,
 } from "@/shared/ui"
 import { ContentServiceProcess } from "@/widgets/section-service-process/ui/content-service-process"
-import { MessagesSquare, Phone, SearchCheck, Truck } from "lucide-react"
 import * as React from "react"
 import { ComponentProps } from "react"
 
-const DATA = [
-  {
-    id: 1,
-    icon: Phone,
-    title: "Первичный контакт",
-    description: "Свяжитесь с нами через форму обратной связи или по телефону.",
-  },
-  {
-    id: 2,
-    icon: MessagesSquare,
-    title: "Консультация",
-    description: "Наши эксперты проконсультируют вас по всем вопросам.",
-  },
-  {
-    id: 3,
-    icon: SearchCheck,
-    title: "Выбор оборудования",
-    description: "Поможем вам выбрать необходимое медицинское оборудование.",
-  },
-  {
-    id: 4,
-    icon: Truck,
-    title: "Поставка",
-    description: "Организуем доставку на ваш склад или объект.",
-  },
-]
+interface SectionServiceProcessProps {
+  data?: ListSection
+}
 
-const SectionServiceProcess = ({ className }: ComponentProps<"section">) => {
+const SectionServiceProcess = ({
+  className,
+  data,
+}: ComponentProps<"section"> & SectionServiceProcessProps) => {
   return (
     <ContentSection className={className}>
       <ContentSectionHeader>
@@ -47,7 +27,7 @@ const SectionServiceProcess = ({ className }: ComponentProps<"section">) => {
         </Typography>
       </ContentSectionHeader>
       <ContentSectionContent>
-        <ContentServiceProcess items={DATA} />
+        <ContentServiceProcess items={data?.items} />
       </ContentSectionContent>
     </ContentSection>
   )

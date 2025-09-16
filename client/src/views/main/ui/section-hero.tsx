@@ -1,3 +1,4 @@
+import { MainPageHero } from "@/shared/model/strapi/elements/main-page-hero"
 import { Typography } from "@/shared/ui"
 import {
   PageHero,
@@ -15,13 +16,16 @@ import Image from "next/image"
 import * as React from "react"
 import { ComponentProps, FormEventHandler } from "react"
 import { useForm } from "react-hook-form"
+import Markdown from "react-markdown"
 
 interface HeroProps {
   onScrollToForm: () => void
+  data?: MainPageHero
 }
 
 const SectionHero = ({
   onScrollToForm,
+  data,
 }: ComponentProps<"section"> & HeroProps) => {
   const methods = useContactForm()
   const { register, reset, getValues } = useForm<
@@ -44,7 +48,7 @@ const SectionHero = ({
   }
 
   return (
-    <PageHero height="full">
+    <PageHero height="full" initOffsetTop={195}>
       <PageHeroBackground>
         <Image
           src="/squared-background 3.png"
@@ -60,17 +64,27 @@ const SectionHero = ({
           <Typography asChild variant="display">
             <h1 className="hover-scale text-center">
               <strong>
-                <span className="text-(--color-brand)">Medexpress</span> - ваш
-                надежный партнер в мире медицинского оборудования
+                <Markdown
+                  components={{
+                    strong: ({ node, ...props }) => (
+                      <span className="text-(--color-brand)" {...props} />
+                    ),
+                    p: ({ children }) => <>{children}</>,
+                  }}
+                >
+                  {data?.display}
+                </Markdown>
               </strong>
             </h1>
           </Typography>
           <div className="max-w-140 mt-12 text-center">
-            <Typography variant="h4">Записаться на консультацию</Typography>
+            <Typography variant="h4">{data?.formTitle}</Typography>
             <div className="mt-4">
               <HeroForm
                 register={register("email")}
                 onSubmit={callbacks.onSubmit}
+                inputPlaceholder={data?.formInput}
+                buttonText={data?.formButton}
               />
             </div>
           </div>

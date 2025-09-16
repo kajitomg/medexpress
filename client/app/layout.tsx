@@ -1,4 +1,5 @@
 import "@/application/styles/globals.css"
+import { fetchGlobal } from "@/entities/global/services"
 import { Toaster } from "@/shared/ui/sonner"
 import { Metadata } from "next"
 
@@ -8,9 +9,21 @@ import * as React from "react"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" })
 
-export const metadata: Metadata = {
-  title: "Medexpress",
+export async function generateMetadata(): Promise<Metadata> {
+  const response = await fetchGlobal()
+  const data = response.data
+  if (!data || !data.seo) {
+    return {
+      title: "Страница не найдена",
+    }
+  }
+  const { metaTitle, metaDescription } = data.seo
+  return {
+    title: metaTitle,
+    description: metaDescription,
+  }
 }
+
 const RootLayout = ({
   children,
 }: Readonly<{

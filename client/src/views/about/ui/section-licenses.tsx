@@ -1,3 +1,5 @@
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { GallerySection } from "@/shared/model/strapi/sections/gallery-section"
 import {
   ContentSection,
   ContentSectionContent,
@@ -11,37 +13,33 @@ import Image from "next/image"
 import Link from "next/link"
 import * as React from "react"
 
-const DATA = [
-  { id: 1, title: "Документ 1", src: "/doc1.jpg" },
-  { id: 2, title: "Документ 2", src: "/doc2.jpg" },
-  { id: 3, title: "Документ 3", src: "/doc3.jpg" },
-  { id: 4, title: "Документ 4", src: "/doc4.jpg" },
-  { id: 5, title: "Документ 5", src: "/doc5.jpg" },
-]
+interface SectionLicenses {
+  data?: GallerySection
+}
 
-const SectionLicenses = () => {
+const SectionLicenses = ({ data }: SectionLicenses) => {
   return (
     <ContentSection>
       <ContentSectionHeader className="hover:scale-102 transition-transform duration-200 cursor-default">
         <Typography asChild variant="h2">
           <h2 className="hover-scale text-center">
-            <strong>Лицензии</strong>
+            <strong>{data?.title}</strong>
           </h2>
         </Typography>
       </ContentSectionHeader>
       <ContentSectionContent className="w-full flex items-center">
         <ScrollArea className="flex-1 min-w-0 rounded-sm pb-3">
           <div className="flex gap-2 md:gap-4">
-            {DATA.map((item) => (
+            {data?.items.map((item) => (
               <Link
                 key={item.id}
-                href={item.src}
+                href={imageUrlBuilder(item.url)}
                 className="group hover:before:bg-black/30 relative before:z-10 before:absolute before:size-full before:duration-200 border-3 rounded-sm overflow-hidden flex-none basis-1/4"
               >
                 <AspectRatio ratio={210 / 297}>
                   <Image
-                    alt={item.title}
-                    src={item.src}
+                    alt={item.name}
+                    src={imageUrlBuilder(item.url)}
                     width="210"
                     height="297"
                     className="w-full h-full object-cover duration-200 group-hover:scale-105"

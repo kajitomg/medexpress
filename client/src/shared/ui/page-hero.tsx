@@ -1,24 +1,33 @@
 import { cn } from "@/shared/lib"
+import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import * as React from "react"
 import { ComponentProps } from "react"
 
 interface PageHeroProps {
   height: number | "full"
+  initOffsetTop?: number
 }
 
 const PageHero = ({
   height,
+  initOffsetTop = 195,
   className,
   ...props
 }: ComponentProps<"header"> & PageHeroProps) => {
+  const offset = usePageLayoutStore((state) => state.offset)
+  const offsetTop = offset.top !== undefined ? offset.top : initOffsetTop
+
   const full = height === "full"
 
   return (
     <header
       id="container"
-      className={cn(`relative flex flex-col`, className)}
+      className={cn(
+        `relative flex flex-col transition-all duration-200`,
+        className
+      )}
       style={{
-        minHeight: full ? "calc(100vh - 128px)" : `${height * 4}px`,
+        minHeight: full ? `calc(100vh - ${offsetTop}px)` : `${height * 4}px`,
       }}
       {...props}
     />
