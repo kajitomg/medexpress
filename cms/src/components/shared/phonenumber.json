@@ -2,12 +2,26 @@
   "collectionName": "components_shared_phonenumbers",
   "info": {
     "displayName": "phonenumber",
-    "icon": "phone"
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "phonenumber": {
-      "type": "string"
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "body": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phonenumber.phonenumber"
+    },
+    "title": {
+      "type": "string",
+      "required": false
     }
   }
 }

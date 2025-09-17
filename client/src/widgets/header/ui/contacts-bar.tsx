@@ -1,7 +1,8 @@
 "use client"
 
-import { useHeaderStore } from "@/features/header/provider"
-import { selectSectionItemByName } from "@/features/header/store"
+import { HeaderSections } from "@/entities/header/model/header"
+import { createSectionsStore } from "@/features/sections/provider"
+import { selectSectionItemByName } from "@/features/sections/store"
 import { cn } from "@/shared/lib"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
@@ -11,8 +12,10 @@ import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
 import Link from "next/link"
 import { ComponentProps } from "react"
 
+const useSectionsStore = createSectionsStore<HeaderSections[]>()
+
 const ContactsBar = ({ className }: ComponentProps<"div">) => {
-  const data = useHeaderStore(
+  const data = useSectionsStore(
     selectSectionItemByName("elements.header-contacts")
   )
   /*

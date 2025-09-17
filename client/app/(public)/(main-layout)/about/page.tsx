@@ -1,5 +1,5 @@
 import { fetchPage } from "@/entities/page/services"
-import { PageProvider } from "@/features/page/provider"
+import { SectionsProvider } from "@/features/sections/provider"
 import { AboutPage } from "@/views/about/ui"
 import { Metadata } from "next"
 import * as React from "react"
@@ -30,9 +30,9 @@ const About = async () => {
   const data = response.data
 
   return (
-    <PageProvider initialState={{ sections: data.sections }}>
+    <SectionsProvider initialState={{ sections: data.sections }}>
       <AboutPage />
-    </PageProvider>
+    </SectionsProvider>
   )
 }
 

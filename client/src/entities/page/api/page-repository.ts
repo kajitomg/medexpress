@@ -2,7 +2,6 @@
 
 import { PageBase, PageItemResponse } from "@/entities/page/model"
 import { PageListResponse } from "@/entities/page/model/page"
-import { SettingsBase, SettingsItemResponse } from "@/entities/settings/model"
 import { api } from "@/shared/api"
 import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
@@ -13,12 +12,13 @@ const fetchPageItem = async (queryObj?: StrapiQuery<PageBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      SettingsItemResponse<SettingsBase & DocumentServices>
-    >(`/api/page`, {
-      method: "GET",
-      params: new URLSearchParams(query),
-    })
+    const response = await api<PageItemResponse<PageBase & DocumentServices>>(
+      `/api/page`,
+      {
+        method: "GET",
+        params: new URLSearchParams(query),
+      }
+    )
     return response.data
   } catch (e) {
     const error = await ErrorUtils.getErrors(e)

@@ -1,10 +1,11 @@
 "use client"
 
-import { usePageStore } from "@/features/page/provider"
+import { PageSections } from "@/entities/page/model/page"
+import { createSectionsStore } from "@/features/sections/provider"
 import {
   selectSectionItemByName,
   selectSectionListItemByType,
-} from "@/features/page/store"
+} from "@/features/sections/store"
 import { SectionContactForm } from "@/views/main/ui/section-contact-form"
 import { SectionFaq } from "@/views/main/ui/section-faq"
 import { SectionHero } from "@/views/main/ui/section-hero"
@@ -15,20 +16,22 @@ import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import * as React from "react"
 import { useCallback, useRef } from "react"
 
+const useSectionsStore = createSectionsStore<PageSections[]>()
+
 const Page = () => {
   const formRef = useRef<HTMLDivElement>(null)
-  const faq = usePageStore(selectSectionListItemByType("faq"))
-  const standOut = usePageStore(selectSectionListItemByType("standOut"))
-  const serviceProcesses = usePageStore(
+  const faq = useSectionsStore(selectSectionListItemByType("faq"))
+  const standOut = useSectionsStore(selectSectionListItemByType("standOut"))
+  const serviceProcesses = useSectionsStore(
     selectSectionListItemByType("serviceProcesses")
   )
-  const contactForm = usePageStore(
+  const contactForm = useSectionsStore(
     selectSectionItemByName("sections.contact-form")
   )
-  const mainPageHero = usePageStore(
+  const mainPageHero = useSectionsStore(
     selectSectionItemByName("elements.main-page-hero")
   )
-  const mainPageServices = usePageStore(
+  const mainPageServices = useSectionsStore(
     selectSectionItemByName("elements.main-page-services")
   )
 

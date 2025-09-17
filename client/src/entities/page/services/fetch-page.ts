@@ -88,8 +88,6 @@ const fetchPage = async (slug: string) => {
               },
             },
           },
-          "elements.footer-contacts": true,
-          "elements.header-contacts": true,
           "elements.main-page-hero": true,
         },
       },

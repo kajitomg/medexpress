@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_elements_contacts_details",
+  "info": {
+    "displayName": "contacts details",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.email",
+      "required": true
+    },
+    "phonenumber": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.phonenumber",
+      "required": true
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.address",
+      "required": true
+    },
+    "workingSchedule": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.working-schedule",
+      "required": true
+    },
+    "social": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.social",
+      "required": true
+    }
+  }
+}

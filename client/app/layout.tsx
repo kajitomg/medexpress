@@ -1,6 +1,5 @@
 import "@/application/styles/globals.css"
 import { fetchGlobal } from "@/entities/global/services"
-import { Toaster } from "@/shared/ui/sonner"
 import { Metadata } from "next"
 
 import { Inter, Sora } from "next/font/google"
@@ -24,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -33,7 +32,6 @@ const RootLayout = ({
     <html lang="en">
       <body className={`${inter.variable} ${sora.variable} font-sans`}>
         {children}
-        <Toaster />
       </body>
     </html>
   )

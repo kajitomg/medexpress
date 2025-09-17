@@ -1,4 +1,7 @@
 import "@/application/styles/globals.css"
+import { fetchFooter } from "@/entities/footer/services"
+import { fetchHeader } from "@/entities/header/services"
+import { SectionsProvider } from "@/features/sections/provider"
 import {
   PageLayout,
   PageLayoutContent,
@@ -17,17 +20,26 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
+  const responseHeader = await fetchHeader()
+  const responseFooter = await fetchFooter()
+
+  const header = responseHeader.data
+  const footer = responseFooter.data
   return (
     <PageLayout>
       <PageLayoutHeader>
-        <Header />
+        <SectionsProvider initialState={{ sections: header.sections }}>
+          <Header />
+        </SectionsProvider>
       </PageLayoutHeader>
       <PageLayoutContent initOffsetTop={196}>
         <PageLayoutMain>
           <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         </PageLayoutMain>
         <PageLayoutFooter>
-          <Footer />
+          <SectionsProvider initialState={{ sections: footer.sections }}>
+            <Footer />
+          </SectionsProvider>
         </PageLayoutFooter>
       </PageLayoutContent>
     </PageLayout>

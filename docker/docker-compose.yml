@@ -37,7 +37,8 @@ services:
       - ../.env
       - ../cms/.env
     volumes:
-      - ../static:/opt/application/public
+      - ../cms/public:/opt/application/public
+      - ../static:/opt/application/public/uploads
     environment:
       - ../.env
       - ../cms/.env

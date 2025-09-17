@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_contact_forms",
+  "info": {
+    "displayName": "contact form",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "display": {
+      "type": "richtext"
+    },
+    "email": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.email",
+      "required": true
+    },
+    "phonenumber": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.phonenumber",
+      "required": true
+    },
+    "contactForm": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-form",
+      "required": true
+    }
+  }
+}

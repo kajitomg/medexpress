@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "working_schedules",
+  "info": {
+    "singularName": "working-schedule",
+    "pluralName": "working-schedules",
+    "displayName": "working schedule",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "days": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.schedule-day",
+      "required": true
+    }
+  }
+}

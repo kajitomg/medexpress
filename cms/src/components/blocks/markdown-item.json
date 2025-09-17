@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_markdown_items",
+  "info": {
+    "displayName": "markdown item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

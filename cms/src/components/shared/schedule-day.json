@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_shared_schedule_days",
+  "info": {
+    "displayName": "schedule day",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Рабочий",
+        "Выходной"
+      ],
+      "required": true,
+      "default": "Рабочий"
+    },
+    "start": {
+      "type": "time",
+      "required": false,
+      "default": "08:30:00.000"
+    },
+    "end": {
+      "type": "time",
+      "required": false,
+      "default": "17:30:00.000"
+    },
+    "day": {
+      "type": "enumeration",
+      "enum": [
+        "Понедельник",
+        "Вторник",
+        "Среда",
+        "Четверг",
+        "Пятница",
+        "Суббота",
+        "Воскресенье"
+      ],
+      "required": true
+    }
+  }
+}

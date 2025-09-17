@@ -2,12 +2,26 @@
   "collectionName": "components_shared_addresses",
   "info": {
     "displayName": "address",
-    "icon": "pinMap"
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "address": {
-      "type": "string"
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "body": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address"
+    },
+    "title": {
+      "type": "string",
+      "required": false
     }
   }
 }

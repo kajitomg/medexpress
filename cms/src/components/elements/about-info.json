@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elements_about_infos",
+  "info": {
+    "displayName": "about info"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.markdown-item",
+      "required": true,
+      "max": 2,
+      "min": 2
+    }
+  }
+}

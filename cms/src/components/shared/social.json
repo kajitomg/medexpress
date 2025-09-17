@@ -1,17 +1,24 @@
 {
   "collectionName": "components_shared_socials",
   "info": {
-    "displayName": "Social"
+    "displayName": "social"
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     },
-    "link": {
-      "type": "text",
-      "required": true
+    "body": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social.social"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

@@ -1,22 +1,26 @@
 {
   "collectionName": "components_shared_working_schedules",
   "info": {
-    "displayName": "working_schedule",
-    "icon": "calendar"
+    "displayName": "working schedule",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "working_days": {
-      "type": "string",
-      "required": true
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "working_times": {
-      "type": "string",
-      "required": true
+    "body": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::working-schedule.working-schedule"
     },
-    "weekend_days": {
-      "type": "string",
-      "required": true
+    "title": {
+      "type": "string"
     }
   }
 }

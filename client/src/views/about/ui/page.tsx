@@ -1,10 +1,11 @@
 "use client"
 
-import { usePageStore } from "@/features/page/provider"
+import { PageSections } from "@/entities/page/model/page"
+import { createSectionsStore } from "@/features/sections/provider"
 import {
   selectSectionItemByName,
   selectSectionListItemByType,
-} from "@/features/page/store"
+} from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { SectionAboutDescription } from "@/views/about/ui/section-about-description"
@@ -17,15 +18,21 @@ import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 import { useCallback, useRef } from "react"
 
+const useSectionsStore = createSectionsStore<PageSections[]>()
+
 const Page = () => {
-  const aboutHero = usePageStore(selectSectionItemByName("elements.about-hero"))
-  const aboutInfo = usePageStore(selectSectionItemByName("elements.about-info"))
-  const hero = usePageStore(selectSectionItemByName("sections.hero"))
-  const standOut = usePageStore(selectSectionListItemByType("standOut"))
-  const contactForm = usePageStore(
+  const aboutHero = useSectionsStore(
+    selectSectionItemByName("elements.about-hero")
+  )
+  const aboutInfo = useSectionsStore(
+    selectSectionItemByName("elements.about-info")
+  )
+  const hero = useSectionsStore(selectSectionItemByName("sections.hero"))
+  const standOut = useSectionsStore(selectSectionListItemByType("standOut"))
+  const contactForm = useSectionsStore(
     selectSectionItemByName("sections.contact-form")
   )
-  const gallerySection = usePageStore(
+  const gallerySection = useSectionsStore(
     selectSectionItemByName("sections.gallery-section")
   )
 

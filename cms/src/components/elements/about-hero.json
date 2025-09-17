@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_about_heroes",
+  "info": {
+    "displayName": "about hero"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "formButton": {
+      "type": "string",
+      "required": true
+    },
+    "poster": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

@@ -1,7 +1,7 @@
 "use client"
 
-import { usePageStore } from "@/features/page/provider"
-import { selectSectionItemByName } from "@/features/page/store"
+import { usePageStore } from "@/features/sections/provider"
+import { selectSectionItemByName } from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { ContentSection, ContentSectionContent, Typography } from "@/shared/ui"

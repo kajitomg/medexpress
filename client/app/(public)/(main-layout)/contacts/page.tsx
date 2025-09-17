@@ -1,5 +1,5 @@
 import { fetchPage } from "@/entities/page/services"
-import { PageProvider } from "@/features/page/provider"
+import { SectionsProvider } from "@/features/sections/provider"
 import { ContactsPage } from "@/views/contacts/ui"
 import { Metadata } from "next"
 import * as React from "react"
@@ -29,9 +29,9 @@ const Contacts = async () => {
   )
   const data = response.data
   return (
-    <PageProvider initialState={{ sections: data.sections }}>
+    <SectionsProvider initialState={{ sections: data.sections }}>
       <ContactsPage />
-    </PageProvider>
+    </SectionsProvider>
   )
 }
 

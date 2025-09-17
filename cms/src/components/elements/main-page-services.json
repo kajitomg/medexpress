@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_elements_main_page_services",
+  "info": {
+    "displayName": "main page services",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "contactButton": {
+      "type": "string",
+      "required": true
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

@@ -1,3 +1,6 @@
+import { fetchFooter } from "@/entities/footer/services"
+import { fetchHeader } from "@/entities/header/services"
+import { SectionsProvider } from "@/features/sections/provider"
 import {
   PageLayout,
   PageLayoutAside,
@@ -21,11 +24,18 @@ const RootLayout = async ({
   params: Promise<{ category_slug: string }>
 }>) => {
   const { category_slug } = await params
+  const responseHeader = await fetchHeader()
+  const responseFooter = await fetchFooter()
+
+  const header = responseHeader.data
+  const footer = responseFooter.data
 
   return (
     <PageLayout>
       <PageLayoutHeader>
-        <Header />
+        <SectionsProvider initialState={{ sections: header.sections }}>
+          <Header />
+        </SectionsProvider>
       </PageLayoutHeader>
       <PageLayoutAside
         initOffsetTop={128}
@@ -40,7 +50,9 @@ const RootLayout = async ({
           <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         </PageLayoutMain>
         <PageLayoutFooter>
-          <Footer />
+          <SectionsProvider initialState={{ sections: footer.sections }}>
+            <Footer />
+          </SectionsProvider>
         </PageLayoutFooter>
       </PageLayoutContent>
     </PageLayout>

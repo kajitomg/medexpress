@@ -1,7 +1,8 @@
 "use client"
 
-import { useFooterStore } from "@/features/footer/provider"
-import { selectSectionItemByName } from "@/features/footer/store"
+import { FooterSections } from "@/entities/footer/model/footer"
+import { createSectionsStore } from "@/features/sections/provider"
+import { selectSectionItemByName } from "@/features/sections/store"
 import { cn } from "@/shared/lib"
 import { About } from "@/widgets/footer/ui/about"
 import { CatalogNavigation } from "@/widgets/footer/ui/catalog-navigation"
@@ -9,11 +10,13 @@ import { Contacts } from "@/widgets/footer/ui/contacts"
 import { InfoNavigation } from "@/widgets/footer/ui/info-navigation"
 import * as React from "react"
 
+const useSectionsStore = createSectionsStore<FooterSections[]>()
+
 const Footer = ({ className, ...props }: React.ComponentProps<"footer">) => {
-  const footerContacts = useFooterStore(
+  const footerContacts = useSectionsStore(
     selectSectionItemByName("elements.footer-contacts")
   )
-  const footerAbout = useFooterStore(
+  const footerAbout = useSectionsStore(
     selectSectionItemByName("elements.footer-about")
   )
 

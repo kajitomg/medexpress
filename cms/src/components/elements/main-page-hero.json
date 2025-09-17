@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_elements_main_page_heroes",
+  "info": {
+    "displayName": "main page hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "display": {
+      "type": "richtext",
+      "required": true
+    },
+    "formTitle": {
+      "type": "string",
+      "required": true
+    },
+    "formInput": {
+      "type": "string",
+      "required": true
+    },
+    "formButton": {
+      "type": "string"
+    }
+  }
+}

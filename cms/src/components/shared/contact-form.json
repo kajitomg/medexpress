@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_contact_forms",
+  "info": {
+    "displayName": "contact form"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

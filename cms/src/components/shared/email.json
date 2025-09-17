@@ -2,14 +2,25 @@
   "collectionName": "components_shared_emails",
   "info": {
     "displayName": "email",
-    "icon": "envelop"
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "email": {
-      "type": "email",
-      "required": true,
-      "unique": false
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "body": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::email.email"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
