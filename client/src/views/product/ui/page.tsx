@@ -2,8 +2,8 @@
 
 import { CategoryBase } from "@/entities/category/model"
 import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
+import { useGlobalStore } from "@/features/global/provider"
 import { useProductDetailsStore } from "@/features/product-details/provider/product-details-provider"
-import { useSettingsStore } from "@/features/settings/provider"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { Button, Card, CardContent, List, Typography } from "@/shared/ui"
@@ -14,8 +14,8 @@ import Link from "next/link"
 import * as React from "react"
 
 const Page = () => {
-  const defaultMedia = useSettingsStore(
-    (state) => state.data?.product_default_media
+  const defaultMedia = useGlobalStore(
+    (state) => state.data?.defaultProductImage
   )
   const product = useProductDetailsStore((state) => state.product)
 

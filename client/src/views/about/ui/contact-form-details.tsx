@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { ContactFormElement } from "@/shared/model/strapi/elements/contact-form"
+import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { Typography } from "@/shared/ui"
 import DynamicIcon from "@/shared/ui/dynamic-icon"
 import Link from "next/link"
@@ -9,7 +9,7 @@ import { ComponentProps } from "react"
 import Markdown from "react-markdown"
 
 interface ContactFormDetailsProps {
-  data?: ContactFormElement
+  data?: ContactFormSection
 }
 
 const ContactFormDetails = ({
@@ -25,9 +25,7 @@ const ContactFormDetails = ({
         <strong>
           <Markdown
             components={{
-              strong: ({ node, ...props }) => (
-                <span className="text-gray-300/70" {...props} />
-              ),
+              strong: (data) => <span className="text-gray-300/70" {...data} />,
               p: ({ children }) => <>{children}</>,
             }}
           >

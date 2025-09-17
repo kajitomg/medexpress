@@ -1,11 +1,11 @@
-import { fetchSettings } from "@/entities/settings/services"
+import { fetchGlobal } from "@/entities/global/services"
 import { NextResponse } from "next/server"
 
 export const dynamic = "force-dynamic"
 
 export async function GET() {
-  const response = await fetchSettings()
-  const data = response.data.faviconImage
+  const response = await fetchGlobal()
+  const data = response.data.favicon
   if (!data) {
     return NextResponse.json({ status: 404 })
   }

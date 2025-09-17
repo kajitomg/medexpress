@@ -28,7 +28,6 @@ const Page = async () => {
     slugify("Политика конфиденциальности", { lower: true, strict: true })
   )
   const data = response.data
-  console.log(data)
   return (
     <SectionsProvider initialState={{ sections: data.sections }}>
       <PrivacyPolicyPage />

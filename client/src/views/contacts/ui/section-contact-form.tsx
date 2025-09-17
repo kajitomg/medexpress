@@ -1,5 +1,5 @@
 import { cn } from "@/shared/lib"
-import { ContactFormElement } from "@/shared/model/strapi/elements/contact-form"
+import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContactFormDetails } from "@/views/contacts/ui/contact-form-details"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
@@ -11,7 +11,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionContactFormProps {
-  data?: ContactFormElement
+  data?: ContactFormSection
 }
 
 const SectionContactForm = ({

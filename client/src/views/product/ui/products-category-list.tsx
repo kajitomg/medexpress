@@ -1,6 +1,6 @@
 import { ProductBase } from "@/entities/product/model"
 import { fetchSimilarCategoriesProductsList } from "@/entities/product/services"
-import { useSettingsStore } from "@/features/settings/provider"
+import { useGlobalStore } from "@/features/global/provider"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
@@ -34,8 +34,8 @@ const ProductsCategoryList = ({
   className,
   ...props
 }: ComponentProps<"div"> & ProductsCategoryListProps) => {
-  const defaultMedia = useSettingsStore(
-    (state) => state.data?.productDefaultMedia
+  const defaultMedia = useGlobalStore(
+    (state) => state.data?.defaultProductImage
   )
   const [products, setProducts] = useState<
     (ProductBase & DocumentServices)[] | undefined

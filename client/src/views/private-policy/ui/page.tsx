@@ -1,6 +1,7 @@
 "use client"
 
-import { usePageStore } from "@/features/sections/provider"
+import { PageSections } from "@/entities/page/model/page"
+import { createSectionsStore } from "@/features/sections/provider"
 import { selectSectionItemByName } from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
@@ -9,11 +10,13 @@ import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 import Markdown from "react-markdown"
 
+const useSectionsStore = createSectionsStore<PageSections[]>()
+
 const Page = () => {
-  const privatePolicy = usePageStore(
+  const privatePolicy = useSectionsStore(
     selectSectionItemByName("shared.rich-text")
   )
-  const hero = usePageStore(selectSectionItemByName("sections.hero"))
+  const hero = useSectionsStore(selectSectionItemByName("sections.hero"))
   return (
     <>
       <PageHeroRoutes

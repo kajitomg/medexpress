@@ -66,8 +66,8 @@ const SectionHero = ({
               <strong>
                 <Markdown
                   components={{
-                    strong: ({ node, ...props }) => (
-                      <span className="text-(--color-brand)" {...props} />
+                    strong: (data) => (
+                      <span className="text-(--color-brand)" {...data} />
                     ),
                     p: ({ children }) => <>{children}</>,
                   }}
