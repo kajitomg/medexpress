@@ -96,6 +96,7 @@ const FormEmail = ({
         />
         <Turnstile
           sitekey="1x00000000000000000000AA"
+          size="flexible"
           onSuccess={() => {
             setIsCaptcha(true)
           }}

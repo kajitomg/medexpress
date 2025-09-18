@@ -28,21 +28,21 @@ const Modal = ({ dialogButton = "Заказать звонок" }: ModalProps) =
         </Button>
       </DialogTrigger>
 
-      <DialogContent>
+      <DialogContent className="gap-2 md:gap-4 p-2 md:p-6 flex max-h-[95vh] flex-col">
         <DialogHeader>
           <DialogTitle>
             <Typography variant="h4">Контактная форма</Typography>
           </DialogTitle>
         </DialogHeader>
 
-        <Separator className="my-4" />
-        <div className="min-h-180">
+        <Separator className="my-2 md:my-4" />
+        <div className="overflow-y-auto">
           <ContactFormProvider
             options={{ defaultValues: { mode: "phonenumber" } }}
           >
             <ContactForm
               handleSubmit={handleSubmit}
-              className="w-full bg-transparent border-none shadow-none"
+              className="w-full bg-transparent border-none shadow-none p-0 min-w-0"
             />
           </ContactFormProvider>
         </div>

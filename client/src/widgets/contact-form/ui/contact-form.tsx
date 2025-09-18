@@ -99,15 +99,15 @@ const ContactForm = ({
   })
 
   return (
-    <Card className={cn(className)} {...props}>
-      <CardHeader>
+    <Card className={cn("gap-2 md:gap-6", className)} {...props}>
+      <CardHeader className="px-2 md:px-6">
         <Typography asChild variant="h4">
           <h4>{title}</h4>
         </Typography>
         <Typography variant="muted">{subtitle}</Typography>
       </CardHeader>
-      <CardContent>
-        <Tabs defaultValue={"email"} value={mode} className="gap-6">
+      <CardContent className="px-2 md:px-6">
+        <Tabs defaultValue={"email"} value={mode} className="gap-2 md:gap-6">
           <TabsList className="w-full min-w-0">
             <TabsTrigger
               value={"email"}

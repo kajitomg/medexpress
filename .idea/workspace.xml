@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/api/revalidate/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/apple-icon/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/apple-icon/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/favicon/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/favicon.ico/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/footer/api/footer-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/footer/api/footer-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/footer/services/fetch-footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/footer/services/fetch-footer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/global/api/global-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/global/api/global-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/global/services/fetch-global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/global/services/fetch-global.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/header/api/header-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/header/api/header-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/header/services/fetch-header.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/header/services/fetch-header.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/config/middlewares.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/config/middlewares.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-phonenumber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-phonenumber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cms/scripts/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/scripts/seed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/footer/content-types/footer/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/footer/content-types/footer/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/global/content-types/global/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/global/content-types/global/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/header/content-types/header/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/header/content-types/header/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,25 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Web/medexpress/client/app/api",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/client/app/api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Web\medexpress\client\app\api" />
@@ -85,11 +73,11 @@
       <recent name="C:\Web\medexpress\client\src\features\header\store" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\client\app\api" />
       <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\client\src\shared\model\strapi\shared" />
       <recent name="C:\Web\medexpress\client\src\shared\model\strapi" />
       <recent name="C:\Web\medexpress\client\src\entities\page\model" />
-      <recent name="C:\Web\medexpress\client\app\api" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -283,7 +271,8 @@
       <workItem from="1757808078112" duration="1743000" />
       <workItem from="1757863754164" duration="5128000" />
       <workItem from="1757965030474" duration="35614000" />
-      <workItem from="1758202013459" duration="8707000" />
+      <workItem from="1758202013459" duration="10144000" />
+      <workItem from="1758235103462" duration="3187000" />
     </task>
     <servers />
   </component>
