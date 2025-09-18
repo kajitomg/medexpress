@@ -522,6 +522,9 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       ['elements.footer-about', 'elements.footer-contacts']
     > &
       Schema.Attribute.Required;
+    slug: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'footer'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -557,6 +560,9 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     robots: Schema.Attribute.Media<'files'>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     sitemap: Schema.Attribute.Media<'files'>;
+    slug: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'global'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -589,6 +595,9 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
       ['layout.logo', 'elements.header-contacts']
     > &
       Schema.Attribute.Required;
+    slug: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'header'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

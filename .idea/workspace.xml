@@ -5,67 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/features/sections/provider/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/sections/provider/sections-provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/sections/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/sections/store/sections-actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/sections/store/sections-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/api/revalidate/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/private-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/private-policy/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/catalog/(main)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/catalog/[category_slug]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/catalog/[category_slug]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/api/apple-icon/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/apple-icon/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/api/favicon/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/favicon.ico/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/footer/model/footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/footer/model/footer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/header/model/header.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/header/model/header.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/footer/api/footer-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/footer/api/footer-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/footer/services/fetch-footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/footer/services/fetch-footer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/global/api/global-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/global/api/global-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/global/services/fetch-global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/global/services/fetch-global.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/header/api/header-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/header/api/header-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/entities/header/services/fetch-header.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/header/services/fetch-header.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/model/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/model/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/model/private-policy.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/services/fetch-page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/services/fetch-page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/footer/provider/footer-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/footer/provider/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/footer/store/footer-actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/footer/store/footer-store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/footer/store/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/provider/header-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/provider/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/store/header-actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/store/header-store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/store/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/page/provider/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/page/provider/page-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/page/store/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/page/store/page-actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/page/store/page-store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/private-policy/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/private-policy/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/config/plugins.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/config/plugins.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/content-types/default-setting/schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/controllers/default-setting.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/routes/default-setting.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/default-setting/services/default-setting.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/address.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/address.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/email.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/email.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/phonenumber.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/phonenumber.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/seo.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/seo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/social.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/social.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/working-schedule.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/working-schedule.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/types/generated/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/config/middlewares.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/config/middlewares.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/scripts/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/scripts/seed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/footer/content-types/footer/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/footer/content-types/footer/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/global/content-types/global/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/global/content-types/global/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/header/content-types/header/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/header/content-types/header/schema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +35,8 @@
         <option value="Dockerfile" />
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -107,7 +64,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Web/medexpress/client/src/shared/model/strapi/shared",
+    "last_opened_file_path": "C:/Web/medexpress/client/app/api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -121,17 +78,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\client\app\api" />
+      <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\client\src\shared\model\strapi\shared" />
       <recent name="C:\Web\medexpress\client\src\features\footer\store" />
       <recent name="C:\Web\medexpress\client\src\features\header\store" />
-      <recent name="C:\Web\medexpress\client\src\features" />
-      <recent name="C:\Web\medexpress\client\src\shared\model\strapi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\client\src\shared\model\strapi\shared" />
       <recent name="C:\Web\medexpress\client\src\shared\model\strapi" />
       <recent name="C:\Web\medexpress\client\src\entities\page\model" />
-      <recent name="C:\Web\medexpress\client\app" />
       <recent name="C:\Web\medexpress\client\app\api" />
     </key>
   </component>
@@ -325,7 +282,8 @@
       <workItem from="1757771243528" duration="5440000" />
       <workItem from="1757808078112" duration="1743000" />
       <workItem from="1757863754164" duration="5128000" />
-      <workItem from="1757965030474" duration="30905000" />
+      <workItem from="1757965030474" duration="35614000" />
+      <workItem from="1758202013459" duration="8707000" />
     </task>
     <servers />
   </component>

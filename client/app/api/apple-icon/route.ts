@@ -1,8 +1,6 @@
 import { fetchGlobal } from "@/entities/global/services"
 import { NextResponse } from "next/server"
 
-export const dynamic = "force-dynamic"
-
 export async function GET() {
   const response = await fetchGlobal()
   const data = response.data.seo.metaImage
@@ -16,6 +14,6 @@ export async function GET() {
   const buf = Buffer.from(await res.arrayBuffer())
 
   return new NextResponse(buf, {
-    headers: { "Content-Type": data.mime, "Cache-Control": "no-store" },
+    headers: { "Content-Type": data.mime },
   })
 }

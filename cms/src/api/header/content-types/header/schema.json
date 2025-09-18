@@ -18,6 +18,11 @@
         "elements.header-contacts"
       ],
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "default": "header",
+      "required": true
     }
   }
 }

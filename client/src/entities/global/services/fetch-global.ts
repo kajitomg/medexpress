@@ -2,7 +2,7 @@ import { fetchGlobalItem } from "@/entities/global/api"
 import { GlobalBase } from "@/entities/global/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
-const fetchGlobal = async () => {
+const fetchGlobal = async (tags?: string[]) => {
   const queryObj = {
     populate: {
       seo: true,
@@ -15,7 +15,7 @@ const fetchGlobal = async () => {
     },
   } satisfies StrapiQuery<GlobalBase>
 
-  return await fetchGlobalItem(queryObj)
+  return await fetchGlobalItem(queryObj, tags)
 }
 
 export { fetchGlobal }

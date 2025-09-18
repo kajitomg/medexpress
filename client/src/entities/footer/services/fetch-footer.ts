@@ -2,7 +2,7 @@ import { fetchFooterItem } from "@/entities/footer/api"
 import { FooterBase } from "@/entities/footer/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
-const fetchFooter = async () => {
+const fetchFooter = async (tags?: string[]) => {
   const queryObj = {
     populate: {
       sections: {
@@ -52,7 +52,7 @@ const fetchFooter = async () => {
     },
   } satisfies StrapiQuery<FooterBase>
 
-  return await fetchFooterItem(queryObj)
+  return await fetchFooterItem(queryObj, tags)
 }
 
 export { fetchFooter }

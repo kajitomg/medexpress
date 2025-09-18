@@ -20,6 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metaTitle,
     description: metaDescription,
+    icons: {
+      icon: new URL(data.favicon.url, process.env.NEXT_PUBLIC_API_URL),
+    },
   }
 }
 

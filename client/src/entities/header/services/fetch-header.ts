@@ -2,7 +2,7 @@ import { fetchHeaderItem } from "@/entities/header/api"
 import { HeaderBase } from "@/entities/header/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
-const fetchHeader = async () => {
+const fetchHeader = async (tags?: string[]) => {
   const queryObj = {
     populate: {
       sections: {
@@ -29,7 +29,7 @@ const fetchHeader = async () => {
     },
   } satisfies StrapiQuery<HeaderBase>
 
-  return await fetchHeaderItem(queryObj)
+  return await fetchHeaderItem(queryObj, tags)
 }
 
 export { fetchHeader }

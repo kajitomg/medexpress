@@ -18,6 +18,11 @@
         "elements.footer-contacts"
       ],
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "default": "footer",
+      "required": true
     }
   }
 }
