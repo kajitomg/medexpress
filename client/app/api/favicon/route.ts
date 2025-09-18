@@ -8,11 +8,8 @@ export async function GET() {
     return NextResponse.json({ status: 404 })
   }
 
-  const url = new URL(data.url, process.env.NEXT_PUBLIC_API_URL)
+  const url = new URL(process.env.NEXT_PUBLIC_API_URL + data.url)
   const res = await fetch(url)
-  const buf = Buffer.from(await res.arrayBuffer())
 
-  return new NextResponse(buf, {
-    headers: { "Content-Type": data.mime },
-  })
+  return new NextResponse(res.body)
 }
