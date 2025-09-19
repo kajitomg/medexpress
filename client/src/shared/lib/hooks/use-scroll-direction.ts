@@ -16,6 +16,7 @@ export const useScrollDirection = () => {
       const epsilon =
         0.7 - (document.body.offsetHeight - window.innerHeight) / 10000
       if (approximatelyEqual(loadPrev, load, epsilon)) return
+      if (load >= 100 || load <= 0) return
       if (y > window.scrollY) {
         setDirection("up")
       } else if (y < window.scrollY) {

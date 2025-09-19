@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/shared/lib/hooks/use-scroll-direction.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +267,8 @@
       <workItem from="1757863754164" duration="5128000" />
       <workItem from="1757965030474" duration="35614000" />
       <workItem from="1758202013459" duration="10144000" />
-      <workItem from="1758235103462" duration="6309000" />
+      <workItem from="1758235103462" duration="8962000" />
+      <workItem from="1758279135455" duration="12219000" />
     </task>
     <servers />
   </component>
