@@ -37,8 +37,10 @@ const ContactForm = ({
   ...props
 }: ComponentProps<"div"> & ContactFormProps) => {
   const [status, setStatus] = useState<FormStatus>("idle")
+  const [token, setToken] = useState<string | null>(null)
   const methods = useContactForm()
   const mode = methods.watch("mode")
+
   const onSubmit = methods.handleSubmit(async (data, event) => {
     if (!data.terms) {
       toast.custom(() => (
@@ -53,7 +55,39 @@ const ContactForm = ({
         message: "Не принято пользовательское соглашение.",
       }
     }
+    if (!token) {
+      toast.custom(() => (
+        <Alert variant="destructive">
+          <X />
+          <AlertTitle>Капча не пройдена.</AlertTitle>
+        </Alert>
+      ))
+      setStatus("error")
+      return {
+        success: false,
+        message: "Капча не пройдена.",
+      }
+    }
     setStatus("sending")
+    const captcha = await fetch("/api/verify-turnstile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    })
+
+    if (!captcha.ok) {
+      toast.custom(() => (
+        <Alert variant="destructive">
+          <X />
+          <AlertTitle>Капча не пройдена.</AlertTitle>
+        </Alert>
+      ))
+      setStatus("error")
+      return {
+        success: false,
+        message: "Капча не пройдена.",
+      }
+    }
     event?.preventDefault()
     if (handleSubmit)
       try {
@@ -130,12 +164,14 @@ const ContactForm = ({
             <FormEmail
               isLoading={status === "sending"}
               handleSubmit={onSubmit}
+              setToken={setToken}
             />
           </TabsContent>
           <TabsContent value={"phonenumber"}>
             <FormPhonenumber
               isLoading={status === "sending"}
               handleSubmit={onSubmit}
+              setToken={setToken}
             />
           </TabsContent>
         </Tabs>

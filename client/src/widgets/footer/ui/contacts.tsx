@@ -26,46 +26,58 @@ const Contacts = ({ data }: ContactsProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col px-2 md:px-4 lg:px-6 gap-2">
-        <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
+        <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.address.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2">
             {data?.address.body?.map((item) => (
-              <Typography key={item.id} variant="small">
+              <Typography
+                key={item.id}
+                variant="small"
+                className="inline-block"
+              >
                 {item.value}
               </Typography>
             ))}
           </div>
         </div>
-        <div className="grid items-center gap-y-1 gap-x-2 lg:gap-x-4 content-start justify-start">
+        <div className="grid items-start gap-y-1 gap-x-2 lg:gap-x-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.phonenumber.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2">
             {data?.phonenumber.body?.map((item) => (
-              <Typography key={item.id} variant="small">
+              <Typography
+                key={item.id}
+                variant="small"
+                className="inline-block"
+              >
                 {item.value}
               </Typography>
             ))}
           </div>
         </div>
-        <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
+        <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.email.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2">
             {data?.email.body?.map((item) => (
-              <Typography key={item.id} variant="small">
+              <Typography
+                key={item.id}
+                variant="small"
+                className="inline-block"
+              >
                 {item.value}
               </Typography>
             ))}
           </div>
         </div>
-        <div className="grid items-center gap-2 lg:gap-4 content-start justify-start">
+        <div className="grid items-center gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.workingSchedule.icon?.url)}
             className="size-5 md:size-6"

@@ -1,25 +1,30 @@
+import { approximatelyEqual } from "@/shared/lib/approximately-equal"
 import { useCallback, useEffect, useState } from "react"
 
 export const useScrollDirection = () => {
   const [y, setY] = useState(0)
+  const [loadPrev, setLoadPrev] = useState<number>(0)
   const [direction, setDirection] = useState<"init" | "down" | "up">("init")
 
   const handleEvent = useCallback(
     (e: Event) => {
       const window = e.currentTarget as Window
-      const fullness = Math.round(
-        ((window.scrollY + window.innerHeight) / document.body.offsetHeight) *
-          100
-      )
-      if (fullness >= 99) return
+      const load = +(
+        (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
+        100
+      ).toFixed(5)
+      const epsilon =
+        0.7 - (document.body.offsetHeight - window.innerHeight) / 10000
+      if (approximatelyEqual(loadPrev, load, epsilon)) return
       if (y > window.scrollY) {
         setDirection("up")
       } else if (y < window.scrollY) {
         setDirection("down")
       }
+      setLoadPrev(load)
       setY(window.scrollY)
     },
-    [y]
+    [loadPrev, y]
   )
 
   useEffect(() => {

@@ -16,15 +16,17 @@ import Turnstile from "react-turnstile"
 interface FormEmailProps {
   isLoading: boolean
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>
+  setToken: (token: string) => void
 }
 
 const FormEmail = ({
   handleSubmit,
   isLoading,
+  setToken,
   className,
   ...props
 }: ComponentProps<"form"> & FormEmailProps) => {
-  const [isCaptcha, setIsCaptcha] = useState<boolean>(false) // УЯЗВИМОСТЬ! При переходе к реальной капче использовать валидацию при отправке запроса
+  const [isCaptcha, setIsCaptcha] = useState<boolean>(false)
   const form = useContactForm<ContactFormSchemaEmail>()
 
   const isValid = isCaptcha && form.formState.isValid
@@ -95,10 +97,11 @@ const FormEmail = ({
           )}
         />
         <Turnstile
-          sitekey="1x00000000000000000000AA"
+          sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE!}
           size="flexible"
-          onSuccess={() => {
+          onSuccess={(token) => {
             setIsCaptcha(true)
+            setToken(token)
           }}
         />
         <Button

@@ -25,7 +25,7 @@ export const ContactFormProvider = ({
     defaultValues: {
       mode: "email",
     },
-    mode: "onChange",
+    mode: "all",
     ...options,
   })
 
