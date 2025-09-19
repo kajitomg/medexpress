@@ -7,6 +7,7 @@ import { cn } from "@/shared/lib"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
+import { useScrollDirection } from "@/shared/lib/hooks/use-scroll-direction"
 import { Button, Typography } from "@/shared/ui"
 import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
 import Link from "next/link"
@@ -18,38 +19,15 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
   const data = useSectionsStore(
     selectSectionItemByName("elements.header-contacts")
   )
-  /*
-    const [y, setY] = useState(0)
-    const [direction, setDirection] = useState<"init" | "down" | "up">("init")
-  
-    const handleNavigation = useCallback(
-      (e) => {
-        const window = e.currentTarget
-  
-        if (y > window.scrollY) {
-          setDirection("up")
-        } else if (y < window.scrollY) {
-          setDirection("down")
-        }
-        setY(window.scrollY)
-      },
-      [y]
-    )
-  
-    useEffect(() => {
-      setY(window.scrollY)
-      window.addEventListener("scroll", handleNavigation)
-  
-      return () => {
-        window.removeEventListener("scroll", handleNavigation)
-      }
-    }, [handleNavigation])
-  */
+
+  const direction = useScrollDirection()
+
   return (
     <div
       className={cn(
         "overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-end border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6",
-        className
+        className,
+        direction === "down" && "hidden"
       )}
     >
       <div className="self-center">
