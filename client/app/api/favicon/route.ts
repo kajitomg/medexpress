@@ -1,4 +1,5 @@
 import { fetchGlobal } from "@/entities/global/services"
+import { api } from "@/shared/api/api"
 import { NextResponse } from "next/server"
 
 export async function GET() {
@@ -8,8 +9,7 @@ export async function GET() {
     return NextResponse.json({ status: 404 })
   }
 
-  const url = new URL(process.env.NEXT_PUBLIC_API_URL + data.url)
-  const res = await fetch(url)
+  const res = await api(data.url)
 
   return new NextResponse(res.body)
 }

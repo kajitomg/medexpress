@@ -5,7 +5,7 @@ import {
   CategoryItemResponse,
   CategoryListResponse,
 } from "@/entities/category/model"
-import { api } from "@/shared/api"
+import { api } from "@/shared/api/api"
 import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
@@ -15,13 +15,14 @@ const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      CategoryListResponse<CategoryBase & DocumentServices>
-    >(`/api/categories`, {
+    const response = await api(`/api/categories`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
-    return response.data
+
+    return (await response.json()) as CategoryListResponse<
+      CategoryBase & DocumentServices
+    >
   } catch (e) {
     const error = await ErrorUtils.getErrors(e)
     throw error[0]
@@ -43,15 +44,17 @@ const fetchCategoryItemBySlug = async (
 
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      CategoryListResponse<CategoryBase & DocumentServices>
-    >(`/api/categories`, {
+    const response = await api(`/api/categories`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
 
+    const data = (await response.json()) as CategoryListResponse<
+      CategoryBase & DocumentServices
+    >
+
     return {
-      data: response.data.data[0],
+      data: data.data[0],
     } as CategoryItemResponse<CategoryBase & DocumentServices>
   } catch (e) {
     console.error(e)

@@ -47,6 +47,9 @@
     },
     "structuredData": {
       "type": "json"
+    },
+    "metaTitleTemplate": {
+      "type": "string"
     }
   }
 }

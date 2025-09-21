@@ -31,13 +31,9 @@ const Contacts = ({ data }: ContactsProps) => {
             url={imageUrlBuilder(data?.address.icon?.url)}
             className="size-5 md:size-6"
           />
-          <div className="col-start-2">
+          <div className="col-start-2 flex flex-col gap-1">
             {data?.address.body?.map((item) => (
-              <Typography
-                key={item.id}
-                variant="small"
-                className="inline-block"
-              >
+              <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
             ))}
@@ -48,13 +44,9 @@ const Contacts = ({ data }: ContactsProps) => {
             url={imageUrlBuilder(data?.phonenumber.icon?.url)}
             className="size-5 md:size-6"
           />
-          <div className="col-start-2">
+          <div className="col-start-2 flex flex-col gap-1">
             {data?.phonenumber.body?.map((item) => (
-              <Typography
-                key={item.id}
-                variant="small"
-                className="inline-block"
-              >
+              <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
             ))}
@@ -65,13 +57,9 @@ const Contacts = ({ data }: ContactsProps) => {
             url={imageUrlBuilder(data?.email.icon?.url)}
             className="size-5 md:size-6"
           />
-          <div className="col-start-2">
+          <div className="col-start-2 flex flex-col gap-1">
             {data?.email.body?.map((item) => (
-              <Typography
-                key={item.id}
-                variant="small"
-                className="inline-block"
-              >
+              <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
             ))}

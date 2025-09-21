@@ -1,6 +1,7 @@
 "use server"
 
 import { HeaderBase, HeaderItemResponse } from "@/entities/header/model"
+import { api } from "@/shared/api/api"
 import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
@@ -13,16 +14,13 @@ const fetchHeaderItem = async (
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await fetch(
-      `${process.env.API_URL}/api/header?${new URLSearchParams(query)}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
-        next: {
-          tags: ["header", ...(tags || [])],
-        },
-      }
-    )
+    const response = await api(`/api/header`, {
+      method: "GET",
+      params: new URLSearchParams(query),
+      next: {
+        tags: ["header", ...(tags || [])],
+      },
+    })
 
     return (await response.json()) as HeaderItemResponse<
       HeaderBase & DocumentServices

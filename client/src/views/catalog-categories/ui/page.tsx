@@ -1,13 +1,17 @@
 "use client"
 
 import { fetchCatalogCategoriesList } from "@/entities/category/services"
+import { PageSections } from "@/entities/page/model/page"
 import {
   useCatalogOptionsStore,
   useCategoriesListStore,
 } from "@/features/catalog/provider"
 import { CatalogSearchControl } from "@/features/catalog/ui"
+import { createSectionsStore } from "@/features/sections/provider"
+import { selectSectionItemByName } from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { CategoriesList } from "@/views/catalog-categories/ui/categories-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
@@ -15,7 +19,11 @@ import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 import { useCallback } from "react"
 
+const useSectionsStore = createSectionsStore<PageSections[]>()
+
 const Page = () => {
+  const hero = useSectionsStore(selectSectionItemByName("sections.hero"))
+
   const categories = useCategoriesListStore((state) => state.categories)
   const loadCategories = useCategoriesListStore((state) => state.loadCategories)
 
@@ -28,10 +36,13 @@ const Page = () => {
   useUpdateEffect(() => {
     loadCategories(fetchCategories)
   }, [loadCategories, fetchCategories])
-
   return (
     <>
-      <PageHeroRoutes page={routes.CATALOG()} />
+      <PageHeroRoutes
+        page={routes.CATALOG()}
+        title={hero?.title}
+        image={hero?.picture?.url && imageUrlBuilder(hero?.picture?.url)}
+      />
       <ContentSection>
         <ContentSectionContent className="max-w-440 w-full">
           <CatalogSearchControl />

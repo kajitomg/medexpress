@@ -1,4 +1,5 @@
 import { ProductBase } from "@/entities/product/model"
+import { MetaData } from "@/shared/model"
 import { Meta } from "@/shared/model/api"
 import { DocumentId } from "@/shared/model/document"
 import { Media } from "@/shared/model/media"
@@ -10,6 +11,7 @@ export type CollectionBase = {
   description: string | null
   media?: Media | null
   products?: ProductBase[] | null
+  seo?: MetaData
 }
 
 export type CollectionListResponse<T extends CollectionBase = CollectionBase> =

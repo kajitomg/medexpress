@@ -25,7 +25,7 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        "overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-end border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6",
+        "overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6",
         className,
         direction === "down" && "hidden"
       )}

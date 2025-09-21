@@ -1,6 +1,9 @@
 import { fetchFooter } from "@/entities/footer/services"
 import { fetchHeader } from "@/entities/header/services"
+import { fetchPage } from "@/entities/page/services"
 import { SectionsProvider } from "@/features/sections/provider"
+import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
+import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import {
   PageLayout,
   PageLayoutAside,
@@ -12,9 +15,30 @@ import {
 import { CatalogCategoriesNavigationSidebar } from "@/widgets/catalog-categories-navigation-sidebar/ui/catalog-categories-navigation-sidebar"
 import { Footer } from "@/widgets/footer/ui"
 import { Header } from "@/widgets/header/ui"
+import { Metadata, Viewport } from "next"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import * as React from "react"
+import slugify from "slugify"
 import Error from "../../../error"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const response = await fetchPage(
+    slugify("Элемент каталога", { lower: true, strict: true })
+  )
+
+  const data = response.data
+
+  return generatePageMetadata(data)
+}
+
+export async function generateViewport(): Promise<Viewport | string> {
+  const response = await fetchPage(
+    slugify("Элемент каталога", { lower: true, strict: true })
+  )
+  const data = response.data
+
+  return generateSeoViewport(data)
+}
 
 const RootLayout = async ({
   children,

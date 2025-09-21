@@ -8,7 +8,7 @@ const fetchDetailProductItemBySlug = async (slug: string) => {
   const queryObj = {
     populate: {
       categories: {
-        fields: ["id", "title", "slug"],
+        fields: ["id", "title", "description", "slug"],
       },
       collections: {
         fields: ["id", "slug"],

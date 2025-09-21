@@ -10,7 +10,7 @@ import { FormInputField } from "@/widgets/contact-form/ui/form-input-field"
 import { FormTextareaField } from "@/widgets/contact-form/ui/form-textarea-field"
 import { Loader } from "lucide-react"
 import Link from "next/link"
-import React, { ComponentProps, useState } from "react"
+import React, { ComponentProps, useEffect, useState } from "react"
 import Turnstile from "react-turnstile"
 
 interface FormPhonenumberProps {
@@ -30,6 +30,10 @@ const FormPhonenumber = ({
   const form = useContactForm<ContactFormSchemaPhonenumber>()
 
   const isValid = isCaptcha && form.formState.isValid
+
+  useEffect(() => {
+    form.trigger("mode")
+  }, [isCaptcha])
 
   return (
     <Form {...form}>

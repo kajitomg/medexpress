@@ -5,11 +5,41 @@ import {
   ProductsListProvider,
 } from "@/features/catalog/provider"
 import { CollectionDetailsProvider } from "@/features/collection-details/provider"
+import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
+import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { CollectionProductsPage } from "@/views/collection-products/ui"
+import { Metadata, Viewport } from "next"
 
 interface CompilationPageProps {
   params: Promise<{ collection_slug: string }>
   searchParams: Promise<{ options?: string }>
+}
+
+export async function generateMetadata({
+  params,
+}: CompilationPageProps): Promise<Metadata> {
+  const { collection_slug } = await params
+
+  const response = await fetchDetailCollectionItem(collection_slug)
+
+  const data = response.data
+
+  return generatePageMetadata(data, {
+    defaultTitle: data.title || "Страница не найдена",
+    defaultDescription: data.description || undefined,
+  })
+}
+
+export async function generateViewport({
+  params,
+}: CompilationPageProps): Promise<Viewport | string> {
+  const { collection_slug } = await params
+
+  const response = await fetchDetailCollectionItem(collection_slug)
+
+  const data = response.data
+
+  return generateSeoViewport(data)
 }
 
 const Page = async ({ params, searchParams }: CompilationPageProps) => {

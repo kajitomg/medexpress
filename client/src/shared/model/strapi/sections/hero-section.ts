@@ -4,5 +4,5 @@ export type HeroSection = {
   __component: "sections.hero"
   title: string
   description: string
-  picture: Media
+  picture?: Media
 }

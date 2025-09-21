@@ -5,12 +5,41 @@ import {
   ProductsListProvider,
 } from "@/features/catalog/provider"
 import { CategoryDetailsProvider } from "@/features/category-details/provider"
+import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
+import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { CategoryProductsPage } from "@/views/category-products/ui"
-import { NextPage } from "next"
+import { Metadata, NextPage, Viewport } from "next"
 
 interface CatalogPageProps {
   params: Promise<{ category_slug: string }>
   searchParams: Promise<{ options?: string }>
+}
+
+export async function generateMetadata({
+  params,
+}: CatalogPageProps): Promise<Metadata> {
+  const { category_slug } = await params
+
+  const response = await fetchDetailCategoryItem(category_slug)
+
+  const data = response.data
+
+  return generatePageMetadata(data, {
+    defaultTitle: data.title || "Страница не найдена",
+    defaultDescription: data.description || undefined,
+  })
+}
+
+export async function generateViewport({
+  params,
+}: CatalogPageProps): Promise<Viewport | string> {
+  const { category_slug } = await params
+
+  const response = await fetchDetailCategoryItem(category_slug)
+
+  const data = response.data
+
+  return generateSeoViewport(data)
 }
 
 const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {

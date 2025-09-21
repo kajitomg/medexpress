@@ -1,6 +1,8 @@
 import "@/application/styles/globals.css"
 import { fetchGlobal } from "@/entities/global/services"
-import { Metadata } from "next"
+import { generateGlobalMetadata } from "@/shared/lib/generate-global-metadata"
+import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { Metadata, Viewport } from "next"
 
 import { Inter, Sora } from "next/font/google"
 import * as React from "react"
@@ -11,19 +13,15 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora" })
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetchGlobal()
   const data = response.data
-  if (!data || !data.seo) {
-    return {
-      title: "Страница не найдена",
-    }
-  }
-  const { metaTitle, metaDescription } = data.seo
-  return {
-    title: metaTitle,
-    description: metaDescription,
-    icons: {
-      icon: "/api/favicon",
-    },
-  }
+
+  return generateGlobalMetadata(data)
+}
+
+export async function generateViewport(): Promise<Viewport | string> {
+  const response = await fetchGlobal()
+  const data = response.data
+
+  return generateSeoViewport(data)
 }
 
 const RootLayout = async ({

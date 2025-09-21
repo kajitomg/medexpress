@@ -7,6 +7,7 @@ const fetchHeader = async (tags?: string[]) => {
     populate: {
       sections: {
         on: {
+          "layout.logo": true,
           "elements.header-contacts": {
             populate: {
               workingSchedule: {

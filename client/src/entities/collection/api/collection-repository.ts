@@ -5,7 +5,7 @@ import {
   CollectionItemResponse,
   CollectionListResponse,
 } from "@/entities/collection/model/collection"
-import { api } from "@/shared/api"
+import { api } from "@/shared/api/api"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -14,13 +14,13 @@ const fetchCollectionsList = async (queryObj?: StrapiQuery<CollectionBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      CollectionListResponse<CollectionBase & DocumentServices>
-    >(`/api/collections`, {
+    const response = await api(`/api/collections`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
-    return response.data
+    return (await response.json()) as CollectionListResponse<
+      CollectionBase & DocumentServices
+    >
   } catch (e) {
     console.error(e)
     throw e
@@ -42,15 +42,17 @@ const fetchCollectionItemBySlug = async (
 
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      CollectionListResponse<CollectionBase & DocumentServices>
-    >(`/api/collections`, {
+    const response = await api(`/api/collections`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
 
+    const data = (await response.json()) as CollectionListResponse<
+      CollectionBase & DocumentServices
+    >
+
     return {
-      data: response.data.data[0],
+      data: data.data[0],
     } as CollectionItemResponse<CollectionBase & DocumentServices>
   } catch (e) {
     console.error(e)

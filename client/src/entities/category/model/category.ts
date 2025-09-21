@@ -1,4 +1,5 @@
 import { ProductBase } from "@/entities/product/model"
+import { MetaData } from "@/shared/model"
 import { Meta } from "@/shared/model/api"
 import { DocumentId } from "@/shared/model/document"
 import { Media } from "@/shared/model/media"
@@ -13,6 +14,7 @@ export type CategoryBase = {
   parent?: CategoryBase
   childrens?: CategoryBase[]
   products?: ProductBase[]
+  seo?: MetaData
 }
 
 export type CategoryListResponse<T extends CategoryBase = CategoryBase> = {

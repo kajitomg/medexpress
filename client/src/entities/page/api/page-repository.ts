@@ -2,6 +2,7 @@
 
 import { PageBase, PageItemResponse } from "@/entities/page/model"
 import { PageListResponse } from "@/entities/page/model/page"
+import { api } from "@/shared/api/api"
 import { ErrorUtils } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
@@ -14,24 +15,14 @@ const fetchPageItem = async (
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await fetch(
-      `${process.env.API_URL}/api/page?${new URLSearchParams(query)}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
-        next: {
-          tags,
-        },
-      }
-    )
+    const response = await api(`/api/page`, {
+      method: "GET",
+      params: new URLSearchParams(query),
+      next: {
+        tags,
+      },
+    })
 
-    /*const response = await api<PageItemResponse<PageBase & DocumentServices>>(
-      `/api/page`,
-      {
-        method: "GET",
-        params: new URLSearchParams(query),
-      }
-    )*/
     return (await response.json()) as PageItemResponse<
       PageBase & DocumentServices
     >
@@ -56,20 +47,17 @@ const fetchPageItemBySlug = async (
 
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await fetch(
-      `${process.env.API_URL}/api/pages?${new URLSearchParams(query)}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
-        next: {
-          tags: [slug],
-        },
-      }
-    )
+    const response = await api(`/api/pages`, {
+      method: "GET",
+      params: new URLSearchParams(query),
+      next: {
+        tags: [slug],
+      },
+    })
+
     const data = (await response.json()) as PageListResponse<
       PageBase & DocumentServices
     >
-
     return {
       data: data.data[0],
     } as PageItemResponse<PageBase & DocumentServices>

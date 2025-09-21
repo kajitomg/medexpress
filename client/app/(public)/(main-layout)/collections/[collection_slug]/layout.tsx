@@ -7,9 +7,8 @@ import slugify from "slugify"
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetchPage(
-    slugify("Продукт", { lower: true, strict: true })
+    slugify("Элемент коллекции", { lower: true, strict: true })
   )
-
   const data = response.data
 
   return generatePageMetadata(data)
@@ -17,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export async function generateViewport(): Promise<Viewport | string> {
   const response = await fetchPage(
-    slugify("Продукт", { lower: true, strict: true })
+    slugify("Элемент коллекции", { lower: true, strict: true })
   )
   const data = response.data
 

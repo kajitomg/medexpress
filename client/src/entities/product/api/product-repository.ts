@@ -5,7 +5,7 @@ import {
   ProductItemResponse,
   ProductListResponse,
 } from "@/entities/product/model"
-import { api } from "@/shared/api"
+import { api } from "@/shared/api/api"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -14,13 +14,14 @@ const fetchProductsList = async (queryObj?: StrapiQuery<ProductBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      ProductListResponse<ProductBase & DocumentServices>
-    >(`/api/products`, {
+    const response = await api(`/api/products`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
-    return response.data
+
+    return (await response.json()) as ProductListResponse<
+      ProductBase & DocumentServices
+    >
   } catch (e) {
     console.error(e)
     throw e
@@ -34,13 +35,13 @@ const fetchProductItem = async (
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      ProductItemResponse<ProductBase & DocumentServices>
-    >(`/api/products/${documentId}`, {
+    const response = await api(`/api/products/${documentId}`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
-    return response.data
+    return (await response.json()) as ProductItemResponse<
+      ProductBase & DocumentServices
+    >
   } catch (e) {
     console.error(e)
     throw e
@@ -62,15 +63,17 @@ const fetchProductItemBySlug = async (
 
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
-    const response = await api<
-      ProductListResponse<ProductBase & DocumentServices>
-    >(`/api/products`, {
+    const response = await api(`/api/products`, {
       method: "GET",
       params: new URLSearchParams(query),
     })
 
+    const data = (await response.json()) as ProductListResponse<
+      ProductBase & DocumentServices
+    >
+
     return {
-      data: response.data.data[0],
+      data: data.data[0],
     } as ProductItemResponse<ProductBase & DocumentServices>
   } catch (e) {
     console.error(e)

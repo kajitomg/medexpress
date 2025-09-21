@@ -15,17 +15,17 @@ export const useScrollDirection = () => {
       ).toFixed(5)
       const epsilon =
         0.7 - (document.body.offsetHeight - window.innerHeight) / 10000
-      if (approximatelyEqual(loadPrev, load, epsilon)) return
       if (load >= 100 || load <= 0) return
-      if (y > window.scrollY) {
+      if (approximatelyEqual(loadPrev, load, epsilon)) return
+      if (y > window.scrollY && direction !== "up") {
         setDirection("up")
-      } else if (y < window.scrollY) {
+      } else if (y < window.scrollY && direction !== "down") {
         setDirection("down")
       }
       setLoadPrev(load)
       setY(window.scrollY)
     },
-    [loadPrev, y]
+    [loadPrev, y, direction]
   )
 
   useEffect(() => {

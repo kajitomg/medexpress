@@ -30,7 +30,7 @@ const SectionLicenses = ({ data }: SectionLicenses) => {
       <ContentSectionContent className="w-full flex items-center">
         <ScrollArea className="flex-1 min-w-0 rounded-sm pb-3">
           <div className="flex gap-2 md:gap-4">
-            {data?.items.map((item) => (
+            {data?.items?.map((item) => (
               <Link
                 key={item.id}
                 href={imageUrlBuilder(item.url)}
