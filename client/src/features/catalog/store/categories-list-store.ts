@@ -13,8 +13,13 @@ export interface CategoriesListState {
 
 interface CategoriesListActions {
   setCategories: (categories: (CategoryBase & DocumentServices)[]) => void
-  loadCategories: (
-    fn: () => Promise<CategoryListResponse<CategoryBase & DocumentServices>>
+  loadCategories: <
+    F extends (
+      ...args: Parameters<F>
+    ) => Promise<CategoryListResponse<CategoryBase & DocumentServices>>,
+  >(
+    fn: F,
+    ...args: Parameters<F>
   ) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
@@ -36,10 +41,10 @@ export const createCategoriesListStore = (
 
     setCategories: (categories) => set({ categories }),
 
-    loadCategories: async (fn) => {
+    loadCategories: async (fn, ...args) => {
       try {
         set({ isLoading: true })
-        const response = await fn()
+        const response = await fn(...args)
         set({ categories: response.data })
       } catch {
         return set({ error: "Что-то пошло не так" })

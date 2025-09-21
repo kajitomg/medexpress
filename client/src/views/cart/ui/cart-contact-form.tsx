@@ -1,23 +1,24 @@
 "use client"
 
 import { ProductBase } from "@/entities/product/model"
-import { CartItem } from "@/features/cart/model"
+import { CartData } from "@/features/cart/model/cart"
 import { useCartStore } from "@/features/cart/provider"
 import { sendCartForm } from "@/features/cart/services"
+import { DocumentServices } from "@/shared/model"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
 import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import { ContactForm } from "@/widgets/contact-form/ui"
 
 interface CartContactFormProps {
-  cartItems: CartItem<ProductBase>[]
+  products?: CartData<(ProductBase & DocumentServices) | undefined>[]
 }
 
-const CartContactForm = ({ cartItems }: CartContactFormProps) => {
+const CartContactForm = ({ products }: CartContactFormProps) => {
   const clearCart = useCartStore((state) => state.clearCart)
 
   const handleSubmit = async (data: ContactFormSchema) => {
     try {
-      const response = await sendCartForm({ ...data, cartItems })
+      const response = await sendCartForm({ ...data, products })
       if (response.success) {
         clearCart()
       }

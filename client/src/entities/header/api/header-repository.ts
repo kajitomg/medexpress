@@ -7,10 +7,7 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchHeaderItem = async (
-  queryObj?: StrapiQuery<HeaderBase>,
-  tags?: string[]
-) => {
+const fetchHeaderItem = async (queryObj?: StrapiQuery<HeaderBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -18,7 +15,7 @@ const fetchHeaderItem = async (
       method: "GET",
       params: new URLSearchParams(query),
       next: {
-        tags: ["header", ...(tags || [])],
+        tags: ["header"],
       },
     })
 

@@ -38,7 +38,7 @@ const fetchCategoriesProductsList = async (
     )
   }
 
-  return await fetchProductsList(queryObj)
+  return await fetchProductsList(queryObj, [`category::${slug}`])
 }
 
 export { fetchCategoriesProductsList }

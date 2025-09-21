@@ -10,36 +10,22 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchProductsList = async (queryObj?: StrapiQuery<ProductBase>) => {
+const fetchProductsList = async (
+  queryObj?: StrapiQuery<ProductBase>,
+  tags?: string[]
+) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
     const response = await api(`/api/products`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags,
+      },
     })
 
     return (await response.json()) as ProductListResponse<
-      ProductBase & DocumentServices
-    >
-  } catch (e) {
-    console.error(e)
-    throw e
-  }
-}
-
-const fetchProductItem = async (
-  documentId: string,
-  queryObj?: StrapiQuery<ProductBase>
-) => {
-  try {
-    const query = qs.stringify(queryObj, { encodeValuesOnly: true })
-
-    const response = await api(`/api/products/${documentId}`, {
-      method: "GET",
-      params: new URLSearchParams(query),
-    })
-    return (await response.json()) as ProductItemResponse<
       ProductBase & DocumentServices
     >
   } catch (e) {
@@ -66,6 +52,9 @@ const fetchProductItemBySlug = async (
     const response = await api(`/api/products`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags: [`product::${slug}`],
+      },
     })
 
     const data = (await response.json()) as ProductListResponse<
@@ -81,4 +70,4 @@ const fetchProductItemBySlug = async (
   }
 }
 
-export { fetchProductsList, fetchProductItem, fetchProductItemBySlug }
+export { fetchProductsList, fetchProductItemBySlug }

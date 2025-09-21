@@ -18,6 +18,9 @@ const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
     const response = await api(`/api/categories`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags: ["category"],
+      },
     })
 
     return (await response.json()) as CategoryListResponse<
@@ -47,6 +50,9 @@ const fetchCategoryItemBySlug = async (
     const response = await api(`/api/categories`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags: [`category::${slug}`],
+      },
     })
 
     const data = (await response.json()) as CategoryListResponse<

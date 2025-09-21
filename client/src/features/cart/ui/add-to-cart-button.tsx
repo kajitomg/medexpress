@@ -25,7 +25,7 @@ const AddToCartButton = ({
   const deleteItemFromCart = useCartStore((state) => state.deleteItemFromCart)
 
   const isInCart = useMemo(
-    () => products.some((item) => item.item.id === product?.id),
+    () => products.some((item) => item.slug === product?.slug),
     [products, product]
   )
 
@@ -33,9 +33,9 @@ const AddToCartButton = ({
     if (!hasHydrated || !product) return
 
     if (isInCart) {
-      deleteItemFromCart(product.id)
+      deleteItemFromCart(product.slug)
     } else {
-      addItemToCart(product)
+      addItemToCart(product.slug)
     }
   }
 

@@ -1,10 +1,13 @@
 import { ProductBase } from "@/entities/product/model"
-import { CartItem } from "@/features/cart/model"
+import { CartData } from "@/features/cart/model/cart"
+import { DocumentServices } from "@/shared/model"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
 
 const sendCartForm = async (
   // ContactFormSchema невозможная область применения
-  body: ContactFormSchema & { cartItems: CartItem<ProductBase>[] }
+  body: ContactFormSchema & {
+    products?: CartData<(ProductBase & DocumentServices) | undefined>[]
+  }
 ): Promise<{ success: boolean; message: string }> => {
   try {
     const response = await fetch("api/send-contact-form", {

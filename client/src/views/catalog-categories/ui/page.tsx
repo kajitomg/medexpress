@@ -34,7 +34,7 @@ const Page = () => {
   }, [searchQuery])
 
   useUpdateEffect(() => {
-    loadCategories(fetchCategories)
+    loadCategories(fetchCatalogCategoriesList, searchQuery)
   }, [loadCategories, fetchCategories])
   return (
     <>

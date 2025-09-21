@@ -17,7 +17,6 @@ import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { ProductsList } from "@/views/collection-products/ui/products-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
-import { useCallback } from "react"
 
 interface PageProps {
   slug: string
@@ -31,13 +30,9 @@ const Page = ({ slug }: PageProps) => {
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
   const page = useCatalogOptionsStore((state) => state.page)
 
-  const fetchProducts = useCallback(async () => {
-    return fetchCollectionsProductsList(slug, page || 1, searchQuery)
-  }, [slug, page, searchQuery])
-
   useUpdateEffect(() => {
-    loadProducts(fetchProducts)
-  }, [loadProducts, fetchProducts])
+    loadProducts(fetchCollectionsProductsList, slug, page || 1, searchQuery)
+  }, [loadProducts, slug, page, searchQuery])
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { ProductBase } from "@/entities/product/model"
-import { CartItem } from "@/features/cart/model"
+import { CartData } from "@/features/cart/model/cart"
 
 interface Body {
   firstname: string
@@ -7,7 +7,7 @@ interface Body {
 }
 
 interface BodyCart {
-  cartItems: CartItem<ProductBase>[]
+  cartItems: CartData<ProductBase>[]
 }
 
 interface BodyEmail {

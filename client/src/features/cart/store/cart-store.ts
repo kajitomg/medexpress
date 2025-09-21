@@ -1,23 +1,20 @@
-import { ProductBase } from "@/entities/product/model/product"
-import { fetchDetailProductItemByDocumentId } from "@/entities/product/services/fetch-detail-product-item-by-document-id"
 import { CartItem } from "@/features/cart/model/cart"
-import { DocumentId, DocumentServices } from "@/shared/model/document"
 import { Error } from "@/shared/model/error"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
 interface CartState {
-  products: CartItem<ProductBase>[]
+  products: CartItem[]
   error?: Error
   _hasHydrated: boolean
 }
 
 interface CartActions {
-  addItemToCart: (product: ProductBase) => Promise<void>
-  deleteItemFromCart: (id: DocumentId) => void
-  incrementItemInCart: (id: DocumentId) => void
-  decrementItemInCart: (id: DocumentId) => void
+  addItemToCart: (slug?: string) => void
+  deleteItemFromCart: (slug?: string) => void
+  incrementItemInCart: (slug?: string) => void
+  decrementItemInCart: (slug?: string) => void
   clearCart: () => void
 }
 
@@ -38,23 +35,18 @@ export const createCartStore = (
       persist(
         (set) => ({
           ...{ ...defaultInitState, ...initState },
-          addItemToCart: async (item: ProductBase & DocumentServices) => {
-            if (item.documentId) {
-              const response = await fetchDetailProductItemByDocumentId(
-                item.documentId
-              )
-              item = response.data
-            }
+          addItemToCart: (slug?: string) => {
+            if (!slug) return
             set((state) => {
               const productIndex = state.products.findIndex(
-                (product) => product.item.id === item.id
+                (product) => product.slug === slug
               )
 
               if (productIndex >= 0) {
                 state.products[productIndex].count++
               } else {
-                const product: CartItem<ProductBase> = {
-                  item: item,
+                const product = {
+                  slug,
                   count: 1,
                 }
                 state.products.push(product)
@@ -62,10 +54,10 @@ export const createCartStore = (
               state.error = undefined
             })
           },
-          deleteItemFromCart: (id: DocumentId) => {
+          deleteItemFromCart: (slug?: string) => {
             set((state) => {
               const productIndex = state.products.findIndex(
-                (product) => product.item.id === id
+                (product) => product.slug === slug
               )
 
               if (productIndex === -1) {
@@ -76,10 +68,10 @@ export const createCartStore = (
               }
             })
           },
-          incrementItemInCart: (id: DocumentId) => {
+          incrementItemInCart: (slug?: string) => {
             set((state) => {
               const productIndex = state.products.findIndex(
-                (product) => product.item.id === id
+                (product) => product.slug === slug
               )
               if (productIndex === -1) {
                 state.error = "Product not found."
@@ -89,10 +81,10 @@ export const createCartStore = (
               }
             })
           },
-          decrementItemInCart: (id: DocumentId) => {
+          decrementItemInCart: (slug?: string) => {
             set((state) => {
               const productIndex = state.products.findIndex(
-                (product) => product.item.id === id
+                (product) => product.slug === slug
               )
               if (productIndex === -1) {
                 state.error = "Product not found."
@@ -114,6 +106,7 @@ export const createCartStore = (
         }),
         {
           name: "cartStore",
+          partialize: (state) => ({ products: state.products }),
           onRehydrateStorage: () => (state) => {
             if (state) {
               state._hasHydrated = true

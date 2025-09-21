@@ -13,7 +13,6 @@ import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { CollectionsList } from "@/views/collections/ui/collections-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
-import { useCallback } from "react"
 
 const useSectionsStore = createSectionsStore<PageSections[]>()
 
@@ -27,13 +26,9 @@ const Page = () => {
 
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
 
-  const fetchCollections = useCallback(async () => {
-    return fetchCatalogCollectionsList(searchQuery)
-  }, [searchQuery])
-
   useUpdateEffect(() => {
-    loadCollections(fetchCollections)
-  }, [loadCollections, fetchCollections])
+    loadCollections(fetchCatalogCollectionsList, searchQuery)
+  }, [loadCollections, searchQuery])
 
   return (
     <>

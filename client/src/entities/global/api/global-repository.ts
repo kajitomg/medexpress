@@ -7,10 +7,7 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchGlobalItem = async (
-  queryObj?: StrapiQuery<GlobalBase>,
-  tags?: string[]
-) => {
+const fetchGlobalItem = async (queryObj?: StrapiQuery<GlobalBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -18,7 +15,7 @@ const fetchGlobalItem = async (
       method: "GET",
       params: new URLSearchParams(query),
       next: {
-        tags: ["global", ...(tags || [])],
+        tags: ["global"],
       },
     })
 

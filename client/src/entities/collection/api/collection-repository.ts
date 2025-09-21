@@ -17,6 +17,9 @@ const fetchCollectionsList = async (queryObj?: StrapiQuery<CollectionBase>) => {
     const response = await api(`/api/collections`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags: ["collection"],
+      },
     })
     return (await response.json()) as CollectionListResponse<
       CollectionBase & DocumentServices
@@ -45,6 +48,9 @@ const fetchCollectionItemBySlug = async (
     const response = await api(`/api/collections`, {
       method: "GET",
       params: new URLSearchParams(query),
+      next: {
+        tags: [`collection::${slug}`],
+      },
     })
 
     const data = (await response.json()) as CollectionListResponse<

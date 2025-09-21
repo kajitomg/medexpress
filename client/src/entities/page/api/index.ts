@@ -1,1 +1,1 @@
-export { fetchPageItem, fetchPageItemBySlug } from "./page-repository"
+export { fetchPageItemBySlug } from "./page-repository"

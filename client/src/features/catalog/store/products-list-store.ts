@@ -15,8 +15,13 @@ export interface ProductsListState {
 
 interface ProductsListActions {
   setProducts: (products: (ProductBase & DocumentServices)[]) => void
-  loadProducts: (
-    fn: () => Promise<ProductListResponse<ProductBase & DocumentServices>>
+  loadProducts: <
+    F extends (
+      ...args: Parameters<F>
+    ) => Promise<ProductListResponse<ProductBase & DocumentServices>>,
+  >(
+    fn: F,
+    ...args: Parameters<F>
   ) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
@@ -38,10 +43,10 @@ export const createProductsListStore = (
     ...{ ...defaultInitState, ...initState },
     setProducts: (products) => set({ products }),
 
-    loadProducts: async (fn) => {
+    loadProducts: async (fn, ...args) => {
       try {
         set({ isLoading: true })
-        const response = await fn()
+        const response = await fn(...args)
         set({ products: response.data })
       } catch {
         return set({ error: "Что-то пошло не так" })

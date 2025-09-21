@@ -1,9 +1,10 @@
 "use client"
 
 import { ProductBase } from "@/entities/product/model"
-import { CartItem as CartItemType } from "@/features/cart/model"
+import { CartData } from "@/features/cart/model/cart"
 import { routes } from "@/shared/config/routes"
-import { urlBuilder } from "@/shared/lib/url-builder"
+import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { DocumentServices } from "@/shared/model"
 import { Button, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { Minus, Plus, X } from "lucide-react"
@@ -12,7 +13,7 @@ import Link from "next/link"
 import * as React from "react"
 
 interface CartItemProps {
-  product: CartItemType<ProductBase>
+  product?: CartData<(ProductBase & DocumentServices) | undefined>
   deleteItemFromCart: () => void
   incrementItemInCart: () => void
   decrementItemInCart: () => void
@@ -25,21 +26,15 @@ const CartItem = ({
   deleteItemFromCart,
 }: CartItemProps) => {
   return (
-    <Link href={routes.PRODUCT(product?.item.slug).path}>
-      <li className="cursor-pointer flex items-start rounded-xl bg-(--color-brand)/10 xl:bg-transparent xl:hover:bg-(--color-brand)/10 p-2 xl:p-4 gap-1 xl:gap-4">
-        <div className="max-w-16">
+    <Link href={routes.PRODUCT(product?.item?.slug).path}>
+      <li className="cursor-pointer flex items-start sm:items-center rounded-xl bg-(--color-brand)/10 xl:bg-transparent xl:hover:bg-(--color-brand)/10 p-2 xl:p-4 gap-1 xl:gap-4">
+        <div className="min-w-16">
           <AspectRatio ratio={16 / 9} className="bg-muted">
             <Image
-              src={
-                product?.item.media?.url
-                  ? urlBuilder(product?.item.media.url)
-                  : urlBuilder(
-                      "/uploads/placeholder_y_Pg_Ly_Fqc_0d8b721762.webp"
-                    )
-              }
-              alt={product?.item.title || "Продукт"}
-              fill
-              sizes="100%"
+              src={imageUrlBuilder(product?.item?.media?.url)}
+              alt={product?.item?.title || "Продукт"}
+              width={100}
+              height={100}
               className="object-cover"
               priority
             />
@@ -48,20 +43,20 @@ const CartItem = ({
         <div className="flex-auto">
           <div>
             <Typography variant="small" target="card" className="inline">
-              {product?.item.code + "\n"}
+              {product?.item?.code + "\n"}
             </Typography>
             <span>{"\n"}</span>
             <Typography variant="small" target="card" className="inline">
-              {product?.item.categories?.[0]?.title}
+              {product?.item?.categories?.[0]?.title}
             </Typography>
             <span>{"\n>\n"}</span>
             <Typography variant="small" target="card" className="inline">
-              {product?.item.categories?.[1]?.title}
+              {product?.item?.categories?.[1]?.title}
             </Typography>
             <span>{"\n"}</span>
           </div>
           <Typography asChild variant="h4" target="card">
-            <h4>{product?.item.title}</h4>
+            <h4>{product?.item?.title}</h4>
           </Typography>
         </div>
         <div className="max-w-50 flex flex-col gap-3">

@@ -13,8 +13,13 @@ export interface CollectionsListState {
 
 interface CollectionsListActions {
   setCollections: (collections: (CollectionBase & DocumentServices)[]) => void
-  loadCollections: (
-    fn: () => Promise<CollectionListResponse<CollectionBase & DocumentServices>>
+  loadCollections: <
+    F extends (
+      ...args: Parameters<F>
+    ) => Promise<CollectionListResponse<CollectionBase & DocumentServices>>,
+  >(
+    fn: F,
+    ...args: Parameters<F>
   ) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
@@ -35,10 +40,10 @@ export const createCollectionsListStore = (
     ...{ ...defaultInitState, ...initState },
     setCollections: (collections) => set({ collections }),
 
-    loadCollections: async (fn) => {
+    loadCollections: async (fn, ...args) => {
       try {
         set({ isLoading: true })
-        const response = await fn()
+        const response = await fn(...args)
         set({ collections: response.data })
       } catch {
         return set({ error: "Что-то пошло не так" })

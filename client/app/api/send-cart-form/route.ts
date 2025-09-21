@@ -1,12 +1,12 @@
 import { sendMail } from "@/entities/mail/api"
 import { ProductBase } from "@/entities/product/model"
-import { CartItem } from "@/features/cart/model"
+import { CartData } from "@/features/cart/model/cart"
 import { ContactFormSchema } from "@/widgets/contact-form/model"
 import { NextResponse } from "next/server"
 import Mail from "nodemailer/lib/mailer"
 
 export async function POST(request: Request) {
-  const body: ContactFormSchema & { cartItems: CartItem<ProductBase>[] } =
+  const body: ContactFormSchema & { cartItems: CartData<ProductBase>[] } =
     await request.json()
   const { firstname, message, cartItems, mode } = body
 

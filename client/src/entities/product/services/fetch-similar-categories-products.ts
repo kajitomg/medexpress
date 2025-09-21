@@ -32,7 +32,7 @@ const fetchSimilarCategoriesProductsList = async (
     },
   } satisfies StrapiQuery<ProductBase>
 
-  return await fetchProductsList(queryObj)
+  return await fetchProductsList(queryObj, [`category::${slug}`])
 }
 
 export { fetchSimilarCategoriesProductsList }

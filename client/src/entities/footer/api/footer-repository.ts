@@ -7,10 +7,7 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchFooterItem = async (
-  queryObj?: StrapiQuery<FooterBase>,
-  tags?: string[]
-) => {
+const fetchFooterItem = async (queryObj?: StrapiQuery<FooterBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -18,7 +15,7 @@ const fetchFooterItem = async (
       method: "GET",
       params: new URLSearchParams(query),
       next: {
-        tags: ["footer", ...(tags || [])],
+        tags: ["footer"],
       },
     })
 
