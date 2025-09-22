@@ -25,7 +25,11 @@ const Contacts = ({ data }: ContactsProps) => {
           {data?.title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col p-0 gap-2">
+      <CardContent
+        itemScope
+        itemType="https://schema.org/Organization"
+        className="flex flex-col p-0 gap-2"
+      >
         <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.address.icon?.url)}
@@ -46,7 +50,7 @@ const Contacts = ({ data }: ContactsProps) => {
           />
           <div className="col-start-2 flex flex-col gap-1">
             {data?.phonenumber.body?.map((item) => (
-              <Typography key={item.id} variant="small">
+              <Typography itemProp="telephone" key={item.id} variant="small">
                 {item.value}
               </Typography>
             ))}
@@ -59,13 +63,16 @@ const Contacts = ({ data }: ContactsProps) => {
           />
           <div className="col-start-2 flex flex-col gap-1">
             {data?.email.body?.map((item) => (
-              <Typography key={item.id} variant="small">
+              <Typography itemProp="email" key={item.id} variant="small">
                 {item.value}
               </Typography>
             ))}
           </div>
         </div>
-        <div className="grid items-center gap-2 lg:gap-3 content-start justify-start">
+        <div
+          itemProp="openingHours"
+          className="grid items-center gap-2 lg:gap-3 content-start justify-start"
+        >
           <DynamicIcon
             url={imageUrlBuilder(data?.workingSchedule.icon?.url)}
             className="size-5 md:size-6"

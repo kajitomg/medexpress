@@ -6,28 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/sitemap/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/sitemap/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-catalog-categories-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-catalog-categories-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-navigation-categories-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-navigation-categories-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/category-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/category-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/collection-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/collection-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/product-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/product-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/search-control.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/search-control.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/breadcrumb.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/breadcrumb.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/page-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/page-hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/sheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/sheet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/catalog-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/catalog-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/contact-form-details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/contact-form-details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/contact-form-details.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/menu-burger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/menu-burger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/navigation-menu-link-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/navigation-menu-link-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/navigation-mobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-burger/ui/navigation-mobile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/page-hero-routes/ui/page-hero-routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/page-hero-routes/ui/page-hero-routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/section-faq/ui/content-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/section-faq/ui/content-faq.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/info-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/info-navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/navigation-menu-link-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/navigation-menu-link-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/category-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/category-item.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +284,8 @@
       <workItem from="1758414692031" duration="1048000" />
       <workItem from="1758450075410" duration="13897000" />
       <workItem from="1758498648342" duration="9074000" />
-      <workItem from="1758553185542" duration="2850000" />
+      <workItem from="1758553185542" duration="3063000" />
+      <workItem from="1758582010870" duration="1412000" />
     </task>
     <servers />
   </component>

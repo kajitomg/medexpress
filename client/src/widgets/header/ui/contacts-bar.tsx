@@ -24,6 +24,8 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
 
   return (
     <div
+      itemScope
+      itemType="https://schema.org/Organization"
       className={cn(
         "overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6",
         className,
@@ -41,8 +43,16 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           {data?.phonenumber.title}
         </Typography>
         {data?.phonenumber.body.map((item) => (
-          <Button key={item.id} variant="link" className="px-0" asChild>
-            <Link href={`tel:${item.value}`}>{item.value}</Link>
+          <Button
+            itemProp="telephone"
+            key={item.id}
+            variant="link"
+            className="px-0"
+            asChild
+          >
+            <Link itemProp="url" href={`tel:${item.value}`}>
+              {item.value}
+            </Link>
           </Button>
         ))}
       </div>
@@ -51,12 +61,20 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           {data?.email.title}
         </Typography>
         {data?.email.body.map((item) => (
-          <Button key={item.id} variant="link" className="px-0" asChild>
-            <Link href={`mailto:${item.value}`}>{item.value}</Link>
+          <Button
+            itemProp="email"
+            key={item.id}
+            variant="link"
+            className="px-0"
+            asChild
+          >
+            <Link itemProp="url" href={`mailto:${item.value}`}>
+              {item.value}
+            </Link>
           </Button>
         ))}
       </div>
-      <div className="flex flex-col hidden sm:block">
+      <div itemProp="openingHours" className="flex flex-col hidden sm:block">
         <Typography variant="small" className="font-bold">
           {data?.workingSchedule.title}
         </Typography>

@@ -35,7 +35,11 @@ const ContactFormDetails = ({
       </Typography>
       <div className="mt-8 max-w-md xl:max-w-full w-full">
         <div className="flex flex-col items-start gap-2">
-          <div className="grid items-center gap-2 content-start justify-start">
+          <div
+            itemScope
+            itemType="https://schema.org/Organization"
+            className="grid items-center gap-2 content-start justify-start"
+          >
             <DynamicIcon
               url={imageUrlBuilder(data?.phonenumber?.icon?.url)}
               className="size-7 md:size-8 text-foreground"
@@ -46,6 +50,7 @@ const ContactFormDetails = ({
             <div className="col-start-2">
               {data?.phonenumber.body?.map((item) => (
                 <Typography
+                  itemProp="telephone"
                   key={item.id}
                   variant="muted"
                   className="text-foreground"
@@ -67,6 +72,7 @@ const ContactFormDetails = ({
             <div className="col-start-2">
               {data?.email.body?.map((item) => (
                 <Typography
+                  itemProp="email"
                   key={item.id}
                   variant="muted"
                   className="text-foreground col-start-2"

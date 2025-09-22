@@ -25,7 +25,11 @@ const SectionContactsDetails = ({
 }: ComponentProps<"section"> & SectionContactsDetailsProps) => {
   return (
     <ContentSection className={className}>
-      <ContentSectionContent className="flex items-center flex-col lg:flex-row gap-4 w-full p-4">
+      <ContentSectionContent
+        itemScope
+        itemType="https://schema.org/Organization"
+        className="flex items-center flex-col lg:flex-row gap-4 w-full p-4"
+      >
         <div className="flex-1/2 grid grid-cols-2 gap-4 p-4">
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
@@ -34,7 +38,13 @@ const SectionContactsDetails = ({
 
             <div>
               {data?.address.body?.map((item) => (
-                <Typography key={item.id} variant="muted">
+                <Typography
+                  itemProp="address"
+                  itemScope
+                  itemType="https://schema.org/PostalAddress"
+                  key={item.id}
+                  variant="muted"
+                >
                   {item.value}
                 </Typography>
               ))}
@@ -44,7 +54,7 @@ const SectionContactsDetails = ({
             <Typography asChild variant="h4">
               <h4 className="col-start-2">{data?.workingSchedule.title}</h4>
             </Typography>
-            <Typography variant="muted">
+            <Typography itemProp="openingHours" variant="muted">
               {(() => {
                 const time = getWorkingTime(data?.workingSchedule.body?.days)
 
@@ -66,7 +76,7 @@ const SectionContactsDetails = ({
             </Typography>
             <div>
               {data?.phonenumber.body?.map((item) => (
-                <Typography key={item.id} variant="muted">
+                <Typography itemProp="telephone" key={item.id} variant="muted">
                   {item.value}
                 </Typography>
               ))}
@@ -78,7 +88,7 @@ const SectionContactsDetails = ({
             </Typography>
             <div>
               {data?.email.body?.map((item) => (
-                <Typography key={item.id} variant="muted">
+                <Typography itemProp="email" key={item.id} variant="muted">
                   {item.value}
                 </Typography>
               ))}

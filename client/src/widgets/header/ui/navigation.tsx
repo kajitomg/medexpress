@@ -41,7 +41,13 @@ const DATA: NavigationMenuItemData[] = [
 
 const Navigation = async ({ className, ...props }: NavigationMenuProps) => {
   return (
-    <NavigationMenu className={cn(className)} viewport={false} {...props}>
+    <NavigationMenu
+      itemScope
+      itemType="http://schema.org/SiteNavigationElement"
+      className={cn(className)}
+      viewport={false}
+      {...props}
+    >
       <NavigationMenuList
         className={cn(
           props.orientation === "vertical" &&

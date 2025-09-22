@@ -19,7 +19,7 @@ const CategoryItem = ({
   handleMouseLeave,
 }: CategoryItemProps) => {
   return (
-    <li>
+    <li itemScope itemType="https://schema.org/CollectionPage">
       <Button
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -30,8 +30,8 @@ const CategoryItem = ({
           selectedCategory && "bg-gray-200"
         )}
       >
-        <Link href={routes.CATALOG(category.slug).path}>
-          <span className="font-bold">
+        <Link itemProp="url" href={routes.CATALOG(category.slug).path}>
+          <span itemProp="name" className="font-bold">
             <span className="font-black">
               {category.code}.{"\n"}
             </span>
