@@ -14,14 +14,19 @@ interface CatalogCollectionItemProps {
 
 const CatalogCollectionItem = ({ collection }: CatalogCollectionItemProps) => {
   return (
-    <Card className="relative p-0 overflow-hidden border-none shadow-black/25 hover:shadow-xl duration-200">
-      <Link href={routes.COLLESCTIONS(collection.slug).path}>
+    <Card
+      itemScope
+      itemType="https://schema.org/CollectionPage"
+      className="relative p-0 overflow-hidden border-none shadow-black/25 hover:shadow-xl duration-200"
+    >
+      <Link itemProp="url" href={routes.COLLESCTIONS(collection.slug).path}>
         <CardContent className="p-0">
           <AspectRatio
             ratio={16 / 9}
             className="before:bg-black/20 before:absolute before:size-full"
           >
             <Image
+              itemProp="image"
               src={imageUrlBuilder(collection.media?.url)}
               alt={collection.title}
               width="300"
@@ -32,7 +37,7 @@ const CatalogCollectionItem = ({ collection }: CatalogCollectionItemProps) => {
         </CardContent>
         <div className="absolute top-0 left-0 size-full">
           <CardHeader className="h-full flex flex-col items-center justify-center dark">
-            <Typography asChild variant="h2">
+            <Typography itemProp="name" asChild variant="h2">
               <h2>{collection.title}</h2>
             </Typography>
             <Typography className="text-foreground">

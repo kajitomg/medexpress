@@ -1,10 +1,7 @@
 import { cn } from "@/shared/lib"
-import {
-  NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle,
-} from "@/shared/ui"
+import { NavigationMenuItem, NavigationMenuLink } from "@/shared/ui"
 import { SheetClose } from "@/shared/ui/sheet"
+import { typographyVariants } from "@/shared/ui/typography"
 import { NavigationMenuItemData } from "@/widgets/header/ui/navigation"
 import Link from "next/link"
 import * as React from "react"
@@ -20,8 +17,8 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
         <NavigationMenuLink
           asChild
           className={cn(
-            navigationMenuTriggerStyle(),
-            "text-base font-bold hover:text-(--color-brand)",
+            typographyVariants({ variant: "lead" }),
+            "hover:text-(--color-brand) text-black",
             "bg-transparent backdrop-blur-3xl"
           )}
         >

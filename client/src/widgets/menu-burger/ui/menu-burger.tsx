@@ -14,7 +14,7 @@ import * as React from "react"
 
 const MenuBurger = () => {
   return (
-    <Sheet aria-describedby="Меню">
+    <Sheet>
       <SheetTrigger asChild>
         <Button
           variant="outline"
@@ -26,7 +26,11 @@ const MenuBurger = () => {
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="left" className="w-full sm:w-[350px]">
+      <SheetContent
+        aria-describedby="Меню"
+        side="left"
+        className="w-full sm:w-[350px]"
+      >
         <SheetHeader>
           <SheetTitle>
             <SheetClose asChild>
@@ -39,9 +43,7 @@ const MenuBurger = () => {
         </SheetHeader>
 
         <Separator className="my-4" />
-        <SheetClose>
-          <NavigationMobile />
-        </SheetClose>
+        <NavigationMobile />
       </SheetContent>
     </Sheet>
   )

@@ -73,8 +73,11 @@ const fetchCatalogCategoriesList = async (search?: string) => {
       queryObj.filters.id.$null = true
     }
   }
+  const response = await fetchCategoriesList(queryObj)
 
-  return await fetchCategoriesList(queryObj)
+  response.data.sort((a, b) => +a.code - +b.code)
+
+  return response
 }
 
 export { fetchCatalogCategoriesList }

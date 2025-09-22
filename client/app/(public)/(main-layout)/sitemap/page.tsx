@@ -1,6 +1,7 @@
 import { fetchPage } from "@/entities/page/services"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageHero, PageHeroContent, Typography } from "@/shared/ui"
 import { Metadata, Viewport } from "next"
 import slugify from "slugify"
 
@@ -24,8 +25,14 @@ export async function generateViewport(): Promise<Viewport | string> {
 
 const Sitemap = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-auto">Все страницы сайта в списке</main>
+    <div>
+      <PageHero height="full">
+        <PageHeroContent className="flex justify-center items-center">
+          <Typography asChild variant="h2">
+            <h2>Страница в разработке</h2>
+          </Typography>
+        </PageHeroContent>
+      </PageHero>
     </div>
   )
 }

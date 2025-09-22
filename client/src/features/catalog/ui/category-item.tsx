@@ -19,11 +19,16 @@ const CatalogCategoryItem = ({ category }: CatalogCategoryItemProps) => {
   )
 
   return (
-    <Card className="shadow-black/20 hover:shadow-xl duration-200">
+    <Card
+      itemScope
+      itemType="https://schema.org/CollectionPage"
+      className="shadow-black/20 hover:shadow-xl duration-200"
+    >
       <CardContent className="flex flex-col md:flex-row items-start gap-4">
         <div className="max-w-80 w-full md:max-w-60 lg:max-w-80">
           <AspectRatio ratio={16 / 9}>
             <Image
+              itemProp="image"
               src={imageUrlBuilder(category.media?.url)}
               alt={category.title}
               width="250"
@@ -32,14 +37,16 @@ const CatalogCategoryItem = ({ category }: CatalogCategoryItemProps) => {
             />
           </AspectRatio>
         </div>
-        <div className="flex-auto basis-full">
+        <div className="flex-auto basis-full w-full">
           <Button
             asChild
             variant="link"
             className="grid grid-flow-col justify-between w-full h-auto p-0 gap-2 items-start text-lg font-black cursor-pointer text-left row-start-1 whitespace-normal hover:no-underline hover:text-[#93A79E]"
           >
-            <Link href={routes.CATALOG(category.slug).path}>
-              <span className="min-h-7">{category.title}</span>
+            <Link itemProp="url" href={routes.CATALOG(category.slug).path}>
+              <span itemProp="name" className="min-h-7">
+                {category.title}
+              </span>
               <div className="flex items-center justify-center h-7">
                 <ChevronRight />
               </div>
@@ -63,14 +70,14 @@ interface SubcategoryItemProps {
 
 const SubcategoryItem = ({ category }: SubcategoryItemProps) => {
   return (
-    <li>
+    <li itemType="https://schema.org/CollectionPage">
       <Button
         asChild
         variant="link"
         className="cursor-pointer text-left text-sm font-extralight h-auto p-0 whitespace-normal hover:no-underline hover:text-[#93A79E]"
       >
-        <Link href={routes.CATALOG(category.slug).path}>
-          <span>{category.title}</span>
+        <Link itemProp="url" href={routes.CATALOG(category.slug).path}>
+          <span itemProp="name">{category.title}</span>
         </Link>
       </Button>
     </li>

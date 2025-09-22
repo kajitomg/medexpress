@@ -1,8 +1,7 @@
-import * as React from "react"
+import { cn } from "@/shared/lib/utils"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
-
-import { cn } from "@/shared/lib/utils"
+import * as React from "react"
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
@@ -16,6 +15,8 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
         "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
         className
       )}
+      itemScope
+      itemType="https://schema.org/BreadcrumbList"
       {...props}
     />
   )
@@ -24,6 +25,9 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
 function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
     <li
+      itemProp="itemListElement"
+      itemScope
+      itemType="https://schema.org/ListItem"
       data-slot="breadcrumb-item"
       className={cn("inline-flex items-center gap-1.5", className)}
       {...props}
@@ -42,6 +46,7 @@ function BreadcrumbLink({
 
   return (
     <Comp
+      itemProp="item"
       data-slot="breadcrumb-link"
       className={cn("hover:text-foreground transition-colors", className)}
       {...props}
@@ -52,6 +57,7 @@ function BreadcrumbLink({
 function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
+      itemProp="name"
       data-slot="breadcrumb-page"
       role="link"
       aria-disabled="true"

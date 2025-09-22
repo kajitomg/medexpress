@@ -44,12 +44,13 @@ const NavigationMobile = async ({
 }: NavigationMenuProps) => {
   return (
     <NavigationMenu
-      className={cn("items-start", className)}
-      viewport={false}
+      className={cn("items-start flex-0 px-6", className)}
       orientation="vertical"
       {...props}
     >
-      <NavigationMenuList className={cn("flex-col justify-start items-start")}>
+      <NavigationMenuList
+        className={cn("flex-col justify-center items-start w-full")}
+      >
         {DATA.map((item) => (
           <NavigationMenuLinkItem item={item} key={item.id} />
         ))}

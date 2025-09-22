@@ -22,19 +22,19 @@ interface AboutProps {
 const About = ({ data }: AboutProps) => {
   return (
     <Card className="bg-transparent border-none shadow-none gap-y-1 sm:gap-y-2 py-2 sm:py-4 md:py-6">
-      <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
+      <CardHeader className="justify-start p-0">
         <Logo
           path={routes.MAIN.path}
           url={data?.logo.image?.url}
           className="fill-foreground p-2 h-10 lg:h-10"
         />
       </CardHeader>
-      <CardContent className=" px-2 md:px-4 lg:px-6">
+      <CardContent className="p-0">
         <CardTitle>
           <Typography variant="small">{data?.caption}</Typography>
         </CardTitle>
       </CardContent>
-      <CardFooter className="flex gap-2 px-2 md:px-4 lg:px-6">
+      <CardFooter className="flex gap-2 p-0">
         {data?.social.body?.map((item) => (
           <Link key={item.id} href={item.url}>
             <Button

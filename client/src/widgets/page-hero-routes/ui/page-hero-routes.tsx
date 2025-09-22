@@ -69,15 +69,19 @@ const PageHeroRoutes = ({
                     className="text-white hover:text-gray-200"
                   >
                     <Link href={breadcrumbs[0].path}>
-                      {breadcrumbs[0].title}
+                      <BreadcrumbPage className="text-white">
+                        {breadcrumbs[0].title}
+                      </BreadcrumbPage>
                     </Link>
                   </BreadcrumbLink>
+                  <meta property="position" content="1" />
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-white" />
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-white">
                     {page.title}
                   </BreadcrumbPage>
+                  <meta property="position" content="2" />
                 </BreadcrumbItem>
               </BreadcrumbList>
             )}

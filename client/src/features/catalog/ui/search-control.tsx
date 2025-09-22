@@ -26,9 +26,15 @@ const CatalogSearchControl = () => {
   }
 
   return (
-    <div className="flex items-center max-w-400 w-full gap-x-2">
+    <div
+      className="flex items-center max-w-400 w-full gap-x-2"
+      itemProp="potentialAction"
+      itemScope
+      itemType="https://schema.org/SearchAction"
+    >
       <Input
         type="text"
+        itemProp="query-input"
         placeholder="Поиск по каталогу"
         className={cn(
           "w-100 focus-visible:ring-1 focus-visible:ring-(--color-brand) text-sm placeholder:text-sm bg-muted"

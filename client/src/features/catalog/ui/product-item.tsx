@@ -28,10 +28,15 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
   }
 
   return (
-    <Card className="pt-0 overflow-hidden shadow-black/20 hover:shadow-xl duration-200">
+    <Card
+      itemScope
+      itemType="https://schema.org/Product"
+      className="pt-0 overflow-hidden shadow-black/20 hover:shadow-xl duration-200"
+    >
       <CardHeader className="px-0">
         <AspectRatio ratio={16 / 9}>
           <Image
+            itemProp="image"
             src={imageUrlBuilder(product.media?.url)}
             alt={product.title}
             width="300"
@@ -41,7 +46,7 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
         </AspectRatio>
       </CardHeader>
       <CardContent className="flex-auto flex flex-col gap-4">
-        <Typography asChild variant="h4" target="card">
+        <Typography itemProp="name" asChild variant="h4" target="card">
           <h4>{product.title}</h4>
         </Typography>
         <List
@@ -49,7 +54,11 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
           renderItem={renderCategoryItem}
           className="block space-x-1 space-y-1"
         />
-        <Typography className="line-clamp-4" target="card">
+        <Typography
+          itemProp="description"
+          className="line-clamp-4"
+          target="card"
+        >
           {product.description}
         </Typography>
       </CardContent>
@@ -75,16 +84,19 @@ interface ProductCategoryItemProps {
 const ProductCategoryItem = ({ category }: ProductCategoryItemProps) => {
   return (
     <Button
+      itemScope
+      itemType="https://schema.org/CollectionPage"
       asChild
       variant="secondary"
       size="sm"
       className="max-w-full justify-start truncate text-xs cursor-pointer"
     >
       <Link
+        itemProp="url"
         href={routes.CATALOG(category.slug).path}
         onClick={(e) => e.stopPropagation()}
       >
-        {category.code}
+        <span itemProp="name">{category.code}</span>
       </Link>
     </Button>
   )

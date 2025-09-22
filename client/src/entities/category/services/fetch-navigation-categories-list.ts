@@ -24,7 +24,11 @@ const fetchNavigationCategoriesList = async () => {
     },
   } satisfies StrapiQuery<CategoryBase>
 
-  return await fetchCategoriesList(queryObj)
+  const response = await fetchCategoriesList(queryObj)
+
+  response.data.sort((a, b) => +a.code - +b.code)
+
+  return response
 }
 
 export { fetchNavigationCategoriesList }

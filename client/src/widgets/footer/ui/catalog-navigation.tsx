@@ -15,7 +15,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
       )}
       {...props}
     >
-      <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
+      <CardHeader className="justify-start p-0">
         <Button
           asChild
           variant="link"
@@ -24,7 +24,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
           <Link href={routes.CATALOG().path}>{routes.CATALOG().title}</Link>
         </Button>
       </CardHeader>
-      <CardContent className="px-2 md:px-4 lg:px-6">
+      <CardContent className="p-0">
         <Button
           asChild
           variant="link"
@@ -35,7 +35,7 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
           </Link>
         </Button>
       </CardContent>
-      <CardFooter className="px-2 md:px-4 lg:px-6">
+      <CardFooter className="p-0">
         <ModalContactForm />
       </CardFooter>
     </Card>

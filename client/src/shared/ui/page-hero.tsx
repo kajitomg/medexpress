@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/shared/lib"
 import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import * as React from "react"

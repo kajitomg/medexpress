@@ -20,12 +20,12 @@ interface ContactsProps {
 const Contacts = ({ data }: ContactsProps) => {
   return (
     <Card className="bg-transparent border-none shadow-none justify-start gap-y-1 sm:gap-y-2 py-2 sm:py-4 md:py-6">
-      <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
+      <CardHeader className="justify-start p-0">
         <CardTitle className="p-1 text-start text-lg font-bold text-foreground h-7 md:h-8">
           {data?.title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col px-2 md:px-4 lg:px-6 gap-2">
+      <CardContent className="flex flex-col p-0 gap-2">
         <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
             url={imageUrlBuilder(data?.address.icon?.url)}

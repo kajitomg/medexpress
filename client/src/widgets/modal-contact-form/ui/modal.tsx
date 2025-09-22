@@ -21,14 +21,17 @@ const Modal = ({ dialogButton = "Заказать звонок" }: ModalProps) =
     return sendContactForm(data)
   }
   return (
-    <Dialog aria-describedby="Модальное окно контактной формы">
+    <Dialog>
       <DialogTrigger asChild>
         <Button size="sm" className="cursor-pointer">
           {dialogButton}
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="gap-2 md:gap-4 p-2 md:p-6 flex max-h-[95vh] flex-col">
+      <DialogContent
+        aria-describedby="Модальное окно контактной формы"
+        className="gap-2 md:gap-4 p-2 md:p-6 flex max-h-[95vh] flex-col"
+      >
         <DialogHeader>
           <DialogTitle>
             <Typography variant="h4">Контактная форма</Typography>
