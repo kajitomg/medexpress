@@ -16,7 +16,6 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
   return (
     <NavigationMenuItem asChild>
       <NavigationMenuLink
-        itemProp="url"
         asChild
         className={cn(
           navigationMenuTriggerStyle(),
@@ -24,8 +23,8 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
           "bg-transparent backdrop-blur-3xl"
         )}
       >
-        <Link href={item.path}>
-          <span itemProp="name">{item.title}</span>
+        <Link itemProp="url" href={item.path}>
+          {item.title}
         </Link>
       </NavigationMenuLink>
     </NavigationMenuItem>

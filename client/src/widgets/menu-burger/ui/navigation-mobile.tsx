@@ -44,6 +44,8 @@ const NavigationMobile = async ({
 }: NavigationMenuProps) => {
   return (
     <NavigationMenu
+      itemScope
+      itemType="http://schema.org/SiteNavigationElement"
       className={cn("items-start flex-0 px-6", className)}
       orientation="vertical"
       {...props}

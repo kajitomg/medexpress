@@ -15,6 +15,7 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
     <NavigationMenuItem asChild>
       <SheetClose asChild>
         <NavigationMenuLink
+          itemProp="url"
           asChild
           className={cn(
             typographyVariants({ variant: "lead" }),
@@ -22,7 +23,9 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
             "bg-transparent backdrop-blur-3xl"
           )}
         >
-          <Link href={item.path}>{item.title}</Link>
+          <Link href={item.path}>
+            <span itemProp="name">{item.title}</span>
+          </Link>
         </NavigationMenuLink>
       </SheetClose>
     </NavigationMenuItem>

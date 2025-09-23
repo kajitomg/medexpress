@@ -16,12 +16,12 @@ const InfoNavigation = ({ className, ...props }: NavigationMenuProps) => {
       )}
       {...props}
     >
-      <CardHeader className="justify-start px-2 md:px-4 lg:px-6">
+      <CardHeader className="justify-start p-0">
         <CardTitle className="p-1 text-start text-lg font-bold text-foreground h-7 md:h-8">
           Информация
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col items-start px-2 md:px-4 lg:px-6">
+      <CardContent className="flex flex-col items-start p-0">
         <Button
           itemProp="url"
           asChild
