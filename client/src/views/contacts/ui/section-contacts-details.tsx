@@ -37,9 +37,23 @@ const localBusiness = (
     telephone: contacts?.phonenumber.body.map((item) => item.value),
     email: contacts?.email.body.map((item) => item.value),
     openingHours:
-      getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
-        variant: "full",
-      }) || "",
+      `${getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+        alphabet: {
+          Понедельник: "Пн",
+          Вторник: "Вт",
+          Среда: "Ср",
+          Четверг: "Чт",
+          Пятница: "Пт",
+          Суббота: "Сб",
+          Воскресенье: "Вс",
+        },
+      })}: ${(() => {
+        const time = getWorkingTime(contacts?.workingSchedule.body?.days)
+
+        if (time?.uniform)
+          return `${formatTime(time.start)}:${formatTime(time.end)}`
+        return ""
+      })()}` || "",
     sameAs: contacts?.social.body.map((item) => item.url),
   }
 }
