@@ -1,17 +1,38 @@
 "use client"
 
 import { CategoryBase } from "@/entities/category/model"
+import { ProductBase } from "@/entities/product/model"
 import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
 import { useGlobalStore } from "@/features/global/provider"
 import { useProductDetailsStore } from "@/features/product-details/provider/product-details-provider"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
+import { DocumentServices } from "@/shared/model"
 import { Button, Card, CardContent, List, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { ProductsCategoryList } from "@/views/product/ui/products-category-list"
 import Image from "next/image"
 import Link from "next/link"
 import * as React from "react"
+import { Product as ProductSchema, WithContext } from "schema-dts"
+
+const productSchema = (
+  product?: ProductBase & DocumentServices
+): WithContext<ProductSchema> => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product?.title,
+  image: product?.media?.url,
+  description: product?.description || "Описание не доступно",
+  sku: product?.code,
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "RUB",
+    price: "",
+    availability: "https://schema.org/InStock",
+    url: window.location.href,
+  },
+})
 
 const Page = () => {
   const defaultMedia = useGlobalStore(
@@ -37,6 +58,13 @@ const Page = () => {
   )
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
+      <script
+        id="product"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema(product)),
+        }}
+      />
       <div className="flex flex-wrap items-start gap-8">
         <div
           className="

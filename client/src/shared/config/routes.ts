@@ -4,13 +4,13 @@ class Routes {
     title: "Главная",
   }
   CATALOG = (categoryId: string | number = "", title = "Каталог") => ({
-    path: `/catalog/${categoryId}`,
+    path: `/catalog/${categoryId}`.replace(/\/$/, ""),
     title,
     parent: this.MAIN,
   })
   PRODUCT = (productId: string | number = "", title = "Товар") => {
     return {
-      path: `/product/${productId}`,
+      path: `/product/${productId}`.replace(/\/$/, ""),
       title,
       parent: this.CATALOG,
     }
@@ -41,7 +41,7 @@ class Routes {
     parent: this.MAIN,
   }
   COLLESCTIONS = (collectionId: string | number = "", title = "Подборки") => ({
-    path: `/collections/${collectionId}`,
+    path: `/collections/${collectionId}`.replace(/\/$/, ""),
     title,
     parent: this.MAIN,
   })

@@ -1,5 +1,6 @@
 "use client"
 
+import { ProductBase } from "@/entities/product/model"
 import { fetchCollectionsProductsList } from "@/entities/product/services"
 import {
   useCatalogOptionsStore,
@@ -13,14 +14,37 @@ import { useCollectionDetailsStore } from "@/features/collection-details/provide
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
 import { urlBuilder } from "@/shared/lib/url-builder"
+import { DocumentServices } from "@/shared/model"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { ProductsList } from "@/views/collection-products/ui/products-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
+import { CollectionPage, WithContext } from "schema-dts"
 
 interface PageProps {
   slug: string
 }
+
+const collectionPage = (
+  pageName?: string,
+  items?: (ProductBase & DocumentServices)[]
+): WithContext<CollectionPage> => ({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageName,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: items?.map((item, i) => ({
+      "@type": "ListItem",
+      position: i,
+      item: {
+        "@type": "Product",
+        name: item.title,
+        url: routes.PRODUCT(item?.slug).path,
+      },
+    })),
+  },
+})
 
 const Page = ({ slug }: PageProps) => {
   const collection = useCollectionDetailsStore((state) => state.collection)
@@ -36,6 +60,13 @@ const Page = ({ slug }: PageProps) => {
 
   return (
     <>
+      <script
+        id="collection-products"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionPage(collection?.title, products)),
+        }}
+      />
       <PageHeroRoutes
         page={routes.COLLESCTIONS(collection?.slug, collection?.title)}
         image={collection?.media?.url && urlBuilder(collection.media.url)}

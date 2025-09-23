@@ -25,7 +25,7 @@ const fetchCategoriesProductsList = async (
     },
     populate: {
       categories: {
-        fields: ["id", "code"],
+        fields: ["id", "code", "title"],
       },
       media: true,
     },

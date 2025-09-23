@@ -1,9 +1,12 @@
+"use client"
+
 import { cn } from "@/shared/lib"
 import { NavigationMenuItem, NavigationMenuLink } from "@/shared/ui"
 import { SheetClose } from "@/shared/ui/sheet"
 import { typographyVariants } from "@/shared/ui/typography"
 import { NavigationMenuItemData } from "@/widgets/header/ui/navigation"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import * as React from "react"
 
 interface NavigationMenuLinkItemProps {
@@ -11,21 +14,23 @@ interface NavigationMenuLinkItemProps {
 }
 
 const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
+  const pathname = usePathname()
+
   return (
     <NavigationMenuItem asChild>
       <SheetClose asChild>
         <NavigationMenuLink
-          itemProp="url"
           asChild
           className={cn(
             typographyVariants({ variant: "lead" }),
             "hover:text-(--color-brand) text-black",
             "bg-transparent backdrop-blur-3xl"
           )}
+          style={{
+            ...(pathname === item.path && { color: "var(--color-brand)" }),
+          }}
         >
-          <Link href={item.path}>
-            <span itemProp="name">{item.title}</span>
-          </Link>
+          <Link href={item.path}>{item.title}</Link>
         </NavigationMenuLink>
       </SheetClose>
     </NavigationMenuItem>

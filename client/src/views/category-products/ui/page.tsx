@@ -1,5 +1,6 @@
 "use client"
 
+import { ProductBase } from "@/entities/product/model"
 import { fetchCategoriesProductsList } from "@/entities/product/services"
 import {
   useCatalogOptionsStore,
@@ -13,14 +14,37 @@ import { useCategoryDetailsStore } from "@/features/category-details/provider"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
 import { urlBuilder } from "@/shared/lib/url-builder"
+import { DocumentServices } from "@/shared/model"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { ProductsList } from "@/views/category-products/ui/products-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
+import { CollectionPage, WithContext } from "schema-dts"
 
 interface PageProps {
   slug: string
 }
+
+const collectionPage = (
+  pageName?: string,
+  items?: (ProductBase & DocumentServices)[]
+): WithContext<CollectionPage> => ({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageName,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: items?.map((item, i) => ({
+      "@type": "ListItem",
+      position: i,
+      item: {
+        "@type": "Product",
+        name: item.title,
+        url: routes.PRODUCT(item?.slug).path,
+      },
+    })),
+  },
+})
 
 const Page = ({ slug }: PageProps) => {
   const category = useCategoryDetailsStore((state) => state.category)
@@ -36,6 +60,13 @@ const Page = ({ slug }: PageProps) => {
 
   return (
     <>
+      <script
+        id="category-products"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionPage(category?.title, products)),
+        }}
+      />
       <PageHeroRoutes
         page={routes.CATALOG(category?.slug, category?.title)}
         image={category?.media?.url && urlBuilder(category.media.url)}

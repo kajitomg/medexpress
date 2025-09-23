@@ -1,3 +1,4 @@
+"use client"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
@@ -14,9 +15,33 @@ import DynamicIcon from "@/shared/ui/dynamic-icon"
 import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
+import { LocalBusiness, WithContext } from "schema-dts"
 
 interface SectionContactsDetailsProps {
   data?: ContactsDetails
+}
+
+const localBusiness = (
+  contacts?: ContactsDetails
+): WithContext<LocalBusiness> => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "ООО «Медэкспресс»",
+    address: contacts?.address.body.map((item) => item.value),
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 44.155757,
+      longitude: 43.454904,
+    },
+    telephone: contacts?.phonenumber.body.map((item) => item.value),
+    email: contacts?.email.body.map((item) => item.value),
+    openingHours:
+      getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+        variant: "full",
+      }) || "",
+    sameAs: contacts?.social.body.map((item) => item.url),
+  }
 }
 
 const SectionContactsDetails = ({
@@ -25,11 +50,14 @@ const SectionContactsDetails = ({
 }: ComponentProps<"section"> & SectionContactsDetailsProps) => {
   return (
     <ContentSection className={className}>
-      <ContentSectionContent
-        itemScope
-        itemType="https://schema.org/Organization"
-        className="flex items-center flex-col lg:flex-row gap-4 w-full p-4"
-      >
+      <script
+        id="page-contacts"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusiness(data)),
+        }}
+      />
+      <ContentSectionContent className="flex items-center flex-col lg:flex-row gap-4 w-full p-4">
         <div className="flex-1/2 grid grid-cols-2 gap-4 p-4">
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
@@ -38,13 +66,7 @@ const SectionContactsDetails = ({
 
             <div>
               {data?.address.body?.map((item) => (
-                <Typography
-                  itemProp="address"
-                  itemScope
-                  itemType="https://schema.org/PostalAddress"
-                  key={item.id}
-                  variant="muted"
-                >
+                <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
               ))}
@@ -54,7 +76,7 @@ const SectionContactsDetails = ({
             <Typography asChild variant="h4">
               <h4 className="col-start-2">{data?.workingSchedule.title}</h4>
             </Typography>
-            <Typography itemProp="openingHours" variant="muted">
+            <Typography variant="muted">
               {(() => {
                 const time = getWorkingTime(data?.workingSchedule.body?.days)
 
@@ -76,7 +98,7 @@ const SectionContactsDetails = ({
             </Typography>
             <div>
               {data?.phonenumber.body?.map((item) => (
-                <Typography itemProp="telephone" key={item.id} variant="muted">
+                <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
               ))}
@@ -88,7 +110,7 @@ const SectionContactsDetails = ({
             </Typography>
             <div>
               {data?.email.body?.map((item) => (
-                <Typography itemProp="email" key={item.id} variant="muted">
+                <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
               ))}

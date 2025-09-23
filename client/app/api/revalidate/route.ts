@@ -3,7 +3,7 @@ import { CollectionBase } from "@/entities/collection/model"
 import { ProductBase } from "@/entities/product/model"
 import { revalidateTag } from "next/cache"
 
-const STRAPI_SECRET = process.env.STRAPI_WEBHOOK_SECRET!
+const STRAPI_SECRET = process.env.STRAPI_WEBHOOK_SECRET
 
 export async function POST(req: Request) {
   try {

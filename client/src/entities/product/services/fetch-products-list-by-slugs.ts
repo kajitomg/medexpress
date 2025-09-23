@@ -21,7 +21,7 @@ const fetchProductsListBySlugs = async (slugs: string[], page: number) => {
         fields: ["id", "title", "description", "slug"],
       },
       collections: {
-        fields: ["id", "slug"],
+        fields: ["id", "slug", "title"],
       },
       media: true,
     },

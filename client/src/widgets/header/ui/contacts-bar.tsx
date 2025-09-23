@@ -8,30 +8,53 @@ import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
 import { useScrollDirection } from "@/shared/lib/hooks/use-scroll-direction"
+import { HeaderContacts } from "@/shared/model/strapi/elements/header-contacts"
 import { Button, Typography } from "@/shared/ui"
 import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
 import Link from "next/link"
+import * as React from "react"
 import { ComponentProps } from "react"
+import { LocalBusiness, WithContext } from "schema-dts"
 
 const useSectionsStore = createSectionsStore<HeaderSections[]>()
+
+const localBusiness = (
+  contacts?: HeaderContacts
+): WithContext<LocalBusiness> => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "ООО «Медэкспресс»",
+    telephone: contacts?.phonenumber.body.map((item) => item.value),
+    email: contacts?.email.body.map((item) => item.value),
+    openingHours:
+      getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+        variant: "full",
+      }) || "",
+  }
+}
 
 const ContactsBar = ({ className }: ComponentProps<"div">) => {
   const data = useSectionsStore(
     selectSectionItemByName("elements.header-contacts")
   )
-
   const direction = useScrollDirection()
 
   return (
     <div
-      itemScope
-      itemType="https://schema.org/Organization"
       className={cn(
         "overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6",
         className,
         direction === "down" && "hidden"
       )}
     >
+      <script
+        id="header-contacts"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusiness(data)),
+        }}
+      />
       <div className="self-center">
         <ModalContactForm dialogButton={data?.contactButton} />
       </div>
@@ -43,13 +66,7 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           {data?.phonenumber.title}
         </Typography>
         {data?.phonenumber.body.map((item) => (
-          <Button
-            itemProp="telephone"
-            key={item.id}
-            variant="link"
-            className="px-0"
-            asChild
-          >
+          <Button key={item.id} variant="link" className="px-0" asChild>
             <Link itemProp="url" href={`tel:${item.value}`}>
               {item.value}
             </Link>
@@ -61,20 +78,14 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           {data?.email.title}
         </Typography>
         {data?.email.body.map((item) => (
-          <Button
-            itemProp="email"
-            key={item.id}
-            variant="link"
-            className="px-0"
-            asChild
-          >
+          <Button key={item.id} variant="link" className="px-0" asChild>
             <Link itemProp="url" href={`mailto:${item.value}`}>
               {item.value}
             </Link>
           </Button>
         ))}
       </div>
-      <div itemProp="openingHours" className="flex flex-col hidden sm:block">
+      <div className="flex flex-col hidden sm:block">
         <Typography variant="small" className="font-bold">
           {data?.workingSchedule.title}
         </Typography>

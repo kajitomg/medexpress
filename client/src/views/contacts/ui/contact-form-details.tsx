@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/shared/lib"
 import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { Typography } from "@/shared/ui"
@@ -6,9 +8,22 @@ import Link from "next/link"
 import * as React from "react"
 import { ComponentProps } from "react"
 import Markdown from "react-markdown"
+import { LocalBusiness, WithContext } from "schema-dts"
 
 interface ContactFormDetailsProps {
   data?: ContactFormSection
+}
+
+const localBusiness = (
+  contacts?: ContactFormSection
+): WithContext<LocalBusiness> => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "ООО «Медэкспресс»",
+    telephone: contacts?.phonenumber.body.map((item) => item.value),
+    email: contacts?.email.body.map((item) => item.value),
+  }
 }
 
 const ContactFormDetails = ({
@@ -17,6 +32,13 @@ const ContactFormDetails = ({
 }: ComponentProps<"div"> & ContactFormDetailsProps) => {
   return (
     <div className={cn("flex flex-col items-center dark", className)}>
+      <script
+        id="contact-form-contacts"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusiness(data)),
+        }}
+      />
       <Typography
         variant="display"
         className="font-black cursor-default hover-scale text-center xl:text-left"
@@ -34,11 +56,7 @@ const ContactFormDetails = ({
       </Typography>
       <div className="mt-8 max-w-md xl:max-w-full w-full">
         <div className="flex flex-col items-start gap-2">
-          <div
-            itemScope
-            itemType="https://schema.org/Organization"
-            className="grid items-center gap-2 content-start justify-start"
-          >
+          <div className="grid items-center gap-2 content-start justify-start">
             <Phone className="size-7 md:size-8 text-foreground" />
             <Typography asChild variant="h4">
               <h4 className="col-start-2">Телефон/факс</h4>
@@ -46,7 +64,6 @@ const ContactFormDetails = ({
             <div className="col-start-2">
               {data?.phonenumber.body?.map((item) => (
                 <Typography
-                  itemProp="telephone"
                   key={item.id}
                   variant="muted"
                   className="text-foreground"
@@ -64,7 +81,6 @@ const ContactFormDetails = ({
             <div className="col-start-2">
               {data?.email.body?.map((item) => (
                 <Typography
-                  itemProp="email"
                   key={item.id}
                   variant="muted"
                   className="text-foreground col-start-2"

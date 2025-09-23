@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/shared/lib"
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -10,6 +11,7 @@ import { MiddlewareState } from "@floating-ui/react"
 import { shift, useFloating } from "@floating-ui/react-dom"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import * as React from "react"
 import { ReactNode } from "react"
 import Error from "../../../../app/error"
@@ -33,6 +35,7 @@ const centerHorizontally = () => ({
 const NavigationMenuDropdownItem = ({
   item,
 }: NavigationMenuDropdownItemProps) => {
+  const pathname = usePathname()
   const { refs, floatingStyles } = useFloating({
     placement: "bottom",
     strategy: "fixed",
@@ -42,7 +45,14 @@ const NavigationMenuDropdownItem = ({
   return (
     <NavigationMenuItem ref={refs.setReference}>
       <Link href={item.path}>
-        <NavigationMenuTrigger className="cursor-pointer bg-transparent backdrop-blur-3xl text-base font-bold hover:text-(--color-brand) data-[state=open]:text-(--color-brand)">
+        <NavigationMenuTrigger
+          className={cn(
+            "cursor-pointer bg-transparent backdrop-blur-3xl text-base font-bold hover:text-(--color-brand) data-[state=open]:text-(--color-brand)"
+          )}
+          style={{
+            ...(pathname === item.path && { color: "var(--color-brand)" }),
+          }}
+        >
           {item.title}
         </NavigationMenuTrigger>
       </Link>

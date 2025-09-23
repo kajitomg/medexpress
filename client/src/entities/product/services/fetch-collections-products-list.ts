@@ -25,7 +25,7 @@ const fetchCollectionsProductsList = async (
     },
     populate: {
       collections: {
-        fields: ["id", "title"],
+        fields: ["id", "title", "title"],
       },
       media: true,
     },

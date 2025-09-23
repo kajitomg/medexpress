@@ -27,15 +27,6 @@ const organization: WithContext<Organization> = {
     "https://t.me/medexpressss",
     "https://www.instagram.com/_medexpress_?igsh=MXIwbWwwcjM4ZGJqag==",
   ],
-  contactPoint: [
-    {
-      "@type": "ContactPoint",
-      contactType: "Телефон поддержки",
-      telephone: "+7 (87951) 5-07-02",
-      areaServed: "RU",
-      availableLanguage: ["ru"],
-    },
-  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "ул. Минераловодская 8А",

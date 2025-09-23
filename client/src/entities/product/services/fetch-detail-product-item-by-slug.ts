@@ -11,7 +11,7 @@ const fetchDetailProductItemBySlug = async (slug: string) => {
         fields: ["id", "title", "description", "slug"],
       },
       collections: {
-        fields: ["id", "slug"],
+        fields: ["id", "slug", "title"],
       },
       media: true,
     },

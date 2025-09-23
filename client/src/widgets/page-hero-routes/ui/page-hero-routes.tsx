@@ -21,7 +21,8 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props"
 import Image from "next/image"
 import Link from "next/link"
 import * as React from "react"
-import { ComponentProps, useMemo } from "react"
+import { ComponentProps, useEffect, useMemo, useState } from "react"
+import { BreadcrumbList as BreadcrumbListSchema, WithContext } from "schema-dts"
 
 interface PageHeroProps {
   page: RouteEntry
@@ -29,12 +30,31 @@ interface PageHeroProps {
   image?: string | StaticImport
 }
 
+const breadcrumbsList = (
+  items?: RouteEntry[],
+  baseUrl?: string
+): WithContext<BreadcrumbListSchema> => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items?.map((item, i) => ({
+    "@type": "ListItem",
+    position: i,
+    name: item.title,
+    item: baseUrl + item.path,
+  })),
+})
+
 const PageHeroRoutes = ({
   page,
   title,
   image,
 }: ComponentProps<"div"> & PageHeroProps) => {
+  const [baseUrl, setBaseUrl] = useState<string | undefined>()
   const breadcrumbs = useMemo(() => buildBreadcrumbs(page), [page])
+
+  useEffect(() => {
+    setBaseUrl(window.location.origin)
+  }, [])
   return (
     <PageHero height={50} initOffsetTop={195} aria-labelledby="page-title">
       <PageHeroBackground
@@ -60,6 +80,13 @@ const PageHeroRoutes = ({
           </h1>
         </Typography>
         <nav aria-label="breadcrumb" className="mt-4">
+          <script
+            id="breadcrumbs"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(breadcrumbsList(breadcrumbs, baseUrl)),
+            }}
+          />
           <Breadcrumb>
             {breadcrumbs && (
               <BreadcrumbList>
@@ -74,14 +101,12 @@ const PageHeroRoutes = ({
                       </BreadcrumbPage>
                     </Link>
                   </BreadcrumbLink>
-                  <meta property="position" content="1" />
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-white" />
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-white">
                     {page.title}
                   </BreadcrumbPage>
-                  <meta property="position" content="2" />
                 </BreadcrumbItem>
               </BreadcrumbList>
             )}

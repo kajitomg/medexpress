@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/shared/lib"
 import {
   NavigationMenuItem,
@@ -6,6 +8,7 @@ import {
 } from "@/shared/ui"
 import { NavigationMenuItemData } from "@/widgets/header/ui/navigation"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import * as React from "react"
 
 interface NavigationMenuLinkItemProps {
@@ -13,8 +16,9 @@ interface NavigationMenuLinkItemProps {
 }
 
 const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
+  const pathname = usePathname()
   return (
-    <NavigationMenuItem asChild>
+    <NavigationMenuItem>
       <NavigationMenuLink
         asChild
         className={cn(
@@ -22,10 +26,11 @@ const NavigationMenuLinkItem = ({ item }: NavigationMenuLinkItemProps) => {
           "text-base font-bold hover:text-(--color-brand)",
           "bg-transparent backdrop-blur-3xl"
         )}
+        style={{
+          ...(pathname === item.path && { color: "var(--color-brand)" }),
+        }}
       >
-        <Link itemProp="url" href={item.path}>
-          {item.title}
-        </Link>
+        <Link href={item.path}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   )
