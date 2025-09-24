@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product/ui/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/products-category-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product/ui/products-category-list.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +278,8 @@
       <workItem from="1758498648342" duration="9074000" />
       <workItem from="1758553185542" duration="3063000" />
       <workItem from="1758582010870" duration="6254000" />
-      <workItem from="1758623982959" duration="19684000" />
+      <workItem from="1758623982959" duration="19851000" />
+      <workItem from="1758672338972" duration="2370000" />
     </task>
     <servers />
   </component>

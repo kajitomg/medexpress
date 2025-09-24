@@ -14,10 +14,12 @@ import { ProductsCategoryList } from "@/views/product/ui/products-category-list"
 import Image from "next/image"
 import Link from "next/link"
 import * as React from "react"
+import { useEffect, useState } from "react"
 import { Product as ProductSchema, WithContext } from "schema-dts"
 
 const productSchema = (
-  product?: ProductBase & DocumentServices
+  product?: ProductBase & DocumentServices,
+  baseUrl?: string
 ): WithContext<ProductSchema> => ({
   "@context": "https://schema.org",
   "@type": "Product",
@@ -30,15 +32,20 @@ const productSchema = (
     priceCurrency: "RUB",
     price: "",
     availability: "https://schema.org/InStock",
-    url: window.location.href,
+    url: baseUrl,
   },
 })
 
 const Page = () => {
+  const [baseUrl, setBaseUrl] = useState<string | undefined>()
   const defaultMedia = useGlobalStore(
     (state) => state.data?.defaultProductImage
   )
   const product = useProductDetailsStore((state) => state.product)
+
+  useEffect(() => {
+    setBaseUrl(window.location.href)
+  }, [])
 
   const renderCategoryItem = (category: CategoryBase) => (
     <Button
@@ -62,7 +69,7 @@ const Page = () => {
         id="product"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema(product)),
+          __html: JSON.stringify(productSchema(product, baseUrl)),
         }}
       />
       <div className="flex flex-wrap items-start gap-8">

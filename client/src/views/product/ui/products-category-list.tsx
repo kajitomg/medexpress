@@ -93,13 +93,15 @@ interface CatalogProductItemProps {
 }
 
 const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
+  const Comp = product?.slug ? Link : "div"
+
   return (
     <Card
       className="pt-0 pb-4 overflow-hidden shadow-black/20 hover:shadow-lg duration-200 gap-2
               shrink-0
               overflow-hidden rounded-xl"
     >
-      <Link href={routes.PRODUCT(product?.slug).path}>
+      <Comp href={product?.slug ? routes.PRODUCT(product?.slug).path : "#"}>
         <CardHeader className="p-0">
           <AspectRatio ratio={16 / 9} className="bg-muted">
             {product ? (
@@ -145,7 +147,7 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
             )}
           </div>
         </CardContent>
-      </Link>
+      </Comp>
     </Card>
   )
 }
