@@ -3,7 +3,7 @@
 import { PageBase, PageItemResponse } from "@/entities/page/model"
 import { PageListResponse } from "@/entities/page/model/page"
 import { api } from "@/shared/api/api"
-import { ErrorUtils } from "@/shared/lib/error"
+import { ErrorHandler } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -38,8 +38,7 @@ const fetchPageItemBySlug = async (
       data: data.data[0],
     } as PageItemResponse<PageBase & DocumentServices>
   } catch (e) {
-    const error = await ErrorUtils.getErrors(e)
-    throw error[0]
+    return ErrorHandler(e, "/api/pages")
   }
 }
 

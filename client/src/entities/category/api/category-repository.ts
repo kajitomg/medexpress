@@ -6,7 +6,7 @@ import {
   CategoryListResponse,
 } from "@/entities/category/model"
 import { api } from "@/shared/api/api"
-import { ErrorUtils } from "@/shared/lib/error"
+import { ErrorHandler } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -27,8 +27,7 @@ const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
       CategoryBase & DocumentServices
     >
   } catch (e) {
-    const error = await ErrorUtils.getErrors(e)
-    throw error[0]
+    return ErrorHandler(e, "/api/categories")
   }
 }
 
@@ -63,8 +62,7 @@ const fetchCategoryItemBySlug = async (
       data: data.data[0],
     } as CategoryItemResponse<CategoryBase & DocumentServices>
   } catch (e) {
-    console.error(e)
-    throw e
+    return ErrorHandler(e, "/api/categories")
   }
 }
 

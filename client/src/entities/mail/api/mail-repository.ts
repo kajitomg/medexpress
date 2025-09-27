@@ -1,5 +1,6 @@
 "use server"
 
+import { ErrorHandler } from "@/shared/lib/error"
 import nodemailer from "nodemailer"
 import Mail from "nodemailer/lib/mailer"
 
@@ -16,8 +17,7 @@ export const sendMail = async (options: Mail.Options) => {
 
   try {
     return await transporter.sendMail(options)
-  } catch (err) {
-    console.error("Ошибка отправки письма:", err)
-    return
+  } catch (e) {
+    return ErrorHandler(e, "send mail")
   }
 }

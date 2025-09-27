@@ -2,7 +2,7 @@
 
 import { HeaderBase, HeaderItemResponse } from "@/entities/header/model"
 import { api } from "@/shared/api/api"
-import { ErrorUtils } from "@/shared/lib/error"
+import { ErrorHandler } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -23,8 +23,7 @@ const fetchHeaderItem = async (queryObj?: StrapiQuery<HeaderBase>) => {
       HeaderBase & DocumentServices
     >
   } catch (e) {
-    const error = await ErrorUtils.getErrors(e)
-    throw error[0]
+    return ErrorHandler(e, "/api/header")
   }
 }
 

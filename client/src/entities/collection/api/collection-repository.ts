@@ -6,6 +6,7 @@ import {
   CollectionListResponse,
 } from "@/entities/collection/model/collection"
 import { api } from "@/shared/api/api"
+import { ErrorHandler } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -25,8 +26,7 @@ const fetchCollectionsList = async (queryObj?: StrapiQuery<CollectionBase>) => {
       CollectionBase & DocumentServices
     >
   } catch (e) {
-    console.error(e)
-    throw e
+    return ErrorHandler(e, "/api/collections")
   }
 }
 
@@ -61,8 +61,7 @@ const fetchCollectionItemBySlug = async (
       data: data.data[0],
     } as CollectionItemResponse<CollectionBase & DocumentServices>
   } catch (e) {
-    console.error(e)
-    throw e
+    return ErrorHandler(e, "/api/collections")
   }
 }
 

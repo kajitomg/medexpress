@@ -6,6 +6,7 @@ import {
   ProductListResponse,
 } from "@/entities/product/model"
 import { api } from "@/shared/api/api"
+import { ErrorHandler } from "@/shared/lib/error"
 import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
@@ -29,8 +30,7 @@ const fetchProductsList = async (
       ProductBase & DocumentServices
     >
   } catch (e) {
-    console.error(e)
-    throw e
+    return ErrorHandler(e, "/api/products")
   }
 }
 
@@ -65,8 +65,7 @@ const fetchProductItemBySlug = async (
       data: data.data[0],
     } as ProductItemResponse<ProductBase & DocumentServices>
   } catch (e) {
-    console.error(e)
-    throw e
+    return ErrorHandler(e, "/api/products")
   }
 }
 
