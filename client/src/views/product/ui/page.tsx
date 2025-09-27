@@ -24,7 +24,7 @@ const productSchema = (
   "@context": "https://schema.org",
   "@type": "Product",
   name: product?.title,
-  image: product?.media?.url,
+  image: imageUrlBuilder(product?.media?.url),
   description: product?.description || "Описание не доступно",
   sku: product?.code,
   offers: {
