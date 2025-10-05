@@ -11,47 +11,43 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "code": {
-      "type": "string",
+    "slug": {
+      "type": "uid",
       "required": true,
-      "unique": true
+      "targetField": "name"
     },
-    "title": {
+    "type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::device-type.device-type"
+    },
+    "name": {
       "type": "string",
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
-    "media": {
+    "images": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images"
       ]
     },
+    "price": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price.price",
+      "mappedBy": "product"
+    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "mappedBy": "products"
-    },
-    "collections": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::collection.collection",
-      "mappedBy": "products"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "inversedBy": "products"
     }
   }
 }

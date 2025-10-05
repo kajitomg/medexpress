@@ -10,20 +10,19 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "code": {
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "description": {
-      "type": "text"
-    },
-    "media": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -31,33 +30,17 @@
         "images"
       ]
     },
-    "parent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "childrens"
-    },
-    "childrens": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category",
-      "mappedBy": "parent"
-    },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
-      "inversedBy": "categories"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true
+      "mappedBy": "categories"
     },
     "seo": {
       "type": "component",
+      "component": "shared.seo",
       "repeatable": false,
-      "component": "shared.seo"
+      "required": false
     }
   }
 }

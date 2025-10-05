@@ -6,9 +6,8 @@ import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
 const fetchDetailCategoryItem = async (slug: string) => {
   const queryObj = {
-    fields: ["id", "title", "description", "code", "slug"],
     populate: {
-      media: true,
+      image: true,
     },
   } satisfies StrapiQuery<CategoryBase>
 

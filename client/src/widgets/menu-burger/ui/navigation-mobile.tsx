@@ -29,8 +29,8 @@ const DATA: NavigationMenuItemData[] = [
   },
   {
     id: 3,
-    title: routes.COLLESCTIONS().title,
-    path: routes.COLLESCTIONS().path,
+    title: routes.NOMENCLATURE().title,
+    path: routes.NOMENCLATURE().path,
   },
   {
     id: 4,

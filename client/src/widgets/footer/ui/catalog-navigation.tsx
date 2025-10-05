@@ -30,8 +30,8 @@ const CatalogNavigation = ({ className, ...props }: NavigationMenuProps) => {
           variant="link"
           className="hover:no-underline p-1 font-bold text-foreground hover:text-gray-200 h-auto"
         >
-          <Link href={routes.COLLESCTIONS().path}>
-            {routes.COLLESCTIONS().title}
+          <Link href={routes.NOMENCLATURE().path}>
+            {routes.NOMENCLATURE().title}
           </Link>
         </Button>
       </CardContent>

@@ -1,4 +1,4 @@
-import { fetchDetailProductItemBySlug } from "@/entities/product/services/fetch-detail-product-item-by-slug"
+import { fetchDetailProductItem } from "@/entities/product/services/fetch-detail-product-item"
 import { ProductDetailsProvider } from "@/features/product-details/provider/product-details-provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { product_slug } = await params
 
-  const response = await fetchDetailProductItemBySlug(product_slug)
+  const response = await fetchDetailProductItem(product_slug)
 
   const data = response.data
 
@@ -29,7 +29,7 @@ export async function generateViewport({
 }: ProductPageProps): Promise<Viewport | string> {
   const { product_slug } = await params
 
-  const response = await fetchDetailProductItemBySlug(product_slug)
+  const response = await fetchDetailProductItem(product_slug)
 
   const data = response.data
 
@@ -39,7 +39,7 @@ export async function generateViewport({
 const Page: NextPage<ProductPageProps> = async ({ params }) => {
   const { product_slug } = await params
 
-  const response = await fetchDetailProductItemBySlug(product_slug)
+  const response = await fetchDetailProductItem(product_slug)
 
   const product = response.data
 

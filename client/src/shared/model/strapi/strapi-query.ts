@@ -54,7 +54,7 @@ type StrapiPopulateObject<T> = {
   fields?: (keyof T)[]
   populate?: StrapiPopulate<T>
   filters?: StrapiFilters<T>
-  sort?: string | string[]
+  sort?: keyof T | (keyof T)[]
   on?: StrapiDynamicZonePopulate<Unarray<NonNullable<T>>>
 }
 
@@ -68,7 +68,7 @@ type StrapiPopulate<T> =
   | string[]
 
 export interface StrapiQuery<T = unknown> {
-  sort?: string | string[]
+  sort?: keyof T | (keyof T)[]
   fields?: (keyof T)[]
   populate?: StrapiPopulate<T>
   filters?: StrapiFilters<T>

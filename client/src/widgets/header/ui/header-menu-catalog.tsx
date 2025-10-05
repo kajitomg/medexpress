@@ -1,17 +1,17 @@
-import { fetchNavigationCategoriesList } from "@/entities/category/services"
-import { CategoriesListProvider } from "@/features/catalog/provider"
+import { fetchNavigationCategoryList } from "@/entities/category/services"
+import { CategoryListProvider } from "@/features/catalog/provider"
 import { MenuCatalog } from "@/widgets/menu-catalog/ui"
 import * as React from "react"
 
 const HeaderMenuCatalog = async () => {
-  const responseCategories = await fetchNavigationCategoriesList()
+  const response = await fetchNavigationCategoryList()
 
-  const categories = responseCategories.data
+  const categories = response.data
 
   return (
-    <CategoriesListProvider initialState={{ categories }}>
+    <CategoryListProvider initialState={{ list: categories }}>
       <MenuCatalog />
-    </CategoriesListProvider>
+    </CategoryListProvider>
   )
 }
 

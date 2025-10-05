@@ -11,7 +11,7 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchProductsList = async (
+const fetchProductList = async (
   queryObj?: StrapiQuery<ProductBase>,
   tags?: string[]
 ) => {
@@ -69,4 +69,4 @@ const fetchProductItemBySlug = async (
   }
 }
 
-export { fetchProductsList, fetchProductItemBySlug }
+export { fetchProductList, fetchProductItemBySlug }

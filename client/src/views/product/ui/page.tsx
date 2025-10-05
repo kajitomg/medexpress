@@ -1,6 +1,5 @@
 "use client"
 
-import { CategoryBase } from "@/entities/category/model"
 import { ProductBase } from "@/entities/product/model"
 import { AddToCartButton } from "@/features/cart/ui/add-to-cart-button"
 import { useGlobalStore } from "@/features/global/provider"
@@ -8,7 +7,7 @@ import { useProductDetailsStore } from "@/features/product-details/provider/prod
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
-import { Button, Card, CardContent, List, Typography } from "@/shared/ui"
+import { Button, Card, CardContent, Typography } from "@/shared/ui"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 import { ProductsCategoryList } from "@/views/product/ui/products-category-list"
 import Image from "next/image"
@@ -47,22 +46,6 @@ const Page = () => {
     setBaseUrl(window.location.href)
   }, [])
 
-  const renderCategoryItem = (category: CategoryBase) => (
-    <Button
-      asChild
-      key={category.id}
-      variant="secondary"
-      size="sm"
-      className="max-w-full justify-start truncate text-xs cursor-pointer"
-    >
-      <Link
-        href={routes.CATALOG(category.slug).path}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {category.title}
-      </Link>
-    </Button>
-  )
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <script
@@ -108,11 +91,22 @@ const Page = () => {
               </Typography>
             </div>
 
-            <List
-              items={product?.categories}
-              renderItem={renderCategoryItem}
-              className="block space-x-1 space-y-1"
-            />
+            <div>
+              <Button
+                asChild
+                key={product?.category?.slug}
+                variant="secondary"
+                size="sm"
+                className="max-w-full justify-start truncate text-xs cursor-pointer"
+              >
+                <Link
+                  href={routes.CATALOG(product?.category?.slug).path}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {product?.category?.title}
+                </Link>
+              </Button>
+            </div>
             <Typography>{product?.description}</Typography>
 
             <Typography variant="small">
@@ -136,7 +130,7 @@ const Page = () => {
         <div>
           <div className="w-full">
             <ProductsCategoryList
-              categorySlug={product?.categories?.[0].slug}
+              categorySlug={product?.category?.slug}
               productSlug={product?.slug}
             />
           </div>

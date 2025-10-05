@@ -1,4 +1,4 @@
 export {
-  fetchCategoriesList,
+  fetchCategoryList,
   fetchCategoryItemBySlug,
 } from "./category-repository"

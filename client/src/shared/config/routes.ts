@@ -40,11 +40,21 @@ class Routes {
     title: "Политика конфиденциальности",
     parent: this.MAIN,
   }
-  COLLESCTIONS = (collectionId: string | number = "", title = "Подборки") => ({
-    path: `/collections/${collectionId}`.replace(/\/$/, ""),
+  NOMENCLATURE = (
+    nomenclatureId: string | number = "",
+    title = "Классификация"
+  ) => ({
+    path: `/nomenclature/${nomenclatureId}`.replace(/\/$/, ""),
     title,
     parent: this.MAIN,
   })
+  NOMENCLATURE_TYPE = (typeId: string | number = "", title = "Тип изделия") => {
+    return {
+      path: `/nomenclature-type/${typeId}`.replace(/\/$/, ""),
+      title,
+      parent: this.MAIN,
+    }
+  }
 }
 
 export const routes = new Routes()

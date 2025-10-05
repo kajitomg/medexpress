@@ -1,1 +1,1 @@
-export { CatalogCategoriesNavigationSidebar } from "./catalog-categories-navigation-sidebar"
+export { NomenclatureTypesNavigationSidebar } from "./nomenclature-types-navigation-sidebar"

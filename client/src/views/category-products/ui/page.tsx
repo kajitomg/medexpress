@@ -1,7 +1,7 @@
 "use client"
 
 import { ProductBase } from "@/entities/product/model"
-import { fetchCategoriesProductsList } from "@/entities/product/services"
+import { fetchCategoriesProductList } from "@/entities/product/services"
 import {
   useCatalogOptionsStore,
   useProductsListStore,
@@ -16,7 +16,7 @@ import { useUpdateEffect } from "@/shared/lib/hooks"
 import { urlBuilder } from "@/shared/lib/url-builder"
 import { DocumentServices } from "@/shared/model"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
-import { ProductsList } from "@/views/category-products/ui/products-list"
+import { ProductList } from "@/views/category-products/ui/product-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 import { CollectionPage, WithContext } from "schema-dts"
@@ -39,7 +39,7 @@ const collectionPage = (
       position: i,
       item: {
         "@type": "Product",
-        name: item.title,
+        name: item.name,
         url: routes.PRODUCT(item?.slug).path,
       },
     })),
@@ -48,14 +48,14 @@ const collectionPage = (
 
 const Page = ({ slug }: PageProps) => {
   const category = useCategoryDetailsStore((state) => state.category)
-  const products = useProductsListStore((state) => state.products)
-  const loadProducts = useProductsListStore((state) => state.loadProducts)
+  const products = useProductsListStore((state) => state.list)
+  const loadProducts = useProductsListStore((state) => state.loadList)
 
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
   const page = useCatalogOptionsStore((state) => state.page)
 
   useUpdateEffect(() => {
-    loadProducts(fetchCategoriesProductsList, slug, page || 1, searchQuery)
+    loadProducts(fetchCategoriesProductList, slug, page || 1, searchQuery)
   }, [loadProducts, slug, page, searchQuery])
 
   return (
@@ -77,7 +77,7 @@ const Page = ({ slug }: PageProps) => {
 
           {products?.length ? (
             <>
-              <ProductsList products={products} className="mt-6" />
+              <ProductList products={products} className="mt-6" />
               <CatalogPaginationControl className="mt-4" />
             </>
           ) : (

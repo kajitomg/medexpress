@@ -1,1 +1,1 @@
-export { fetchProductsList, fetchProductItemBySlug } from "./product-repository"
+export { fetchProductList, fetchProductItemBySlug } from "./product-repository"

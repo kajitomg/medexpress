@@ -2,20 +2,20 @@ import {
   ProductBase,
   ProductListResponse,
 } from "@/entities/product/model/product"
-import { Meta } from "@/shared/model/api"
 import { DocumentServices } from "@/shared/model/document"
+import { StrapiMetaResponse } from "@/shared/model/strapi"
 import { create } from "zustand"
 
 export interface ProductsListState {
-  products?: (ProductBase & DocumentServices)[]
+  list?: (ProductBase & DocumentServices)[]
   isLoading: boolean
-  meta?: Meta
+  meta?: StrapiMetaResponse
   error?: string
 }
 
 interface ProductsListActions {
-  setProducts: (products: (ProductBase & DocumentServices)[]) => void
-  loadProducts: <
+  setList: (list: (ProductBase & DocumentServices)[]) => void
+  loadList: <
     F extends (
       ...args: Parameters<F>
     ) => Promise<ProductListResponse<ProductBase & DocumentServices>>,
@@ -30,7 +30,7 @@ interface ProductsListActions {
 export type ProductsListStore = ProductsListState & ProductsListActions
 
 const defaultInitState: ProductsListState = {
-  products: undefined,
+  list: undefined,
   isLoading: false,
   meta: undefined,
   error: undefined,
@@ -41,13 +41,13 @@ export const createProductsListStore = (
 ) =>
   create<ProductsListStore>((set) => ({
     ...{ ...defaultInitState, ...initState },
-    setProducts: (products) => set({ products }),
+    setList: (list) => set({ list }),
 
-    loadProducts: async (fn, ...args) => {
+    loadList: async (fn, ...args) => {
       try {
         set({ isLoading: true })
         const response = await fn(...args)
-        set({ products: response.data })
+        set({ list: response.data })
       } catch {
         return set({ error: "Что-то пошло не так" })
       } finally {

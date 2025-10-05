@@ -1,24 +1,25 @@
 import { CategoryBase } from "@/entities/category/model"
-import { CollectionBase } from "@/entities/collection/model/collection"
-import { DocumentId, MetaData } from "@/shared/model"
-import { Meta } from "@/shared/model/api"
+import { DeviceTypeBase } from "@/entities/device-type/model"
+import { DocumentId } from "@/shared/model"
 import { Media } from "@/shared/model/media"
+import { StrapiMetaResponse } from "@/shared/model/strapi"
 
 export type ProductBase = {
   id: DocumentId
   slug: string
   code: string
-  title: string
+  name: string
   description: string | null
-  media?: Media | null
+  price?: null
+  images?: Media[]
+  type?: DeviceTypeBase
   categories?: CategoryBase[]
-  collections?: CollectionBase[]
-  seo?: MetaData
+  specifications: unknown[]
 }
 
 export type ProductListResponse<T extends ProductBase = ProductBase> = {
   data: T[]
-  meta: Meta
+  meta: StrapiMetaResponse
 }
 
 export type ProductItemResponse<T extends ProductBase = ProductBase> = {

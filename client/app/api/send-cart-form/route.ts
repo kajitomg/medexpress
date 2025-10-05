@@ -6,9 +6,9 @@ import { NextResponse } from "next/server"
 import Mail from "nodemailer/lib/mailer"
 
 export async function POST(request: Request) {
-  const body: ContactFormSchema & { cartItems: CartData<ProductBase>[] } =
+  const body: ContactFormSchema & { products: CartData<ProductBase>[] } =
     await request.json()
-  const { firstname, message, cartItems, mode } = body
+  const { firstname, message, products, mode } = body
 
   const mailOptions: Mail.Options = {
     from: `"Сайт" <${process.env.SMTP_USER}>`,
@@ -21,9 +21,9 @@ export async function POST(request: Request) {
       ${message ? `<p><strong>Сообщение:</strong> ${message}</p>` : ""}
       <p><strong>Выбранные товары:</strong></p>
       ${
-        cartItems.length
+        products.length
           ? `<ul>
-        ${cartItems?.map((item) => `<li>${item.item.title} (код: ${item.item.code}) количество: ${item.count} шт.</li>`).join("")}
+        ${products?.map((item) => `<li>${item.item.title} (код: ${item.item.category?.code}) количество: ${item.count} шт.</li>`).join("")}
       </ul>`
           : "Нет выбранных товаров"
       }

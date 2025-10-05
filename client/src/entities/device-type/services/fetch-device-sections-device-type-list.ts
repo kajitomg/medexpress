@@ -1,0 +1,42 @@
+"use server"
+
+import { fetchDeviceTypeList } from "@/entities/device-type/api"
+import { DeviceTypeBase } from "@/entities/device-type/model"
+import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+
+const fetchDeviceSectionsDeviceTypeList = async (
+  slug: string,
+  page: number,
+  search?: string
+) => {
+  const queryObj = {
+    pagination: {
+      page,
+      pageSize: 60,
+      withCount: true,
+    },
+    filters: {
+      sections: {
+        slug: {
+          $in: slug,
+        },
+      },
+      ...(search && {
+        $or: [
+          { code: { $containsi: search } },
+          { name: { $containsi: search } },
+          { description: { $containsi: search } },
+          { sections: { code: { $containsi: search } } },
+          { sections: { name: { $containsi: search } } },
+        ],
+      }),
+    },
+    populate: {
+      sections: true,
+    },
+  } satisfies StrapiQuery<DeviceTypeBase>
+
+  return await fetchDeviceTypeList(queryObj, [`device-section::${slug}`])
+}
+
+export { fetchDeviceSectionsDeviceTypeList }

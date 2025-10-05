@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "device_sections",
+  "info": {
+    "singularName": "device-section",
+    "pluralName": "device-sections",
+    "displayName": "device section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[1-9]\\d*(?:\\.\\d*[1-9]\\d*)*$"
+    },
+    "sort_code": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^\\d{4}(?:\\.\\d{4})*$"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::device-section.device-section",
+      "inversedBy": "childrens"
+    },
+    "childrens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::device-section.device-section",
+      "mappedBy": "parent"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false,
+      "required": false
+    }
+  }
+}

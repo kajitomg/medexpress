@@ -1,7 +1,7 @@
 "use client"
 
 import { ProductBase } from "@/entities/product/model"
-import { fetchProductsListBySlugs } from "@/entities/product/services/fetch-products-list-by-slugs"
+import { fetchProductListBySlug } from "@/entities/product/services/fetch-product-list-by-slug"
 import { CartData } from "@/features/cart/model/cart"
 import { useCartStore } from "@/features/cart/provider"
 import { useProductsListStore } from "@/features/catalog/provider"
@@ -48,7 +48,7 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
   useEffect(() => {
     if (!cartItems.length) return
     const slugs = cartItems.map((item) => item.slug)
-    loadProducts(fetchProductsListBySlugs, slugs, 1)
+    loadProducts(fetchProductListBySlug, slugs, 1)
   }, [cartItems, loadProducts])
 
   return (

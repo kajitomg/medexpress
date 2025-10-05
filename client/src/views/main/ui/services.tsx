@@ -19,8 +19,8 @@ const PAGES: ServicesItemData[] = [
   },
   {
     id: 2,
-    title: routes.COLLESCTIONS().title,
-    path: routes.COLLESCTIONS().path,
+    title: routes.NOMENCLATURE().title,
+    path: routes.NOMENCLATURE().path,
   },
   {
     id: 3,

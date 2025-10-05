@@ -1,11 +1,11 @@
 "use client"
 
 import { CategoryBase } from "@/entities/category/model"
-import { fetchCatalogCategoriesList } from "@/entities/category/services"
+import { fetchCatalogCategoryList } from "@/entities/category/services"
 import { PageSections } from "@/entities/page/model/page"
 import {
   useCatalogOptionsStore,
-  useCategoriesListStore,
+  useCategoryListStore,
 } from "@/features/catalog/provider"
 import { CatalogSearchControl } from "@/features/catalog/ui"
 import { createSectionsStore } from "@/features/sections/provider"
@@ -15,11 +15,10 @@ import { useUpdateEffect } from "@/shared/lib/hooks"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { DocumentServices } from "@/shared/model"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
-import { CategoriesList } from "@/views/catalog-categories/ui/categories-list"
+import { CategoryList } from "@/views/catalog-categories/ui/category-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 
 import * as React from "react"
-import { useCallback } from "react"
 import { CollectionPage, WithContext } from "schema-dts"
 
 const useSectionsStore = createSectionsStore<PageSections[]>()
@@ -36,7 +35,7 @@ const collectionPage = (
     itemListElement: items?.map((item, i) => ({
       "@type": "ListItem",
       position: i,
-      name: item.title,
+      name: item.name,
       url: routes.CATALOG(item.slug).path,
     })),
   },
@@ -45,18 +44,14 @@ const collectionPage = (
 const Page = () => {
   const hero = useSectionsStore(selectSectionItemByName("sections.hero"))
 
-  const categories = useCategoriesListStore((state) => state.categories)
-  const loadCategories = useCategoriesListStore((state) => state.loadCategories)
+  const categories = useCategoryListStore((state) => state.list)
+  const loadCategories = useCategoryListStore((state) => state.loadList)
 
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
 
-  const fetchCategories = useCallback(() => {
-    return fetchCatalogCategoriesList(searchQuery)
-  }, [searchQuery])
-
   useUpdateEffect(() => {
-    loadCategories(fetchCatalogCategoriesList, searchQuery)
-  }, [loadCategories, fetchCategories])
+    loadCategories(fetchCatalogCategoryList, 1, searchQuery)
+  }, [loadCategories, searchQuery])
   return (
     <>
       <script
@@ -76,7 +71,7 @@ const Page = () => {
           <CatalogSearchControl />
 
           {categories?.length ? (
-            <CategoriesList categories={categories} className="mt-6" />
+            <CategoryList categories={categories} className="mt-6" />
           ) : (
             <EmptyState title="Категории не найдены" />
           )}

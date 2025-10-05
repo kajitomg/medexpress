@@ -2,7 +2,7 @@ import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Logo } from "@/shared/ui"
 import { ActionBar } from "@/widgets/header/ui/action-bar"
-import { CollectionsBar } from "@/widgets/header/ui/collections-bar"
+import { CategoryBar } from "@/widgets/header/ui/category-bar"
 import { ContactsBar } from "@/widgets/header/ui/contacts-bar"
 import { Navigation } from "@/widgets/header/ui/navigation"
 import { MenuBurger } from "@/widgets/menu-burger/ui/menu-burger"
@@ -35,7 +35,7 @@ const Header = async ({ className, ...props }: ComponentProps<"header">) => {
         <ActionBar className="col-start-6 col-span-2" />
       </div>
       <ErrorBoundary errorComponent={Error}>
-        <CollectionsBar className="h-12" />
+        <CategoryBar className="h-12" />
       </ErrorBoundary>
     </header>
   )

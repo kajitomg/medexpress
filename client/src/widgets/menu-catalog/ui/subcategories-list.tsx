@@ -1,4 +1,4 @@
-import { CategoryBase } from "@/entities/category/model"
+import { CategoryBase } from "@/entities/device-section/model"
 import { cn } from "@/shared/lib"
 import { DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"

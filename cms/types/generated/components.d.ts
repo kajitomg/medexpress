@@ -313,6 +313,24 @@ export interface SharedPhonenumber extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedProductSpecification extends Struct.ComponentSchema {
+  collectionName: 'components_shared_product_specifications';
+  info: {
+    description: '';
+    displayName: 'product specification';
+  };
+  attributes: {
+    bodyBoolean: Schema.Attribute.Boolean;
+    bodyNumber: Schema.Attribute.Decimal;
+    bodyText: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    type: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::specification.specification'
+    >;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -399,6 +417,16 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSeoTemplate extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seo_templates';
+  info: {
+    displayName: 'seo template';
+  };
+  attributes: {
+    metaTitleTemplate: Schema.Attribute.String;
+  };
+}
+
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -474,10 +502,12 @@ declare module '@strapi/strapi' {
       'shared.media': SharedMedia;
       'shared.open-graph': SharedOpenGraph;
       'shared.phonenumber': SharedPhonenumber;
+      'shared.product-specification': SharedProductSpecification;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.schedule-day': SharedScheduleDay;
       'shared.seo': SharedSeo;
+      'shared.seo-template': SharedSeoTemplate;
       'shared.slider': SharedSlider;
       'shared.social': SharedSocial;
       'shared.text': SharedText;

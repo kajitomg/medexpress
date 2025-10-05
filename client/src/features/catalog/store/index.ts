@@ -1,8 +1,8 @@
 export {
-  createCategoriesListStore,
-  type CategoriesListState,
-  type CategoriesListStore,
-} from "./categories-list-store"
+  createClassificationListStore,
+  type ClassificationListState,
+  type ClassificationListStore,
+} from "./classification-list-store"
 export {
   createCatalogOptionsStore,
   type CatalogOptionsState,
@@ -14,7 +14,12 @@ export {
   type ProductsListStore,
 } from "./products-list-store"
 export {
-  createCollectionsListStore,
-  type CollectionsListState,
-  type CollectionsListStore,
-} from "./collections-list-store"
+  createCategoryListStore,
+  type CategoryListState,
+  type CategoryListStore,
+} from "./category-list-store"
+export {
+  createClassificationTypeListStore,
+  type ClassificationTypeListState,
+  type ClassificationTypeListStore,
+} from "./classification-type-list-store"

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specifications",
+  "info": {
+    "singularName": "specification",
+    "pluralName": "specifications",
+    "displayName": "specification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "number",
+        "boolean"
+      ],
+      "required": true,
+      "default": "text"
+    },
+    "units": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

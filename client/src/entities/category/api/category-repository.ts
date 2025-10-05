@@ -11,7 +11,7 @@ import { DocumentServices } from "@/shared/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 import qs from "qs"
 
-const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
+const fetchCategoryList = async (queryObj?: StrapiQuery<CategoryBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -22,7 +22,6 @@ const fetchCategoriesList = async (queryObj?: StrapiQuery<CategoryBase>) => {
         tags: ["category"],
       },
     })
-
     return (await response.json()) as CategoryListResponse<
       CategoryBase & DocumentServices
     >
@@ -66,4 +65,4 @@ const fetchCategoryItemBySlug = async (
   }
 }
 
-export { fetchCategoriesList, fetchCategoryItemBySlug }
+export { fetchCategoryList, fetchCategoryItemBySlug }

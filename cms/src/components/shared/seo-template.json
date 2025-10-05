@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_seo_templates",
+  "info": {
+    "displayName": "seo template"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitleTemplate": {
+      "type": "string"
+    }
+  }
+}

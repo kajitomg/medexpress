@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_product_specifications",
+  "info": {
+    "displayName": "product specification",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": false
+    },
+    "type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::specification.specification"
+    },
+    "bodyText": {
+      "type": "string"
+    },
+    "bodyBoolean": {
+      "type": "boolean"
+    },
+    "bodyNumber": {
+      "type": "decimal"
+    }
+  }
+}

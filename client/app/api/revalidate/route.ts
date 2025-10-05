@@ -1,5 +1,5 @@
-import { CategoryBase } from "@/entities/category/model"
-import { CollectionBase } from "@/entities/collection/model"
+import { CollectionBase } from "@/entities/category/model"
+import { CategoryBase } from "@/entities/device-section/model"
 import { ProductBase } from "@/entities/product/model"
 import { revalidateTag } from "next/cache"
 

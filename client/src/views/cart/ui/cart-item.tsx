@@ -35,7 +35,7 @@ const CartItem = ({
               alt={product?.item?.title || "Продукт"}
               width={100}
               height={100}
-              className="object-cover"
+              className="object-cover w-full h-full"
               priority
             />
           </AspectRatio>
@@ -43,15 +43,11 @@ const CartItem = ({
         <div className="flex-auto">
           <div>
             <Typography variant="small" target="card" className="inline">
-              {product?.item?.code + "\n"}
+              {product?.item?.category?.code + "\n"}
             </Typography>
             <span>{"\n"}</span>
             <Typography variant="small" target="card" className="inline">
-              {product?.item?.categories?.[0]?.title}
-            </Typography>
-            <span>{"\n>\n"}</span>
-            <Typography variant="small" target="card" className="inline">
-              {product?.item?.categories?.[1]?.title}
+              {product?.item?.category?.title}
             </Typography>
             <span>{"\n"}</span>
           </div>
