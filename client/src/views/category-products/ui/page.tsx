@@ -10,7 +10,7 @@ import {
   CatalogPaginationControl,
   CatalogSearchControl,
 } from "@/features/catalog/ui"
-import { useCategoryDetailsStore } from "@/features/category-details/provider"
+import { useCategoryDetailsStoreTest } from "@/features/category-details/provider/category-details-provider"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
 import { urlBuilder } from "@/shared/lib/url-builder"
@@ -47,7 +47,7 @@ const collectionPage = (
 })
 
 const Page = ({ slug }: PageProps) => {
-  const category = useCategoryDetailsStore((state) => state.category)
+  const category = useCategoryDetailsStoreTest((state) => state.item)
   const products = useProductsListStore((state) => state.list)
   const loadProducts = useProductsListStore((state) => state.loadList)
 
@@ -64,12 +64,12 @@ const Page = ({ slug }: PageProps) => {
         id="category-products"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(collectionPage(category?.title, products)),
+          __html: JSON.stringify(collectionPage(category?.name, products)),
         }}
       />
       <PageHeroRoutes
-        page={routes.CATALOG(category?.slug, category?.title)}
-        image={category?.media?.url && urlBuilder(category.media.url)}
+        page={routes.CATALOG(category?.slug, category?.name)}
+        image={category?.image?.url && urlBuilder(category.image.url)}
       />
       <ContentSection>
         <ContentSectionContent className="max-w-380 w-full">

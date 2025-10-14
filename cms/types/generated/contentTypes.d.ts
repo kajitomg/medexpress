@@ -493,6 +493,38 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCurrencyCurrency extends Struct.CollectionTypeSchema {
+  collectionName: 'currencies';
+  info: {
+    displayName: 'currency';
+    pluralName: 'currencies';
+    singularName: 'currency';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localeCode: Schema.Attribute.String & Schema.Attribute.Required;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::currency.currency'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDeviceSectionDeviceSection
   extends Struct.CollectionTypeSchema {
   collectionName: 'device_sections';
@@ -810,16 +842,19 @@ export interface ApiPricePrice extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    currency: Schema.Attribute.Enumeration<['RUB']> &
+    currency: Schema.Attribute.Relation<'oneToOne', 'api::currency.currency'>;
+    direction: Schema.Attribute.Enumeration<['FROM', 'CURRENT']> &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'RUB'>;
-    direction: Schema.Attribute.Enumeration<['FORM', 'CURRENT', 'UPTO']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'FORM'>;
+      Schema.Attribute.DefaultTo<'FROM'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::price.price'> &
       Schema.Attribute.Private;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    priceStatus: Schema.Attribute.Enumeration<
+      ['AVAILABLE', 'NOT SPECIFIED', 'ON REQUEST']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'AVAILABLE'>;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -859,6 +894,11 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Relation<'oneToMany', 'api::price.price'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    specifications: Schema.Attribute.Component<
+      'shared.product-specification',
+      true
+    > &
+      Schema.Attribute.Required;
     type: Schema.Attribute.Relation<'oneToOne', 'api::device-type.device-type'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -912,7 +952,9 @@ export interface ApiSpecificationSpecification
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    displayName: Schema.Attribute.String & Schema.Attribute.Required;
+    displayName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -921,10 +963,10 @@ export interface ApiSpecificationSpecification
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<['text', 'number', 'boolean']> &
+    type: Schema.Attribute.Enumeration<['text', 'number', 'boolean', 'list']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'text'>;
-    units: Schema.Attribute.String;
+    units: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1474,6 +1516,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::address.address': ApiAddressAddress;
       'api::category.category': ApiCategoryCategory;
+      'api::currency.currency': ApiCurrencyCurrency;
       'api::device-section.device-section': ApiDeviceSectionDeviceSection;
       'api::device-type.device-type': ApiDeviceTypeDeviceType;
       'api::email.email': ApiEmailEmail;

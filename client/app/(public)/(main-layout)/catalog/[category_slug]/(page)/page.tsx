@@ -4,9 +4,10 @@ import {
   CatalogOptionsProvider,
   ProductsListProvider,
 } from "@/features/catalog/provider"
-import { CategoryDetailsProvider } from "@/features/category-details/provider"
+import { CategoryDetailsProviderTest } from "@/features/category-details/provider/category-details-provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { CategoryProductsPage } from "@/views/category-products/ui"
 import { Metadata, NextPage, Viewport } from "next"
 
@@ -60,16 +61,18 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
   const maxPages = response?.meta.pagination.pageCount
 
   return (
-    <CategoryDetailsProvider initialState={{ category }}>
+    <CategoryDetailsProviderTest initialState={{ item: category }}>
       <CatalogOptionsProvider
         initialState={{ searchQuery, page, maxPages }}
         skipHydration
       >
-        <ProductsListProvider initialState={{ products }}>
-          <CategoryProductsPage slug={category_slug} />
+        <ProductsListProvider initialState={{ list: products }}>
+          <PageLayoutMain>
+            <CategoryProductsPage slug={category_slug} />
+          </PageLayoutMain>
         </ProductsListProvider>
       </CatalogOptionsProvider>
-    </CategoryDetailsProvider>
+    </CategoryDetailsProviderTest>
   )
 }
 

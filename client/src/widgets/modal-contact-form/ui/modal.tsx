@@ -23,7 +23,7 @@ const Modal = ({ dialogButton = "Заказать звонок" }: ModalProps) =
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm" className="cursor-pointer">
+        <Button variant="brand" size="sm" className="cursor-pointer">
           {dialogButton}
         </Button>
       </DialogTrigger>

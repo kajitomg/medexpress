@@ -1,5 +1,8 @@
 "use client"
 
+import { CategoryBase } from "@/entities/category/model"
+import { DocumentServices } from "@/shared/model"
+import { createStoreBaseItemProvider } from "@/shared/provider/base-item-provider"
 import { createContext, type ReactNode, useContext, useRef } from "react"
 import { useStore } from "zustand"
 import {
@@ -50,3 +53,12 @@ export const useCategoryDetailsStore = <T,>(
 
   return useStore(context, selector)
 }
+
+const {
+  Provider: CategoryDetailsProviderTest,
+  useStore: useCategoryDetailsStoreTest,
+} = createStoreBaseItemProvider<CategoryBase & DocumentServices>(
+  "CategoryDetails"
+)
+
+export { CategoryDetailsProviderTest, useCategoryDetailsStoreTest }

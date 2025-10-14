@@ -1,43 +1,43 @@
 import { DeviceSectionBase } from "@/entities/device-section/model"
-import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { DocumentServices } from "@/shared/model"
 import { Button, Separator } from "@/shared/ui"
 import { TypeList } from "@/widgets/catalog-categories-navigation-sidebar/ui/list"
 import { ChevronRight } from "lucide-react"
-import Link from "next/link"
-import { memo } from "react"
+import { MouseEventHandler } from "react"
 
 interface CategoryItemProps {
   item: DeviceSectionBase & DocumentServices
-  selected: string
+  selected?: string
   level: number
+  onSelectItem?: MouseEventHandler<HTMLButtonElement>
+  setNomenclatureSlug: (slug?: string) => void
+  expanded: boolean
 }
 
-const TypeItem = memo(({ item, selected, level }: CategoryItemProps) => {
+const TypeItem = ({
+  item,
+  selected,
+  level,
+  onSelectItem,
+  expanded,
+  setNomenclatureSlug,
+}: CategoryItemProps) => {
   const available = item.slug === selected
 
+  const isRendered = expanded || available
+
   return (
-    <div
-      className={cn(
-        `flex flex-col-reverse group rounded-sm`,
-        available && `available`,
-        available &&
-          level > 1 &&
-          Boolean(item.childrens?.length) &&
-          `bg-black/5`
-      )}
-    >
+    <div className={cn(`flex flex-col-reverse rounded-sm`)}>
       {available && level > 1 && Boolean(item.childrens?.length) && (
         <Separator orientation="horizontal" />
       )}
-      {Boolean(item.childrens?.length) && (
+      {isRendered && Boolean(item.childrens?.length) && (
         <div
-          className={cn(
-            "overflow-hidden h-0 hidden peer",
-            `block has-[.available]:flex has-[.available]:h-auto has-[.available]:my-1`,
-            available && "flex h-auto my-1"
-          )}
+          className={cn("overflow-hidden", {
+            "flex my-1": expanded && Boolean(item.childrens?.length),
+            "hidden h-0": !expanded,
+          })}
         >
           {level === 1 && (
             <Separator
@@ -47,8 +47,9 @@ const TypeItem = memo(({ item, selected, level }: CategoryItemProps) => {
           )}
           <TypeList
             items={item.childrens}
-            selected={selected}
             level={level + 1}
+            selected={selected}
+            setNomenclatureSlug={setNomenclatureSlug}
           />
         </div>
       )}
@@ -56,32 +57,27 @@ const TypeItem = memo(({ item, selected, level }: CategoryItemProps) => {
         <Separator orientation="horizontal" />
       )}
       <Button
-        asChild
         variant="link"
         size="icon"
+        onClick={onSelectItem}
         className={cn(
-          "whitespace-normal h-auto w-full justify-between py-1 px-2 hover:bg-black/5 hover:no-underline",
-          available && "text-(--color-brand)",
-          "peer-has-[.available]:[&_.chevron]:rotate-90"
+          "whitespace-normal h-auto w-full justify-between text-start py-1 px-2 hover:bg-black/5 hover:no-underline cursor-pointer",
+          available && "text-(--color-brand)"
         )}
       >
-        <Link href={routes.NOMENCLATURE(item.slug).path}>
-          <span className="font-bold">
-            <span className="font-black">
-              {item.code}.{"\n"}
-            </span>
-            {item.name}
+        <span className="font-bold">
+          <span className="font-black">
+            {item.code}.{"\n"}
           </span>
-          {Boolean(item.childrens?.length) && (
-            <ChevronRight
-              className={cn(`size-4 chevron`, available && "rotate-90")}
-            />
-          )}
-        </Link>
+          {item.name}
+        </span>
+        {Boolean(item.childrens?.length) && (
+          <ChevronRight className={cn(`size-4`, expanded && "rotate-90")} />
+        )}
       </Button>
     </div>
   )
-})
+}
 
 TypeItem.displayName = "Item"
 

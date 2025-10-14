@@ -24,10 +24,7 @@ const PageHero = ({
   return (
     <header
       id="container"
-      className={cn(
-        `relative flex flex-col transition-all duration-200`,
-        className
-      )}
+      className={cn(`relative flex flex-col overflow-hidden`, className)}
       style={{
         minHeight: full ? `calc(100vh - ${offsetTop}px)` : `${height * 4}px`,
       }}

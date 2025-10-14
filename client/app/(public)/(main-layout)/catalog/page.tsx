@@ -7,6 +7,7 @@ import {
 import { SectionsProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { CatalogCategoriesPage } from "@/views/catalog-categories/ui"
 import { Metadata, NextPage, Viewport } from "next"
 import slugify from "slugify"
@@ -51,7 +52,9 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
     <SectionsProvider initialState={{ sections }}>
       <CatalogOptionsProvider initialState={{ searchQuery }} skipHydration>
         <CategoryListProvider initialState={{ list: categories }}>
-          <CatalogCategoriesPage />
+          <PageLayoutMain>
+            <CatalogCategoriesPage />
+          </PageLayoutMain>
         </CategoryListProvider>
       </CatalogOptionsProvider>
     </SectionsProvider>

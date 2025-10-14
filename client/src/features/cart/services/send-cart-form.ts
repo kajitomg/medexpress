@@ -10,7 +10,7 @@ const sendCartForm = async (
   }
 ): Promise<{ success: boolean; message: string }> => {
   try {
-    const response = await fetch("api/send-cart-form", {
+    const response = await fetch("/api/send-cart-form", {
       method: "POST",
       body: JSON.stringify(body),
     })

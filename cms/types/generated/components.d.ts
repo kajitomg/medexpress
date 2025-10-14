@@ -321,6 +321,7 @@ export interface SharedProductSpecification extends Struct.ComponentSchema {
   };
   attributes: {
     bodyBoolean: Schema.Attribute.Boolean;
+    bodyList: Schema.Attribute.Component<'shared.text', true>;
     bodyNumber: Schema.Attribute.Decimal;
     bodyText: Schema.Attribute.String;
     label: Schema.Attribute.String;

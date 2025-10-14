@@ -1,4 +1,4 @@
-import { ProductBaseResponse } from "@/entities/product/model"
+import { ProductBase } from "@/entities/product/model"
 import { MetaData } from "@/shared/model"
 import { DocumentId } from "@/shared/model/document"
 import { Media } from "@/shared/model/media"
@@ -9,7 +9,7 @@ export type CategoryBase = {
   slug: string
   name: string
   image?: Media | null
-  products?: ProductBaseResponse[] | null
+  products?: ProductBase[] | null
   seo?: MetaData
 }
 

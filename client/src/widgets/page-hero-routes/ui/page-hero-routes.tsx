@@ -73,9 +73,9 @@ const PageHeroRoutes = ({
           />
         )}
       </PageHeroBackground>
-      <PageHeroContent className="flex flex-col justify-center items-center">
+      <PageHeroContent className="@container flex flex-col justify-center items-center">
         <Typography asChild variant="h1">
-          <h1 className="text-white text-center">
+          <h1 className="text-white text-center break-all @3xl:break-normal text-[clamp(2em,2.5vw,3em)]">
             <strong>{title || page.title}</strong>
           </h1>
         </Typography>

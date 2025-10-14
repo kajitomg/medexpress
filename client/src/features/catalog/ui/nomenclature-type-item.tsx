@@ -2,8 +2,9 @@ import { DeviceTypeBase } from "@/entities/device-type/model"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { DocumentServices } from "@/shared/model"
-import { Button, Card, CardContent, Separator, Typography } from "@/shared/ui"
-import { ChevronDown } from "lucide-react"
+import { Button } from "@/shared/ui"
+import { TableCell, TableRow } from "@/shared/ui/table"
+import { ChevronDown, MoreHorizontal } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
 import { useState } from "react"
@@ -16,65 +17,66 @@ const NomenclatureTypeItem = ({ item }: NomenclatureTypeItemProps) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <Card
-      onClick={() => setExpanded(!expanded)}
-      className="group relative shadow-black/20 hover:shadow-md transition-all duration-200 from-muted/50 to-muted h-full w-full rounded-md bg-linear-to-b outline-hidden select-none focus:shadow-md"
+    <TableRow
+      className="relative cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation()
+        setExpanded(true)
+      }}
     >
-      <CardContent className="flex gap-2 flex-col sm:flex-row">
-        <div className="flex-none basis-20 flex items-start justify-center">
-          <Typography target="card">
-            <strong>{item.code}</strong>
-          </Typography>
+      <TableCell className="font-medium content-start border border-gray-300 hyphens-auto break-words">
+        <div
+          className={cn(
+            "whitespace-normal text-start p-0 underline hover:no-underline focus:no-underline",
+            !expanded && "line-clamp-2"
+          )}
+        >
+          <Link href={routes.NOMENCLATURE(item.slug).path}>{item.code}</Link>
         </div>
-        <Separator
-          orientation="vertical"
-          className="data-[orientation=vertical]:h-auto"
-        />
-        <div className={cn(!expanded && "line-clamp-2", "flex-none basis-50")}>
-          {item.sections?.map((item) => (
-            <Button
-              asChild
-              variant="link"
-              key={item.slug}
-              className="whitespace-normal h-auto w-full p-0 justify-start"
-            >
-              <Link href={routes.NOMENCLATURE(item.slug).path}>
-                <Typography target="card">
-                  {item.code + ". " + item.name}
-                </Typography>
-              </Link>
-            </Button>
-          ))}
+      </TableCell>
+      <TableCell className="content-start border border-gray-300 hyphens-auto break-words">
+        <div className={cn("whitespace-normal", !expanded && "line-clamp-2")}>
+          {item.sections?.map((item) => item.code + ". " + item.name).join(" ")}
         </div>
-        <Separator
-          orientation="vertical"
-          className="data-[orientation=vertical]:h-auto"
-        />
-        <div className="flex-none basis-40 flex items-start justify-center">
-          <Typography target="card">{item.name}</Typography>
+      </TableCell>
+      <TableCell className="content-start border border-gray-300 hyphens-auto break-words">
+        <div
+          className={cn(
+            "whitespace-normal text-start p-0 underline hover:no-underline focus:no-underline",
+            !expanded && "line-clamp-2"
+          )}
+        >
+          <Link href={routes.NOMENCLATURE(item.slug).path}>{item.name}</Link>
         </div>
-        <Separator
-          orientation="vertical"
-          className="data-[orientation=vertical]:h-auto"
-        />
-        <div className="flex flex-col justify-end items-end gap-2">
-          <Typography className={cn(!expanded && "line-clamp-6")} target="card">
-            {item.description}
-          </Typography>
-          <Button className="cursor-pointer" size="sm" variant="brand"></Button>
+      </TableCell>
+      <TableCell className="content-start border border-gray-300 hyphens-auto break-words">
+        <div className={cn("whitespace-normal", !expanded && "line-clamp-2")}>
+          {item.description}
         </div>
-      </CardContent>
-      <div
-        className={cn(
-          "group-hover:flex group-active:flex hidden absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10 justify-center items-center",
-          expanded && "flex"
-        )}
-      >
-        <Button className="cursor-pointer" size="sm" variant="brand">
+      </TableCell>
+      <TableCell className="content-start border border-gray-300 hyphens-auto break-words items-end">
+        <Button
+          size="icon"
+          onClick={(e) => {
+            e.stopPropagation()
+            setExpanded(!expanded)
+          }}
+          className="cursor-pointer p-0"
+        >
           <ChevronDown className={cn(expanded && "rotate-180")} />
         </Button>
-      </div>
-    </Card>
+        <Button
+          size="icon"
+          onClick={(e) => {
+            e.stopPropagation()
+            setExpanded(!expanded)
+          }}
+          className="cursor-pointer p-0"
+        >
+          <MoreHorizontal />
+        </Button>
+      </TableCell>
+    </TableRow>
   )
 }
 

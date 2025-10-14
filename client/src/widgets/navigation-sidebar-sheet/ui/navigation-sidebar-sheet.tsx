@@ -11,21 +11,24 @@ import {
 import { NomenclatureTypesNavigationSidebar } from "@/widgets/catalog-categories-navigation-sidebar/ui"
 import { ChevronRight } from "lucide-react"
 import * as React from "react"
+import { ComponentProps } from "react"
 
 interface NaivgationSidebarSheetProps {
-  category_slug: string
+  initSlug?: string
+  redirect?: boolean
 }
 
 const NaivgationSidebarSheet = ({
-  category_slug,
-}: NaivgationSidebarSheetProps) => {
+  initSlug,
+  redirect = false,
+}: ComponentProps<"div"> & NaivgationSidebarSheetProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button
           variant="outline"
           size="icon"
-          className="fixed lg:hidden block lg:w-0 lg:h-0 w-auto h-auto cursor-pointer z-50 flex items-center justify-center"
+          className="absolute lg:hidden block lg:w-0 lg:h-0 w-auto h-auto cursor-pointer z-50 flex items-center justify-center"
         >
           <ChevronRight className="size-8" />
           <span className="sr-only">Открыть меню категорий</span>
@@ -35,9 +38,9 @@ const NaivgationSidebarSheet = ({
       <SheetContent
         aria-describedby="Меню"
         side="left"
-        className="w-full sm:w-auto"
+        className="w-full sm:w-auto flex flex-col h-full"
       >
-        <SheetHeader>
+        <SheetHeader className="flex-none">
           <SheetTitle>
             <SheetClose asChild>
               <Logo
@@ -47,7 +50,13 @@ const NaivgationSidebarSheet = ({
             </SheetClose>
           </SheetTitle>
         </SheetHeader>
-        <NomenclatureTypesNavigationSidebar category_slug={category_slug} />
+        <div className="flex-1 overflow-y-auto">
+          <NomenclatureTypesNavigationSidebar
+            initSlug={initSlug}
+            redirect={redirect}
+            className="w-full sm:w-80"
+          />
+        </div>
       </SheetContent>
     </Sheet>
   )

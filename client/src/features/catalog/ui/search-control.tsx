@@ -8,9 +8,7 @@ import { ChangeEvent, useState } from "react"
 
 const CatalogSearchControl = () => {
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
-  const changeSearchQuery = useCatalogOptionsStore(
-    (state) => state.changeSearchQuery
-  )
+  const setSearchQuery = useCatalogOptionsStore((state) => state.setSearchQuery)
 
   const [input, setInput] = useState<string>(searchQuery || "")
 
@@ -18,10 +16,10 @@ const CatalogSearchControl = () => {
     setInput(e.currentTarget.value)
   }
   const handleApplyOptions = () => {
-    changeSearchQuery(input || undefined)
+    setSearchQuery(input || undefined)
   }
   const handleResetOptions = () => {
-    changeSearchQuery(undefined)
+    setSearchQuery(undefined)
     setInput("")
   }
 
@@ -37,7 +35,7 @@ const CatalogSearchControl = () => {
         itemProp="query-input"
         placeholder="Поиск по каталогу"
         className={cn(
-          "w-100 focus-visible:ring-1 focus-visible:ring-(--color-brand) text-sm placeholder:text-sm bg-muted"
+          "max-w-100 focus-visible:ring-1 focus-visible:ring-(--color-brand) text-sm placeholder:text-sm bg-muted"
         )}
         value={input}
         onChange={handleChangeSearch}

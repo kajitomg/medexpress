@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
@@ -17,19 +18,32 @@
     },
     "type": {
       "type": "enumeration",
+      "required": true,
+      "default": "text",
       "enum": [
         "text",
         "number",
-        "boolean"
-      ],
-      "required": true,
-      "default": "text"
+        "boolean",
+        "list"
+      ]
     },
     "units": {
-      "type": "string"
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "type"
+            },
+            "number"
+          ]
+        }
+      },
+      "required": true
     },
     "displayName": {
       "type": "string",
+      "private": true,
       "required": true
     }
   }

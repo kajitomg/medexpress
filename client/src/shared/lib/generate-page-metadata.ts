@@ -3,7 +3,7 @@ import { Metadata } from "next"
 
 export const generatePageMetadata = <
   T extends {
-    seo?: MetaData
+    seo?: Partial<MetaData> & Pick<MetaData, "metaTitle" | "metaDescription">
   },
 >(
   data: T,

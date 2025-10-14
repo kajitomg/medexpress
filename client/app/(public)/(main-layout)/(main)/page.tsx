@@ -2,6 +2,7 @@ import { fetchPage } from "@/entities/page/services"
 import { SectionsProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { MainPage } from "@/views/main/ui"
 import { Metadata, Viewport } from "next"
 import * as React from "react"
@@ -34,7 +35,9 @@ const Home = async () => {
   const sections = content.data.sections
   return (
     <SectionsProvider initialState={{ sections }}>
-      <MainPage />
+      <PageLayoutMain>
+        <MainPage />
+      </PageLayoutMain>
     </SectionsProvider>
   )
 }

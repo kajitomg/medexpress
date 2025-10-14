@@ -14,13 +14,12 @@ export interface ClassificationTypeListState {
 interface ClassificationTypeListActions {
   setList: (list: (DeviceTypeBase & DocumentServices)[]) => void
   loadList: <
-    F extends (
-      ...args: Parameters<F>
-    ) => Promise<DeviceTypeListResponse<DeviceTypeBase & DocumentServices>>,
+    T extends DeviceTypeListResponse<DeviceTypeBase & DocumentServices>,
+    F extends (...args: Parameters<F>) => Promise<T>,
   >(
     fn: F,
     ...args: Parameters<F>
-  ) => void
+  ) => Promise<T | undefined>
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
 }
@@ -47,8 +46,9 @@ export const createClassificationTypeListStore = (
         set({ isLoading: true })
         const response = await fn(...args)
         set({ list: response.data })
+        return response
       } catch {
-        return set({ error: "Что-то пошло не так" })
+        set({ error: "Что-то пошло не так" })
       } finally {
         set({ isLoading: false })
       }

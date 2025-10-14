@@ -10,18 +10,18 @@ import {
   CatalogPaginationControl,
   CatalogSearchControl,
 } from "@/features/catalog/ui"
-import { useNomenclatureSectionDetailsStore } from "@/features/nomenclature-section/provider"
+import { useNomenclatureSectionDetailsStore } from "@/features/device-section/provider"
 import { routes } from "@/shared/config/routes"
-import { useUpdateEffect } from "@/shared/lib/hooks"
 import { DocumentServices } from "@/shared/model"
 import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
 import { NomenclatureTypeList } from "@/views/nomenclature-types/ui/nomenclature-type-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
+import { useCallback, useEffect } from "react"
 import { CollectionPage, WithContext } from "schema-dts"
 
 interface PageProps {
-  slug: string
+  initSlug?: string
 }
 
 const collectionPage = (
@@ -45,29 +45,50 @@ const collectionPage = (
   },
 })
 
-const Page = ({ slug }: PageProps) => {
+const Page = ({ initSlug }: PageProps) => {
+  const nomenclatureSlug = useCatalogOptionsStore(
+    (state) => state.nomenclatureSlug
+  )
   const nomenclature = useNomenclatureSectionDetailsStore((state) => state.item)
   const types = useClassificationTypeListStore((state) => state.list)
   const loadTypes = useClassificationTypeListStore((state) => state.loadList)
 
   const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
+  const setMaxPages = useCatalogOptionsStore((state) => state.setMaxPages)
+  const maxPages = useCatalogOptionsStore((state) => state.maxPages)
+
   const page = useCatalogOptionsStore((state) => state.page)
 
-  useUpdateEffect(() => {
-    loadTypes(fetchDeviceSectionsDeviceTypeList, slug, page || 1, searchQuery)
-  }, [loadTypes, slug, page, searchQuery])
+  const handleLoad = useCallback(async () => {
+    const data = await loadTypes(
+      fetchDeviceSectionsDeviceTypeList,
+      nomenclatureSlug || initSlug,
+      page || 1,
+      searchQuery
+    )
+    setMaxPages(data?.meta.pagination.pageCount || maxPages)
+  }, [nomenclatureSlug, page, searchQuery])
 
+  useEffect(() => {
+    handleLoad()
+  }, [handleLoad])
   return (
     <>
       <script
         id="collection-products"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(collectionPage(nomenclature?.name, types)),
+          __html: JSON.stringify(
+            collectionPage(
+              nomenclature?.name ||
+                "Номенклатурная классификация медицинских изделий",
+              types
+            )
+          ),
         }}
       />
       <PageHeroRoutes
-        page={routes.NOMENCLATURE(nomenclature?.slug, nomenclature?.name)}
+        page={routes.NOMENCLATURE(undefined, nomenclature?.name)}
       />
       <ContentSection>
         <ContentSectionContent className="max-w-380 w-full">

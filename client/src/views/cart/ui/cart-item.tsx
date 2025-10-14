@@ -31,8 +31,8 @@ const CartItem = ({
         <div className="min-w-16">
           <AspectRatio ratio={16 / 9} className="bg-muted">
             <Image
-              src={imageUrlBuilder(product?.item?.media?.url)}
-              alt={product?.item?.title || "Продукт"}
+              src={imageUrlBuilder(product?.item?.images?.[0]?.url)}
+              alt={product?.item?.name || "Продукт"}
               width={100}
               height={100}
               className="object-cover w-full h-full"
@@ -43,16 +43,16 @@ const CartItem = ({
         <div className="flex-auto">
           <div>
             <Typography variant="small" target="card" className="inline">
-              {product?.item?.category?.code + "\n"}
+              {product?.item?.type?.code + "\n"}
             </Typography>
             <span>{"\n"}</span>
             <Typography variant="small" target="card" className="inline">
-              {product?.item?.category?.title}
+              {product?.item?.type?.name}
             </Typography>
             <span>{"\n"}</span>
           </div>
           <Typography asChild variant="h4" target="card">
-            <h4>{product?.item?.title}</h4>
+            <h4>{product?.item?.name}</h4>
           </Typography>
         </div>
         <div className="max-w-50 flex flex-col gap-3">

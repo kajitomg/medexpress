@@ -1,27 +1,34 @@
 import { fetchAsideDeviceSectionList } from "@/entities/device-section/services"
 import { ClassificationListProvider } from "@/features/catalog/provider"
-import { ScrollArea } from "@/shared/ui/scroll-area"
-import { TypeList } from "@/widgets/catalog-categories-navigation-sidebar/ui/list"
+import { NomenclatureClient } from "@/widgets/catalog-categories-navigation-sidebar/ui/nomenclature.client"
+import { ScrollAreaProps } from "@radix-ui/react-scroll-area"
+import { ForwardRefExoticComponent, RefAttributes } from "react"
 
 interface AsideProps {
-  category_slug: string
+  initSlug?: string
+  redirect?: boolean
 }
 
 const NomenclatureTypesNavigationSidebar = async ({
-  category_slug,
-}: AsideProps) => {
+  initSlug,
+  redirect = false,
+  ...props
+}: React.ComponentProps<
+  ForwardRefExoticComponent<ScrollAreaProps & RefAttributes<HTMLDivElement>>
+> &
+  AsideProps) => {
   const responseNomenclatures = await fetchAsideDeviceSectionList()
 
   const nomenclatures = responseNomenclatures.data
-
   return (
     <ClassificationListProvider initialState={{ list: nomenclatures }}>
-      <ScrollArea className="w-80 h-full bg-background border-r-1 border-gray-800/10 p-2 pr-3">
-        <div className="font-bold text-(--color-brand) text-xl px-3 pb-2">
-          Номенклатурная классификация медицинских изделий
-        </div>
-        <TypeList items={nomenclatures} selected={category_slug} level={1} />
-      </ScrollArea>
+      <NomenclatureClient
+        items={nomenclatures}
+        initSelect={initSlug}
+        level={1}
+        redirect={redirect}
+        {...props}
+      />
     </ClassificationListProvider>
   )
 }

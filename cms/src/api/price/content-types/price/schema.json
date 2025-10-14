@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "product": {
       "type": "relation",
@@ -19,25 +20,61 @@
     },
     "price": {
       "type": "decimal",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "priceStatus"
+            },
+            "AVAILABLE"
+          ]
+        }
+      },
       "required": true
-    },
-    "currency": {
-      "type": "enumeration",
-      "enum": [
-        "RUB"
-      ],
-      "required": true,
-      "default": "RUB"
     },
     "direction": {
       "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "priceStatus"
+            },
+            "AVAILABLE"
+          ]
+        }
+      },
+      "required": true,
+      "default": "FROM",
       "enum": [
-        "FORM",
-        "CURRENT",
-        "UPTO"
-      ],
-      "default": "FORM",
-      "required": true
+        "FROM",
+        "CURRENT"
+      ]
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::currency.currency",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "priceStatus"
+            },
+            "AVAILABLE"
+          ]
+        }
+      }
+    },
+    "priceStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "AVAILABLE",
+      "enum": [
+        "AVAILABLE",
+        "NOT SPECIFIED",
+        "ON REQUEST"
+      ]
     }
   }
 }

@@ -1,4 +1,5 @@
 export type {
+  Price,
   ProductBase,
   ProductListResponse,
   ProductItemResponse,

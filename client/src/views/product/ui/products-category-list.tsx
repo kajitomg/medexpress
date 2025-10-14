@@ -11,6 +11,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  EmptyState,
   List,
   Typography,
 } from "@/shared/ui"
@@ -57,9 +58,16 @@ const ProductsCategoryList = ({
   const renderItem = (item: ProductBase & DocumentServices, index: number) => (
     <CatalogProductItem
       key={item?.id || index}
-      product={item ? { ...item, media: item.media || defaultMedia } : item}
+      product={
+        item
+          ? { ...item, images: item.images || (defaultMedia && [defaultMedia]) }
+          : item
+      }
     />
   )
+  if (!products?.length) {
+    return <EmptyState title="Нет подходящих товаров" className="" />
+  }
   return (
     <ScrollArea className="w-full">
       <div className="flex items-center gap-2">
@@ -106,8 +114,8 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
           <AspectRatio ratio={16 / 9} className="bg-muted">
             {product ? (
               <Image
-                src={imageUrlBuilder(product?.media?.url)}
-                alt={product.title}
+                src={imageUrlBuilder(product?.images?.[0]?.url)}
+                alt={product.name}
                 fill
                 sizes="100%"
                 className="object-cover"
@@ -119,14 +127,14 @@ const CatalogProductItem = ({ product }: CatalogProductItemProps) => {
         </CardHeader>
         <CardContent className="flex-auto flex flex-col gap-2 px-4">
           <CardTitle>
-            {product?.title ? (
+            {product?.name ? (
               <Typography
                 asChild
                 variant="h4"
                 target="card"
                 className="line-clamp-1"
               >
-                <h4>{product.title}</h4>
+                <h4>{product.name}</h4>
               </Typography>
             ) : (
               <Skeleton className="h-4 w-full" />

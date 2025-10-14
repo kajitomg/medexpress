@@ -8,10 +8,20 @@ const fetchDetailProductItem = async (slug: string) => {
   const queryObj = {
     populate: {
       type: true,
-      price: true,
+      price: {
+        sort: ["createdAt:desc"],
+        populate: {
+          currency: true,
+        },
+      },
       categories: true,
       images: true,
-      specifications: true,
+      specifications: {
+        populate: {
+          type: true,
+          bodyList: true,
+        },
+      },
     },
   } satisfies StrapiQuery<ProductBase>
 

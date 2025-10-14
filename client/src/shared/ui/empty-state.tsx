@@ -1,7 +1,7 @@
 import { Button } from "@/shared/ui/button"
 import { Card, CardContent } from "@/shared/ui/card"
 import { Bird } from "lucide-react"
-import React from "react"
+import React, { ComponentProps } from "react"
 
 interface EmptyStateProps {
   title: string
@@ -20,10 +20,10 @@ const EmptyState = ({
   description,
   icon = <DefaultIcon />,
   action,
-}: EmptyStateProps) => {
+}: ComponentProps<"div"> & EmptyStateProps) => {
   return (
     <Card className="w-full border-2 border-dashed bg-muted/40">
-      <CardContent className="flex flex-col items-center justify-center p-10 text-center">
+      <CardContent className="flex flex-col items-center justify-center p-2 md:p-4 lg:p-6 text-center">
         <div className="mb-4">{icon}</div>
         <h3 className="text-xl font-semibold text-foreground">{title}</h3>
         <p className="mt-2 max-w-md text-muted-foreground">{description}</p>

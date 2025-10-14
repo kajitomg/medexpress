@@ -9,9 +9,7 @@ type BoxProps<C extends React.ElementType> = {
 type PolymorphicComponentProps<
   C extends React.ElementType,
   Props = object,
-> = BoxProps<C> &
-  Props &
-  Omit<React.ComponentPropsWithoutRef<C>, keyof BoxProps<C>>
+> = BoxProps<C> & Props & Omit<React.ComponentProps<C>, keyof BoxProps<C>>
 
 interface ListProps<T> {
   items?: T[]

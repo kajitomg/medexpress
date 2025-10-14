@@ -6,7 +6,7 @@ import { cn } from "@/shared/lib"
 import { Button, buttonVariants } from "@/shared/ui/button"
 import { VariantProps } from "class-variance-authority"
 import { Loader2Icon, Plus, X } from "lucide-react"
-import { ComponentProps, useMemo } from "react"
+import { ComponentProps, MouseEventHandler, useMemo } from "react"
 
 interface AddToCartButtonProps {
   product?: ProductBase
@@ -29,7 +29,9 @@ const AddToCartButton = ({
     [products, product]
   )
 
-  const handleToggleCart = () => {
+  const handleToggleCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (!hasHydrated || !product) return
 
     if (isInCart) {
@@ -50,15 +52,15 @@ const AddToCartButton = ({
     >
       {!hasHydrated ? (
         <>
-          Загрузка <Loader2Icon className="ml-2 h-4 w-4 animate-spin" />
+          Загрузка <Loader2Icon className="h-4 w-4 animate-spin" />
         </>
       ) : isInCart ? (
         <>
-          Удалить <X className="ml-2 h-4 w-4" />
+          Удалить <X className="h-4 w-4" />
         </>
       ) : (
         <>
-          В корзину <Plus className="ml-2 h-4 w-4" />
+          В корзину <Plus className="h-4 w-4" />
         </>
       )}
     </Button>

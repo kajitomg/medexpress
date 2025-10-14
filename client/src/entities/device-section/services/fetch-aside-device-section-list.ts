@@ -22,11 +22,22 @@ const fetchAsideDeviceSectionList = async (slug?: string) => {
         : { parent: { $null: true } }),
     },
     populate: {
+      parent: {
+        fields: ["slug"],
+      },
       childrens: {
         sort: ["sort_code"],
         populate: {
+          parent: {
+            fields: ["slug"],
+          },
           childrens: {
             sort: ["sort_code"],
+            populate: {
+              parent: {
+                fields: ["slug"],
+              },
+            },
           },
         },
       },

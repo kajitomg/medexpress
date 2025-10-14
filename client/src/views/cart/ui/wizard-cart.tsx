@@ -29,8 +29,8 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
   const offsetTop = offset.top !== undefined ? offset.top + 32 : 228
   const [tab, setTab] = useState<"cart" | "form">("cart")
   const cartItems = useCartStore((state) => state.products)
-  const products = useProductsListStore((state) => state.products)
-  const loadProducts = useProductsListStore((state) => state.loadProducts)
+  const products = useProductsListStore((state) => state.list)
+  const loadProducts = useProductsListStore((state) => state.loadList)
   const _hasHydrated = useCartStore((state) => state._hasHydrated)
 
   const cartProducts: CartData<(ProductBase & DocumentServices) | undefined>[] =

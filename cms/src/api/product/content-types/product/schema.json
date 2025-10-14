@@ -10,11 +10,12 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "slug": {
       "type": "uid",
-      "required": true,
-      "targetField": "name"
+      "targetField": "name",
+      "required": true
     },
     "type": {
       "type": "relation",
@@ -48,6 +49,12 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "specifications": {
+      "type": "component",
+      "component": "shared.product-specification",
+      "repeatable": true,
+      "required": true
     }
   }
 }

@@ -8,7 +8,6 @@ import {
   PageLayoutContent,
   PageLayoutFooter,
   PageLayoutHeader,
-  PageLayoutMain,
 } from "@/shared/ui/page-layout"
 import { Footer } from "@/widgets/footer/ui"
 import { Header } from "@/widgets/header/ui"
@@ -40,10 +39,8 @@ const RootLayout = async ({
           <Header />
         </SectionsProvider>
       </PageLayoutHeader>
-      <PageLayoutContent initOffsetTop={196}>
-        <PageLayoutMain>
-          <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
-        </PageLayoutMain>
+      <PageLayoutContent>
+        <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         <PageLayoutFooter>
           <SectionsProvider initialState={{ sections: footer.sections }}>
             <Footer />

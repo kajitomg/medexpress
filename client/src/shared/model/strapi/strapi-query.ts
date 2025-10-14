@@ -24,6 +24,13 @@ type StrapiFilterOperator =
   | "$and"
   | "$not"
 
+type SortOrder<T> =
+  | keyof T
+  | `${keyof T & string}:asc`
+  | `${keyof T & string}:desc`
+
+type StrapiSort<T> = SortOrder<T> | SortOrder<T>[]
+
 type Unarray<T> = T extends (infer U)[] ? U : T
 
 type StrapiFilterValue = string | number | boolean | string[] | number[]
@@ -54,7 +61,7 @@ type StrapiPopulateObject<T> = {
   fields?: (keyof T)[]
   populate?: StrapiPopulate<T>
   filters?: StrapiFilters<T>
-  sort?: keyof T | (keyof T)[]
+  sort?: StrapiSort<T>
   on?: StrapiDynamicZonePopulate<Unarray<NonNullable<T>>>
 }
 
@@ -68,7 +75,7 @@ type StrapiPopulate<T> =
   | string[]
 
 export interface StrapiQuery<T = unknown> {
-  sort?: keyof T | (keyof T)[]
+  sort?: StrapiSort<T>
   fields?: (keyof T)[]
   populate?: StrapiPopulate<T>
   filters?: StrapiFilters<T>

@@ -4,7 +4,7 @@ const sendContactForm = async (
   body: ContactFormSchema
 ): Promise<{ success: boolean; message: string }> => {
   try {
-    const response = await fetch("api/send-contact-form", {
+    const response = await fetch("/api/send-contact-form", {
       method: "POST",
       body: JSON.stringify(body),
     })

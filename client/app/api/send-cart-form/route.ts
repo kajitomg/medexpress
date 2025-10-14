@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       ${
         products.length
           ? `<ul>
-        ${products?.map((item) => `<li>${item.item.title} (код: ${item.item.category?.code}) количество: ${item.count} шт.</li>`).join("")}
+        ${products?.map((item) => `<li>${item.item.name} (код: ${item.item.type?.code}) количество: ${item.count} шт.</li>`).join("")}
       </ul>`
           : "Нет выбранных товаров"
       }

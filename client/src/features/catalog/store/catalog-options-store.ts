@@ -5,24 +5,28 @@ import { createJSONStorage, persist } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
 export interface CatalogOptionsState {
-  searchQuery?: string
   page: number
   maxPages: number
+  nomenclatureSlug?: string
+  searchQuery?: string
   error?: Error
   _hasHydrated?: boolean
 }
 
 interface CatalogOptionsActions {
-  changeSearchQuery: (searchQuery?: string) => void
+  setSearchQuery: (searchQuery?: string) => void
   setPage: (page: number) => void
+  setNomenclatureSlug: (nomenclatureSlug?: string) => void
+  setMaxPages: (pages: number) => void
 }
 
 export type CatalogOptionsStore = CatalogOptionsState & CatalogOptionsActions
 
 export const defaultInitState: CatalogOptionsState = {
-  searchQuery: undefined,
   page: 1,
   maxPages: 1,
+  nomenclatureSlug: undefined,
+  searchQuery: undefined,
   error: undefined,
 }
 
@@ -35,15 +39,28 @@ export const createCatalogOptionsStore = (
       persist(
         (set) => ({
           ...{ ...defaultInitState, ...initState },
-          changeSearchQuery: (searchQuery?: string) => {
+          setSearchQuery: (searchQuery) => {
             set((state) => {
               state.page = 1
               state.searchQuery = searchQuery
             })
           },
-          setPage: (page: number) => {
+          setPage: (page) => {
             set((state) => {
               state.page = page
+            })
+          },
+          setMaxPages: (pages) => {
+            set((state) => {
+              state.maxPages = pages
+            })
+          },
+          setNomenclatureSlug: (nomenclatureSlug) => {
+            set((state) => {
+              state.page = 1
+              state.nomenclatureSlug = nomenclatureSlug
+              state.searchQuery = undefined
+              state.maxPages = 1
             })
           },
         }),
@@ -55,6 +72,7 @@ export const createCatalogOptionsStore = (
           partialize: (state) => ({
             searchQuery: state.searchQuery,
             page: state.page,
+            nomenclatureSlug: state.nomenclatureSlug,
           }),
           version: undefined,
           skipHydration,

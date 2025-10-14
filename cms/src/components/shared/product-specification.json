@@ -23,6 +23,12 @@
     },
     "bodyNumber": {
       "type": "decimal"
+    },
+    "bodyList": {
+      "type": "component",
+      "component": "shared.text",
+      "repeatable": true,
+      "required": false
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "currencies",
+  "info": {
+    "singularName": "currency",
+    "pluralName": "currencies",
+    "displayName": "currency"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "regex": "^[A-Z]{3}$"
+    },
+    "localeCode": {
+      "type": "string",
+      "required": true,
+      "regex": "^[a-z]{2,3}(?:-[A-Z]{2})?$"
+    }
+  }
+}

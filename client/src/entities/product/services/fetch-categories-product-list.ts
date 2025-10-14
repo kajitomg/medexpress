@@ -32,7 +32,12 @@ const fetchCategoriesProductList = async (
       categories: {
         fields: ["id", "name", "slug"],
       },
-      price: true,
+      price: {
+        sort: ["createdAt:desc"],
+        populate: {
+          currency: true,
+        },
+      },
       type: true,
       images: true,
     },

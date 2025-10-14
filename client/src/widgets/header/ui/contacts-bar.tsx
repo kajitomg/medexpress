@@ -7,7 +7,7 @@ import { cn } from "@/shared/lib"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
-import { useScrollDirection } from "@/shared/lib/hooks/use-scroll-direction"
+import { useDeferredScrollDirection } from "@/shared/lib/hooks/use-deferred-scroll-direction"
 import { HeaderContacts } from "@/shared/model/strapi/elements/header-contacts"
 import { Button, Typography } from "@/shared/ui"
 import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
@@ -48,13 +48,14 @@ const localBusiness = (
   }
 }
 
+const ANIMATION_DURATION = 300
+
 const ContactsBar = ({ className }: ComponentProps<"div">) => {
-  const ANIMATION_DURATION = 300
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const data = useSectionsStore(
     selectSectionItemByName("elements.header-contacts")
   )
-  const direction = useScrollDirection()
+  const direction = useDeferredScrollDirection()
   const [isRendered, setIsRendered] = useState(true)
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        `grid overflow-hidden transition-[grid-template-rows] duration-[${ANIMATION_DURATION}]`,
+        `grid overflow-hidden transition-[grid-template-rows] duration-${ANIMATION_DURATION}`,
         {
           "grid-rows-[1fr]": direction !== "down",
           "grid-rows-[0fr]": direction === "down",
@@ -89,9 +90,9 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
       {isRendered && (
         <div
           className={cn(
-            `transition-[padding] duration-[${ANIMATION_DURATION}] min-h-0 overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6`,
+            `min-h-0 overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6`,
             className,
-            direction === "down" && "p-0"
+            direction === "down" && "py-0"
           )}
         >
           <script

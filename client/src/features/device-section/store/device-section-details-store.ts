@@ -2,31 +2,31 @@ import { DeviceSectionBase } from "@/entities/device-section/model"
 import { DocumentServices } from "@/shared/model"
 import { create } from "zustand"
 
-export interface NomenclatureSectionDetailsState {
+export interface DeviceSectionDetailsState {
   item?: DeviceSectionBase & DocumentServices
   isLoading: boolean
   error?: string
 }
 
-interface NomenclatureSectionDetailsActions {
+interface DeviceSectionDetailsActions {
   setItem: (item: DeviceSectionBase & DocumentServices) => void
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
 }
 
-export type NomenclatureSectionDetailsStore = NomenclatureSectionDetailsState &
-  NomenclatureSectionDetailsActions
+export type DeviceSectionDetailsStore = DeviceSectionDetailsState &
+  DeviceSectionDetailsActions
 
-const defaultInitState: NomenclatureSectionDetailsState = {
+const defaultInitState: DeviceSectionDetailsState = {
   item: undefined,
   isLoading: false,
   error: undefined,
 }
 
-export const createNomenclatureSectionDetailsStore = (
-  initState: Partial<NomenclatureSectionDetailsState> = defaultInitState
+export const createDeviceSectionDetailsStore = (
+  initState: Partial<DeviceSectionDetailsState> = defaultInitState
 ) =>
-  create<NomenclatureSectionDetailsStore>((set) => ({
+  create<DeviceSectionDetailsStore>((set) => ({
     ...{ ...defaultInitState, ...initState },
     setItem: (item) => set({ item }),
 

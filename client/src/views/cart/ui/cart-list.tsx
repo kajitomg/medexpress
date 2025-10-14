@@ -35,7 +35,10 @@ const CartList = ({
         product={{
           ...cart,
           ...(cart.item && {
-            item: { ...cart.item, media: cart.item?.media || defaultMedia },
+            item: {
+              ...cart.item,
+              images: cart.item?.images || (defaultMedia && [defaultMedia]),
+            },
           }),
         }}
         incrementItemInCart={() => incrementItemInCart(cart.item?.slug)}

@@ -7,22 +7,12 @@ interface Offset {
 }
 
 export interface PageLayoutState {
-  root?: HTMLElement
-  aside?: HTMLElement
   header?: HTMLElement
-  main?: HTMLElement
-  content?: HTMLElement
-  footer?: HTMLElement
   offset: Offset
 }
 
 interface PageLayoutActions {
-  setRoot: (root?: HTMLElement) => void
-  setAside: (aside?: HTMLElement) => void
   setHeader: (header?: HTMLElement) => void
-  setMain: (main?: HTMLElement) => void
-  setContent: (content?: HTMLElement) => void
-  setFooter: (footer?: HTMLElement) => void
   setOffset: (offset: Partial<Offset>) => void
 }
 
@@ -38,12 +28,7 @@ export const createPageLayoutStore = (
   create<PageLayoutStore>()(
     immer((set) => ({
       ...{ ...defaultInitState, ...initState },
-      setRoot: (root) => set({ root }),
-      setAside: (aside) => set({ aside }),
       setHeader: (header) => set({ header }),
-      setMain: (main) => set({ main }),
-      setContent: (content) => set({ content }),
-      setFooter: (footer) => set({ footer }),
       setOffset: (offset) =>
         set((state) => ({
           offset: {

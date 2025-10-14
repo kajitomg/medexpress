@@ -2,6 +2,7 @@ import { fetchPage } from "@/entities/page/services"
 import { SectionsProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { AboutPage } from "@/views/about/ui"
 import { Metadata, Viewport } from "next"
 import * as React from "react"
@@ -33,7 +34,9 @@ const About = async () => {
 
   return (
     <SectionsProvider initialState={{ sections }}>
-      <AboutPage />
+      <PageLayoutMain>
+        <AboutPage />
+      </PageLayoutMain>
     </SectionsProvider>
   )
 }

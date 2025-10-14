@@ -1,6 +1,7 @@
 import { fetchPage } from "@/entities/page/services"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { CartPage } from "@/views/cart/ui"
 import { Metadata, Viewport } from "next"
 import * as React from "react"
@@ -25,7 +26,11 @@ export async function generateViewport(): Promise<Viewport | string> {
 }
 
 const Cart = () => {
-  return <CartPage />
+  return (
+    <PageLayoutMain>
+      <CartPage />
+    </PageLayoutMain>
+  )
 }
 
 export default Cart

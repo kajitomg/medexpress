@@ -2,6 +2,7 @@ import { fetchDetailProductItem } from "@/entities/product/services/fetch-detail
 import { ProductDetailsProvider } from "@/features/product-details/provider/product-details-provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
+import { PageLayoutMain } from "@/shared/ui"
 import { ProductPage } from "@/views/product/ui"
 import { Metadata, NextPage, Viewport } from "next"
 
@@ -19,7 +20,7 @@ export async function generateMetadata({
   const data = response.data
 
   return generatePageMetadata(data, {
-    defaultTitle: data.title || "Страница не найдена",
+    defaultTitle: data.name || "Страница не найдена",
     defaultDescription: data.description || undefined,
   })
 }
@@ -45,7 +46,9 @@ const Page: NextPage<ProductPageProps> = async ({ params }) => {
 
   return (
     <ProductDetailsProvider initialState={{ product }}>
-      <ProductPage />
+      <PageLayoutMain>
+        <ProductPage />
+      </PageLayoutMain>
     </ProductDetailsProvider>
   )
 }

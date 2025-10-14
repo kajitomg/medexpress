@@ -14,10 +14,7 @@ const PageLayout = ({ className, ...props }: ComponentProps<"div">) => {
     <PageLayoutProvider>
       <div
         id="page-section-root"
-        className={cn(
-          "relative w-full h-full min-h-[100vh] flex flex-col",
-          className
-        )}
+        className={cn("w-full h-full min-h-[100vh] flex flex-col", className)}
         {...props}
       />
     </PageLayoutProvider>
@@ -26,66 +23,34 @@ const PageLayout = ({ className, ...props }: ComponentProps<"div">) => {
 
 const PageLayoutContent = ({
   className,
-  initOffsetTop,
-  initOffsetLeft,
   ...props
-}: ComponentProps<"section"> &
-  Readonly<{
-    initOffsetTop?: number
-    initOffsetLeft?: number
-  }>) => {
-  const offset = usePageLayoutStore((state) => state.offset)
-
-  const offsetLeft = offset.left !== undefined ? offset.left : initOffsetLeft
-  const offsetTop = offset.top !== undefined ? offset.top : initOffsetTop
-
+}: ComponentProps<"section">) => {
   return (
     <section
       id="content-section"
-      className={cn(
-        "flex flex-col flex-auto transition-all duration-200",
-        className
-      )}
-      style={{
-        marginTop: `${offsetTop}px`,
-        marginLeft: `${offsetLeft}px`,
-      }}
+      className={cn("flex flex-col flex-auto", className)}
       {...props}
     />
   )
 }
 
 const PageLayoutAside = ({
-  initOffsetTop,
   className,
+  initOffsetTop,
   ...props
 }: ComponentProps<"section"> &
   Readonly<{
     initOffsetTop?: number
   }>) => {
   const offset = usePageLayoutStore((state) => state.offset)
-  const setOffset = usePageLayoutStore((state) => state.setOffset)
-  const aside = useCallbackRef<null | HTMLElement>(null, (newValue) => {
-    if (newValue) {
-      const observer = new ResizeObserver((entries) => {
-        setOffset({ left: entries[0].contentRect.width })
-      })
-      observer.observe(newValue)
-      return () => observer.disconnect()
-    }
-  })
 
   const offsetTop = offset.top !== undefined ? offset.top : initOffsetTop
 
   return (
     <section
       id="aside-section"
-      className={cn(
-        "z-40 fixed h-[100vh] transition-all duration-200",
-        className
-      )}
-      style={{ paddingTop: `${offsetTop}px` }}
-      ref={aside}
+      className={cn("z-40 sticky h-[100vh] w-auto", className)}
+      style={{ top: offsetTop, height: `calc(100vh - ${offsetTop}px)` }}
       {...props}
     />
   )
@@ -115,7 +80,7 @@ const PageLayoutHeader = ({
   return (
     <section
       id="header-section"
-      className={cn("z-50 fixed w-full", className)}
+      className={cn("z-50 sticky top-0 w-full", className)}
       ref={header}
       {...props}
     />

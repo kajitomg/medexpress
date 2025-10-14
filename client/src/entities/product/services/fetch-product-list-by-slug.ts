@@ -19,7 +19,12 @@ const fetchProductListBySlug = async (slugs: string[], page: number) => {
     populate: {
       categories: true,
       specifications: true,
-      price: true,
+      price: {
+        sort: ["createdAt:desc"],
+        populate: {
+          currency: true,
+        },
+      },
       type: true,
       images: true,
     },

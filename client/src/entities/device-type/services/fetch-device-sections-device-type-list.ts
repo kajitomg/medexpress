@@ -5,8 +5,8 @@ import { DeviceTypeBase } from "@/entities/device-type/model"
 import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
 
 const fetchDeviceSectionsDeviceTypeList = async (
-  slug: string,
-  page: number,
+  slug?: string,
+  page: number = 1,
   search?: string
 ) => {
   const queryObj = {
@@ -26,8 +26,6 @@ const fetchDeviceSectionsDeviceTypeList = async (
           { code: { $containsi: search } },
           { name: { $containsi: search } },
           { description: { $containsi: search } },
-          { sections: { code: { $containsi: search } } },
-          { sections: { name: { $containsi: search } } },
         ],
       }),
     },

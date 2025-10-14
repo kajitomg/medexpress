@@ -1,7 +1,7 @@
 import { MetaData } from "@/shared/model"
 import { Metadata } from "next"
 
-export const generateGlobalMetadata = <T extends { seo?: MetaData }>(
+export const generateGlobalMetadata = <T extends { seo?: Partial<MetaData> }>(
   data: T,
   options: {
     defaultTitle?: string

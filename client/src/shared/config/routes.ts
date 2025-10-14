@@ -48,13 +48,6 @@ class Routes {
     title,
     parent: this.MAIN,
   })
-  NOMENCLATURE_TYPE = (typeId: string | number = "", title = "Тип изделия") => {
-    return {
-      path: `/nomenclature-type/${typeId}`.replace(/\/$/, ""),
-      title,
-      parent: this.MAIN,
-    }
-  }
 }
 
 export const routes = new Routes()
