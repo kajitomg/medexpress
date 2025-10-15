@@ -1,44 +1,39 @@
-import { MetaData } from "@/shared/model"
-import { Meta } from "@/shared/model/api"
-import { DocumentId } from "@/shared/model/document"
-import { AboutHero } from "@/shared/model/strapi/elements/about-hero"
-import { AboutInfo } from "@/shared/model/strapi/elements/about-info"
-import { ContactsDetails } from "@/shared/model/strapi/elements/contacts-details"
-import { MainPageHero } from "@/shared/model/strapi/elements/main-page-hero"
-import { MainPageServices } from "@/shared/model/strapi/elements/main-page-services"
-import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
-import { GallerySection } from "@/shared/model/strapi/sections/gallery-section"
-import { HeroSection } from "@/shared/model/strapi/sections/hero-section"
-import { ListSection } from "@/shared/model/strapi/sections/list-section"
-import { ContactForm } from "@/shared/model/strapi/shared/contact-form"
-import { RichText } from "@/shared/model/strapi/shared/rich-text"
+import {
+  AboutHeroComponent,
+  AboutInfoComponent,
+  ContactFormComponent,
+  ContactFormSectionComponent,
+  ContactsDetailsComponent,
+  GallerySectionComponent,
+  HeroSectionComponent,
+  ListSectionComponent,
+  MainPageHeroComponent,
+  MainPageServicesComponent,
+  RichTextComponent,
+  SeoComponent,
+} from "@/entities/_components"
+import {
+  StrapiBase,
+  StrapiComponent,
+  StrapiDynamicZone,
+} from "@/shared/model/strapi"
 
 export type PageSections =
-  | ContactForm
-  | GallerySection
-  | HeroSection
-  | ListSection
-  | AboutHero
-  | AboutInfo
-  | ContactFormSection
-  | ContactsDetails
-  | MainPageHero
-  | MainPageServices
-  | RichText
+  | ContactFormComponent
+  | GallerySectionComponent
+  | HeroSectionComponent
+  | ListSectionComponent
+  | AboutHeroComponent
+  | AboutInfoComponent
+  | ContactFormSectionComponent
+  | ContactsDetailsComponent
+  | MainPageHeroComponent
+  | MainPageServicesComponent
+  | RichTextComponent
 
-export type PageBase = {
-  id: DocumentId
+export interface PageBase extends StrapiBase {
   slug: string
   name: string
-  seo: MetaData
-  sections: PageSections[]
-}
-
-export type PageItemResponse<T extends PageBase = PageBase> = {
-  data: T
-}
-
-export type PageListResponse<T extends PageBase = PageBase> = {
-  data: T[]
-  meta: Meta
+  seo: StrapiComponent<SeoComponent>
+  sections: StrapiDynamicZone<PageSections>
 }

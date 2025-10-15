@@ -1,5 +1,5 @@
 import { fetchDetailProductItem } from "@/entities/product/services/fetch-detail-product-item"
-import { ProductDetailsProvider } from "@/features/product-details/provider/product-details-provider"
+import { ProductDetailsProvider } from "@/features/product-details/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
@@ -45,7 +45,7 @@ const Page: NextPage<ProductPageProps> = async ({ params }) => {
   const product = response.data
 
   return (
-    <ProductDetailsProvider initialState={{ product }}>
+    <ProductDetailsProvider initialState={{ item: product }}>
       <PageLayoutMain>
         <ProductPage />
       </PageLayoutMain>

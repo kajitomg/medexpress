@@ -2,13 +2,13 @@ import { fetchDetailDeviceSectionItem } from "@/entities/device-section/services
 import { fetchDeviceSectionsDeviceTypeList } from "@/entities/device-type/services"
 import {
   CatalogOptionsProvider,
-  ClassificationTypeListProvider,
+  DeviceTypeListProvider,
 } from "@/features/catalog/provider"
-import { DeviceSectionDetailsProvider } from "@/features/device-section/provider"
+import { DeviceSectionDetailsProvider } from "@/features/device-section-details/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutAside, PageLayoutMain } from "@/shared/ui"
-import { NomenclatureTypesPage } from "@/views/nomenclature-types/ui"
+import { NomenclatureTypesPage } from "@/views/device-type-list/ui"
 import { NomenclatureTypesNavigationSidebar } from "@/widgets/catalog-categories-navigation-sidebar/ui"
 import { NaivgationSidebarSheet } from "@/widgets/navigation-sidebar-sheet/ui"
 import { Metadata, NextPage, Viewport } from "next"
@@ -87,7 +87,7 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
   return (
     <CatalogOptionsProvider initialState={{ searchQuery, page, maxPages }}>
       <DeviceSectionDetailsProvider initialState={{ item: nomenclature }}>
-        <ClassificationTypeListProvider initialState={{ list: types }}>
+        <DeviceTypeListProvider initialState={{ list: types }}>
           <div className="flex">
             <PageLayoutAside className="flex-none">
               <ErrorBoundary errorComponent={Error}>
@@ -104,7 +104,7 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
               </ErrorBoundary>
             </PageLayoutMain>
           </div>
-        </ClassificationTypeListProvider>
+        </DeviceTypeListProvider>
       </DeviceSectionDetailsProvider>
     </CatalogOptionsProvider>
   )

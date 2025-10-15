@@ -1,4 +1,4 @@
-import { AboutInfo } from "@/shared/model/strapi/elements/about-info"
+import { AboutInfo } from "@/entities/_components/elements/about-info"
 import { ContentSection, ContentSectionContent, Typography } from "@/shared/ui"
 import { BlocksRenderer } from "@strapi/blocks-react-renderer"
 import * as React from "react"

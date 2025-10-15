@@ -1,3 +1,4 @@
+import { StrapiItemResponse } from "@/shared/model/strapi"
 import { create } from "zustand"
 
 export interface BaseItemState<T> {
@@ -8,14 +9,12 @@ export interface BaseItemState<T> {
 
 interface BaseItemActions<T> {
   setItem: (item?: T) => void
-
   loadItem: <
-    A extends { data: T },
-    F extends (...args: Parameters<F>) => Promise<A>,
+    F extends (...args: Parameters<F>) => Promise<StrapiItemResponse<T>>,
   >(
     fn: F,
     ...args: Parameters<F>
-  ) => Promise<A | undefined>
+  ) => Promise<StrapiItemResponse<T> | undefined>
   setLoading: (loading: boolean) => void
   setError: (error?: string) => void
   reset: () => void

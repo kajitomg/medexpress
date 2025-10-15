@@ -4,11 +4,11 @@ import {
   CatalogOptionsProvider,
   ProductsListProvider,
 } from "@/features/catalog/provider"
-import { CategoryDetailsProviderTest } from "@/features/category-details/provider/category-details-provider"
+import { CategoryDetailsProvider } from "@/features/category-details/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
-import { CategoryProductsPage } from "@/views/category-products/ui"
+import { CategoryProductsPage } from "@/views/catalog-product-list/ui"
 import { Metadata, NextPage, Viewport } from "next"
 
 interface CatalogPageProps {
@@ -61,7 +61,7 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
   const maxPages = response?.meta.pagination.pageCount
 
   return (
-    <CategoryDetailsProviderTest initialState={{ item: category }}>
+    <CategoryDetailsProvider initialState={{ item: category }}>
       <CatalogOptionsProvider
         initialState={{ searchQuery, page, maxPages }}
         skipHydration
@@ -72,7 +72,7 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
           </PageLayoutMain>
         </ProductsListProvider>
       </CatalogOptionsProvider>
-    </CategoryDetailsProviderTest>
+    </CategoryDetailsProvider>
   )
 }
 

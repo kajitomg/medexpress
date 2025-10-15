@@ -1,4 +1,4 @@
-import { MainPageHero } from "@/shared/model/strapi/elements/main-page-hero"
+import { MainPageHero } from "@/entities/_components/elements/main-page-hero"
 import { Typography } from "@/shared/ui"
 import {
   PageHero,

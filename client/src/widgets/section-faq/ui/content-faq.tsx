@@ -1,4 +1,4 @@
-import { RowTextItem } from "@/shared/model/strapi/blocks/row-text-item"
+import { RowTextItem } from "@/entities/_components/blocks/row-text-item"
 import {
   Accordion,
   AccordionContent,

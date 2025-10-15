@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
 interface CartState {
-  products: CartItem[]
+  list: CartItem[]
   error?: Error
   _hasHydrated: boolean
 }
@@ -21,7 +21,7 @@ interface CartActions {
 export type CartStore = CartState & CartActions
 
 const defaultInitState: CartState = {
-  products: [],
+  list: [],
   error: undefined,
   _hasHydrated: false,
 }
@@ -38,60 +38,60 @@ export const createCartStore = (
           addItemToCart: (slug?: string) => {
             if (!slug) return
             set((state) => {
-              const productIndex = state.products.findIndex(
-                (product) => product.slug === slug
+              const productIndex = state.list.findIndex(
+                (item) => item.slug === slug
               )
 
               if (productIndex >= 0) {
-                state.products[productIndex].count++
+                state.list[productIndex].count++
               } else {
-                const product = {
+                const item = {
                   slug,
                   count: 1,
                 }
-                state.products.push(product)
+                state.list.push(item)
               }
               state.error = undefined
             })
           },
           deleteItemFromCart: (slug?: string) => {
             set((state) => {
-              const productIndex = state.products.findIndex(
-                (product) => product.slug === slug
+              const itemIndex = state.list.findIndex(
+                (item) => item.slug === slug
               )
 
-              if (productIndex === -1) {
+              if (itemIndex === -1) {
                 state.error = "Product not found."
               } else {
-                state.products.splice(productIndex, 1)
+                state.list.splice(itemIndex, 1)
                 state.error = undefined
               }
             })
           },
           incrementItemInCart: (slug?: string) => {
             set((state) => {
-              const productIndex = state.products.findIndex(
-                (product) => product.slug === slug
+              const itemIndex = state.list.findIndex(
+                (item) => item.slug === slug
               )
-              if (productIndex === -1) {
+              if (itemIndex === -1) {
                 state.error = "Product not found."
               } else {
-                state.products[productIndex].count++
+                state.list[itemIndex].count++
                 state.error = undefined
               }
             })
           },
           decrementItemInCart: (slug?: string) => {
             set((state) => {
-              const productIndex = state.products.findIndex(
-                (product) => product.slug === slug
+              const itemIndex = state.list.findIndex(
+                (item) => item.slug === slug
               )
-              if (productIndex === -1) {
+              if (itemIndex === -1) {
                 state.error = "Product not found."
               } else {
-                state.products[productIndex].count--
-                if (state.products[productIndex].count <= 0) {
-                  state.products.splice(productIndex, 1)
+                state.list[itemIndex].count--
+                if (state.list[itemIndex].count <= 0) {
+                  state.list.splice(itemIndex, 1)
                 }
                 state.error = undefined
               }
@@ -99,14 +99,14 @@ export const createCartStore = (
           },
           clearCart: () => {
             set((state) => {
-              state.products = []
+              state.list = []
               state.error = undefined
             })
           },
         }),
         {
           name: "cartStore",
-          partialize: (state) => ({ products: state.products }),
+          partialize: (state) => ({ list: state.list }),
           onRehydrateStorage: () => (state) => {
             if (state) {
               state._hasHydrated = true

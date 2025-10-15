@@ -1,5 +1,1 @@
-export type {
-  DeviceTypeBase,
-  DeviceTypeListResponse,
-  DeviceTypeItemResponse,
-} from "./device-type"
+export type { DeviceTypeBase } from "./device-type"

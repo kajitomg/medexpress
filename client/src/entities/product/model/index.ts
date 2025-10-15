@@ -1,6 +1,1 @@
-export type {
-  Price,
-  ProductBase,
-  ProductListResponse,
-  ProductItemResponse,
-} from "./product"
+export type { ProductBase } from "./product"

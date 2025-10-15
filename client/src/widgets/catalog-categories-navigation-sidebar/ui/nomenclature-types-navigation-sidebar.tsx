@@ -1,5 +1,5 @@
 import { fetchAsideDeviceSectionList } from "@/entities/device-section/services"
-import { ClassificationListProvider } from "@/features/catalog/provider"
+import { DeviceSectionListProvider } from "@/features/catalog/provider"
 import { NomenclatureClient } from "@/widgets/catalog-categories-navigation-sidebar/ui/nomenclature.client"
 import { ScrollAreaProps } from "@radix-ui/react-scroll-area"
 import { ForwardRefExoticComponent, RefAttributes } from "react"
@@ -21,7 +21,7 @@ const NomenclatureTypesNavigationSidebar = async ({
 
   const nomenclatures = responseNomenclatures.data
   return (
-    <ClassificationListProvider initialState={{ list: nomenclatures }}>
+    <DeviceSectionListProvider initialState={{ list: nomenclatures }}>
       <NomenclatureClient
         items={nomenclatures}
         initSelect={initSlug}
@@ -29,7 +29,7 @@ const NomenclatureTypesNavigationSidebar = async ({
         redirect={redirect}
         {...props}
       />
-    </ClassificationListProvider>
+    </DeviceSectionListProvider>
   )
 }
 

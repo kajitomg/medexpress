@@ -1,5 +1,3 @@
-export type { Media, MediaFormat, MediaFormats } from "./media"
-export type { DocumentId, DocumentServices } from "./document"
+export type { StrapiMedia, MediaFormat, MediaFormats } from "./strapi/media"
 export type { Error } from "./error"
 export type { RouteEntry } from "./route"
-export type { MetaData } from "./meta"

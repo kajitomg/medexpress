@@ -1,18 +1,17 @@
 "use server"
 
-import {
-  DeviceSectionBase,
-  DeviceSectionItemResponse,
-  DeviceSectionListResponse,
-} from "@/entities/device-section/model"
+import { DeviceSectionBase } from "@/entities/device-section/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import {
+  Query,
+  StrapiItemResponse,
+  StrapiListResponse,
+} from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchDeviceSectionList = async (
-  queryObj?: StrapiQuery<DeviceSectionBase>,
+  queryObj?: Query<DeviceSectionBase>,
   tags?: string[]
 ) => {
   try {
@@ -26,9 +25,7 @@ const fetchDeviceSectionList = async (
       },
     })
 
-    return (await response.json()) as DeviceSectionListResponse<
-      DeviceSectionBase & DocumentServices
-    >
+    return (await response.json()) as StrapiListResponse<DeviceSectionBase>
   } catch (e) {
     return ErrorHandler(e, "/api/device-sections")
   }
@@ -36,7 +33,7 @@ const fetchDeviceSectionList = async (
 
 const fetchDeviceSectionItemBySlug = async (
   slug: string,
-  queryObj?: StrapiQuery<DeviceSectionBase>
+  queryObj?: Query<DeviceSectionBase>
 ) => {
   try {
     queryObj = {
@@ -56,13 +53,12 @@ const fetchDeviceSectionItemBySlug = async (
       },
     })
 
-    const data = (await response.json()) as DeviceSectionListResponse<
-      DeviceSectionBase & DocumentServices
-    >
+    const data =
+      (await response.json()) as StrapiListResponse<DeviceSectionBase>
 
     return {
       data: data.data[0],
-    } as DeviceSectionItemResponse<DeviceSectionBase & DocumentServices>
+    } as StrapiItemResponse<DeviceSectionBase>
   } catch (e) {
     return ErrorHandler(e, "/api/device-sections")
   }

@@ -1,9 +1,9 @@
 "use client"
+import { ContactsDetails } from "@/entities/_components/elements/contacts-details"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { ContactsDetails } from "@/shared/model/strapi/elements/contacts-details"
 import {
   Button,
   ContentSection,

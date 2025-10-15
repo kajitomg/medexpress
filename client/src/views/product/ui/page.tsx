@@ -44,7 +44,7 @@ const Page = () => {
     "description"
   )
   const [baseUrl, setBaseUrl] = useState<string | undefined>()
-  const product = useProductDetailsStore((state) => state.product)
+  const product = useProductDetailsStore((state) => state.item)
 
   useEffect(() => {
     setBaseUrl(window.location.href)

@@ -1,5 +1,5 @@
+import { GallerySection } from "@/entities/_components/sections/gallery-section"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { GallerySection } from "@/shared/model/strapi/sections/gallery-section"
 import {
   ContentSection,
   ContentSectionContent,

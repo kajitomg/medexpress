@@ -1,5 +1,5 @@
+import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
 import { cn } from "@/shared/lib"
-import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContactFormDetails } from "@/views/main/ui/contact-form-details"
 import { ContactFormSchema } from "@/widgets/contact-form/model"

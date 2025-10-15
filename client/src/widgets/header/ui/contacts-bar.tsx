@@ -1,14 +1,14 @@
 "use client"
 
-import { HeaderSections } from "@/entities/header/model/header"
-import { createSectionsStore } from "@/features/sections/provider"
+import { HeaderContacts } from "@/entities/_components/elements/header-contacts"
+import { HeaderSections } from "@/entities/_single-types/header/model/header"
+import { createSectionListStore } from "@/features/sections/provider"
 import { selectSectionItemByName } from "@/features/sections/store"
 import { cn } from "@/shared/lib"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
 import { useDeferredScrollDirection } from "@/shared/lib/hooks/use-deferred-scroll-direction"
-import { HeaderContacts } from "@/shared/model/strapi/elements/header-contacts"
 import { Button, Typography } from "@/shared/ui"
 import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
 import Link from "next/link"
@@ -16,7 +16,7 @@ import * as React from "react"
 import { ComponentProps, useEffect, useRef, useState } from "react"
 import { LocalBusiness, WithContext } from "schema-dts"
 
-const useSectionsStore = createSectionsStore<HeaderSections[]>()
+const useSectionsStore = createSectionListStore<HeaderSections[]>()
 
 const localBusiness = (
   contacts?: HeaderContacts

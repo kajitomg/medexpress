@@ -1,6 +1,6 @@
 import { fetchDeviceSectionList } from "@/entities/device-section/api"
 import { DeviceSectionBase } from "@/entities/device-section/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import { Query } from "@/shared/model/strapi"
 
 const fetchClassificationsDeviceSectionList = async (
   page: number = 1,
@@ -31,7 +31,7 @@ const fetchClassificationsDeviceSectionList = async (
         sort: ["sort_code"],
       },
     },
-  } satisfies StrapiQuery<DeviceSectionBase>
+  } satisfies Query<DeviceSectionBase>
 
   return await fetchDeviceSectionList(queryObj)
 }

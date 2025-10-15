@@ -2,7 +2,7 @@
 
 import { fetchDeviceSectionList } from "@/entities/device-section/api"
 import { DeviceSectionBase } from "@/entities/device-section/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import { Query } from "@/shared/model/strapi"
 
 const fetchAsideDeviceSectionList = async (slug?: string) => {
   const queryObj = {
@@ -42,7 +42,7 @@ const fetchAsideDeviceSectionList = async (slug?: string) => {
         },
       },
     },
-  } satisfies StrapiQuery<DeviceSectionBase>
+  } satisfies Query<DeviceSectionBase>
 
   return await fetchDeviceSectionList(queryObj, [
     slug ? `device-section::${slug}` : "device-section",

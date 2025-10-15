@@ -1,5 +1,1 @@
-export type {
-  CategoryBase,
-  CategoryListResponse,
-  CategoryItemResponse,
-} from "./category"
+export type { CategoryBase } from "./category"

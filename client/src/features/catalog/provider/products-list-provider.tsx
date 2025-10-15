@@ -1,50 +1,10 @@
 "use client"
 
-import { createContext, type ReactNode, useContext, useRef } from "react"
-import { useStore } from "zustand"
-import {
-  createProductsListStore,
-  ProductsListState,
-  ProductsListStore,
-} from "../store"
+import { ProductBase } from "@/entities/product/model"
+import { DocumentServices } from "@/shared/model"
+import { createStoreBaseListProvider } from "@/shared/provider"
 
-export type ProductsListStoreApi = ReturnType<typeof createProductsListStore>
+const { Provider: ProductsListProvider, useStore: useProductsListStore } =
+  createStoreBaseListProvider<ProductBase & DocumentServices>("ProductsList")
 
-export const ProductsListStoreContext = createContext<
-  ProductsListStoreApi | undefined
->(undefined)
-
-export interface ProductsListProviderProps {
-  children: ReactNode
-  initialState?: Partial<ProductsListState>
-}
-
-export const ProductsListProvider = ({
-  children,
-  initialState,
-}: ProductsListProviderProps) => {
-  const storeRef = useRef<ProductsListStoreApi | null>(null)
-  if (storeRef.current === null) {
-    storeRef.current = createProductsListStore(initialState)
-  }
-
-  return (
-    <ProductsListStoreContext.Provider value={storeRef.current}>
-      {children}
-    </ProductsListStoreContext.Provider>
-  )
-}
-
-export const useProductsListStore = <T,>(
-  selector: (store: ProductsListStore) => T
-): T => {
-  const context = useContext(ProductsListStoreContext)
-
-  if (!context) {
-    throw new Error(
-      `useProductsListStore must be used within ProductsListProvider`
-    )
-  }
-
-  return useStore(context, selector)
-}
+export { ProductsListProvider, useProductsListStore }

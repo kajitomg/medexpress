@@ -1,27 +1,16 @@
-import { MetaData } from "@/shared/model"
-import { DocumentId } from "@/shared/model/document"
-import { StrapiMetaResponse } from "@/shared/model/strapi"
+import { SeoComponent } from "@/entities/_components"
+import {
+  StrapiBase,
+  StrapiComponent,
+  StrapiRelation,
+} from "@/shared/model/strapi"
 
-export type DeviceSectionBase = {
-  id: DocumentId
+export interface DeviceSectionBase extends StrapiBase {
   slug: string
   code: string
   sort_code: string
   name: string
-  parent?: DeviceSectionBase
-  childrens?: DeviceSectionBase[]
-  seo?: MetaData
-}
-
-export type DeviceSectionListResponse<
-  T extends DeviceSectionBase = DeviceSectionBase,
-> = {
-  data: T[]
-  meta: StrapiMetaResponse
-}
-
-export type DeviceSectionItemResponse<
-  T extends DeviceSectionBase = DeviceSectionBase,
-> = {
-  data: T
+  parent?: StrapiRelation<DeviceSectionBase>
+  childrens?: StrapiRelation<DeviceSectionBase[]>
+  seo?: StrapiComponent<SeoComponent>
 }

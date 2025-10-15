@@ -1,6 +1,6 @@
+import { FooterAbout } from "@/entities/_components/elements/footer-about"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { FooterAbout } from "@/shared/model/strapi/elements/footer-about"
 import {
   Button,
   Card,

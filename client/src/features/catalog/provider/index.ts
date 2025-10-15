@@ -3,9 +3,9 @@ export {
   CatalogOptionsProvider,
 } from "./catalog-options-provider"
 export {
-  useClassificationListStore,
-  ClassificationListProvider,
-} from "./classification-list-provider"
+  useDeviceSectionListStore,
+  DeviceSectionListProvider,
+} from "./device-section-list-provider"
 export {
   useProductsListStore,
   ProductsListProvider,
@@ -15,6 +15,6 @@ export {
   CategoryListProvider,
 } from "./category-list-provider"
 export {
-  useClassificationTypeListStore,
-  ClassificationTypeListProvider,
-} from "./classification-type-list-provider"
+  useDeviceTypeListStore,
+  DeviceTypeListProvider,
+} from "./device-type-list-provider"

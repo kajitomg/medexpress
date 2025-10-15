@@ -18,6 +18,6 @@ export const sendMail = async (options: Mail.Options) => {
   try {
     return await transporter.sendMail(options)
   } catch (e) {
-    return ErrorHandler(e, "send mail")
+    return ErrorHandler(e, "/api/send-mail")
   }
 }

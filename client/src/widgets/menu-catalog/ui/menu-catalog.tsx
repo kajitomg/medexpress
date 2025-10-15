@@ -1,10 +1,10 @@
 "use client"
 
-import { HeaderSections } from "@/entities/header/model/header"
+import { HeaderSections } from "@/entities/_single-types/header/model/header"
 import { PageSections } from "@/entities/page/model/page"
 import { useCategoryListStore } from "@/features/catalog/provider"
 import { useGlobalStore } from "@/features/global/provider"
-import { createSectionsStore } from "@/features/sections/provider"
+import { createSectionListStore } from "@/features/sections/provider"
 import { selectSectionItemByName } from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
@@ -17,7 +17,7 @@ import Link from "next/link"
 import { ComponentProps, useCallback, useRef, useState } from "react"
 
 const useSectionsStore =
-  createSectionsStore<(PageSections | HeaderSections)[]>()
+  createSectionListStore<(PageSections | HeaderSections)[]>()
 
 const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
   const catalogHero = useSectionsStore(selectSectionItemByName("sections.hero"))
@@ -25,7 +25,7 @@ const MenuCatalog = ({ ...props }: ComponentProps<"nav">) => {
   const offsetTop = offset.top !== undefined ? offset.top - 35 : 160
 
   const defaultMedia = useGlobalStore(
-    (store) => store.data?.defaultCategoryImage
+    (store) => store.item?.defaultCategoryImage
   )
   const categories = useCategoryListStore((state) => state.list)
 

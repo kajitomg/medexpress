@@ -1,5 +1,1 @@
-export type {
-  DeviceSectionBase,
-  DeviceSectionListResponse,
-  DeviceSectionItemResponse,
-} from "./device-section"
+export type { DeviceSectionBase } from "./device-section"

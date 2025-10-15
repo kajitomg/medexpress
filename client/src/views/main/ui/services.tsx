@@ -1,5 +1,5 @@
+import { MainPageServices as ServicesElement } from "@/entities/_components/elements/main-page-services"
 import { routes } from "@/shared/config/routes"
-import { MainPageServices as ServicesElement } from "@/shared/model/strapi/elements/main-page-services"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContentServices } from "@/views/main/ui/content-services"
 import * as React from "react"

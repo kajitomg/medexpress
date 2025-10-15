@@ -1,8 +1,8 @@
 import "@/application/styles/globals.css"
-import { fetchFooter } from "@/entities/footer/services"
-import { fetchHeader } from "@/entities/header/services"
+import { fetchFooter } from "@/entities/_single-types/footer/services"
+import { fetchHeader } from "@/entities/_single-types/header/services"
 import { fetchPage } from "@/entities/page/services"
-import { SectionsProvider } from "@/features/sections/provider"
+import { SectionListProvider } from "@/features/sections/provider"
 import {
   PageLayout,
   PageLayoutContent,
@@ -33,18 +33,18 @@ const RootLayout = async ({
   return (
     <PageLayout>
       <PageLayoutHeader>
-        <SectionsProvider
+        <SectionListProvider
           initialState={{ sections: [...header.sections, ...catalog.sections] }}
         >
           <Header />
-        </SectionsProvider>
+        </SectionListProvider>
       </PageLayoutHeader>
       <PageLayoutContent>
         <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         <PageLayoutFooter>
-          <SectionsProvider initialState={{ sections: footer.sections }}>
+          <SectionListProvider initialState={{ sections: footer.sections }}>
             <Footer />
-          </SectionsProvider>
+          </SectionListProvider>
         </PageLayoutFooter>
       </PageLayoutContent>
     </PageLayout>

@@ -1,1 +1,4 @@
-export { SectionsProvider, createSectionsStore } from "./sections-provider"
+export {
+  SectionListProvider,
+  createSectionListStore,
+} from "./section-list-provider"

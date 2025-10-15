@@ -22,7 +22,7 @@ interface ImagesSectionProps {
 
 const ImagesSection = ({ items }: ImagesSectionProps) => {
   const defaultMedia = useGlobalStore(
-    (state) => state.data?.defaultProductImage
+    (state) => state.item?.defaultProductImage
   )
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
   const [mainApi, setMainApi] = React.useState<CarouselApi>()

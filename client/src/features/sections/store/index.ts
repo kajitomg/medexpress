@@ -1,9 +1,9 @@
 export {
-  createSectionsStore,
-  type SectionsStore,
-  type SectionsState,
-} from "./sections-store"
+  createSectionListStore,
+  type SectionListStore,
+  type SectionListState,
+} from "./section-list-store"
 export {
   selectSectionItemByName,
   selectSectionListItemByType,
-} from "./sections-actions"
+} from "./section-list-actions"

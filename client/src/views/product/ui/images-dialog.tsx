@@ -35,7 +35,7 @@ const ImagesDialog = ({
   onOpenChange,
 }: ImagesDialogProps) => {
   const defaultMedia = useGlobalStore(
-    (state) => state.data?.defaultProductImage
+    (state) => state.item?.defaultProductImage
   )
   const [mainApi, setMainApi] = React.useState<CarouselApi>()
 

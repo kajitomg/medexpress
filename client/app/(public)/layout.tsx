@@ -1,5 +1,5 @@
 import "@/application/styles/globals.css"
-import { fetchGlobal } from "@/entities/global/services"
+import { fetchGlobal } from "@/entities/_single-types/global/services"
 import { CartProvider } from "@/features/cart/provider"
 import { GlobalProvider } from "@/features/global/provider"
 import { Toaster } from "@/shared/ui/sonner"

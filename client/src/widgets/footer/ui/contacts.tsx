@@ -1,8 +1,8 @@
+import { FooterContacts } from "@/entities/_components/elements/footer-contacts"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { FooterContacts } from "@/shared/model/strapi/elements/footer-contacts"
 import {
   Card,
   CardContent,

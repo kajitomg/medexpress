@@ -1,5 +1,5 @@
+import { ListSection } from "@/entities/_components/sections/list-section"
 import { cn } from "@/shared/lib"
-import { ListSection } from "@/shared/model/strapi/sections/list-section"
 import {
   ContentSection,
   ContentSectionContent,

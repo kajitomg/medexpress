@@ -2,7 +2,7 @@
 
 import { fetchCategoryList } from "@/entities/category/api"
 import { CategoryBase } from "@/entities/category/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import { Query } from "@/shared/model/strapi"
 
 const fetchNavigationCategoryList = async () => {
   const queryObj = {
@@ -14,7 +14,7 @@ const fetchNavigationCategoryList = async () => {
     populate: {
       image: true,
     },
-  } satisfies StrapiQuery<CategoryBase>
+  } satisfies Query<CategoryBase>
 
   return await fetchCategoryList(queryObj)
 }

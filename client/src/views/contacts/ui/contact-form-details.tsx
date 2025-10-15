@@ -1,7 +1,7 @@
 "use client"
 
+import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
 import { cn } from "@/shared/lib"
-import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { Typography } from "@/shared/ui"
 import { Mail, Phone } from "lucide-react"
 import Link from "next/link"

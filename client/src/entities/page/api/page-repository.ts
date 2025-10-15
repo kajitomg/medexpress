@@ -1,16 +1,18 @@
 "use server"
 
-import { PageBase, PageItemResponse } from "@/entities/page/model"
-import { PageListResponse } from "@/entities/page/model/page"
+import { PageBase } from "@/entities/page/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import {
+  Query,
+  StrapiItemResponse,
+  StrapiListResponse,
+} from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchPageItemBySlug = async (
   slug: string,
-  queryObj?: StrapiQuery<PageBase>
+  queryObj?: Query<PageBase>
 ) => {
   try {
     queryObj = {
@@ -31,12 +33,10 @@ const fetchPageItemBySlug = async (
       },
     })
 
-    const data = (await response.json()) as PageListResponse<
-      PageBase & DocumentServices
-    >
+    const data = (await response.json()) as StrapiListResponse<PageBase>
     return {
       data: data.data[0],
-    } as PageItemResponse<PageBase & DocumentServices>
+    } as StrapiItemResponse<PageBase>
   } catch (e) {
     return ErrorHandler(e, "/api/pages")
   }

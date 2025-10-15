@@ -1,5 +1,5 @@
+import { AboutHero } from "@/entities/_components/elements/about-hero"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { AboutHero } from "@/shared/model/strapi/elements/about-hero"
 import {
   Button,
   ContentSection,

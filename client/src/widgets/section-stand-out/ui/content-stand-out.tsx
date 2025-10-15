@@ -1,5 +1,5 @@
+import { RowTextItem } from "@/entities/_components/blocks/row-text-item"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { RowTextItem } from "@/shared/model/strapi/blocks/row-text-item"
 import { Typography } from "@/shared/ui"
 import DynamicIcon from "@/shared/ui/dynamic-icon"
 import * as React from "react"

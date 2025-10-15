@@ -1,6 +1,6 @@
+import { MainPageServices as ServicesElement } from "@/entities/_components/elements/main-page-services"
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { MainPageServices as ServicesElement } from "@/shared/model/strapi/elements/main-page-services"
 import {
   Button,
   Card,

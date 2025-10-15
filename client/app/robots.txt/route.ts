@@ -1,4 +1,4 @@
-import { fetchGlobal } from "@/entities/global/services"
+import { fetchGlobal } from "@/entities/_single-types/global/services"
 import { NextResponse } from "next/server"
 
 export const dynamic = "force-dynamic"

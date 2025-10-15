@@ -1,7 +1,7 @@
 import {
   ScheduleDays,
   WorkingScheduleItem,
-} from "@/shared/model/strapi/shared/working-schedule"
+} from "@/entities/_components/shared/working-schedule"
 
 export { getWorkingTime }
 

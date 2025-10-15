@@ -2,7 +2,7 @@ import {
   DayType,
   ScheduleDays,
   WorkingScheduleItem,
-} from "@/shared/model/strapi/shared/working-schedule"
+} from "@/entities/_components/shared/working-schedule"
 
 type Variants = "full" | "simple"
 type Dividers = " - " | ", "

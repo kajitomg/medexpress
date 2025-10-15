@@ -1,5 +1,5 @@
 import "@/application/styles/globals.css"
-import { fetchGlobal } from "@/entities/global/services"
+import { fetchGlobal } from "@/entities/_single-types/global/services"
 import { generateGlobalMetadata } from "@/shared/lib/generate-global-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { Metadata, Viewport } from "next"

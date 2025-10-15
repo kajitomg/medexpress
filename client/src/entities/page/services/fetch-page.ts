@@ -1,6 +1,6 @@
 import { fetchPageItemBySlug } from "@/entities/page/api"
 import { PageBase } from "@/entities/page/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import { Query } from "@/shared/model/strapi"
 
 const fetchPage = async (slug: string) => {
   const queryObj = {
@@ -93,7 +93,7 @@ const fetchPage = async (slug: string) => {
       },
       seo: true,
     },
-  } satisfies StrapiQuery<PageBase>
+  } satisfies Query<PageBase>
 
   return await fetchPageItemBySlug(slug, queryObj)
 }

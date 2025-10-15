@@ -1,7 +1,7 @@
 "use client"
+import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { ContactFormSection } from "@/shared/model/strapi/sections/contact-form-section"
 import { Typography } from "@/shared/ui"
 import DynamicIcon from "@/shared/ui/dynamic-icon"
 import Link from "next/link"

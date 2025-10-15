@@ -4,11 +4,11 @@ import {
   CatalogOptionsProvider,
   CategoryListProvider,
 } from "@/features/catalog/provider"
-import { SectionsProvider } from "@/features/sections/provider"
+import { SectionListProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
-import { CatalogCategoriesPage } from "@/views/catalog-categories/ui"
+import { CatalogCategoriesPage } from "@/views/catalog-category-list/ui"
 import { Metadata, NextPage, Viewport } from "next"
 import slugify from "slugify"
 
@@ -47,9 +47,9 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
 
   const response = await fetchCatalogCategoryList(1, searchQuery)
   const categories = response?.data
-
+  console.log(categories)
   return (
-    <SectionsProvider initialState={{ sections }}>
+    <SectionListProvider initialState={{ sections }}>
       <CatalogOptionsProvider initialState={{ searchQuery }} skipHydration>
         <CategoryListProvider initialState={{ list: categories }}>
           <PageLayoutMain>
@@ -57,7 +57,7 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
           </PageLayoutMain>
         </CategoryListProvider>
       </CatalogOptionsProvider>
-    </SectionsProvider>
+    </SectionListProvider>
   )
 }
 

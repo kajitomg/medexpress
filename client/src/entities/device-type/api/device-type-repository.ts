@@ -1,18 +1,17 @@
 "use server"
 
-import {
-  DeviceTypeBase,
-  DeviceTypeItemResponse,
-  DeviceTypeListResponse,
-} from "@/entities/device-type/model"
+import { DeviceTypeBase } from "@/entities/device-type/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import {
+  Query,
+  StrapiItemResponse,
+  StrapiListResponse,
+} from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchDeviceTypeList = async (
-  queryObj?: StrapiQuery<DeviceTypeBase>,
+  queryObj?: Query<DeviceTypeBase>,
   tags?: string[]
 ) => {
   try {
@@ -26,9 +25,7 @@ const fetchDeviceTypeList = async (
       },
     })
 
-    return (await response.json()) as DeviceTypeListResponse<
-      DeviceTypeBase & DocumentServices
-    >
+    return (await response.json()) as StrapiListResponse<DeviceTypeBase>
   } catch (e) {
     return ErrorHandler(e, "/api/device-types")
   }
@@ -36,7 +33,7 @@ const fetchDeviceTypeList = async (
 
 const fetchDeviceTypeItemBySlug = async (
   slug: string,
-  queryObj?: StrapiQuery<DeviceTypeBase>
+  queryObj?: Query<DeviceTypeBase>
 ) => {
   try {
     queryObj = {
@@ -57,13 +54,11 @@ const fetchDeviceTypeItemBySlug = async (
       },
     })
 
-    const data = (await response.json()) as DeviceTypeListResponse<
-      DeviceTypeBase & DocumentServices
-    >
+    const data = (await response.json()) as StrapiListResponse<DeviceTypeBase>
 
     return {
       data: data.data[0],
-    } as DeviceTypeItemResponse<DeviceTypeBase & DocumentServices>
+    } as StrapiItemResponse<DeviceTypeBase>
   } catch (e) {
     return ErrorHandler(e, "/api/device-types")
   }

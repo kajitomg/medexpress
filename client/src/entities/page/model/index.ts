@@ -1,1 +1,1 @@
-export type { PageBase, PageItemResponse } from "./page"
+export type { PageBase, PageSections } from "./page"

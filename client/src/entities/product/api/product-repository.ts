@@ -1,18 +1,17 @@
 "use server"
 
-import {
-  ProductBase,
-  ProductItemResponse,
-  ProductListResponse,
-} from "@/entities/product/model"
+import { ProductBase } from "@/entities/product/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import {
+  Query,
+  StrapiItemResponse,
+  StrapiListResponse,
+} from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchProductList = async (
-  queryObj?: StrapiQuery<ProductBase>,
+  queryObj?: Query<ProductBase>,
   tags?: string[]
 ) => {
   try {
@@ -26,9 +25,7 @@ const fetchProductList = async (
       },
     })
 
-    return (await response.json()) as ProductListResponse<
-      ProductBase & DocumentServices
-    >
+    return (await response.json()) as StrapiListResponse<ProductBase>
   } catch (e) {
     return ErrorHandler(e, "/api/products")
   }
@@ -36,7 +33,7 @@ const fetchProductList = async (
 
 const fetchProductItemBySlug = async (
   slug: string,
-  queryObj?: StrapiQuery<ProductBase>
+  queryObj?: Query<ProductBase>
 ) => {
   try {
     queryObj = {
@@ -57,13 +54,11 @@ const fetchProductItemBySlug = async (
       },
     })
 
-    const data = (await response.json()) as ProductListResponse<
-      ProductBase & DocumentServices
-    >
+    const data = (await response.json()) as StrapiListResponse<ProductBase>
 
     return {
       data: data.data[0],
-    } as ProductItemResponse<ProductBase & DocumentServices>
+    } as StrapiItemResponse<ProductBase>
   } catch (e) {
     return ErrorHandler(e, "/api/products")
   }

@@ -1,17 +1,16 @@
 "use server"
 
-import {
-  CategoryBase,
-  CategoryItemResponse,
-  CategoryListResponse,
-} from "@/entities/category/model"
+import { CategoryBase } from "@/entities/category/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { DocumentServices } from "@/shared/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import {
+  Query,
+  StrapiItemResponse,
+  StrapiListResponse,
+} from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchCategoryList = async (queryObj?: StrapiQuery<CategoryBase>) => {
+const fetchCategoryList = async (queryObj?: Query<CategoryBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -22,9 +21,7 @@ const fetchCategoryList = async (queryObj?: StrapiQuery<CategoryBase>) => {
         tags: ["category"],
       },
     })
-    return (await response.json()) as CategoryListResponse<
-      CategoryBase & DocumentServices
-    >
+    return (await response.json()) as StrapiListResponse<CategoryBase>
   } catch (e) {
     return ErrorHandler(e, "/api/categories")
   }
@@ -32,7 +29,7 @@ const fetchCategoryList = async (queryObj?: StrapiQuery<CategoryBase>) => {
 
 const fetchCategoryItemBySlug = async (
   slug: string,
-  queryObj?: StrapiQuery<CategoryBase>
+  queryObj?: Query<CategoryBase>
 ) => {
   try {
     queryObj = {
@@ -53,13 +50,11 @@ const fetchCategoryItemBySlug = async (
       },
     })
 
-    const data = (await response.json()) as CategoryListResponse<
-      CategoryBase & DocumentServices
-    >
+    const data = (await response.json()) as StrapiListResponse<CategoryBase>
 
     return {
       data: data.data[0],
-    } as CategoryItemResponse<CategoryBase & DocumentServices>
+    } as StrapiItemResponse<CategoryBase>
   } catch (e) {
     return ErrorHandler(e, "/api/categories")
   }

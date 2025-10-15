@@ -1,50 +1,10 @@
 "use client"
 
-import {
-  CategoryListState,
-  CategoryListStore,
-  createCategoryListStore,
-} from "@/features/catalog/store"
-import { createContext, type ReactNode, useContext, useRef } from "react"
-import { useStore } from "zustand"
+import { CategoryBase } from "@/entities/category/model"
+import { DocumentServices } from "@/shared/model"
+import { createStoreBaseListProvider } from "@/shared/provider"
 
-export type CategoryListStoreApi = ReturnType<typeof createCategoryListStore>
+const { Provider: CategoryListProvider, useStore: useCategoryListStore } =
+  createStoreBaseListProvider<CategoryBase & DocumentServices>("CategoryList")
 
-export const CategoryListStoreContext = createContext<
-  CategoryListStoreApi | undefined
->(undefined)
-
-export interface CategoryListProviderProps {
-  children: ReactNode
-  initialState?: Partial<CategoryListState>
-}
-
-export const CategoryListProvider = ({
-  children,
-  initialState,
-}: CategoryListProviderProps) => {
-  const storeRef = useRef<CategoryListStoreApi | null>(null)
-  if (storeRef.current === null) {
-    storeRef.current = createCategoryListStore(initialState)
-  }
-
-  return (
-    <CategoryListStoreContext.Provider value={storeRef.current}>
-      {children}
-    </CategoryListStoreContext.Provider>
-  )
-}
-
-export const useCategoryListStore = <T,>(
-  selector: (store: CategoryListStore) => T
-): T => {
-  const context = useContext(CategoryListStoreContext)
-
-  if (!context) {
-    throw new Error(
-      `useCategoryListStore must be used within CategoryListProvider`
-    )
-  }
-
-  return useStore(context, selector)
-}
+export { CategoryListProvider, useCategoryListStore }

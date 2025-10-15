@@ -1,13 +1,6 @@
-export type ExtractByComponent<
-  E extends { __component: string },
-  T extends E["__component"],
-> = Extract<E, { __component: T }>
-
-export type StrapiMetaResponse = {
-  pagination: {
-    page: number
-    pageSize: number
-    total: number
-    pageCount: number
-  }
-}
+export * from "./base"
+export * from "./component"
+export * from "./response"
+export * from "./relation"
+export * from "./media"
+export * from "./query"

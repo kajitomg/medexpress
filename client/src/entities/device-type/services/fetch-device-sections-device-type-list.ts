@@ -2,7 +2,7 @@
 
 import { fetchDeviceTypeList } from "@/entities/device-type/api"
 import { DeviceTypeBase } from "@/entities/device-type/model"
-import { StrapiQuery } from "@/shared/model/strapi/strapi-query"
+import { Query } from "@/shared/model/strapi"
 
 const fetchDeviceSectionsDeviceTypeList = async (
   slug?: string,
@@ -32,7 +32,7 @@ const fetchDeviceSectionsDeviceTypeList = async (
     populate: {
       sections: true,
     },
-  } satisfies StrapiQuery<DeviceTypeBase>
+  } satisfies Query<DeviceTypeBase>
 
   return await fetchDeviceTypeList(queryObj, [`device-section::${slug}`])
 }
