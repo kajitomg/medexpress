@@ -1,4 +1,4 @@
-import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { ContactFormSchema } from "@/features/contact-form/model"
 
 const sendContactForm = async (
   body: ContactFormSchema

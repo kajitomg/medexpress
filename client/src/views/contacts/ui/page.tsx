@@ -1,7 +1,7 @@
 "use client"
 
 import { PageSections } from "@/entities/page/model/page"
-import { createSectionsStore } from "@/features/sections/provider"
+import { createSectionListStore } from "@/features/sections/provider"
 import {
   selectSectionItemByName,
   selectSectionListItemByType,
@@ -15,7 +15,7 @@ import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
 
-const useSectionsStore = createSectionsStore<PageSections[]>()
+const useSectionsStore = createSectionListStore<PageSections[]>()
 
 const Page = () => {
   const contactDetails = useSectionsStore(

@@ -1,65 +1,15 @@
 "use client"
 
-import { useCatalogOptionsStore } from "@/features/catalog/provider"
-import { cn } from "@/shared/lib"
-import { Button, Input } from "@/shared/ui"
-import { Search } from "lucide-react"
-import { ChangeEvent, useState } from "react"
+import { useCatalogCategoryOptionsStore } from "@/features/catalog/provider"
+import { SearchControl } from "@/features/search/ui"
 
 const CatalogSearchControl = () => {
-  const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
-  const setSearchQuery = useCatalogOptionsStore((state) => state.setSearchQuery)
-
-  const [input, setInput] = useState<string>(searchQuery || "")
-
-  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setInput(e.currentTarget.value)
-  }
-  const handleApplyOptions = () => {
-    setSearchQuery(input || undefined)
-  }
-  const handleResetOptions = () => {
-    setSearchQuery(undefined)
-    setInput("")
-  }
-
-  return (
-    <div
-      className="flex items-center max-w-400 w-full gap-x-2"
-      itemProp="potentialAction"
-      itemScope
-      itemType="https://schema.org/SearchAction"
-    >
-      <Input
-        type="text"
-        itemProp="query-input"
-        placeholder="Поиск по каталогу"
-        className={cn(
-          "max-w-100 focus-visible:ring-1 focus-visible:ring-(--color-brand) text-sm placeholder:text-sm bg-muted"
-        )}
-        value={input}
-        onChange={handleChangeSearch}
-      />
-      <Button
-        type="button"
-        variant="brand"
-        className="cursor-pointer"
-        onClick={handleApplyOptions}
-      >
-        <Search />
-        Найти
-      </Button>
-      <Button
-        type="button"
-        variant="outline"
-        className=" cursor-pointer"
-        disabled={!searchQuery}
-        onClick={handleResetOptions}
-      >
-        Сбросить
-      </Button>
-    </div>
+  const query = useCatalogCategoryOptionsStore((state) => state.search.query)
+  const setQuery = useCatalogCategoryOptionsStore(
+    (state) => state.search.setQuery
   )
+
+  return <SearchControl setSearch={setQuery} search={query} />
 }
 
 export { CatalogSearchControl }

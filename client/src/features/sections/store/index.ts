@@ -6,4 +6,4 @@ export {
 export {
   selectSectionItemByName,
   selectSectionListItemByType,
-} from "./section-list-actions"
+} from "./section-list-selectors"

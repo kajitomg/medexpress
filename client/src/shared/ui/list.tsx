@@ -12,7 +12,7 @@ type PolymorphicComponentProps<
 > = BoxProps<C> & Props & Omit<React.ComponentProps<C>, keyof BoxProps<C>>
 
 interface ListProps<T> {
-  items?: T[]
+  items?: T[] | null
   renderItem: (item: T, i: number) => ReactNode
 }
 

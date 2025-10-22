@@ -1,4 +1,4 @@
-import { StrapiBase } from "@/shared/model/strapi/index"
+import { StrapiBase, StrapiOptional } from "@/shared/model/strapi"
 
 export type MediaFormats<F extends string = string> =
   | "thumbnail"
@@ -13,32 +13,34 @@ export type MediaFormat = {
   hash: string
   mime: string
   name: string
-  path: string | null
+  path: StrapiOptional<string>
   size: number
   width: number
   height: number
-  sizeInBytes?: number
+  sizeInBytes: StrapiOptional<number>
 }
 
 export interface StrapiMediaAttributes<F extends string = string>
   extends Omit<StrapiBase, "publishedAt" | "locale"> {
   name: string
-  alternativeText: string | null
-  caption: string | null
-  width: number | null
-  height: number | null
-  formats: Record<MediaFormats<F>, MediaFormat> | null
+  alternativeText: StrapiOptional<string>
+  caption: StrapiOptional<string>
+  width: StrapiOptional<number>
+  height: StrapiOptional<number>
+  formats: StrapiOptional<Record<MediaFormats<F>, MediaFormat>>
   hash: string
   ext: string
   mime: MediaMimeType
   size: number
   url: string
-  previewUrl: string | null
+  previewUrl: StrapiOptional<string>
   provider: string
-  provider_metadata: Record<string, unknown> | null
+  provider_metadata: StrapiOptional<Record<string, unknown>>
 }
 
-export type StrapiMedia<F extends string = string> = StrapiMediaAttributes<F>
+export type StrapiMedia<
+  F extends StrapiMediaAttributes | StrapiMediaAttributes[],
+> = F | undefined
 
 export type ImageMimeType =
   | "image/jpeg"

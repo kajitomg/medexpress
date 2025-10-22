@@ -1,4 +1,4 @@
-import { StrapiBase, StrapiExtended } from "@/shared/model/strapi/base"
+import { StrapiBase } from "@/shared/model/strapi/base"
 
 export type ExtractByComponent<
   E extends StrapiComponentBase<string>,
@@ -9,8 +9,8 @@ export interface StrapiComponentBase<T extends string> extends StrapiBase {
   __component: T
 }
 
-export type StrapiDynamicZone<T> = StrapiExtended<
-  Array<T & StrapiComponentBase<string>>
->
+export type StrapiDynamicZone<T> =
+  | Array<T & StrapiComponentBase<string>>
+  | undefined
 
-export type StrapiComponent<T> = StrapiExtended<T>
+export type StrapiComponent<T> = T | undefined

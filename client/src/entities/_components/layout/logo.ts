@@ -1,10 +1,10 @@
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
 } from "@/shared/model/strapi"
 
 export interface LogoComponent extends StrapiComponentBase<"layout.logo"> {
   name: string
-  image?: StrapiExtended<StrapiMedia>
+  image: StrapiMedia<ImageMedia>
 }

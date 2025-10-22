@@ -1,7 +1,10 @@
-import { MetaData } from "@/shared/model"
+import { SeoComponent } from "@/entities/_components"
+import { StrapiOptional } from "@/shared/model/strapi"
 import { Metadata } from "next"
 
-export const generateGlobalMetadata = <T extends { seo?: Partial<MetaData> }>(
+export const generateGlobalMetadata = <
+  T extends StrapiOptional<{ seo?: StrapiOptional<Partial<SeoComponent>> }>,
+>(
   data: T,
   options: {
     defaultTitle?: string

@@ -1,4 +1,4 @@
-import { StrapiBase } from "@/shared/model/strapi/index"
+import { StrapiBase, StrapiPaginationBase } from "@/shared/model/strapi/index"
 
 type StrapiFilterOperator =
   | "$eq"
@@ -76,18 +76,12 @@ type StrapiPopulate<T> =
   | "*"
   | string[]
 
-export interface Query<T extends StrapiBase> {
+export interface StrapiQuery<T extends StrapiBase> {
   sort?: StrapiSort<T>
   fields?: (keyof T)[]
   populate?: StrapiPopulate<Omit<T, keyof StrapiBase>>
   filters?: StrapiFilters<T>
-  pagination?: {
-    page?: number
-    pageSize?: number
-    start?: number
-    limit?: number
-    withCount?: boolean
-  }
+  pagination?: StrapiPaginationBase
   publicationState?: "live" | "preview"
   locale?: string | string[]
 }

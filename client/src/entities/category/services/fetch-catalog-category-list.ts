@@ -2,7 +2,7 @@
 
 import { fetchCategoryList } from "@/entities/category/api"
 import { CategoryBase } from "@/entities/category/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchCatalogCategoryList = async (page: number = 1, search?: string) => {
   const queryObj = {
@@ -21,7 +21,7 @@ const fetchCatalogCategoryList = async (page: number = 1, search?: string) => {
       products: { fields: ["id"] },
       image: true,
     },
-  } satisfies Query<CategoryBase>
+  } satisfies StrapiQuery<CategoryBase>
 
   return await fetchCategoryList(queryObj)
 }

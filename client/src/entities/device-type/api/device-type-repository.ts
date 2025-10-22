@@ -4,14 +4,14 @@ import { DeviceTypeBase } from "@/entities/device-type/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
 import {
-  Query,
   StrapiItemResponse,
   StrapiListResponse,
+  StrapiQuery,
 } from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchDeviceTypeList = async (
-  queryObj?: Query<DeviceTypeBase>,
+  queryObj?: StrapiQuery<DeviceTypeBase>,
   tags?: string[]
 ) => {
   try {
@@ -33,7 +33,7 @@ const fetchDeviceTypeList = async (
 
 const fetchDeviceTypeItemBySlug = async (
   slug: string,
-  queryObj?: Query<DeviceTypeBase>
+  queryObj?: StrapiQuery<DeviceTypeBase>
 ) => {
   try {
     queryObj = {

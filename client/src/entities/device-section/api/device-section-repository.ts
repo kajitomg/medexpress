@@ -4,14 +4,14 @@ import { DeviceSectionBase } from "@/entities/device-section/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
 import {
-  Query,
   StrapiItemResponse,
   StrapiListResponse,
+  StrapiQuery,
 } from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchDeviceSectionList = async (
-  queryObj?: Query<DeviceSectionBase>,
+  queryObj?: StrapiQuery<DeviceSectionBase>,
   tags?: string[]
 ) => {
   try {
@@ -33,7 +33,7 @@ const fetchDeviceSectionList = async (
 
 const fetchDeviceSectionItemBySlug = async (
   slug: string,
-  queryObj?: Query<DeviceSectionBase>
+  queryObj?: StrapiQuery<DeviceSectionBase>
 ) => {
   try {
     queryObj = {

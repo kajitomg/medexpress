@@ -3,18 +3,20 @@
 import { CategoryBase } from "@/entities/category/model"
 import { fetchCatalogCategoryList } from "@/entities/category/services"
 import { PageSections } from "@/entities/page/model/page"
-import {
-  useCatalogOptionsStore,
-  useCategoryListStore,
-} from "@/features/catalog/provider"
-import { CatalogSearchControl } from "@/features/catalog/ui"
+import { useCatalogCategoryOptionsStore } from "@/features/catalog/provider"
+import { useCategoryListStore } from "@/features/category/provider"
+import { SearchControl } from "@/features/search/ui"
 import { createSectionListStore } from "@/features/sections/provider"
 import { selectSectionItemByName } from "@/features/sections/store"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
-import { DocumentServices } from "@/shared/model"
-import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
+import {
+  ContentSection,
+  ContentSectionContent,
+  EmptyState,
+  PaginationControl,
+} from "@/shared/ui"
 import { CategoryList } from "@/views/catalog-category-list/ui/category-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 
@@ -25,7 +27,7 @@ const useSectionsStore = createSectionListStore<PageSections[]>()
 
 const collectionPage = (
   pageName?: string,
-  items?: (CategoryBase & DocumentServices)[]
+  items?: CategoryBase[]
 ): WithContext<CollectionPage> => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -47,11 +49,26 @@ const Page = () => {
   const categories = useCategoryListStore((state) => state.list)
   const loadCategories = useCategoryListStore((state) => state.loadList)
 
-  const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
+  const query = useCatalogCategoryOptionsStore((state) => state.search.query)
+  const page = useCatalogCategoryOptionsStore((state) => state.pagination.page)
+  const setQuery = useCatalogCategoryOptionsStore(
+    (state) => state.search.setQuery
+  )
+  const maxPages = useCatalogCategoryOptionsStore(
+    (state) => state.pagination.maxPages
+  )
+  const setPage = useCatalogCategoryOptionsStore(
+    (state) => state.pagination.setPage
+  )
+
+  const handleSetPage = (page: number) => {
+    setPage(page)
+    window.scroll({ top: 0, behavior: "smooth" })
+  }
 
   useUpdateEffect(() => {
-    loadCategories(fetchCatalogCategoryList, 1, searchQuery)
-  }, [loadCategories, searchQuery])
+    loadCategories(fetchCatalogCategoryList, 1, query)
+  }, [loadCategories, query])
   return (
     <>
       <script
@@ -68,10 +85,18 @@ const Page = () => {
       />
       <ContentSection>
         <ContentSectionContent className="max-w-440 w-full">
-          <CatalogSearchControl />
+          <SearchControl setSearch={setQuery} search={query} />
 
           {categories?.length ? (
-            <CategoryList categories={categories} className="mt-6" />
+            <>
+              <CategoryList categories={categories} className="mt-6" />
+              <PaginationControl
+                page={page}
+                setPage={handleSetPage}
+                maxPages={maxPages}
+                className="mt-4"
+              />
+            </>
           ) : (
             <EmptyState title="Категории не найдены" />
           )}

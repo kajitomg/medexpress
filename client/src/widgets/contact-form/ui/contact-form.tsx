@@ -1,5 +1,6 @@
 "use client"
 
+import { ContactFormSchema, FormStatus } from "@/features/contact-form/model"
 import { cn } from "@/shared/lib"
 import {
   Card,
@@ -12,7 +13,6 @@ import {
   Typography,
 } from "@/shared/ui"
 import { Alert, AlertTitle } from "@/shared/ui/alert"
-import { ContactFormSchema, FormStatus } from "@/widgets/contact-form/model"
 import { FormEmail } from "@/widgets/contact-form/ui/form-email"
 import { FormPhonenumber } from "@/widgets/contact-form/ui/form-phonenumber"
 import { CheckCheck, X } from "lucide-react"

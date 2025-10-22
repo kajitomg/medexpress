@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic"
 
 export async function GET() {
   const response = await fetchGlobal()
-  const data = response.data.robots
+  const data = response.data?.robots
   if (!data) {
     return NextResponse.json({ status: 404 })
   }

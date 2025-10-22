@@ -1,4 +1,4 @@
-import { FooterAbout } from "@/entities/_components/elements/footer-about"
+import { FooterAboutComponent } from "@/entities/_components/elements/footer-about"
 import { routes } from "@/shared/config/routes"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import {
@@ -16,7 +16,7 @@ import Link from "next/link"
 import * as React from "react"
 
 interface AboutProps {
-  data?: FooterAbout
+  data?: FooterAboutComponent
 }
 
 const About = ({ data }: AboutProps) => {
@@ -25,7 +25,7 @@ const About = ({ data }: AboutProps) => {
       <CardHeader className="justify-start p-0">
         <Logo
           path={routes.MAIN.path}
-          url={data?.logo.image?.url}
+          url={data?.logo?.url}
           className="fill-foreground p-2 h-10 lg:h-10"
         />
       </CardHeader>
@@ -35,7 +35,7 @@ const About = ({ data }: AboutProps) => {
         </CardTitle>
       </CardContent>
       <CardFooter className="flex gap-2 p-0">
-        {data?.social.body?.map((item) => (
+        {data?.social?.body?.map((item) => (
           <Link key={item.id} href={item.url}>
             <Button
               variant="link"

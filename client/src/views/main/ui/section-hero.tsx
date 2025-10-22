@@ -1,4 +1,8 @@
-import { MainPageHero } from "@/entities/_components/elements/main-page-hero"
+import { MainPageHeroComponent } from "@/entities/_components/elements/main-page-hero"
+import {
+  contactFormSchemaEmail,
+  ContactFormSchemaEmail,
+} from "@/features/contact-form/model"
 import { Typography } from "@/shared/ui"
 import {
   PageHero,
@@ -6,10 +10,6 @@ import {
   PageHeroContent,
 } from "@/shared/ui/page-hero"
 import { HeroForm } from "@/views/main/ui/hero-form"
-import {
-  contactFormSchemaEmail,
-  ContactFormSchemaEmail,
-} from "@/widgets/contact-form/model"
 import { useContactForm } from "@/widgets/contact-form/provider"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from "next/image"
@@ -20,7 +20,7 @@ import Markdown from "react-markdown"
 
 interface HeroProps {
   onScrollToForm: () => void
-  data?: MainPageHero
+  data?: MainPageHeroComponent
 }
 
 const SectionHero = ({

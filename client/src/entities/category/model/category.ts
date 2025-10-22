@@ -1,17 +1,18 @@
 import { SeoComponent } from "@/entities/_components"
 import { ProductBase } from "@/entities/product/model"
 import {
+  ImageMedia,
   StrapiBase,
   StrapiComponent,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
   StrapiRelation,
 } from "@/shared/model/strapi"
 
 export interface CategoryBase extends StrapiBase {
   slug: string
   name: string
-  image?: StrapiExtended<StrapiMedia>
-  products?: StrapiRelation<ProductBase[]>
-  seo?: StrapiComponent<SeoComponent>
+  image: StrapiOptional<StrapiMedia<ImageMedia>>
+  products: StrapiOptional<StrapiRelation<ProductBase[]>>
+  seo: StrapiOptional<StrapiComponent<SeoComponent>>
 }

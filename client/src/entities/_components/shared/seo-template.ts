@@ -1,6 +1,7 @@
-import { StrapiComponentBase } from "@/shared/model/strapi"
+import { StrapiComponentBase, StrapiOptional } from "@/shared/model/strapi"
 
 export interface SeoTemplateComponent
   extends StrapiComponentBase<"shared.seo-template"> {
-  metaTitleTemplate?: string
+  metaTitle: string
+  metaTitleTemplate: StrapiOptional<string>
 }

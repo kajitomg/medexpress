@@ -1,10 +1,11 @@
 import { fetchDetailDeviceTypeItem } from "@/entities/device-type/services"
-import { CatalogOptionsProvider } from "@/features/catalog/provider"
 import { DeviceTypeDetailsProvider } from "@/features/device-type-details/provider"
 import { PageLayoutAside, PageLayoutMain } from "@/shared/ui"
-import { NomenclatureTypeItemPage } from "@/views/device-type-item/ui"
-import { NomenclatureTypesNavigationSidebar } from "@/widgets/catalog-categories-navigation-sidebar/ui"
-import { NaivgationSidebarSheet } from "@/widgets/navigation-sidebar-sheet/ui"
+import { NomenclatureDeviceTypeDetailsPage } from "@/views/nomenclature-device-type-details/ui"
+import {
+  NomenclatureDeviceSectionListSidebar,
+  NomenclatureDeviceSectionListSidebarSheet,
+} from "@/widgets/nomenclature-device-section-list-sidebar/ui"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary"
 import * as React from "react"
 import Error from "../../../../error"
@@ -20,25 +21,26 @@ const Page = async ({ params }: PageProps) => {
   const type = response.data
 
   return (
-    <CatalogOptionsProvider skipHydration>
-      <div className="flex">
-        <PageLayoutAside className="flex-none">
-          <ErrorBoundary errorComponent={Error}>
-            <NomenclatureTypesNavigationSidebar
-              initSlug={nomenclature_slug}
-              className="hidden lg:block w-0 h-0 lg:w-80 lg:h-full"
-              redirect
-            />
-            <NaivgationSidebarSheet initSlug={nomenclature_slug} redirect />
-          </ErrorBoundary>
-        </PageLayoutAside>
-        <PageLayoutMain className="flex-1 min-w-0">
-          <DeviceTypeDetailsProvider initialState={{ item: type }}>
-            <NomenclatureTypeItemPage />
-          </DeviceTypeDetailsProvider>
-        </PageLayoutMain>
-      </div>
-    </CatalogOptionsProvider>
+    <div className="flex">
+      <PageLayoutAside className="flex-none">
+        <ErrorBoundary errorComponent={Error}>
+          <NomenclatureDeviceSectionListSidebar
+            initSlug={nomenclature_slug}
+            className="hidden lg:block w-0 h-0 lg:w-80 lg:h-full"
+            redirect
+          />
+          <NomenclatureDeviceSectionListSidebarSheet
+            initSlug={nomenclature_slug}
+            redirect
+          />
+        </ErrorBoundary>
+      </PageLayoutAside>
+      <PageLayoutMain className="flex-1 min-w-0">
+        <DeviceTypeDetailsProvider initialState={{ item: type }}>
+          <NomenclatureDeviceTypeDetailsPage />
+        </DeviceTypeDetailsProvider>
+      </PageLayoutMain>
+    </div>
   )
 }
 

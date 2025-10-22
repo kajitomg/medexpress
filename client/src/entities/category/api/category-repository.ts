@@ -4,13 +4,13 @@ import { CategoryBase } from "@/entities/category/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
 import {
-  Query,
   StrapiItemResponse,
   StrapiListResponse,
+  StrapiQuery,
 } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchCategoryList = async (queryObj?: Query<CategoryBase>) => {
+const fetchCategoryList = async (queryObj?: StrapiQuery<CategoryBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 
@@ -29,7 +29,7 @@ const fetchCategoryList = async (queryObj?: Query<CategoryBase>) => {
 
 const fetchCategoryItemBySlug = async (
   slug: string,
-  queryObj?: Query<CategoryBase>
+  queryObj?: StrapiQuery<CategoryBase>
 ) => {
   try {
     queryObj = {

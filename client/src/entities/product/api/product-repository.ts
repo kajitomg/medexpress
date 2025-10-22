@@ -4,14 +4,14 @@ import { ProductBase } from "@/entities/product/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
 import {
-  Query,
   StrapiItemResponse,
   StrapiListResponse,
+  StrapiQuery,
 } from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchProductList = async (
-  queryObj?: Query<ProductBase>,
+  queryObj?: StrapiQuery<ProductBase>,
   tags?: string[]
 ) => {
   try {
@@ -33,7 +33,7 @@ const fetchProductList = async (
 
 const fetchProductItemBySlug = async (
   slug: string,
-  queryObj?: Query<ProductBase>
+  queryObj?: StrapiQuery<ProductBase>
 ) => {
   try {
     queryObj = {

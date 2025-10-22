@@ -1,4 +1,4 @@
-import { ListSection } from "@/entities/_components/sections/list-section"
+import { ListSectionComponent } from "@/entities/_components/sections/list-section"
 import {
   ContentSection,
   ContentSectionContent,
@@ -10,7 +10,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionServiceProcessProps {
-  data?: ListSection
+  data?: ListSectionComponent
 }
 
 const SectionServiceProcess = ({

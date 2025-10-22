@@ -1,13 +1,12 @@
 import { CategoryBase } from "@/entities/category/model/category"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
-import { DocumentServices } from "@/shared/model"
 import { Button, List } from "@/shared/ui"
 import Link from "next/link"
 import { ComponentProps } from "react"
 
 interface CategoryListProps {
-  categories?: (CategoryBase & DocumentServices)[]
+  categories?: CategoryBase[]
 }
 
 const CategoryList = ({
@@ -15,7 +14,7 @@ const CategoryList = ({
   className,
   ...props
 }: ComponentProps<"div"> & CategoryListProps) => {
-  const renderCategoryItem = (item: CategoryBase & DocumentServices) => (
+  const renderCategoryItem = (item: CategoryBase) => (
     <Button
       key={item.id}
       variant="ghost"

@@ -2,6 +2,7 @@ import { SeoComponent } from "@/entities/_components"
 import {
   StrapiBase,
   StrapiComponent,
+  StrapiOptional,
   StrapiRelation,
 } from "@/shared/model/strapi"
 
@@ -10,7 +11,7 @@ export interface DeviceSectionBase extends StrapiBase {
   code: string
   sort_code: string
   name: string
-  parent?: StrapiRelation<DeviceSectionBase>
-  childrens?: StrapiRelation<DeviceSectionBase[]>
-  seo?: StrapiComponent<SeoComponent>
+  parent: StrapiOptional<StrapiRelation<DeviceSectionBase>>
+  childrens: StrapiOptional<StrapiRelation<DeviceSectionBase[]>>
+  seo: StrapiOptional<StrapiComponent<SeoComponent>>
 }

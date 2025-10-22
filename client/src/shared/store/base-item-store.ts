@@ -1,14 +1,18 @@
-import { StrapiItemResponse } from "@/shared/model/strapi"
+import {
+  StrapiBase,
+  StrapiItemResponse,
+  StrapiOptional,
+} from "@/shared/model/strapi"
 import { create } from "zustand"
 
-export interface BaseItemState<T> {
-  item?: T
+export interface BaseItemState<T extends StrapiBase> {
+  item?: StrapiOptional<T>
   isLoading: boolean
   error?: string
 }
 
-interface BaseItemActions<T> {
-  setItem: (item?: T) => void
+interface BaseItemActions<T extends StrapiBase> {
+  setItem: (item?: StrapiOptional<T>) => void
   loadItem: <
     F extends (...args: Parameters<F>) => Promise<StrapiItemResponse<T>>,
   >(
@@ -20,19 +24,20 @@ interface BaseItemActions<T> {
   reset: () => void
 }
 
-export type BaseItemStore<T> = BaseItemState<T> & BaseItemActions<T>
+export type BaseItemStore<T extends StrapiBase> = BaseItemState<T> &
+  BaseItemActions<T>
 
-const defaultInitState: BaseItemState<undefined> = {
+const defaultInitState = <T extends StrapiBase>(): BaseItemState<T> => ({
   item: undefined,
   isLoading: false,
   error: undefined,
-}
+})
 
-export const createBaseItemStore = <T>(
+export const createBaseItemStore = <T extends StrapiBase>(
   initState: Partial<BaseItemState<T>> = {}
 ) => {
   return create<BaseItemStore<T>>((set) => ({
-    ...{ ...defaultInitState, ...initState },
+    ...{ ...defaultInitState<T>(), ...initState },
 
     setItem: (item) => set({ item, error: undefined }),
 

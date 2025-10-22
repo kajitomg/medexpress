@@ -1,4 +1,4 @@
-import { RowTextItem } from "@/entities/_components/blocks/row-text-item"
+import { RowTextItemComponent } from "@/entities/_components/blocks/row-text-item"
 import {
   Accordion,
   AccordionContent,
@@ -11,16 +11,16 @@ import { ComponentProps } from "react"
 import { QAPage, WithContext } from "schema-dts"
 
 interface ContentFaqProps {
-  items?: RowTextItem[]
+  items?: RowTextItemComponent[]
 }
 
-const qaPage = (items?: RowTextItem[]): WithContext<QAPage> => {
+const qaPage = (items?: RowTextItemComponent[]): WithContext<QAPage> => {
   return {
     "@context": "https://schema.org",
     "@type": "QAPage",
     mainEntity: items?.map((item) => ({
       "@type": "Question",
-      name: item.title,
+      name: item.title || undefined,
       acceptedAnswer: {
         "@type": "Answer",
         text: item.content,

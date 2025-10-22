@@ -1,5 +1,5 @@
 import { fetchNavigationCategoryList } from "@/entities/category/services"
-import { CategoryListProvider } from "@/features/catalog/provider"
+import { CategoryListProvider } from "@/features/category/provider"
 import { routes } from "@/shared/config/routes"
 import { cn } from "@/shared/lib"
 import { Button } from "@/shared/ui"

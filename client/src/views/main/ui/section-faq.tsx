@@ -1,4 +1,4 @@
-import { ListSection } from "@/entities/_components/sections/list-section"
+import { ListSectionComponent } from "@/entities/_components/sections/list-section"
 import { cn } from "@/shared/lib"
 import {
   ContentSection,
@@ -11,7 +11,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionFaqProps {
-  data?: ListSection
+  data?: ListSectionComponent
 }
 
 const SectionFaq = ({

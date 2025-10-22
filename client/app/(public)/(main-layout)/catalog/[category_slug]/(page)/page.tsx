@@ -1,14 +1,12 @@
 import { fetchDetailCategoryItem } from "@/entities/category/services"
 import { fetchCategoriesProductList } from "@/entities/product/services"
-import {
-  CatalogOptionsProvider,
-  ProductsListProvider,
-} from "@/features/catalog/provider"
+import { CatalogProductOptionsProvider } from "@/features/catalog/provider"
 import { CategoryDetailsProvider } from "@/features/category-details/provider"
+import { ProductListProvider } from "@/features/product/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
-import { CategoryProductsPage } from "@/views/catalog-product-list/ui"
+import { CategoryProductListPage } from "@/views/catalog-product-list/ui"
 import { Metadata, NextPage, Viewport } from "next"
 
 interface CatalogPageProps {
@@ -26,7 +24,7 @@ export async function generateMetadata({
   const data = response.data
 
   return generatePageMetadata(data, {
-    defaultTitle: data.name || "Страница не найдена",
+    defaultTitle: data?.name || "Страница не найдена",
   })
 }
 
@@ -62,16 +60,19 @@ const Page: NextPage<CatalogPageProps> = async ({ params, searchParams }) => {
 
   return (
     <CategoryDetailsProvider initialState={{ item: category }}>
-      <CatalogOptionsProvider
-        initialState={{ searchQuery, page, maxPages }}
+      <CatalogProductOptionsProvider
+        initialState={{
+          search: { query: searchQuery },
+          pagination: { page, maxPages },
+        }}
         skipHydration
       >
-        <ProductsListProvider initialState={{ list: products }}>
+        <ProductListProvider initialState={{ list: products }}>
           <PageLayoutMain>
-            <CategoryProductsPage slug={category_slug} />
+            <CategoryProductListPage slug={category_slug} />
           </PageLayoutMain>
-        </ProductsListProvider>
-      </CatalogOptionsProvider>
+        </ProductListProvider>
+      </CatalogProductOptionsProvider>
     </CategoryDetailsProvider>
   )
 }

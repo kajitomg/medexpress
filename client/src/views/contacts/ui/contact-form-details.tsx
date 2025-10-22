@@ -1,6 +1,6 @@
 "use client"
 
-import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
+import { ContactFormSectionComponent } from "@/entities/_components"
 import { cn } from "@/shared/lib"
 import { Typography } from "@/shared/ui"
 import { Mail, Phone } from "lucide-react"
@@ -11,18 +11,18 @@ import Markdown from "react-markdown"
 import { LocalBusiness, WithContext } from "schema-dts"
 
 interface ContactFormDetailsProps {
-  data?: ContactFormSection
+  data?: ContactFormSectionComponent
 }
 
 const localBusiness = (
-  contacts?: ContactFormSection
+  contacts?: ContactFormSectionComponent
 ): WithContext<LocalBusiness> => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    telephone: contacts?.phonenumber.body.map((item) => item.value),
-    email: contacts?.email.body.map((item) => item.value),
+    telephone: contacts?.phonenumber?.body?.map((item) => item.value),
+    email: contacts?.email?.body?.map((item) => item.value),
   }
 }
 
@@ -62,7 +62,7 @@ const ContactFormDetails = ({
               <h4 className="col-start-2">Телефон/факс</h4>
             </Typography>
             <div className="col-start-2">
-              {data?.phonenumber.body?.map((item) => (
+              {data?.phonenumber?.body?.map((item) => (
                 <Typography
                   key={item.id}
                   variant="muted"
@@ -79,7 +79,7 @@ const ContactFormDetails = ({
               <h4 className="col-start-2">Почта</h4>
             </Typography>
             <div className="col-start-2">
-              {data?.email.body?.map((item) => (
+              {data?.email?.body?.map((item) => (
                 <Typography
                   key={item.id}
                   variant="muted"

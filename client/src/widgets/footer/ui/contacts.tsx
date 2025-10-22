@@ -1,4 +1,4 @@
-import { FooterContacts } from "@/entities/_components/elements/footer-contacts"
+import { FooterContactsComponent } from "@/entities/_components/elements/footer-contacts"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
@@ -15,21 +15,21 @@ import * as React from "react"
 import { LocalBusiness, WithContext } from "schema-dts"
 
 interface ContactsProps {
-  data?: FooterContacts
+  data?: FooterContactsComponent
 }
 
 const localBusiness = (
-  contacts?: FooterContacts
+  contacts?: FooterContactsComponent
 ): WithContext<LocalBusiness> => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    address: contacts?.address.body.map((item) => item.value),
-    telephone: contacts?.phonenumber.body.map((item) => item.value),
-    email: contacts?.email.body.map((item) => item.value),
+    address: contacts?.address?.body?.map((item) => item.value),
+    telephone: contacts?.phonenumber?.body?.map((item) => item.value),
+    email: contacts?.email?.body?.map((item) => item.value),
     openingHours:
-      `${getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+      `${getDaysStringFromArray(contacts?.workingSchedule?.body?.days, {
         alphabet: {
           Понедельник: "Пн",
           Вторник: "Вт",
@@ -40,7 +40,7 @@ const localBusiness = (
           Воскресенье: "Вс",
         },
       })}: ${(() => {
-        const time = getWorkingTime(contacts?.workingSchedule.body?.days)
+        const time = getWorkingTime(contacts?.workingSchedule?.body?.days)
 
         if (time?.uniform)
           return `${formatTime(time.start)}:${formatTime(time.end)}`
@@ -67,11 +67,11 @@ const Contacts = ({ data }: ContactsProps) => {
       <CardContent className="flex flex-col p-0 gap-2">
         <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
-            url={imageUrlBuilder(data?.address.icon?.url)}
+            url={imageUrlBuilder(data?.address?.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2 flex flex-col gap-1">
-            {data?.address.body?.map((item) => (
+            {data?.address?.body?.map((item) => (
               <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
@@ -80,11 +80,11 @@ const Contacts = ({ data }: ContactsProps) => {
         </div>
         <div className="grid items-start gap-y-1 gap-x-2 lg:gap-x-3 content-start justify-start">
           <DynamicIcon
-            url={imageUrlBuilder(data?.phonenumber.icon?.url)}
+            url={imageUrlBuilder(data?.phonenumber?.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2 flex flex-col gap-1">
-            {data?.phonenumber.body?.map((item) => (
+            {data?.phonenumber?.body?.map((item) => (
               <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
@@ -93,11 +93,11 @@ const Contacts = ({ data }: ContactsProps) => {
         </div>
         <div className="grid items-start gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
-            url={imageUrlBuilder(data?.email.icon?.url)}
+            url={imageUrlBuilder(data?.email?.icon?.url)}
             className="size-5 md:size-6"
           />
           <div className="col-start-2 flex flex-col gap-1">
-            {data?.email.body?.map((item) => (
+            {data?.email?.body?.map((item) => (
               <Typography key={item.id} variant="small">
                 {item.value}
               </Typography>
@@ -106,11 +106,11 @@ const Contacts = ({ data }: ContactsProps) => {
         </div>
         <div className="grid items-center gap-2 lg:gap-3 content-start justify-start">
           <DynamicIcon
-            url={imageUrlBuilder(data?.workingSchedule.icon?.url)}
+            url={imageUrlBuilder(data?.workingSchedule?.icon?.url)}
             className="size-5 md:size-6"
           />
           <Typography variant="small" className="col-start-2">
-            {getDaysStringFromArray(data?.workingSchedule.body?.days, {
+            {getDaysStringFromArray(data?.workingSchedule?.body?.days, {
               alphabet: {
                 Понедельник: "Пн",
                 Вторник: "Вт",
@@ -123,7 +123,7 @@ const Contacts = ({ data }: ContactsProps) => {
             })}
             {": "}
             {(() => {
-              const time = getWorkingTime(data?.workingSchedule.body?.days)
+              const time = getWorkingTime(data?.workingSchedule?.body?.days)
 
               if (time?.uniform)
                 return `${formatTime(time.start)}:${formatTime(time.end)}`

@@ -30,11 +30,17 @@ const RootLayout = async ({
   const catalog = responseCatalog.data
   const header = responseHeader.data
   const footer = responseFooter.data
+
   return (
     <PageLayout>
       <PageLayoutHeader>
         <SectionListProvider
-          initialState={{ sections: [...header.sections, ...catalog.sections] }}
+          initialState={{
+            sections: [
+              ...(header?.sections || []),
+              ...(catalog?.sections || []),
+            ],
+          }}
         >
           <Header />
         </SectionListProvider>
@@ -42,7 +48,7 @@ const RootLayout = async ({
       <PageLayoutContent>
         <ErrorBoundary errorComponent={Error}>{children}</ErrorBoundary>
         <PageLayoutFooter>
-          <SectionListProvider initialState={{ sections: footer.sections }}>
+          <SectionListProvider initialState={{ sections: footer?.sections }}>
             <Footer />
           </SectionListProvider>
         </PageLayoutFooter>

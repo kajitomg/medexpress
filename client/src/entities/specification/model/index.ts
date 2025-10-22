@@ -1,1 +1,1 @@
-export type { Specification } from "./specification"
+export type { Specification, SpecificationTypes } from "./specification"

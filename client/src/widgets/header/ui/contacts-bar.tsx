@@ -1,6 +1,6 @@
 "use client"
 
-import { HeaderContacts } from "@/entities/_components/elements/header-contacts"
+import { HeaderContactsComponent } from "@/entities/_components"
 import { HeaderSections } from "@/entities/_single-types/header/model/header"
 import { createSectionListStore } from "@/features/sections/provider"
 import { selectSectionItemByName } from "@/features/sections/store"
@@ -10,7 +10,7 @@ import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
 import { useDeferredScrollDirection } from "@/shared/lib/hooks/use-deferred-scroll-direction"
 import { Button, Typography } from "@/shared/ui"
-import { ModalContactForm } from "@/widgets/modal-contact-form/ui"
+import { ContactFormModal } from "@/widgets/contact-form/ui"
 import Link from "next/link"
 import * as React from "react"
 import { ComponentProps, useEffect, useRef, useState } from "react"
@@ -19,16 +19,16 @@ import { LocalBusiness, WithContext } from "schema-dts"
 const useSectionsStore = createSectionListStore<HeaderSections[]>()
 
 const localBusiness = (
-  contacts?: HeaderContacts
+  contacts?: HeaderContactsComponent
 ): WithContext<LocalBusiness> => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    telephone: contacts?.phonenumber.body.map((item) => item.value),
-    email: contacts?.email.body.map((item) => item.value),
+    telephone: contacts?.phonenumber?.body?.map((item) => item.value),
+    email: contacts?.email?.body?.map((item) => item.value),
     openingHours:
-      `${getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+      `${getDaysStringFromArray(contacts?.workingSchedule?.body?.days, {
         alphabet: {
           Понедельник: "Пн",
           Вторник: "Вт",
@@ -39,7 +39,7 @@ const localBusiness = (
           Воскресенье: "Вс",
         },
       })}: ${(() => {
-        const time = getWorkingTime(contacts?.workingSchedule.body?.days)
+        const time = getWorkingTime(contacts?.workingSchedule?.body?.days)
 
         if (time?.uniform)
           return `${formatTime(time.start)}:${formatTime(time.end)}`
@@ -103,16 +103,16 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
             }}
           />
           <div className="self-center">
-            <ModalContactForm dialogButton={data?.contactButton} />
+            <ContactFormModal dialogButton={data?.contactButton} />
           </div>
           <div className="flex flex-col">
             <Typography
               variant="small"
               className="font-bold cursor-pointer hidden sm:block"
             >
-              {data?.phonenumber.title}
+              {data?.phonenumber?.title}
             </Typography>
-            {data?.phonenumber.body.map((item) => (
+            {data?.phonenumber?.body?.map((item) => (
               <Button key={item.id} variant="link" className="px-0" asChild>
                 <Link itemProp="url" href={`tel:${item.value}`}>
                   {item.value}
@@ -122,9 +122,9 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           </div>
           <div className="flex flex-col hidden sm:block">
             <Typography variant="small" className="font-bold">
-              {data?.email.title}
+              {data?.email?.title}
             </Typography>
-            {data?.email.body.map((item) => (
+            {data?.email?.body?.map((item) => (
               <Button key={item.id} variant="link" className="px-0" asChild>
                 <Link itemProp="url" href={`mailto:${item.value}`}>
                   {item.value}
@@ -134,10 +134,10 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
           </div>
           <div className="flex flex-col hidden sm:block">
             <Typography variant="small" className="font-bold">
-              {data?.workingSchedule.title}
+              {data?.workingSchedule?.title}
             </Typography>
             <Typography variant="small" className="py-2 leading-5">
-              {getDaysStringFromArray(data?.workingSchedule.body?.days, {
+              {getDaysStringFromArray(data?.workingSchedule?.body?.days, {
                 alphabet: {
                   Понедельник: "Пн",
                   Вторник: "Вт",
@@ -150,7 +150,7 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
               })}
               {" : "}
               {(() => {
-                const time = getWorkingTime(data?.workingSchedule.body?.days)
+                const time = getWorkingTime(data?.workingSchedule?.body?.days)
 
                 if (time?.uniform)
                   return `${formatTime(time.start)}:${formatTime(time.end)}`

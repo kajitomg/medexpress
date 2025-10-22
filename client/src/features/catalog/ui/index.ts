@@ -1,7 +1,2 @@
 export { CatalogSearchControl } from "./search-control"
-export { CatalogPaginationControl } from "./pagination-control"
-export { CatalogProductItem } from "./product-item"
-export { CatalogCategoryItem } from "./category-item"
-export { DeviceSectionItem } from "./device-section-item"
-export { DeviceTypeItem } from "./device-type-item"
-export { Price } from "./price"
+export { CatalogPaginationControl } from "./catalog-pagination-control"

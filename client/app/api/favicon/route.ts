@@ -4,7 +4,7 @@ import { NextResponse } from "next/server"
 
 export async function GET() {
   const response = await fetchGlobal()
-  const data = response.data.favicon
+  const data = response.data?.favicon
   if (!data) {
     return NextResponse.json({ status: 404 })
   }

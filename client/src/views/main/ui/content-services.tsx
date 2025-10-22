@@ -1,4 +1,4 @@
-import { MainPageServices as ServicesElement } from "@/entities/_components/elements/main-page-services"
+import { MainPageServicesComponent } from "@/entities/_components"
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import {
@@ -20,7 +20,7 @@ import { ComponentProps } from "react"
 interface SectionServicesContentProps {
   onScrollToForm: () => void
   items: ServicesItemData[]
-  data?: ServicesElement
+  data?: MainPageServicesComponent
 }
 
 const ContentServices = ({

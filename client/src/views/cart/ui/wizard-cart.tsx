@@ -4,9 +4,8 @@ import { ProductBase } from "@/entities/product/model"
 import { fetchProductListBySlug } from "@/entities/product/services/fetch-product-list-by-slug"
 import { CartData } from "@/features/cart/model/cart"
 import { useCartStore } from "@/features/cart/provider"
-import { useProductsListStore } from "@/features/catalog/provider"
+import { useProductListStore } from "@/features/product/provider"
 import { cn } from "@/shared/lib"
-import { DocumentServices } from "@/shared/model"
 import { usePageLayoutStore } from "@/shared/provider/page-layout-provider"
 import {
   Card,
@@ -20,7 +19,7 @@ import {
   Typography,
 } from "@/shared/ui"
 import { CartContactForm } from "@/views/cart/ui/cart-contact-form"
-import { CartList } from "@/views/cart/ui/cart-list"
+import { ProductList } from "@/views/cart/ui/product-list"
 import * as React from "react"
 import { ComponentProps, useEffect, useMemo, useState } from "react"
 
@@ -29,21 +28,20 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
   const offsetTop = offset.top !== undefined ? offset.top + 32 : 228
   const [tab, setTab] = useState<"cart" | "form">("cart")
   const cartItems = useCartStore((state) => state.list)
-  const products = useProductsListStore((state) => state.list)
-  const loadProducts = useProductsListStore((state) => state.loadList)
+  const products = useProductListStore((state) => state.list)
+  const loadProducts = useProductListStore((state) => state.loadList)
   const _hasHydrated = useCartStore((state) => state._hasHydrated)
 
-  const cartProducts: CartData<(ProductBase & DocumentServices) | undefined>[] =
-    useMemo(() => {
-      if (!products?.length) return []
-      return cartItems.map((cartItem) => {
-        const item = products?.find((product) => product.slug === cartItem.slug)
-        return {
-          item,
-          count: cartItem.count,
-        }
-      })
-    }, [cartItems, products])
+  const cartProducts: CartData<ProductBase>[] = useMemo(() => {
+    if (!products?.length) return []
+    return products.map((item) => {
+      const cartItem = cartItems?.find((product) => product.slug === item.slug)
+      return {
+        item,
+        count: cartItem?.count || 0,
+      }
+    })
+  }, [cartItems, products])
 
   useEffect(() => {
     if (!cartItems.length) return
@@ -93,7 +91,7 @@ const WizardCart = ({ className, ...props }: ComponentProps<"div">) => {
           <TabsContent value={"cart"} className="flex-1 min-h-0 max-h-160">
             <div className="h-full">
               {!_hasHydrated || cartProducts.length ? (
-                <CartList products={cartProducts} />
+                <ProductList products={cartProducts} />
               ) : (
                 <EmptyState title="Корзина пуста" />
               )}

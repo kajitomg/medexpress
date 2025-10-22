@@ -1,14 +1,15 @@
 import { Address } from "@/entities/address/model"
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
   StrapiRelation,
 } from "@/shared/model/strapi"
 
 export interface AddressComponent
   extends StrapiComponentBase<"shared.address"> {
-  title?: string
-  icon?: StrapiExtended<StrapiMedia>
-  body: StrapiRelation<Address[]>
+  title: StrapiOptional<string>
+  icon: StrapiOptional<StrapiMedia<ImageMedia>>
+  body: StrapiOptional<StrapiRelation<Address[]>>
 }

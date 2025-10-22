@@ -1,4 +1,4 @@
-import { StrapiComponentBase } from "@/shared/model/strapi"
+import { StrapiComponentBase, StrapiOptional } from "@/shared/model/strapi"
 
 export type ScheduleDays =
   | "Понедельник"
@@ -15,6 +15,6 @@ export interface ScheduleDayComponent
   extends StrapiComponentBase<"shared.schedule-day"> {
   day: ScheduleDays
   type: DayType
-  start: string
-  end: string
+  start: StrapiOptional<string>
+  end: StrapiOptional<string>
 }

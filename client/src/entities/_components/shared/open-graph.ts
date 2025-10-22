@@ -1,14 +1,15 @@
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface OpenGraphComponent
   extends StrapiComponentBase<"shared.open-graph"> {
-  ogTitle?: string | null
-  ogDescription?: string | null
-  ogUrl?: string | null
-  ogType?: string | null
-  ogImage?: StrapiExtended<StrapiMedia>
+  ogTitle: string
+  ogDescription: string
+  ogUrl: StrapiOptional<string>
+  ogType: StrapiOptional<string>
+  ogImage: StrapiOptional<StrapiMedia<ImageMedia>>
 }

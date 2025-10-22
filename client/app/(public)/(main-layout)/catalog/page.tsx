@@ -1,14 +1,12 @@
 import { fetchCatalogCategoryList } from "@/entities/category/services"
 import { fetchPage } from "@/entities/page/services"
-import {
-  CatalogOptionsProvider,
-  CategoryListProvider,
-} from "@/features/catalog/provider"
+import { CatalogCategoryOptionsProvider } from "@/features/catalog/provider"
+import { CategoryListProvider } from "@/features/category/provider"
 import { SectionListProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
-import { CatalogCategoriesPage } from "@/views/catalog-category-list/ui"
+import { CatalogCategoryListPage } from "@/views/catalog-category-list/ui"
 import { Metadata, NextPage, Viewport } from "next"
 import slugify from "slugify"
 
@@ -43,20 +41,23 @@ const Page: NextPage<CatalogPageProps> = async ({ searchParams }) => {
   const content = await fetchPage(
     slugify("Каталог", { lower: true, strict: true })
   )
-  const sections = content.data.sections
+  const sections = content.data?.sections
 
   const response = await fetchCatalogCategoryList(1, searchQuery)
   const categories = response?.data
-  console.log(categories)
+
   return (
     <SectionListProvider initialState={{ sections }}>
-      <CatalogOptionsProvider initialState={{ searchQuery }} skipHydration>
+      <CatalogCategoryOptionsProvider
+        initialState={{ search: { query: searchQuery } }}
+        skipHydration
+      >
         <CategoryListProvider initialState={{ list: categories }}>
           <PageLayoutMain>
-            <CatalogCategoriesPage />
+            <CatalogCategoryListPage />
           </PageLayoutMain>
         </CategoryListProvider>
-      </CatalogOptionsProvider>
+      </CatalogCategoryOptionsProvider>
     </SectionListProvider>
   )
 }

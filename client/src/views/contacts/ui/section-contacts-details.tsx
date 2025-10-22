@@ -1,5 +1,5 @@
 "use client"
-import { ContactsDetails } from "@/entities/_components/elements/contacts-details"
+import { ContactsDetailsComponent } from "@/entities/_components/elements/contacts-details"
 import { formatTime } from "@/shared/lib/format-time"
 import { getDaysStringFromArray } from "@/shared/lib/get-days-string-from-array"
 import { getWorkingTime } from "@/shared/lib/get-working-time"
@@ -18,26 +18,26 @@ import { ComponentProps } from "react"
 import { LocalBusiness, WithContext } from "schema-dts"
 
 interface SectionContactsDetailsProps {
-  data?: ContactsDetails
+  data?: ContactsDetailsComponent
 }
 
 const localBusiness = (
-  contacts?: ContactsDetails
+  contacts?: ContactsDetailsComponent
 ): WithContext<LocalBusiness> => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    address: contacts?.address.body.map((item) => item.value),
+    address: contacts?.address?.body?.map((item) => item.value),
     geo: {
       "@type": "GeoCoordinates",
       latitude: 44.155757,
       longitude: 43.454904,
     },
-    telephone: contacts?.phonenumber.body.map((item) => item.value),
-    email: contacts?.email.body.map((item) => item.value),
+    telephone: contacts?.phonenumber?.body?.map((item) => item.value),
+    email: contacts?.email?.body?.map((item) => item.value),
     openingHours:
-      `${getDaysStringFromArray(contacts?.workingSchedule.body?.days, {
+      `${getDaysStringFromArray(contacts?.workingSchedule?.body?.days, {
         alphabet: {
           Понедельник: "Пн",
           Вторник: "Вт",
@@ -48,13 +48,13 @@ const localBusiness = (
           Воскресенье: "Вс",
         },
       })}: ${(() => {
-        const time = getWorkingTime(contacts?.workingSchedule.body?.days)
+        const time = getWorkingTime(contacts?.workingSchedule?.body?.days)
 
         if (time?.uniform)
           return `${formatTime(time.start)}:${formatTime(time.end)}`
         return ""
       })()}` || "",
-    sameAs: contacts?.social.body.map((item) => item.url),
+    sameAs: contacts?.social?.body?.map((item) => item.url),
   }
 }
 
@@ -75,11 +75,11 @@ const SectionContactsDetails = ({
         <div className="flex-1/2 grid grid-cols-2 gap-4 p-4">
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.address.title}</h4>
+              <h4 className="col-start-2">{data?.address?.title}</h4>
             </Typography>
 
             <div>
-              {data?.address.body?.map((item) => (
+              {data?.address?.body?.map((item) => (
                 <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
@@ -88,18 +88,18 @@ const SectionContactsDetails = ({
           </div>
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.workingSchedule.title}</h4>
+              <h4 className="col-start-2">{data?.workingSchedule?.title}</h4>
             </Typography>
             <Typography variant="muted">
               {(() => {
-                const time = getWorkingTime(data?.workingSchedule.body?.days)
+                const time = getWorkingTime(data?.workingSchedule?.body?.days)
 
                 if (time?.uniform)
                   return `C ${formatTime(time.start)} до ${formatTime(time.end)}`
                 return ""
               })()}
               <br />
-              {getDaysStringFromArray(data?.workingSchedule.body?.days, {
+              {getDaysStringFromArray(data?.workingSchedule?.body?.days, {
                 type: "Выходной",
                 divider: ", ",
               })}{" "}
@@ -108,10 +108,10 @@ const SectionContactsDetails = ({
           </div>
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.phonenumber.title}</h4>
+              <h4 className="col-start-2">{data?.phonenumber?.title}</h4>
             </Typography>
             <div>
-              {data?.phonenumber.body?.map((item) => (
+              {data?.phonenumber?.body?.map((item) => (
                 <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
@@ -120,10 +120,10 @@ const SectionContactsDetails = ({
           </div>
           <div className="flex flex-col gap-2">
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.email.title}</h4>
+              <h4 className="col-start-2">{data?.email?.title}</h4>
             </Typography>
             <div>
-              {data?.email.body?.map((item) => (
+              {data?.email?.body?.map((item) => (
                 <Typography key={item.id} variant="muted">
                   {item.value}
                 </Typography>
@@ -132,10 +132,10 @@ const SectionContactsDetails = ({
           </div>
           <div className="flex flex-col">
             <h6 className="text-base md:text-lg font-bold">
-              {data?.social.title}
+              {data?.social?.title}
             </h6>
             <div className="mt-2">
-              {data?.social.body.map((item) => (
+              {data?.social?.body?.map((item) => (
                 <Link key={item.id} href={item.url}>
                   <Button
                     variant="link"

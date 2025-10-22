@@ -3,7 +3,7 @@ import { ProductDetailsProvider } from "@/features/product-details/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
-import { ProductPage } from "@/views/product/ui"
+import { ProductDetailsPage } from "@/views/product-details/ui"
 import { Metadata, NextPage, Viewport } from "next"
 
 interface ProductPageProps {
@@ -20,8 +20,8 @@ export async function generateMetadata({
   const data = response.data
 
   return generatePageMetadata(data, {
-    defaultTitle: data.name || "Страница не найдена",
-    defaultDescription: data.description || undefined,
+    defaultTitle: data?.name || "Страница не найдена",
+    defaultDescription: data?.description || undefined,
   })
 }
 
@@ -47,7 +47,7 @@ const Page: NextPage<ProductPageProps> = async ({ params }) => {
   return (
     <ProductDetailsProvider initialState={{ item: product }}>
       <PageLayoutMain>
-        <ProductPage />
+        <ProductDetailsPage />
       </PageLayoutMain>
     </ProductDetailsProvider>
   )

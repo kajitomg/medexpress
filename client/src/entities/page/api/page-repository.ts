@@ -4,15 +4,15 @@ import { PageBase } from "@/entities/page/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
 import {
-  Query,
   StrapiItemResponse,
   StrapiListResponse,
+  StrapiQuery,
 } from "@/shared/model/strapi"
 import qs from "qs"
 
 const fetchPageItemBySlug = async (
   slug: string,
-  queryObj?: Query<PageBase>
+  queryObj?: StrapiQuery<PageBase>
 ) => {
   try {
     queryObj = {

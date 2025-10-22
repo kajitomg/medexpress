@@ -1,5 +1,6 @@
 "use client"
 
+import { StrapiComponentBase } from "@/shared/model/strapi"
 import { createContext, type ReactNode, useContext, useRef } from "react"
 import { useStore } from "zustand"
 import {
@@ -17,19 +18,13 @@ export const SectionListStoreContext = createContext<
 >(undefined)
 
 export interface SectionListProviderProps<
-  T extends {
-    __component: string
-  }[],
+  T extends StrapiComponentBase<string>[],
 > {
   children: ReactNode
   initialState?: Partial<SectionListState<T>>
 }
 
-export const SectionListProvider = <
-  T extends {
-    __component: string
-  }[],
->({
+export const SectionListProvider = <T extends StrapiComponentBase<string>[]>({
   children,
   initialState,
 }: SectionListProviderProps<T>) => {
@@ -45,7 +40,9 @@ export const SectionListProvider = <
   )
 }
 
-export function createSectionListStore<S extends { __component: string }[]>() {
+export function createSectionListStore<
+  S extends StrapiComponentBase<string>[],
+>() {
   return <T,>(selector: (store: SectionListStore<S>) => T): T => {
     const context = useContext(SectionListStoreContext)
 

@@ -1,6 +1,6 @@
 import { fetchNavigationCategoryList } from "@/entities/category/services"
-import { CategoryListProvider } from "@/features/catalog/provider"
-import { MenuCatalog } from "@/widgets/menu-catalog/ui"
+import { CategoryListProvider } from "@/features/category/provider"
+import { DropdownCategoryList } from "@/widgets/dropdown-category-list/ui"
 import * as React from "react"
 
 const HeaderMenuCatalog = async () => {
@@ -10,7 +10,7 @@ const HeaderMenuCatalog = async () => {
 
   return (
     <CategoryListProvider initialState={{ list: categories }}>
-      <MenuCatalog />
+      <DropdownCategoryList />
     </CategoryListProvider>
   )
 }

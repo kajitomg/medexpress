@@ -1,18 +1,20 @@
-import {
-  ScheduleDays,
-  WorkingScheduleItem,
-} from "@/entities/_components/shared/working-schedule"
+import { ScheduleDayComponent } from "@/entities/_components"
+import { StrapiOptional } from "@/shared/model/strapi"
 
 export { getWorkingTime }
 
 type WorkSchedule =
-  | { uniform: true; start: string; end: string }
+  | ({ uniform: true } & Pick<ScheduleDayComponent, "start" | "end">)
   | {
       uniform: false
-      days: { day: ScheduleDays; start: string; end: string }[]
+      days: StrapiOptional<
+        Pick<ScheduleDayComponent, "day" | "start" | "end">[]
+      >
     }
 
-function getWorkingTime(days?: WorkingScheduleItem[]): WorkSchedule | null {
+function getWorkingTime(
+  days?: StrapiOptional<ScheduleDayComponent[]>
+): WorkSchedule | null {
   if (!days) return null
   const workingDays = days.filter((d) => d.type === "Рабочий")
 

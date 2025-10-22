@@ -1,5 +1,5 @@
 "use client"
-import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
+import { ContactFormSectionComponent } from "@/entities/_components"
 import { cn } from "@/shared/lib"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { Typography } from "@/shared/ui"
@@ -11,18 +11,18 @@ import Markdown from "react-markdown"
 import { LocalBusiness, WithContext } from "schema-dts"
 
 interface ContactFormDetailsProps {
-  data?: ContactFormSection
+  data?: ContactFormSectionComponent
 }
 
 const localBusiness = (
-  contacts?: ContactFormSection
+  contacts?: ContactFormSectionComponent
 ): WithContext<LocalBusiness> => {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    telephone: contacts?.phonenumber.body.map((item) => item.value),
-    email: contacts?.email.body.map((item) => item.value),
+    telephone: contacts?.phonenumber?.body?.map((item) => item.value),
+    email: contacts?.email?.body?.map((item) => item.value),
   }
 }
 
@@ -58,14 +58,14 @@ const ContactFormDetails = ({
         <div className="flex flex-col items-start gap-2">
           <div className="grid items-center gap-2 content-start justify-start">
             <DynamicIcon
-              url={imageUrlBuilder(data?.phonenumber.icon?.url)}
+              url={imageUrlBuilder(data?.phonenumber?.icon?.url)}
               className="size-7 md:size-8 text-foreground"
             />
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.phonenumber.title}</h4>
+              <h4 className="col-start-2">{data?.phonenumber?.title}</h4>
             </Typography>
             <div className="col-start-2">
-              {data?.phonenumber.body?.map((item) => (
+              {data?.phonenumber?.body?.map((item) => (
                 <Typography
                   key={item.id}
                   variant="muted"
@@ -78,15 +78,15 @@ const ContactFormDetails = ({
           </div>
           <div className="grid items-center gap-2 content-start justify-start">
             <DynamicIcon
-              url={imageUrlBuilder(data?.email.icon?.url)}
+              url={imageUrlBuilder(data?.email?.icon?.url)}
               className="size-7 md:size-8 text-foreground"
             />
             <Typography asChild variant="h4">
-              <h4 className="col-start-2">{data?.email.title}</h4>
+              <h4 className="col-start-2">{data?.email?.title}</h4>
             </Typography>
 
             <div className="col-start-2">
-              {data?.email.body?.map((item) => (
+              {data?.email?.body?.map((item) => (
                 <Typography
                   key={item.id}
                   variant="muted"

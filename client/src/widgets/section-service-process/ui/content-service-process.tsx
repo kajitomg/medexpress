@@ -1,4 +1,4 @@
-import { RowTextItem } from "@/entities/_components/blocks/row-text-item"
+import { RowTextItemComponent } from "@/entities/_components/blocks/row-text-item"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import { Typography } from "@/shared/ui"
 import DynamicIcon from "@/shared/ui/dynamic-icon"
@@ -6,7 +6,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionServiceProcessContentProps {
-  items?: RowTextItem[]
+  items?: RowTextItemComponent[]
 }
 
 const ContentServiceProcess = ({

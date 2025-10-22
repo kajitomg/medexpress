@@ -1,10 +1,15 @@
-import { MetaData } from "@/shared/model"
+import { SeoComponent, SeoTemplateComponent } from "@/entities/_components"
+import { StrapiOptional } from "@/shared/model/strapi"
 import { Metadata } from "next"
 
 export const generatePageMetadata = <
-  T extends {
-    seo?: Partial<MetaData> & Pick<MetaData, "metaTitle" | "metaDescription">
-  },
+  T extends StrapiOptional<{
+    seo?: StrapiOptional<
+      Partial<SeoComponent> &
+        Pick<SeoComponent, "metaTitle" | "metaDescription">
+    >
+    seoTemplate?: StrapiOptional<Partial<SeoTemplateComponent>>
+  }>,
 >(
   data: T,
   options: {
@@ -20,7 +25,6 @@ export const generatePageMetadata = <
   }
   const {
     metaTitle,
-    metaTitleTemplate,
     metaDescription,
     metaImage,
     metaRobots,
@@ -28,6 +32,8 @@ export const generatePageMetadata = <
     openGraph,
     canonicalURL,
   } = data.seo
+
+  const metaTitleTemplate = data.seoTemplate?.metaTitleTemplate
 
   const socialImageSource = openGraph?.ogImage || metaImage
   return {

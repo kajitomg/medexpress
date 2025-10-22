@@ -1,11 +1,12 @@
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface GallerySectionComponent
   extends StrapiComponentBase<"sections.gallery-section"> {
-  title: string
-  items?: StrapiExtended<StrapiMedia[]>
+  title: StrapiOptional<string>
+  items: StrapiOptional<StrapiMedia<ImageMedia[]>>
 }

@@ -2,7 +2,7 @@
 
 import { fetchProductItemBySlug } from "@/entities/product/api"
 import { ProductBase } from "@/entities/product/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchDetailProductItem = async (slug: string) => {
   const queryObj = {
@@ -23,7 +23,7 @@ const fetchDetailProductItem = async (slug: string) => {
         },
       },
     },
-  } satisfies Query<ProductBase>
+  } satisfies StrapiQuery<ProductBase>
 
   return await fetchProductItemBySlug(slug, queryObj)
 }

@@ -1,5 +1,5 @@
 import { sendMail } from "@/entities/mail/api"
-import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { ContactFormSchema } from "@/features/contact-form/model"
 import { NextResponse } from "next/server"
 import Mail from "nodemailer/lib/mailer"
 

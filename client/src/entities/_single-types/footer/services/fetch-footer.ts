@@ -1,6 +1,6 @@
 import { fetchFooterItem } from "@/entities/_single-types/footer/api"
 import { FooterBase } from "@/entities/_single-types/footer/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchFooter = async () => {
   const queryObj = {
@@ -50,7 +50,7 @@ const fetchFooter = async () => {
         },
       },
     },
-  } satisfies Query<FooterBase>
+  } satisfies StrapiQuery<FooterBase>
 
   return await fetchFooterItem(queryObj)
 }

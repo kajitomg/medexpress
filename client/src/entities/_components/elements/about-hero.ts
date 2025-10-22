@@ -1,12 +1,13 @@
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface AboutHeroComponent
   extends StrapiComponentBase<"elements.about-hero"> {
-  content?: string
+  content: StrapiOptional<string>
   formButton: string
-  poster?: StrapiExtended<StrapiMedia>
+  poster: StrapiMedia<ImageMedia>
 }

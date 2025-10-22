@@ -1,4 +1,4 @@
-import { StrapiBase } from "@/shared/model/strapi/base"
+import { StrapiBase, StrapiOptional } from "@/shared/model/strapi/base"
 
 export type StrapiMeta = {
   pagination: {
@@ -10,11 +10,11 @@ export type StrapiMeta = {
 }
 
 export type StrapiListResponse<T extends StrapiBase> = {
-  data: T[]
+  data: Array<T>
   meta: StrapiMeta
 }
 
 export type StrapiItemResponse<T extends StrapiBase> = {
-  data: T | null
+  data: StrapiOptional<T>
   meta: object
 }

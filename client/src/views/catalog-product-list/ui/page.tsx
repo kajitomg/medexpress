@@ -2,20 +2,19 @@
 
 import { ProductBase } from "@/entities/product/model"
 import { fetchCategoriesProductList } from "@/entities/product/services"
-import {
-  useCatalogOptionsStore,
-  useProductsListStore,
-} from "@/features/catalog/provider"
-import {
-  CatalogPaginationControl,
-  CatalogSearchControl,
-} from "@/features/catalog/ui"
+import { useCatalogProductOptionsStore } from "@/features/catalog/provider"
 import { useCategoryDetailsStore } from "@/features/category-details/provider"
+import { useProductListStore } from "@/features/product/provider"
+import { SearchControl } from "@/features/search/ui"
 import { routes } from "@/shared/config/routes"
 import { useUpdateEffect } from "@/shared/lib/hooks"
 import { urlBuilder } from "@/shared/lib/url-builder"
-import { DocumentServices } from "@/shared/model"
-import { ContentSection, ContentSectionContent, EmptyState } from "@/shared/ui"
+import {
+  ContentSection,
+  ContentSectionContent,
+  EmptyState,
+  PaginationControl,
+} from "@/shared/ui"
 import { ProductList } from "@/views/catalog-product-list/ui/product-list"
 import { PageHeroRoutes } from "@/widgets/page-hero-routes/ui"
 import * as React from "react"
@@ -27,7 +26,7 @@ interface PageProps {
 
 const collectionPage = (
   pageName?: string,
-  items?: (ProductBase & DocumentServices)[]
+  items?: ProductBase[]
 ): WithContext<CollectionPage> => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -48,11 +47,28 @@ const collectionPage = (
 
 const Page = ({ slug }: PageProps) => {
   const category = useCategoryDetailsStore((state) => state.item)
-  const products = useProductsListStore((state) => state.list)
-  const loadProducts = useProductsListStore((state) => state.loadList)
+  const products = useProductListStore((state) => state.list)
+  const loadProducts = useProductListStore((state) => state.loadList)
 
-  const searchQuery = useCatalogOptionsStore((state) => state.searchQuery)
-  const page = useCatalogOptionsStore((state) => state.page)
+  const searchQuery = useCatalogProductOptionsStore(
+    (state) => state.search.query
+  )
+  const page = useCatalogProductOptionsStore((state) => state.pagination.page)
+  const query = useCatalogProductOptionsStore((state) => state.search.query)
+  const setQuery = useCatalogProductOptionsStore(
+    (state) => state.search.setQuery
+  )
+  const maxPages = useCatalogProductOptionsStore(
+    (state) => state.pagination.maxPages
+  )
+  const setPage = useCatalogProductOptionsStore(
+    (state) => state.pagination.setPage
+  )
+
+  const handleSetPage = (page: number) => {
+    setPage(page)
+    window.scroll({ top: 0, behavior: "smooth" })
+  }
 
   useUpdateEffect(() => {
     loadProducts(fetchCategoriesProductList, slug, page || 1, searchQuery)
@@ -73,12 +89,17 @@ const Page = ({ slug }: PageProps) => {
       />
       <ContentSection>
         <ContentSectionContent className="max-w-380 w-full">
-          <CatalogSearchControl />
+          <SearchControl setSearch={setQuery} search={query} />
 
           {products?.length ? (
             <>
               <ProductList products={products} className="mt-6" />
-              <CatalogPaginationControl className="mt-4" />
+              <PaginationControl
+                page={page}
+                setPage={handleSetPage}
+                maxPages={maxPages}
+                className="mt-4"
+              />
             </>
           ) : (
             <EmptyState title="Товары не найдены" />

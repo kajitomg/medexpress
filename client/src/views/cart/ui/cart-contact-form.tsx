@@ -4,13 +4,12 @@ import { ProductBase } from "@/entities/product/model"
 import { CartData } from "@/features/cart/model/cart"
 import { useCartStore } from "@/features/cart/provider"
 import { sendCartForm } from "@/features/cart/services"
-import { DocumentServices } from "@/shared/model"
-import { ContactFormSchema } from "@/widgets/contact-form/model"
+import { ContactFormSchema } from "@/features/contact-form/model"
 import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import { ContactForm } from "@/widgets/contact-form/ui"
 
 interface CartContactFormProps {
-  products?: CartData<(ProductBase & DocumentServices) | undefined>[]
+  products?: CartData<ProductBase>[]
 }
 
 const CartContactForm = ({ products }: CartContactFormProps) => {

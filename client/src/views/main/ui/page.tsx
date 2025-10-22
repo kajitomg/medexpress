@@ -1,7 +1,7 @@
 "use client"
 
 import { PageSections } from "@/entities/page/model/page"
-import { createSectionsStore } from "@/features/sections/provider"
+import { createSectionListStore } from "@/features/sections/provider"
 import {
   selectSectionItemByName,
   selectSectionListItemByType,
@@ -16,7 +16,7 @@ import { ContactFormProvider } from "@/widgets/contact-form/provider"
 import * as React from "react"
 import { useCallback, useRef } from "react"
 
-const useSectionsStore = createSectionsStore<PageSections[]>()
+const useSectionsStore = createSectionListStore<PageSections[]>()
 
 const Page = () => {
   const formRef = useRef<HTMLDivElement>(null)

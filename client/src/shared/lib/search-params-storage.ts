@@ -7,12 +7,11 @@ const getUrlSearch = () => {
 }
 
 const searchParamsStorage: StateStorage = {
-  getItem: (key): string => {
+  getItem: (key) => {
     const searchParams = new URLSearchParams(getUrlSearch())
-    const storedValue = searchParams.get(key)
-    return storedValue || ""
+    return searchParams.get(key)
   },
-  setItem: (key, newValue): void => {
+  setItem: (key, newValue) => {
     const storedValue = new URLSearchParams(JSON.parse(newValue).state)
     if (!storedValue.size) window.history.replaceState(null, "", null)
     else {
@@ -21,9 +20,10 @@ const searchParamsStorage: StateStorage = {
       window.history.replaceState(null, "", `?${searchParams}`)
     }
   },
-  removeItem: (key): void => {
+  removeItem: (key) => {
     const searchParams = new URLSearchParams(getUrlSearch())
     searchParams.delete(key)
+    console.log("removeItem")
     window.location.search = searchParams.toString()
   },
 }

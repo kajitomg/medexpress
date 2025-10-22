@@ -3,10 +3,10 @@
 import { HeaderBase } from "@/entities/_single-types/header/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { Query, StrapiItemResponse } from "@/shared/model/strapi"
+import { StrapiItemResponse, StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchHeaderItem = async (queryObj?: Query<HeaderBase>) => {
+const fetchHeaderItem = async (queryObj?: StrapiQuery<HeaderBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 

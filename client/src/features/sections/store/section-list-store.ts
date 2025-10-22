@@ -1,22 +1,23 @@
+import { StrapiComponentBase, StrapiOptional } from "@/shared/model/strapi"
 import { create } from "zustand"
 
-export interface SectionListState<T extends { __component: string }[]> {
-  sections?: T
+export interface SectionListState<T extends StrapiComponentBase<string>[]> {
+  sections?: StrapiOptional<T>
   isLoading: boolean
   error?: string
 }
 
-export type SectionListStore<T extends { __component: string }[]> =
+export type SectionListStore<T extends StrapiComponentBase<string>[]> =
   SectionListState<T>
 
-const defaultInitState = <T extends { __component: string }[]>() =>
+const defaultInitState = <T extends StrapiComponentBase<string>[]>() =>
   ({
     sections: undefined,
     isLoading: false,
     error: undefined,
   }) as SectionListState<T>
 
-export const createSectionListStore = <T extends { __component: string }[]>(
+export const createSectionListStore = <T extends StrapiComponentBase<string>[]>(
   initState: Partial<SectionListState<T>> = {}
 ) =>
   create<SectionListStore<T>>(() => ({

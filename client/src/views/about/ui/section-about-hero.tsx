@@ -1,4 +1,4 @@
-import { AboutHero } from "@/entities/_components/elements/about-hero"
+import { AboutHeroComponent } from "@/entities/_components"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import {
   Button,
@@ -14,7 +14,7 @@ import Markdown from "react-markdown"
 
 interface SectionAboutHeroProps {
   onScrollToForm: () => void
-  data?: AboutHero
+  data?: AboutHeroComponent
 }
 
 const SectionAboutHero = ({ data, onScrollToForm }: SectionAboutHeroProps) => {

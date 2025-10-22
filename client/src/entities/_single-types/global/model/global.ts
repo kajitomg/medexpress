@@ -1,18 +1,20 @@
 import { SeoComponent } from "@/entities/_components"
 import {
+  DocumentMedia,
+  ImageMedia,
   StrapiBase,
   StrapiComponent,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface GlobalBase extends StrapiBase {
   slug: string
-  seo: StrapiComponent<SeoComponent>
-  robots: StrapiExtended<StrapiMedia>
-  favicon: StrapiExtended<StrapiMedia>
-  sitemap: StrapiExtended<StrapiMedia>
-  defaultCategoryImage: StrapiExtended<StrapiMedia>
-  defaultProductImage: StrapiExtended<StrapiMedia>
-  defaultCollectionImage: StrapiExtended<StrapiMedia>
+  seo: StrapiOptional<StrapiComponent<SeoComponent>>
+  robots: StrapiOptional<StrapiMedia<DocumentMedia>>
+  favicon: StrapiOptional<StrapiMedia<DocumentMedia>>
+  sitemap: StrapiOptional<StrapiMedia<DocumentMedia>>
+  defaultCategoryImage: StrapiOptional<StrapiMedia<ImageMedia>>
+  defaultProductImage: StrapiOptional<StrapiMedia<ImageMedia>>
+  defaultCollectionImage: StrapiOptional<StrapiMedia<ImageMedia>>
 }

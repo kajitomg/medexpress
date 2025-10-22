@@ -20,7 +20,7 @@ const AddToCartButton = ({
   VariantProps<typeof buttonVariants> &
   AddToCartButtonProps) => {
   const hasHydrated = useCartStore((state) => state._hasHydrated)
-  const products = useCartStore((state) => state.products)
+  const products = useCartStore((state) => state.list)
   const addItemToCart = useCartStore((state) => state.addItemToCart)
   const deleteItemFromCart = useCartStore((state) => state.deleteItemFromCart)
 

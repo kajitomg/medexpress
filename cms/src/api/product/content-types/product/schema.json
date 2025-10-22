@@ -17,6 +17,14 @@
       "targetField": "name",
       "required": true
     },
+    "sku": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "required": true,
+      "unique": true,
+      "regex": "^\\d{6}$"
+    },
     "type": {
       "type": "relation",
       "relation": "oneToOne",
@@ -54,7 +62,7 @@
       "type": "component",
       "component": "shared.product-specification",
       "repeatable": true,
-      "required": true
+      "required": false
     }
   }
 }

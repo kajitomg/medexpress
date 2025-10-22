@@ -1,4 +1,4 @@
-import { GallerySection } from "@/entities/_components/sections/gallery-section"
+import { GallerySectionComponent } from "@/entities/_components"
 import { imageUrlBuilder } from "@/shared/lib/image-url-builder"
 import {
   ContentSection,
@@ -14,7 +14,7 @@ import Link from "next/link"
 import * as React from "react"
 
 interface SectionLicenses {
-  data?: GallerySection
+  data?: GallerySectionComponent
 }
 
 const SectionLicenses = ({ data }: SectionLicenses) => {

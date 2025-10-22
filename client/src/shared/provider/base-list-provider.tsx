@@ -1,10 +1,13 @@
 "use client"
 
+import { StrapiBase } from "@/shared/model/strapi"
 import { createContext, type ReactNode, useContext, useRef } from "react"
 import { useStore as useZustandStore } from "zustand"
 import { BaseListState, BaseListStore, createBaseListStore } from "../store"
 
-export const createStoreBaseListProvider = <T,>(name: string) => {
+export const createStoreBaseListProvider = <T extends StrapiBase>(
+  name: string
+) => {
   type StoreApi = ReturnType<typeof createBaseListStore<T>>
 
   const StoreContext = createContext<StoreApi | undefined>(undefined)

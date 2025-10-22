@@ -1,5 +1,5 @@
-import { CollectionBase } from "@/entities/category/model"
-import { CategoryBase } from "@/entities/device-section/model"
+import { CategoryBase } from "@/entities/category/model"
+import { DeviceTypeBase } from "@/entities/device-type/model"
 import { ProductBase } from "@/entities/product/model"
 import { revalidateTag } from "next/cache"
 
@@ -22,13 +22,19 @@ export async function POST(req: Request) {
     }
 
     switch (body.model) {
-      case "collection": {
-        const collection = body.entry as CollectionBase
+      case "device-type": {
+        const deviceType = body.entry as DeviceTypeBase
 
         revalidateTag(body.model)
-        collection?.products?.map((product) => {
-          revalidateTag(`product::${product?.slug}`)
+
+        deviceType.sections?.map((section) => {
+          revalidateTag(`device-section::${section?.slug}`)
         })
+
+        break
+      }
+      case "device-section": {
+        revalidateTag(body.model)
 
         break
       }
@@ -39,9 +45,6 @@ export async function POST(req: Request) {
         category?.products?.map((product) => {
           revalidateTag(`product::${product?.slug}`)
         })
-        category?.childrens?.map((category) => {
-          revalidateTag(`category::${category?.slug}`)
-        })
         break
       }
       case "product": {
@@ -50,9 +53,6 @@ export async function POST(req: Request) {
         revalidateTag(`product::${product?.slug}`)
         product?.categories?.map((category) => {
           revalidateTag(`category::${category?.slug}`)
-        })
-        product?.collections?.map((collection) => {
-          revalidateTag(`collection::${collection?.slug}`)
         })
 
         break

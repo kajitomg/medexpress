@@ -1,9 +1,15 @@
 import { Currency } from "@/entities/currency/model"
-import { StrapiBase } from "@/shared/model/strapi"
+import { ProductBase } from "@/entities/product/model"
+import {
+  StrapiBase,
+  StrapiOptional,
+  StrapiRelation,
+} from "@/shared/model/strapi"
 
 export interface Price extends StrapiBase {
   price: number
   direction: "FROM" | "CURRENT"
-  currency: Currency
   priceStatus: "AVAILABLE" | "NOT SPECIFIED" | "ON REQUEST"
+  currency: StrapiOptional<StrapiRelation<Currency>>
+  product: StrapiOptional<StrapiRelation<ProductBase>>
 }

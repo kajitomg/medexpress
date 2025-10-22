@@ -1,4 +1,5 @@
 import { cn } from "@/shared/lib"
+import { StrapiOptional } from "@/shared/model/strapi"
 import { Button, Input } from "@/shared/ui"
 import { Control, Field, Root, Submit } from "@radix-ui/react-form"
 import * as React from "react"
@@ -8,7 +9,7 @@ import { UseFormRegisterReturn } from "react-hook-form"
 interface HeroFormProps {
   register: UseFormRegisterReturn<"email">
   inputPlaceholder?: string
-  buttonText?: string
+  buttonText?: StrapiOptional<string>
 }
 
 const HeroForm = ({

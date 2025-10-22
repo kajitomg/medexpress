@@ -1,4 +1,4 @@
-import { MainPageServices as ServicesElement } from "@/entities/_components/elements/main-page-services"
+import { MainPageServicesComponent } from "@/entities/_components"
 import { routes } from "@/shared/config/routes"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContentServices } from "@/views/main/ui/content-services"
@@ -36,7 +36,7 @@ const PAGES: ServicesItemData[] = [
 
 interface ServicesProps {
   onScrollToForm: () => void
-  data?: ServicesElement
+  data?: MainPageServicesComponent
 }
 
 const Services = ({

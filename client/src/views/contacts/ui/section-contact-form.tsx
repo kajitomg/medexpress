@@ -1,8 +1,8 @@
-import { ContactFormSection } from "@/entities/_components/sections/contact-form-section"
+import { ContactFormSectionComponent } from "@/entities/_components"
+import { ContactFormSchema } from "@/features/contact-form/model"
 import { cn } from "@/shared/lib"
 import { ContentSection, ContentSectionContent } from "@/shared/ui"
 import { ContactFormDetails } from "@/views/contacts/ui/contact-form-details"
-import { ContactFormSchema } from "@/widgets/contact-form/model"
 import { sendContactForm } from "@/widgets/contact-form/services"
 import { ContactForm } from "@/widgets/contact-form/ui"
 
@@ -11,7 +11,7 @@ import * as React from "react"
 import { ComponentProps } from "react"
 
 interface SectionContactFormProps {
-  data?: ContactFormSection
+  data?: ContactFormSectionComponent
 }
 
 const SectionContactForm = ({

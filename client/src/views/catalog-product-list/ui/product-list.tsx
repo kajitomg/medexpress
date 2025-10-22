@@ -1,16 +1,15 @@
 "use client"
 
 import { ProductBase } from "@/entities/product/model"
-import { CatalogProductItem } from "@/features/catalog/ui"
 import { useGlobalStore } from "@/features/global/provider"
 import { cn } from "@/shared/lib"
-import { DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
+import { ProductItemCard } from "@/views/catalog-product-list/ui/product-item-card"
 import * as React from "react"
 import { ComponentProps, useCallback } from "react"
 
 interface ProductsListProps {
-  products?: (ProductBase & DocumentServices)[]
+  products?: ProductBase[]
 }
 
 const ProductList = ({
@@ -23,9 +22,9 @@ const ProductList = ({
   )
 
   const renderCatalogItem = useCallback(
-    (item: ProductBase & DocumentServices) => {
+    (item: ProductBase) => {
       return (
-        <CatalogProductItem
+        <ProductItemCard
           key={item.id}
           product={{
             ...item,

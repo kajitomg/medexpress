@@ -1,8 +1,9 @@
 import {
   DayType,
+  ScheduleDayComponent,
   ScheduleDays,
-  WorkingScheduleItem,
-} from "@/entities/_components/shared/working-schedule"
+} from "@/entities/_components"
+import { StrapiOptional } from "@/shared/model/strapi"
 
 type Variants = "full" | "simple"
 type Dividers = " - " | ", "
@@ -41,7 +42,7 @@ function getDayLabel(
 }
 
 const getDaysStringFromArray = (
-  days?: WorkingScheduleItem[],
+  days?: StrapiOptional<ScheduleDayComponent[]>,
   options?: Options
 ) => {
   options = { ...defaultOptions, ...options }

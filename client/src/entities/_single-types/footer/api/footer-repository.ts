@@ -3,10 +3,10 @@
 import { FooterBase } from "@/entities/_single-types/footer/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { Query, StrapiItemResponse } from "@/shared/model/strapi"
+import { StrapiItemResponse, StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchFooterItem = async (queryObj?: Query<FooterBase>) => {
+const fetchFooterItem = async (queryObj?: StrapiQuery<FooterBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 

@@ -603,7 +603,7 @@ export interface ApiDeviceTypeDeviceType extends Struct.CollectionTypeSchema {
       'api::device-section.device-section'
     >;
     seo: Schema.Attribute.Component<'shared.seo', false>;
-    slug: Schema.Attribute.UID<'name'>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -893,12 +893,18 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.Relation<'oneToMany', 'api::price.price'>;
     publishedAt: Schema.Attribute.DateTime;
+    sku: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 6;
+        minLength: 6;
+      }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     specifications: Schema.Attribute.Component<
       'shared.product-specification',
       true
-    > &
-      Schema.Attribute.Required;
+    >;
     type: Schema.Attribute.Relation<'oneToOne', 'api::device-type.device-type'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

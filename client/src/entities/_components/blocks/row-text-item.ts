@@ -1,12 +1,13 @@
 import {
+  ImageMedia,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface RowTextItemComponent
   extends StrapiComponentBase<"blocks.row-text-item"> {
-  title?: string
+  title: StrapiOptional<string>
   content: string
-  icon?: StrapiExtended<StrapiMedia>
+  icon: StrapiOptional<StrapiMedia<ImageMedia>>
 }

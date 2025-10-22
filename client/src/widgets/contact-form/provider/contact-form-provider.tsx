@@ -3,7 +3,7 @@
 import {
   contactFormSchema,
   ContactFormSchema,
-} from "@/widgets/contact-form/model"
+} from "@/features/contact-form/model"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ReactNode } from "react"
 import {

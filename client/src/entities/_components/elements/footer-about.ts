@@ -1,14 +1,15 @@
 import { SocialComponent } from "@/entities/_components/shared/social"
 import {
+  ImageMedia,
   StrapiComponent,
   StrapiComponentBase,
-  StrapiExtended,
   StrapiMedia,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export interface FooterAboutComponent
   extends StrapiComponentBase<"elements.footer-about"> {
-  logo: StrapiExtended<StrapiMedia>
+  logo: StrapiMedia<ImageMedia>
   caption: string
-  social: StrapiComponent<SocialComponent>
+  social: StrapiOptional<StrapiComponent<SocialComponent>>
 }

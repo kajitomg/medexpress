@@ -2,7 +2,7 @@
 
 import { fetchProductList } from "@/entities/product/api/product-repository"
 import { ProductBase } from "@/entities/product/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchSimilarCategoriesProductsList = async (
   categorySlug: string,
@@ -14,23 +14,17 @@ const fetchSimilarCategoriesProductsList = async (
       pageSize,
     },
     filters: {
-      $and: [
-        {
-          categories: {
-            slug: categorySlug,
-          },
-        },
-        {
-          slug: {
-            $not: productSlug,
-          },
-        },
-      ],
+      categories: {
+        slug: categorySlug,
+      },
+      slug: {
+        $not: productSlug,
+      },
     },
     populate: {
       images: true,
     },
-  } satisfies Query<ProductBase>
+  } satisfies StrapiQuery<ProductBase>
 
   return await fetchProductList(queryObj, [`category::${categorySlug}`])
 }

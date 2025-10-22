@@ -11,11 +11,13 @@ import {
   MainPageServicesComponent,
   RichTextComponent,
   SeoComponent,
+  SeoTemplateComponent,
 } from "@/entities/_components"
 import {
   StrapiBase,
   StrapiComponent,
   StrapiDynamicZone,
+  StrapiOptional,
 } from "@/shared/model/strapi"
 
 export type PageSections =
@@ -35,5 +37,6 @@ export interface PageBase extends StrapiBase {
   slug: string
   name: string
   seo: StrapiComponent<SeoComponent>
-  sections: StrapiDynamicZone<PageSections>
+  sections: StrapiOptional<StrapiDynamicZone<PageSections>>
+  seoTemplate: StrapiOptional<StrapiComponent<SeoTemplateComponent>>
 }

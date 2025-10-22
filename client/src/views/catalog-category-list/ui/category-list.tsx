@@ -1,16 +1,15 @@
 "use client"
 
 import { CategoryBase } from "@/entities/category/model"
-import { CatalogCategoryItem } from "@/features/catalog/ui"
 import { useGlobalStore } from "@/features/global/provider"
 import { cn } from "@/shared/lib"
-import { DocumentServices } from "@/shared/model"
 import { List } from "@/shared/ui/list"
+import { CategoryItemCard } from "@/views/catalog-category-list/ui/category-item-card"
 import * as React from "react"
 import { ComponentProps, useCallback } from "react"
 
 interface CategoriesListProps {
-  categories?: (CategoryBase & DocumentServices)[]
+  categories?: CategoryBase[]
 }
 
 const CategoryList = ({
@@ -23,9 +22,9 @@ const CategoryList = ({
   )
 
   const renderCatalogItem = useCallback(
-    (item: CategoryBase & DocumentServices) => {
+    (item: CategoryBase) => {
       return (
-        <CatalogCategoryItem
+        <CategoryItemCard
           key={item.id}
           category={{ ...item, image: item.image || defaultMedia }}
         />

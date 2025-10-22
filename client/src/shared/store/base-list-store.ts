@@ -1,15 +1,14 @@
-import { StrapiListResponse } from "@/shared/model/strapi"
+import { StrapiBase, StrapiListResponse } from "@/shared/model/strapi"
 import { create } from "zustand"
 
-export interface BaseListState<T> {
+export interface BaseListState<T extends StrapiBase> {
   list?: T[]
   isLoading: boolean
   error?: string
 }
 
-interface BaseListActions<T> {
+interface BaseListActions<T extends StrapiBase> {
   setList: (list?: T[]) => void
-
   loadList: <
     F extends (...args: Parameters<F>) => Promise<StrapiListResponse<T>>,
   >(
@@ -21,16 +20,16 @@ interface BaseListActions<T> {
   reset: () => void
 }
 
-export type BaseListStore<T> = BaseListState<T> & BaseListActions<T>
+export type BaseListStore<T extends StrapiBase> = BaseListState<T> &
+  BaseListActions<T>
 
-const defaultInitState = <T>() =>
-  ({
-    list: undefined,
-    isLoading: false,
-    error: undefined,
-  }) as BaseListState<T>
+const defaultInitState = <T extends StrapiBase>(): BaseListState<T> => ({
+  list: undefined,
+  isLoading: false,
+  error: undefined,
+})
 
-export const createBaseListStore = <T>(
+export const createBaseListStore = <T extends StrapiBase>(
   initState: Partial<BaseListState<T>> = {}
 ) => {
   return create<BaseListStore<T>>((set) => ({

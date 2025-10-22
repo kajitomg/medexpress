@@ -14,7 +14,7 @@ const RootLayout = async ({
 
   const global = responseGlobal.data
   return (
-    <GlobalProvider initialState={{ data: global }}>
+    <GlobalProvider initialState={{ item: global }}>
       <CartProvider>
         {children}
         <Toaster />

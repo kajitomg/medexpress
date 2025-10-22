@@ -1,6 +1,6 @@
 import { fetchHeaderItem } from "@/entities/_single-types/header/api"
 import { HeaderBase } from "@/entities/_single-types/header/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchHeader = async () => {
   const queryObj = {
@@ -28,7 +28,7 @@ const fetchHeader = async () => {
         },
       },
     },
-  } satisfies Query<HeaderBase>
+  } satisfies StrapiQuery<HeaderBase>
 
   return await fetchHeaderItem(queryObj)
 }

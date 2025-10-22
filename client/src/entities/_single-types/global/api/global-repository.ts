@@ -3,10 +3,10 @@
 import { GlobalBase } from "@/entities/_single-types/global/model"
 import { api } from "@/shared/api/api"
 import { ErrorHandler } from "@/shared/lib/error"
-import { Query, StrapiItemResponse } from "@/shared/model/strapi"
+import { StrapiItemResponse, StrapiQuery } from "@/shared/model/strapi"
 import qs from "qs"
 
-const fetchGlobalItem = async (queryObj?: Query<GlobalBase>) => {
+const fetchGlobalItem = async (queryObj?: StrapiQuery<GlobalBase>) => {
   try {
     const query = qs.stringify(queryObj, { encodeValuesOnly: true })
 

@@ -1,6 +1,6 @@
 import { fetchGlobalItem } from "@/entities/_single-types/global/api"
 import { GlobalBase } from "@/entities/_single-types/global/model"
-import { Query } from "@/shared/model/strapi"
+import { StrapiQuery } from "@/shared/model/strapi"
 
 const fetchGlobal = async () => {
   const queryObj = {
@@ -13,7 +13,7 @@ const fetchGlobal = async () => {
       defaultCollectionImage: true,
       defaultProductImage: true,
     },
-  } satisfies Query<GlobalBase>
+  } satisfies StrapiQuery<GlobalBase>
 
   return await fetchGlobalItem(queryObj)
 }

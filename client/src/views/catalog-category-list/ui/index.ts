@@ -1,1 +1,1 @@
-export { Page as CatalogCategoriesPage } from "./page"
+export { Page as CatalogCategoryListPage } from "./page"

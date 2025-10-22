@@ -1,5 +1,5 @@
 import { fetchPage } from "@/entities/page/services"
-import { SectionsProvider } from "@/features/sections/provider"
+import { SectionListProvider } from "@/features/sections/provider"
 import { generatePageMetadata } from "@/shared/lib/generate-page-metadata"
 import { generateSeoViewport } from "@/shared/lib/generate-seo-viewport"
 import { PageLayoutMain } from "@/shared/ui"
@@ -32,13 +32,13 @@ const Home = async () => {
     slugify("Главная", { lower: true, strict: true })
   )
 
-  const sections = content.data.sections
+  const sections = content.data?.sections
   return (
-    <SectionsProvider initialState={{ sections }}>
+    <SectionListProvider initialState={{ sections }}>
       <PageLayoutMain>
         <MainPage />
       </PageLayoutMain>
-    </SectionsProvider>
+    </SectionListProvider>
   )
 }
 

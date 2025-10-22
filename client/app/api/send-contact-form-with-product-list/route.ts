@@ -1,0 +1,49 @@
+import { sendMail } from "@/entities/mail/api"
+import { ProductBase } from "@/entities/product/model"
+import { CartData } from "@/features/cart/model/cart"
+import { ContactFormSchema } from "@/features/contact-form/model"
+import { NextResponse } from "next/server"
+import Mail from "nodemailer/lib/mailer"
+
+export async function POST(request: Request) {
+  const body: ContactFormSchema & { products: CartData<ProductBase>[] } =
+    await request.json()
+  const { firstname, message, products, mode } = body
+
+  const mailOptions: Mail.Options = {
+    from: `"Сайт" <${process.env.SMTP_USER}>`,
+    to: process.env.ADMIN_EMAIL,
+    subject: "Новый запрос с сайта",
+    html: `
+      <p><strong>Имя:</strong> ${firstname}</p>
+      ${mode === "email" ? `<p><strong>Email:</strong> ${body.email}</p>` : ""}
+      ${mode === "phonenumber" ? `<p><strong>Номер телефона:</strong> ${body.phonenumber}</p>` : ""}
+      ${message ? `<p><strong>Сообщение:</strong> ${message}</p>` : ""}
+      <p><strong>Выбранные товары:</strong></p>
+      ${
+        products.length
+          ? `<ul>
+        ${products?.map((item) => `<li>${item.item.name} (код: ${item.item.type?.code}) количество: ${item.count} шт.</li>`).join("")}
+      </ul>`
+          : "Нет выбранных товаров"
+      }
+    `,
+  }
+
+  try {
+    await sendMail(mailOptions)
+    return NextResponse.json({
+      success: true,
+      message: "Запрос успешно отправлен",
+    })
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Ошибка при отправке запроса",
+      },
+      { status: 400 }
+    )
+  }
+}

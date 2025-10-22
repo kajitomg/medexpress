@@ -1,6 +1,6 @@
-import { StrapiComponentBase } from "@/shared/model/strapi"
+import { StrapiComponentBase, StrapiOptional } from "@/shared/model/strapi"
 
 export interface RichTextComponent
   extends StrapiComponentBase<"shared.rich-text"> {
-  body?: string
+  body: StrapiOptional<string>
 }
