@@ -40,8 +40,6 @@ services:
       - ../cms/public:/opt/application/public
       - ../static:/opt/application/public/uploads
     environment:
-      - ../.env
-      - ../cms/.env
       - DATABASE_CLIENT=postgres
       - DATABASE_NAME=${POSTGRES_DB}
       - DATABASE_USERNAME=${POSTGRES_USER}

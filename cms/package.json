@@ -19,7 +19,7 @@
     "@strapi/plugin-cloud": "5.12.4",
     "@strapi/plugin-seo": "^2.0.8",
     "@strapi/plugin-users-permissions": "^5.25.0",
-    "@strapi/strapi": "^5.25.0",
+    "@strapi/strapi": "^5.29.0",
     "caniuse-lite": "^1.0.30001747",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",

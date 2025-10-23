@@ -5,260 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/catalog-category-options-provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/catalog-product-options-provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/store/catalog-category-options-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/catalog/store/catalog-product-options-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/provider/nomenclature-options-provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/slices/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/slices/nomenclature-filter-slice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/store/nomenclature-options-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/nomenclature/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/pagination/slices/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/pagination/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/product/provider/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/product/provider/product-list-provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/product/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/search/slices/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/search/slices/search-slice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/search/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/search/ui/search-control.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/shared/lib/hooks/use-hydrate-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/shared/model/helpers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/catalog-pagination-control/ui/catalog-pagination-control.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form-modal-with-product.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/device-section-item-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/device-section-list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/nomenclature-device-section-list-sidebar-sheet.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/nomenclature-device-section-list-sidebar.client.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data-seeder/src/lib/logger.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data-seeder/src/lib/roszdravnadzor.xml.claude.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data-seeder/src/lib/sleep.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/(main)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/catalog/[category_slug]/(page)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/catalog/[category_slug]/(page)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/catalog/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/catalog/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/contacts/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/nomenclature/[nomenclature_slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/nomenclature/[nomenclature_slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/nomenclature/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/nomenclature/(page)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/private-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/private-policy/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/(main-layout)/product/[product_slug]/(page)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/product/[product_slug]/(page)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/(public)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/favicon/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/favicon/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/revalidate/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/revalidate/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/send-cart-form/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/send-contact-form-with-product-list/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/send-contact-form/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/send-contact-form/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/api/send-product-form/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/api/send-contact-form-with-product-item/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/robots.txt/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/robots.txt/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/client/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/blocks/row-text-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/blocks/row-text-item.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/elements/about-hero.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/elements/about-hero.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/elements/footer-about.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/elements/footer-about.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/elements/main-page-hero.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/elements/main-page-hero.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/elements/main-page-services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/elements/main-page-services.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/layout/logo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/layout/logo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/sections/contact-form-section.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/sections/contact-form-section.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/sections/gallery-section.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/sections/gallery-section.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/sections/hero-section.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/sections/hero-section.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/sections/list-section.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/sections/list-section.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/address.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/address.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/email.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/email.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/open-graph.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/open-graph.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/phonenumber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/phonenumber.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/product-specification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/product-specification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/rich-text.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/rich-text.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/schedule-day.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/schedule-day.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/seo-template.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/seo-template.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/seo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/seo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/social.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/social.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/text.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/text.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_components/shared/working-schedule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_components/shared/working-schedule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/footer/api/footer-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/footer/api/footer-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/footer/services/fetch-footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/footer/services/fetch-footer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/global/api/global-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/global/api/global-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/global/model/global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/global/model/global.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/global/services/fetch-global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/global/services/fetch-global.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/header/api/header-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/header/api/header-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/_single-types/header/services/fetch-header.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/_single-types/header/services/fetch-header.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/api/category-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/api/category-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/model/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/model/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-catalog-category-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-catalog-category-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-detail-category-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-detail-category-item.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/category/services/fetch-navigation-category-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/category/services/fetch-navigation-category-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-section/api/device-section-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-section/api/device-section-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-section/model/device-section.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-section/model/device-section.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-section/services/fetch-aside-device-section-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-section/services/fetch-sidebar-device-section-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-section/services/fetch-classifications-device-section-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-section/services/fetch-classifications-device-section-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-section/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-section/services/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-type/api/device-type-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-type/api/device-type-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-type/model/device-type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-type/model/device-type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-type/services/fetch-detail-device-type-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-type/services/fetch-detail-device-type-item.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/device-type/services/fetch-device-sections-device-type-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/device-type/services/fetch-device-sections-device-type-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/api/page-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/model/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/model/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/page/services/fetch-page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/page/services/fetch-page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/price/model/price.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/price/model/price.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/api/product-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/api/product-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/model/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/model/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-categories-product-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-categories-product-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-detail-product-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-detail-product-item.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-product-list-by-slug.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-product-list-by-slug.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/product/services/fetch-similar-categories-product-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/product/services/fetch-similar-categories-product-list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/social/model/social.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/social/model/social.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/specification/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/specification/model/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/specification/model/specification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/specification/model/specification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/entities/working-schedule/model/working-schedule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/entities/working-schedule/model/working-schedule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/cart/services/send-cart-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/cart/services/send-cart-form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/cart/ui/add-to-cart-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/cart/ui/add-to-cart-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/catalog-options-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/category-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/category/provider/category-list-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/device-section-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/nomenclature/provider/device-section-list-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/device-type-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/nomenclature/provider/device-type-list-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/provider/products-list-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/catalog-options-store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/category-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/category-item-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/device-section-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/nomenclature/ui/device-section-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/device-type-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/nomenclature/ui/device-type-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/pagination-control.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/catalog-pagination-control.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/price.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/product/ui/price.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/product-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/product-item-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/catalog/ui/search-control.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/catalog/ui/search-control.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/category-details/provider/category-details-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/category-details/provider/category-details-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/device-section-details/provider/device-section-details-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/device-section-details/provider/device-section-details-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/device-type-details/provider/device-type-details-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/device-type-details/provider/device-type-details-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/global/provider/global-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/global/provider/global-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/product-details/provider/product-details-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/product-details/provider/product-details-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/sections/provider/section-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/sections/provider/section-list-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/sections/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/sections/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/sections/store/section-list-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/sections/store/section-list-selectors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/sections/store/section-list-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/sections/store/section-list-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/format-time.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/format-time.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/generate-global-metadata.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/generate-global-metadata.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/generate-page-metadata.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/generate-page-metadata.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/generate-seo-viewport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/generate-seo-viewport.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/get-days-string-from-array.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/get-days-string-from-array.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/get-working-time.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/get-working-time.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/lib/search-params-storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/lib/search-params-storage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/media.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/query.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/relation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/relation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/model/strapi/response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/model/strapi/response.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/provider/base-item-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/provider/base-item-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/provider/base-list-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/provider/base-list-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/store/base-item-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/store/base-item-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/store/base-list-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/store/base-list-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/ui/list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/ui/pagination-control.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/pagination/ui/pagination-control.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/contact-form-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/section-about-description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/section-about-description.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/section-about-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/section-about-hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/section-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/section-contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/section-licenses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/section-licenses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/about/ui/section-stand-out.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/about/ui/section-stand-out.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/cart-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/cart-contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/cart-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/product-item-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/cart-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/product-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/cart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/cart/ui/wizard-cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/cart/ui/wizard-cart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/category-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/category-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-category-list/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/product-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/catalog-product-list/ui/product-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/contact-form-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/section-contacts-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/contacts/ui/section-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/contacts/ui/section-faq.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-section-list/ui/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-section-list/ui/nomenclature-list.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-section-list/ui/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-type-item/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/nomenclature-device-type-details/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-type-item/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/nomenclature-device-type-details/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-type-list/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/nomenclature-device-type-list/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-type-list/ui/nomenclature-type-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/nomenclature-device-type-list/ui/nomenclature-type-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/device-type-list/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/nomenclature-device-type-list/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/contact-form-details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/contact-form-details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/content-services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/content-services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/hero-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/hero-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/section-contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/section-contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/section-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/section-faq.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/section-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/section-hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/section-service-process.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/section-service-process.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/section-stand-out.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/section-stand-out.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/main/ui/services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/main/ui/services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/images-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/modal-image-carousel/ui/modal-image-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/images-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product-details/ui/image-carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product-details/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product-details/ui/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/products-category-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product-details/ui/products-category-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/product/ui/specifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/product-details/ui/specifications.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/item.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/list.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/nomenclature-types-navigation-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/nomenclature-device-section-list-sidebar/ui/nomenclature-device-section-list-sidebar.server.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/nomenclature.client.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/catalog-categories-navigation-sidebar/ui/tmp.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/model/form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/contact-form/model/form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/contact-form/model/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/model/status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/contact-form/model/status.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/provider/contact-form-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/provider/contact-form-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/services/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/services/send-contact-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/services/send-contact-form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-phonenumber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/form-phonenumber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/about.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/catalog-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/catalog-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/footer/ui/contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/category-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/category-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/category-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/category-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/contacts-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/header/ui/header-menu-catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/header/ui/header-menu-catalog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/categories-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/dropdown-category-list/ui/category-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/category-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/dropdown-category-list/ui/category-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/dropdown-category-list/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/menu-catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/dropdown-category-list/ui/dropdown-category-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/subcategories-list.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/menu-catalog/ui/subcategory-item.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form-product/services/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form-product/services/send-product-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/services/send-contact-form-with-product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form-product/ui/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form-product/ui/modal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/modal-contact-form/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/contact-form/ui/contact-form-modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/navigation-sidebar-sheet/ui/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/navigation-sidebar-sheet/ui/navigation-sidebar-sheet.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/products-list/ui/products-list-widget.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/(public)/(main-layout)/nomenclature/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/products-list/ui/products-list-widget.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/category/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/products-list/ui/products-list.view.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/nomenclature/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/section-faq/ui/content-faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/section-faq/ui/content-faq.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/section-service-process/ui/content-service-process.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/section-service-process/ui/content-service-process.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/widgets/section-stand-out/ui/content-stand-out.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/widgets/section-stand-out/ui/content-stand-out.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/device-type/content-types/device-type/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/device-type/content-types/device-type/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-seeder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/data-seeder/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-seeder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/data-seeder/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-seeder/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data-seeder/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,25 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;with-actual-product&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/data-seeder/src/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "with-actual-product",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Web/medexpress/data-seeder/src/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.strapi.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Web\medexpress\data-seeder\src\lib" />
@@ -327,6 +78,23 @@
       <recent name="C:\Web\medexpress\client\src\views\catalog-product-list\ui" />
       <recent name="C:\Web\medexpress\client\src\widgets\nomenclature-device-section-list-sidebar\ui" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="strapi" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/cms/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="strapi" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.strapi" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
