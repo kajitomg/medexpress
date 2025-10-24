@@ -9,10 +9,53 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "value": {
+    "displayName": {
+      "type": "string",
+      "private": true,
+      "required": true,
+      "unique": false
+    },
+    "postalCode": {
       "type": "string",
       "required": true
+    },
+    "region": {
+      "type": "string",
+      "required": true
+    },
+    "district": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "street": {
+      "type": "string",
+      "required": true
+    },
+    "house": {
+      "type": "string",
+      "required": true
+    },
+    "building": {
+      "type": "string"
+    },
+    "apartment": {
+      "type": "string"
+    },
+    "entrance": {
+      "type": "string"
+    },
+    "floor": {
+      "type": "string"
+    },
+    "fullAddress": {
+      "type": "text",
+      "default": "displayName",
+      "required": false
     }
   }
 }

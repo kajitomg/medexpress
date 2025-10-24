@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_shared_pluralizations",
+  "info": {
+    "displayName": "pluralization"
+  },
+  "options": {},
+  "attributes": {
+    "localeCode": {
+      "type": "enumeration",
+      "required": true,
+      "default": "ru-RU",
+      "enum": [
+        "ru-RU",
+        "OTHER"
+      ]
+    },
+    "cut": {
+      "type": "string",
+      "required": false
+    },
+    "zero": {
+      "type": "string",
+      "required": false
+    },
+    "one": {
+      "type": "string",
+      "required": false
+    },
+    "two": {
+      "type": "string",
+      "required": false
+    },
+    "few": {
+      "type": "string",
+      "required": false
+    },
+    "many": {
+      "type": "string",
+      "required": false
+    },
+    "other": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "config": {}
+}

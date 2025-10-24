@@ -63,6 +63,11 @@
       "component": "shared.product-specification",
       "repeatable": true,
       "required": false
+    },
+    "documents": {
+      "type": "component",
+      "component": "shared.file",
+      "repeatable": true
     }
   }
 }

@@ -10,11 +10,17 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
+    "displayName": {
+      "type": "string",
+      "private": true,
+      "required": true
+    },
     "days": {
       "type": "component",
-      "repeatable": true,
       "component": "shared.schedule-day",
+      "repeatable": true,
       "required": true
     }
   }

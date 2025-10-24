@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cf7e69c2-0e6d-4780-83cc-1bdafbeba8ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/address/content-types/address/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/address/content-types/address/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/email/content-types/email/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/email/content-types/email/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/phonenumber/content-types/phonenumber/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/phonenumber/content-types/phonenumber/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/product/content-types/product/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/specification/content-types/specification/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/specification/content-types/specification/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/api/working-schedule/content-types/working-schedule/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/api/working-schedule/content-types/working-schedule/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/src/components/shared/seo.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/src/components/shared/seo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cms/types/generated/contentTypes.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,26 +49,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "with-actual-product",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Web/medexpress/data-seeder/src/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.strapi.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Web\\medexpress\\client\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;with-actual-product&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/medexpress/data-seeder/src/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.strapi.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Web\\medexpress\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Web\medexpress\data-seeder\src\lib" />
@@ -342,6 +348,9 @@
       <workItem from="1760903185620" duration="6333000" />
       <workItem from="1761049062947" duration="16335000" />
       <workItem from="1761126404930" duration="8186000" />
+      <workItem from="1761215401986" duration="6247000" />
+      <workItem from="1761251047145" duration="8869000" />
+      <workItem from="1761300238398" duration="7593000" />
     </task>
     <servers />
   </component>

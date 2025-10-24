@@ -441,20 +441,34 @@ export interface ApiAddressAddress extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    apartment: Schema.Attribute.String;
+    building: Schema.Attribute.String;
+    city: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    displayName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    district: Schema.Attribute.String;
+    entrance: Schema.Attribute.String;
+    floor: Schema.Attribute.String;
+    fullAddress: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'displayName'>;
+    house: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::address.address'
     > &
       Schema.Attribute.Private;
+    postalCode: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.String & Schema.Attribute.Required;
+    street: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    value: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -632,7 +646,7 @@ export interface ApiEmailEmail extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    value: Schema.Attribute.Email &
+    value: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
   };
@@ -808,6 +822,7 @@ export interface ApiPhonenumberPhonenumber extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    countryCode: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -883,6 +898,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    documents: Schema.Attribute.Component<'shared.file', true>;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -972,7 +988,8 @@ export interface ApiSpecificationSpecification
     type: Schema.Attribute.Enumeration<['text', 'number', 'boolean', 'list']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'text'>;
-    units: Schema.Attribute.String & Schema.Attribute.Required;
+    units: Schema.Attribute.Component<'shared.pluralization', false> &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -997,6 +1014,9 @@ export interface ApiWorkingScheduleWorkingSchedule
       Schema.Attribute.Private;
     days: Schema.Attribute.Component<'shared.schedule-day', true> &
       Schema.Attribute.Required;
+    displayName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

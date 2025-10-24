@@ -263,6 +263,17 @@ export interface SharedEmail extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFile extends Struct.ComponentSchema {
+  collectionName: 'components_shared_files';
+  info: {
+    displayName: 'file';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -310,6 +321,25 @@ export interface SharedPhonenumber extends Struct.ComponentSchema {
     >;
     icon: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedPluralization extends Struct.ComponentSchema {
+  collectionName: 'components_shared_pluralizations';
+  info: {
+    displayName: 'pluralization';
+  };
+  attributes: {
+    cut: Schema.Attribute.String;
+    few: Schema.Attribute.String;
+    localeCode: Schema.Attribute.Enumeration<['ru-RU', 'OTHER']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'ru-RU'>;
+    many: Schema.Attribute.String;
+    one: Schema.Attribute.String;
+    other: Schema.Attribute.String;
+    two: Schema.Attribute.String;
+    zero: Schema.Attribute.String;
   };
 }
 
@@ -411,7 +441,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 60;
       }>;
-    metaTitleTemplate: Schema.Attribute.String;
     metaViewport: Schema.Attribute.String;
     openGraph: Schema.Attribute.Component<'shared.open-graph', false>;
     structuredData: Schema.Attribute.JSON;
@@ -500,9 +529,11 @@ declare module '@strapi/strapi' {
       'shared.address': SharedAddress;
       'shared.contact-form': SharedContactForm;
       'shared.email': SharedEmail;
+      'shared.file': SharedFile;
       'shared.media': SharedMedia;
       'shared.open-graph': SharedOpenGraph;
       'shared.phonenumber': SharedPhonenumber;
+      'shared.pluralization': SharedPluralization;
       'shared.product-specification': SharedProductSpecification;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "displayName": {
+      "type": "string",
+      "private": true,
+      "required": true
+    },
     "name": {
       "type": "string",
       "required": true
@@ -28,7 +33,7 @@
       ]
     },
     "units": {
-      "type": "string",
+      "type": "component",
       "conditions": {
         "visible": {
           "==": [
@@ -39,11 +44,8 @@
           ]
         }
       },
-      "required": true
-    },
-    "displayName": {
-      "type": "string",
-      "private": true,
+      "component": "shared.pluralization",
+      "repeatable": false,
       "required": true
     }
   }
