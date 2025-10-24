@@ -53,7 +53,17 @@ const Specifications = ({ items }: SpecificationsProps) => {
           break
         }
         case "number": {
-          tmp.value = item.bodyNumber + item.type?.units
+          const localeCode =
+            item.type?.units?.localeCode === "OTHER"
+              ? item.type?.units?.localeCode
+              : undefined
+          const pluralize = new Intl.PluralRules(localeCode)
+          if (item.bodyNumber) {
+            const unit = item.type?.units?.cut
+              ? item.type?.units?.cut
+              : item.type?.units?.[pluralize.select(item.bodyNumber)] || ""
+            tmp.value = item.bodyNumber.toString().concat(" ").concat(unit)
+          }
           break
         }
         case "boolean": {

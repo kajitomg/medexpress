@@ -1,7 +1,5 @@
-import {
-  ProductSpecificationComponent,
-  SeoComponent,
-} from "@/entities/_components"
+import { ProductSpecificationComponent, SeoComponent } from "@/entities/_components"
+import { FileComponent } from "@/entities/_components/shared/file"
 import { CategoryBase } from "@/entities/category/model"
 import { DeviceTypeBase } from "@/entities/device-type/model"
 import { Price } from "@/entities/price/model"
@@ -26,5 +24,6 @@ export interface ProductBase extends StrapiBase {
   images: StrapiOptional<StrapiMedia<ImageMedia[]>>
   type: StrapiOptional<StrapiRelation<DeviceTypeBase>>
   categories: StrapiOptional<StrapiRelation<CategoryBase[]>>
+  documents: StrapiOptional<StrapiComponent<FileComponent[]>>
   seo: StrapiOptional<StrapiComponent<SeoComponent>>
 }

@@ -28,7 +28,7 @@ const localBusiness = (
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    address: contacts?.address?.body?.map((item) => item.value),
+    address: contacts?.address?.body?.map((item) => item.fullAddress || ""),
     geo: {
       "@type": "GeoCoordinates",
       latitude: 44.155757,
@@ -81,7 +81,7 @@ const SectionContactsDetails = ({
             <div>
               {data?.address?.body?.map((item) => (
                 <Typography key={item.id} variant="muted">
-                  {item.value}
+                  {item.fullAddress}
                 </Typography>
               ))}
             </div>

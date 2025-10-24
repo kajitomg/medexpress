@@ -48,7 +48,7 @@ const localBusiness = (
   }
 }
 
-const ANIMATION_DURATION = 300
+const ANIMATION_DURATION = 200
 
 const ContactsBar = ({ className }: ComponentProps<"div">) => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -80,9 +80,8 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        `grid overflow-hidden transition-[grid-template-rows] duration-${ANIMATION_DURATION}`,
+        `grid overflow-hidden transition-[grid-template-rows] duration-200 grid-rows-[1fr]`,
         {
-          "grid-rows-[1fr]": direction !== "down",
           "grid-rows-[0fr]": direction === "down",
         }
       )}
@@ -90,7 +89,7 @@ const ContactsBar = ({ className }: ComponentProps<"div">) => {
       {isRendered && (
         <div
           className={cn(
-            `min-h-0 overflow-hidden w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6`,
+            `min-h-0 overflow-hidden transition-all duration-200 w-full px-4 py-2 flex items-start justify-between sm:justify-center border-b border-gray-800/10 gap-2 sm:gap-4 md:gap-6`,
             className,
             direction === "down" && "py-0"
           )}

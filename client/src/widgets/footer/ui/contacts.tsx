@@ -25,7 +25,7 @@ const localBusiness = (
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ООО «Медэкспресс»",
-    address: contacts?.address?.body?.map((item) => item.value),
+    address: contacts?.address?.body?.map((item) => item.fullAddress || ""),
     telephone: contacts?.phonenumber?.body?.map((item) => item.value),
     email: contacts?.email?.body?.map((item) => item.value),
     openingHours:
@@ -73,7 +73,7 @@ const Contacts = ({ data }: ContactsProps) => {
           <div className="col-start-2 flex flex-col gap-1">
             {data?.address?.body?.map((item) => (
               <Typography key={item.id} variant="small">
-                {item.value}
+                {item.fullAddress}
               </Typography>
             ))}
           </div>

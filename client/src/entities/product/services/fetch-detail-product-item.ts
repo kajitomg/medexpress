@@ -16,9 +16,18 @@ const fetchDetailProductItem = async (slug: string) => {
       },
       categories: true,
       images: true,
+      documents: {
+        populate: {
+          value: true,
+        },
+      },
       specifications: {
         populate: {
-          type: true,
+          type: {
+            populate: {
+              units: true,
+            },
+          },
           bodyList: true,
         },
       },
