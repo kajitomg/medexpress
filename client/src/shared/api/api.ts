@@ -26,7 +26,7 @@ export async function api(
   const path = !options.params ? endpoint : endpoint + `?${options.params}`
 
   const url = new URL(path, API_URL)
-
+  console.log(url)
   return await fetch(url, {
     ...options,
     headers,
